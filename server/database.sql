@@ -9,18 +9,23 @@ CREATE TABLE clubs(
   PRIMARY KEY (club_id)
 );
 
+CREATE TABLE members(
+  club_id SERIAL,
+  user_id UUID,
+  role VARCHAR(255),
+  FOREIGN KEY (club_id) REFERENCES clubs(club_id),
+  FOREIGN KEY (user_id) REFERENCES users(user_id),
+  PRIMARY KEY (club_id, user_id)
+);
+
 CREATE TABLE users(
   user_id UUID DEFAULT uuid_generate_v4(),
-  user_name VARCHAR(255) NOT NULL,
+  user_name VARCHAR(255) NOT NULL UNIQUE,
   user_email VARCHAR(255) NOT NULL UNIQUE,
   user_password VARCHAR(255) NOT NULL,
   school VARCHAR(255) NOT NULL,
-  club_id SERIAL,
-  PRIMARY KEY (user_id),
-  FOREIGN KEY (club_id) REFERENCES clubs(club_id)
+  PRIMARY KEY (user_id)
 );
-
--- Have not created yet
 
 CREATE TABLE socials(
   social_id SERIAL,
@@ -32,16 +37,16 @@ CREATE TABLE socials(
   club_id SERIAL,
   PRIMARY KEY (social_id),
   FOREIGN KEY (club_id) REFERENCES clubs(club_id)
-)
+);
 
 CREATE TABLE partners(
   partner_id SERIAL,
   club_a_id SERIAL,
   club_b_id SERIAL, 
   PRIMARY KEY (partner_id),
-  FOREIGN KEY (club_a_id) REFERENCES clubs(club_id)
+  FOREIGN KEY (club_a_id) REFERENCES clubs(club_id),
   FOREIGN KEY (club_b_id) REFERENCES clubs(club_id)
-)
+);
 
 CREATE TABLE posts(
   post_id SERIAL,
@@ -51,13 +56,7 @@ CREATE TABLE posts(
   created_at DATE NOT NULL DEFAULT CURRENT_DATE,
   PRIMARY KEY (post_id),
   FOREIGN KEY (club_id) REFERENCES clubs(club_id)
-)
+);
 
-CREATE TABLE members(
-  club_id SERIAL,
-  user_id UUID,
-  role VARCHAR(255),
-  FOREIGN KEY (club_id) REFERENCES clubs(club_id)
-  FOREIGN KEY (user_id) REFERENCES users(user_id)
-  PRIMARY KEY (club_id, user_id)
-)
+-- insert fake user data
+insert into users (user_name, user_email, user_password, school) values ('createdbyjulius', 'createdbyjulius@gmail.com', 'createdbyme', 'University of Washington');

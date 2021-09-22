@@ -12,10 +12,10 @@ app.use(express.json()); // request HTTP body and convert to JSON
 // Create Club
 app.post("/clubs", async(req, res) => {
     try {
-        const { club_name, description } = req.body;
+        const { name, description, school, category } = req.body;
         const newClub = await pool.query(
-          "INSERT INTO club (name, description) VALUES($1, $2) RETURNING *",
-          [club_name, description]
+          "INSERT INTO clubs (name, description, school, category) VALUES($1, $2, $3, $4) RETURNING *",
+          [name, description, school, category]
         );
     
         res.json(newClub.rows[0]);
@@ -27,7 +27,7 @@ app.post("/clubs", async(req, res) => {
 // Get all Clubs
 app.get("/clubs", async(req, res) => {
     try {
-        const allClubs = await pool.query("SELECT * FROM club");
+        const allClubs = await pool.query("SELECT * FROM clubs");
         res.json(allClubs.rows);
     } catch (err) {
         console.error(err.message);
@@ -38,7 +38,7 @@ app.get("/clubs", async(req, res) => {
 app.get("/clubs/:id", async(req, res) => {
     try {
         const { id } = req.params;
-        const club = await pool.query("SELECT * FROM club WHERE club_id = $1", [
+        const club = await pool.query("SELECT * FROM clubs WHERE club_id = $1 RETURNING *", [
         id
         ]);
 
@@ -53,10 +53,10 @@ app.get("/clubs/:id", async(req, res) => {
 app.put("/clubs/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const { club_name, description } = req.body;
+    const { name, description, school, category } = req.body;
     const updateClub = await pool.query(
-      "UPDATE club SET name = $1, description = $2 WHERE club_id = $3",
-      [club_name, description, id]
+      "UPDATE clubs SET name = $1, description = $2, school = $3, category = $4 WHERE club_id = $5 RETURNIING *",
+      [name, description, school, category, id]
     );
 
     res.json("Club was updated!");
@@ -69,7 +69,7 @@ app.put("/clubs/:id", async (req, res) => {
 app.delete("/clubs/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const deleteClub = await pool.query("DELETE FROM club WHERE club_id = $1", [
+    const deleteClub = await pool.query("DELETE FROM clubs WHERE club_id = $1", [
       id
     ]);
     res.json("Club was deleted!");
