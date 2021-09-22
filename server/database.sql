@@ -42,7 +42,7 @@ CREATE TABLE socials(
 CREATE TABLE partners(
   partner_id SERIAL,
   club_a_id SERIAL,
-  club_b_id SERIAL, 
+  club_b_id SERIAL,
   PRIMARY KEY (partner_id),
   FOREIGN KEY (club_a_id) REFERENCES clubs(club_id),
   FOREIGN KEY (club_b_id) REFERENCES clubs(club_id)
@@ -51,7 +51,7 @@ CREATE TABLE partners(
 CREATE TABLE posts(
   post_id SERIAL,
   club_id SERIAL,
-  title VARCHAR(255) NOT NULL, 
+  title VARCHAR(255) NOT NULL,
   description VARCHAR(255),
   created_at DATE NOT NULL DEFAULT CURRENT_DATE,
   PRIMARY KEY (post_id),
@@ -59,4 +59,23 @@ CREATE TABLE posts(
 );
 
 -- insert fake user data
-insert into users (user_name, user_email, user_password, school) values ('createdbyjulius', 'createdbyjulius@gmail.com', 'createdbyme', 'University of Washington');
+insert into
+  users (user_name, user_email, user_password, school)
+values
+  (
+    'createdbyjulius',
+    'createdbyjulius@gmail.com',
+    'createdbyme',
+    'University of Washington'
+  );
+
+-- insert fake clubs
+insert into
+  clubs(name, description, school, category)
+values
+  (
+    'Music Club',
+    'Learn to love music like Fairlane',
+    'University of Washington',
+    'Music'
+  );
