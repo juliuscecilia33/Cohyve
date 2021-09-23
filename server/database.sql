@@ -74,8 +74,60 @@ insert into
   clubs(name, description, school, category)
 values
   (
-    'Music Club',
-    'Learn to love music like Fairlane',
+    'Chemistry Club',
+    'Learn everything about chemistry!',
     'University of Washington',
-    'Music'
+    'Science'
   );
+
+-- insert fake partners
+insert into
+  partners(club_a_id, club_b_id)
+values
+  (2, 3);
+
+-- insert fake club socials
+insert into
+  socials(
+    website,
+    instagram,
+    facebook,
+    twitter,
+    email,
+    club_id
+  )
+values
+  (
+    'www.chemistryclubatuw.com',
+    '@chemclubatuw',
+    'chemclubatuw',
+    '@chemclubatuw',
+    'chemclub@uw.edu',
+    2
+  );
+
+-- inserting fake club posts 
+insert into
+  posts(club_id, title, description)
+values
+  (
+    1,
+    'Join the Music Club!',
+    'This is the last week to join'
+  );
+
+-- select the posts from a club
+select
+  *
+from
+  posts
+where
+  club_id = 1;
+
+-- select the members from a club
+select
+  *
+from
+  members
+where
+  club_id = 2;
