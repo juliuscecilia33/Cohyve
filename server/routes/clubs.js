@@ -1,16 +1,11 @@
-const express = require("express");
-const app = express();
-const cors = require("cors");
-const pool = require("./db");
-
-// middleware
-app.use(cors());
-app.use(express.json()); // request HTTP body and convert to JSON
+const router = require("express").Router();
+const authorize = require("../middleware/authorize");
+const pool = require("../db");
 
 // Routes
 
 // Create Club
-app.post("/clubs", async(req, res) => {
+router.post("/", async(req, res) => {
     try {
         const { name, description, school, category } = req.body;
         const newClub = await pool.query(
@@ -25,7 +20,7 @@ app.post("/clubs", async(req, res) => {
 });
 
 // Get all Clubs
-app.get("/clubs", async(req, res) => {
+router.get("/", async(req, res) => {
     try {
         const allClubs = await pool.query("SELECT * FROM clubs");
         res.json(allClubs.rows);
@@ -35,7 +30,7 @@ app.get("/clubs", async(req, res) => {
 })
 
 // Get a certain Club
-app.get("/clubs/:id", async(req, res) => {
+router.get("/:id", async(req, res) => {
     try {
         const { id } = req.params;
         const club = await pool.query("SELECT * FROM clubs WHERE club_id = $1 RETURNING *", [
@@ -50,7 +45,7 @@ app.get("/clubs/:id", async(req, res) => {
 
 // Update a Club Name/Description
 
-app.put("/clubs/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const { name, description, school, category } = req.body;
@@ -66,7 +61,7 @@ app.put("/clubs/:id", async (req, res) => {
 });
 
 // Delete a Club
-app.delete("/clubs/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const deleteClub = await pool.query("DELETE FROM clubs WHERE club_id = $1", [
@@ -78,6 +73,4 @@ app.delete("/clubs/:id", async (req, res) => {
   }
 });
 
-app.listen(5000, () => {
-  console.log("server has started on port 5000");
-});
+module.exports = router;

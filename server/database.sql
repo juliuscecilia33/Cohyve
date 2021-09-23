@@ -111,9 +111,9 @@ insert into
   posts(club_id, title, description)
 values
   (
-    1,
-    'Join the Music Club!',
-    'This is the last week to join'
+    3,
+    'We are announcing our partnership with the Chemistry Club',
+    'Physics x Chemistry Unite!'
   );
 
 -- select the posts from a club
@@ -123,6 +123,15 @@ from
   posts
 where
   club_id = 1;
+
+-- select a certain post from a certain club
+select
+  *
+from
+  posts
+where
+  club_id = 1
+  and post_id = 3;
 
 -- select the members from a club
 select
