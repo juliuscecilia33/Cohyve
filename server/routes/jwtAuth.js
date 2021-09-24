@@ -24,12 +24,11 @@ router.post("/register", async (req, res) => {
     // 3. Bcrypt the User Password
     const saltRound = 10; // how encrypted the password will be
     const salt = await bcrypt.genSalt(saltRound);
-
     const bcryptPassword = await bcrypt.hash(password, salt);
 
     // 4. Enter the new user inside our database
 
-    const newUser = await pool.query(
+    let newUser = await pool.query(
       "INSERT INTO users (user_name, user_email, user_password, school) VALUES ($1, $2, $3, $4) RETURNING *",
       [name, email, bcryptPassword, school]
     );
@@ -73,9 +72,9 @@ router.post("/login", async (req, res) => {
 
     // 4. give them the jwt token
 
-    const token = jwtGenerator(user.rows[0].user_id);
+    const jwtToken = jwtGenerator(user.rows[0].user_id);
 
-    res.json({ token });
+    res.json({ jwtToken });
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error!");
