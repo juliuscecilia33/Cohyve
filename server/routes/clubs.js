@@ -5,7 +5,7 @@ const pool = require("../db");
 // Routes
 
 // Create Club
-router.post("/", async (req, res) => {
+router.post("/", authorize, async (req, res) => {
   try {
     const { name, description, school, category } = req.body;
     const newClub = await pool.query(
@@ -20,7 +20,7 @@ router.post("/", async (req, res) => {
 });
 
 // Get all Clubs
-router.get("/", async (req, res) => {
+router.get("/", authorize, async (req, res) => {
   try {
     const allClubs = await pool.query("SELECT * FROM clubs");
     res.json(allClubs.rows);
@@ -30,7 +30,7 @@ router.get("/", async (req, res) => {
 });
 
 // Get a certain Club
-router.get("/:id", async (req, res) => {
+router.get("/:id", authorize, async (req, res) => {
   try {
     const { id } = req.params;
     const club = await pool.query(
@@ -46,7 +46,7 @@ router.get("/:id", async (req, res) => {
 
 // Update a Club Name/Description
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", authorize, async (req, res) => {
   try {
     const { id } = req.params;
     const { name, description, school, category } = req.body;
@@ -62,7 +62,7 @@ router.put("/:id", async (req, res) => {
 });
 
 // Delete a Club
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", authorize, async (req, res) => {
   try {
     const { id } = req.params;
     const deleteClub = await pool.query(
