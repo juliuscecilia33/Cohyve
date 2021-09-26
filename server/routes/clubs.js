@@ -13,13 +13,26 @@ router.post("/", authorize, async (req, res) => {
       [name, description, school, category]
     );
 
-    res.json(newClub.rows[0]);
+    let clubId = newClub.rows[0].club_id;
+
+    // We automatically make the user that made that club a role of "Owner";
+    const insertOwner = await pool.query(
+      "INSERT INTO members (club_id, user_id, role) VALUES($1, $2, 'Owner') RETURNING *",
+      [clubId, req.user.id]
+    );
+
+    res.json(newClub.rows[0].club_id);
   } catch (err) {
     console.error(err.message);
   }
 });
 
+// Will have a pending table
+
+// If set to true, then insert member
+
 // Get all Clubs
+// In order for club to be publically shown/released on dashboard, club has to have a minimum of 6 members
 router.get("/", authorize, async (req, res) => {
   try {
     const allClubs = await pool.query("SELECT * FROM clubs");
@@ -28,6 +41,10 @@ router.get("/", authorize, async (req, res) => {
     console.error(err.message);
   }
 });
+
+// Get all Public/Officially Released Clubs
+
+// Get list of clubs of certain user
 
 // Get a certain Club
 router.get("/:id", authorize, async (req, res) => {

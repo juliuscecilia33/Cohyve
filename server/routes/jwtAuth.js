@@ -41,7 +41,7 @@ router.post("/register", validate, async (req, res) => {
 
     const jwtToken = jwtGenerator(newUser.rows[0].user_id);
 
-    res.json({ jwtToken });
+    return res.json({ jwtToken });
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error!");
@@ -76,7 +76,7 @@ router.post("/login", validate, async (req, res) => {
 
     const jwtToken = jwtGenerator(user.rows[0].user_id);
 
-    res.json({ jwtToken });
+    return res.json({ jwtToken });
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error!");
