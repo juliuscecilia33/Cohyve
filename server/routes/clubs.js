@@ -17,7 +17,7 @@ router.post("/", authorize, async (req, res) => {
 
     // We automatically make the user that made that club a role of "Owner";
     const insertOwner = await pool.query(
-      "INSERT INTO members (club_id, user_id, role) VALUES($1, $2, 'Owner') RETURNING *",
+      "INSERT INTO members (club_id, user_id, role, pending) VALUES($1, $2, 'Owner', false) RETURNING *",
       [clubId, req.user.id]
     );
 
@@ -26,8 +26,6 @@ router.post("/", authorize, async (req, res) => {
     console.error(err.message);
   }
 });
-
-// Will have a pending table
 
 // If set to true, then insert member
 

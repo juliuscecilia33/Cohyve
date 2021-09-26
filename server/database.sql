@@ -13,6 +13,7 @@ CREATE TABLE members(
   club_id SERIAL,
   user_id UUID,
   role VARCHAR(255),
+  pending BOOLEAN NOT NULL,
   FOREIGN KEY (club_id) REFERENCES clubs(club_id),
   FOREIGN KEY (user_id) REFERENCES users(user_id),
   PRIMARY KEY (club_id, user_id)
