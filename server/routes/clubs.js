@@ -27,8 +27,6 @@ router.post("/", authorize, async (req, res) => {
   }
 });
 
-// If set to true, then insert member
-
 // Get all Clubs
 // In order for club to be publically shown/released on dashboard, club has to have a minimum of 6 members
 router.get("/", authorize, async (req, res) => {
@@ -37,12 +35,41 @@ router.get("/", authorize, async (req, res) => {
     res.json(allClubs.rows);
   } catch (err) {
     console.error(err.message);
+    res.status(500).send("Server error");
   }
 });
 
 // Get all Public/Officially Released Clubs
 
 // Get list of clubs of certain user
+
+// Get members of club
+
+// Approve pending member
+router.put("/:id/:user", authorize, async (req, res) => {
+  try {
+    const { id, user } = req.params;
+    console.log(id, user);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
+
+// User requests membership to club
+router.post("/:id/request", authorize, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const insertMemberRequest = await pool.query(
+      "INSERT INTO members (club_id, user_id, role, pending) VALUES($1, $2, 'Pending', true) RETURNING *",
+      [id, req.user.id]
+    );
+    res.json(insertMemberRequest.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
 
 // Get a certain Club
 router.get("/:id", authorize, async (req, res) => {
@@ -56,6 +83,7 @@ router.get("/:id", authorize, async (req, res) => {
     res.json(club.rows[0]);
   } catch (err) {
     console.error(err.message);
+    res.status(500).send("Server error");
   }
 });
 
