@@ -49,7 +49,11 @@ router.get("/", authorize, async (req, res) => {
 router.put("/:id/:user", authorize, async (req, res) => {
   try {
     const { id, user } = req.params;
-    console.log(id, user);
+    const updatePendingMember = await pool.query(
+      "UPDATE members SET role = $1, pending = $2 WHERE user_id = $3 AND club_id = $4 RETURNING *",
+      ["Member", false, user, id]
+    );
+    // console.log(id, user);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error");
