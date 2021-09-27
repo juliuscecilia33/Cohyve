@@ -61,7 +61,35 @@ router.get("/public", authorize, async (req, res) => {
   }
 });
 
+// Get list of clubs of current user
+router.get("/user/clubs", authorize, async (req, res) => {
+  try {
+    const userClubs = await pool.query(
+      "SELECT club_id FROM members WHERE user_id = $1",
+      [req.user.id]
+    );
+    res.json(userClubs.rows);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
+
 // Get list of clubs of certain user
+router.get("/:user/clubs", authorize, async (req, res) => {
+  const { user } = req.params;
+
+  try {
+    const userClubs = await pool.query(
+      "SELECT club_id FROM members WHERE user_id = $1",
+      [user]
+    );
+    res.json(userClubs.rows);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
 
 // Get members of club
 router.get("/:id/members", authorize, async (req, res) => {
