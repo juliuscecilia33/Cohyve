@@ -28,7 +28,6 @@ router.post("/", authorize, async (req, res) => {
 });
 
 // Get all Clubs
-// In order for club to be publically shown/released on dashboard, club has to have a minimum of 6 members
 router.get("/", authorize, async (req, res) => {
   try {
     const allClubs = await pool.query("SELECT * FROM clubs");
@@ -40,6 +39,27 @@ router.get("/", authorize, async (req, res) => {
 });
 
 // Get all Public/Officially Released Clubs
+// In order for club to be publically shown/released on dashboard, club has to have a minimum of 6 members (we can filter out club members and check the length of return json)
+router.get("/public", authorize, async (req, res) => {
+  try {
+    const allMembers = await pool.query(
+      "SELECT club_id, count(*) member_count FROM members GROUP BY club_id"
+    );
+    let publicClubs = [];
+    for (const index in allMembers.rows) {
+      let memberCount = allMembers.rows[index]["member_count"];
+
+      if (memberCount >= 6) {
+        publicClubs.push(allMembers.rows[index]);
+      }
+    }
+    console.log(publicClubs);
+    res.json(publicClubs);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
 
 // Get list of clubs of certain user
 
@@ -67,6 +87,7 @@ router.put("/:id/:user", authorize, async (req, res) => {
       "UPDATE members SET role = $1, pending = $2 WHERE user_id = $3 AND club_id = $4 RETURNING *",
       ["Member", false, user, id]
     );
+    res.json(updatePendingMember.rows);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error");
