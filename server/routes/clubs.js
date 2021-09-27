@@ -21,7 +21,7 @@ router.post("/", authorize, async (req, res) => {
       [clubId, req.user.id]
     );
 
-    res.json(newClub.rows[0].club_id);
+    res.json(newClub.rows[0]);
   } catch (err) {
     console.error(err.message);
   }
@@ -44,6 +44,20 @@ router.get("/", authorize, async (req, res) => {
 // Get list of clubs of certain user
 
 // Get members of club
+router.get("/:id/members", authorize, async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const allMembers = await pool.query(
+      "SELECT * FROM members WHERE club_id = $1",
+      [id]
+    );
+    res.json(allMembers.rows);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
 
 // Approve pending member
 router.put("/:id/:user", authorize, async (req, res) => {
@@ -53,7 +67,6 @@ router.put("/:id/:user", authorize, async (req, res) => {
       "UPDATE members SET role = $1, pending = $2 WHERE user_id = $3 AND club_id = $4 RETURNING *",
       ["Member", false, user, id]
     );
-    // console.log(id, user);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error");
