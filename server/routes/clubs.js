@@ -21,6 +21,9 @@ router.post("/", authorize, async (req, res) => {
       [clubId, req.user.id]
     );
 
+    // We automatically insert into Followers table set to 0
+    const insertFollowers 
+
     res.json(newClub.rows[0]);
   } catch (err) {
     console.error(err.message);

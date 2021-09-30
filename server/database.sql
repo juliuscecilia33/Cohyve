@@ -28,6 +28,16 @@ CREATE TABLE users(
   PRIMARY KEY (user_id)
 );
 
+CREATE TABLE followers(
+  follower_id SERIAL,
+  club_id SERIAL,
+  follower_count INTEGER NOT NULL,
+  user_id UUID,
+  FOREIGN KEY (user_id) REFERENCES users(user_id),
+  FOREIGN KEY (club_id) REFERENCES clubs(club_id),
+  PRIMARY KEY(club_id, user_id)
+);
+
 CREATE TABLE socials(
   social_id SERIAL,
   website VARCHAR(255),
@@ -141,3 +151,13 @@ from
   members
 where
   club_id = 2;
+
+-- user follows a club
+insert into
+  followers(club_id, follower_count, user_id)
+values
+  (
+    9,
+    1,
+    '08aa64a3 - fead -4757 - 840d - 6e6508b23a1a'
+  );
