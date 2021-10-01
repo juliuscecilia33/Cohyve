@@ -54,8 +54,6 @@ router.get("/:id/follow", authorize, async (req, res) => {
       [req.user.id, id]
     );
 
-    console.log(followRes.rows);
-
     if (followRes.rows.length > 0) {
       res.json(true);
     } else {
@@ -70,6 +68,9 @@ router.get("/:id/follow", authorize, async (req, res) => {
 // If User doesn't follow that club, then user can follow a club
 router.post("/:id/follow", authorize, async (req, res) => {
   try {
+    const { id } = req.params;
+
+    // Created new follow_count table; so have to update and set both followers table and follow_count table
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error");

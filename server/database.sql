@@ -31,11 +31,16 @@ CREATE TABLE users(
 CREATE TABLE followers(
   follower_id SERIAL,
   club_id SERIAL,
-  follower_count INTEGER NOT NULL,
   user_id UUID,
   FOREIGN KEY (user_id) REFERENCES users(user_id),
   FOREIGN KEY (club_id) REFERENCES clubs(club_id),
   PRIMARY KEY(club_id, user_id)
+);
+
+CREATE TABLE total_followers(
+  club_id SERIAL,
+  follower_count INTEGER NOT NULL,
+  FOREIGN KEY (club_id) REFERENCES clubs(club_id)
 );
 
 CREATE TABLE socials(
