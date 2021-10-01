@@ -44,6 +44,40 @@ router.get("/", authorize, async (req, res) => {
   }
 });
 
+// Check if User follows that club; return True or False
+router.get("/:id/follow", authorize, async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const followRes = await pool.query(
+      "SELECT * FROM members WHERE user_id = $1 and club_id = $2",
+      [req.user.id, id]
+    );
+
+    console.log(followRes.rows);
+
+    if (followRes.rows.length > 0) {
+      res.json(true);
+    } else {
+      res.json(false);
+    }
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
+
+// If User doesn't follow that club, then user can follow a club
+router.post("/:id/follow", authorize, async (req, res) => {
+  try {
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
+
+// If User follows that club, then user can unfollow a club
+
 // Get all Public/Officially Released Clubs
 // In order for club to be publically shown/released on dashboard, club has to have a minimum of 6 members (we can filter out club members and check the length of return json)
 router.get("/public", authorize, async (req, res) => {
