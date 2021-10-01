@@ -45,51 +45,70 @@ router.get("/", authorize, async (req, res) => {
 });
 
 // Check if User follows that club; return True or False
-router.get("/:id/follow", authorize, async (req, res) => {
-  try {
-    const { id } = req.params;
+// router.get("/:id/follow", authorize, async (req, res) => {
+//   try {
+//     const { id } = req.params;
 
-    const followRes = await pool.query(
-      "SELECT * FROM members WHERE user_id = $1 and club_id = $2",
-      [req.user.id, id]
-    );
+//     const followRes = await pool.query(
+//       "SELECT * FROM followers WHERE user_id = $1 and club_id = $2",
+//       [req.user.id, id]
+//     );
 
-    if (followRes.rows.length > 0) {
-      res.json(true);
-    } else {
-      res.json(false);
-    }
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send("Server error");
-  }
-});
+//     if (followRes.rows.length > 0) {
+//       res.json(true);
+//     } else {
+//       res.json(false);
+//     }
+//   } catch (err) {
+//     console.error(err.message);
+//     res.status(500).send("Server error");
+//   }
+// });
 
 // If User doesn't follow that club, then user can follow a club
 router.post("/:id/follow", authorize, async (req, res) => {
   try {
     const { id } = req.params;
 
-    // Created new follow_count table; so have to update and set both followers table and follow_count table
-    const insertFollowers = await pool.query(
-      "INSERT INTO followers(club_id, user_id) VALUES($1, $2) RETURNING *",
-      [id, req.user.id]
+    // Check if User follows that club;
+    const followRes = await pool.query(
+      "SELECT * FROM followers WHERE user_id = $1 and club_id = $2",
+      [req.user.id, id]
     );
 
-    // Increment follower count
-    const updateFollowersCount = await pool.query(
-      "UPDATE total_followers SET follower_count = follower_count + 1 WHERE club_id = $1",
-      [id]
-    );
+    if (followRes.rows.length > 0) {
+      // If User follows that club, then user can unfollow a club
 
-    res.json("Followed!");
+      // Remove follower from followers table
+      const removeFollower = await pool.query(
+        "DELETE FROM followers WHERE club_id = $1 and user_id = $2",
+        [id, req.user.id]
+      );
+      // Decrement follower count of club
+      const decrementFollowersCount = await pool.query(
+        "UPDATE total_followers SET follower_count = follower_count - 1 WHERE club_id = $1",
+        [id]
+      );
+      res.json("Unfollowed");
+    } else {
+      // Created new follow_count table; so have to update and set both followers table and follow_count table
+      const insertFollower = await pool.query(
+        "INSERT INTO followers(club_id, user_id) VALUES($1, $2) RETURNING *",
+        [id, req.user.id]
+      );
+
+      // Increment follower count of club
+      const incrementFollowersCount = await pool.query(
+        "UPDATE total_followers SET follower_count = follower_count + 1 WHERE club_id = $1",
+        [id]
+      );
+      res.json("Followed!");
+    }
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error");
   }
 });
-
-// If User follows that club, then user can unfollow a club
 
 // Get all Public/Officially Released Clubs
 // In order for club to be publically shown/released on dashboard, club has to have a minimum of 6 members (we can filter out club members and check the length of return json)
