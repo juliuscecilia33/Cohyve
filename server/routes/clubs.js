@@ -21,11 +21,6 @@ router.post("/", authorize, async (req, res) => {
       [clubId, req.user.id]
     );
 
-    // const insertFollowers = await pool.query(
-    //   "INSERT INTO followers(club_id, user_id) VALUES($1, $2) RETURNING *",
-    //   [clubId, req.user.id]
-    // );
-
     // We automatically insert into Followers table set to 0
     const insertFollowersCount = await pool.query(
       "INSERT INTO total_followers(club_id, follower_count) VALUES($1, $2) RETURNING *",
@@ -76,6 +71,18 @@ router.post("/:id/follow", authorize, async (req, res) => {
     const { id } = req.params;
 
     // Created new follow_count table; so have to update and set both followers table and follow_count table
+    const insertFollowers = await pool.query(
+      "INSERT INTO followers(club_id, user_id) VALUES($1, $2) RETURNING *",
+      [id, req.user.id]
+    );
+
+    // Increment follower count
+    const updateFollowersCount = await pool.query(
+      "UPDATE total_followers SET follower_count = follower_count + 1 WHERE club_id = $1",
+      [id]
+    );
+
+    res.json("Followed!");
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error");
