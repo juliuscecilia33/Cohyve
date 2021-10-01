@@ -21,10 +21,15 @@ router.post("/", authorize, async (req, res) => {
       [clubId, req.user.id]
     );
 
+    // const insertFollowers = await pool.query(
+    //   "INSERT INTO followers(club_id, user_id) VALUES($1, $2) RETURNING *",
+    //   [clubId, req.user.id]
+    // );
+
     // We automatically insert into Followers table set to 0
-    const insertFollowers = await pool.query(
-      "INSERT INTO followers(club_id, follower_count, user_id) VALUES($1, 0, $2) RETURNING *",
-      [clubId, req.user.id]
+    const insertFollowersCount = await pool.query(
+      "INSERT INTO total_followers(club_id, follower_count) VALUES($1, $2) RETURNING *",
+      [clubId, 0]
     );
 
     res.json(newClub.rows[0]);
