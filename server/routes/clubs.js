@@ -54,12 +54,14 @@ router.post("/:id/post", authorize, async (req, res) => {
 // Get club post
 router.get("/:id/post/:postid", authorize, async (req, res) => {
   try {
-    const { id, postId } = req.params;
+    const { id, postid } = req.params;
 
     const getClubPost = await pool.query(
       "SELECT * FROM posts WHERE club_id = $1 and post_id = $2",
-      [id, postId]
+      [id, postid]
     );
+
+    res.json(getClubPost.rows);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error");
@@ -71,7 +73,7 @@ router.delete("/:id/post/:postid", authorize, async (req, res) => {
   try {
     const { id, postid } = req.params;
 
-    const deleteClubPost = await pool.addListener.query(
+    const deleteClubPost = await pool.query(
       "DELETE FROM posts WHERE club_id = $1 and post_id = $2",
       [id, postid]
     );
