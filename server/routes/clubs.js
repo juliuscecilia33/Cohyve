@@ -9,7 +9,7 @@ router.post("/", authorize, async (req, res) => {
   try {
     const { name, description, school, category, established_in } = req.body;
     const newClub = await pool.query(
-      "INSERT INTO clubs (name, description, school, category, established_in) VALUES($1, $2, $3, $4) RETURNING *",
+      "INSERT INTO clubs (name, description, school, category, established_in) VALUES($1, $2, $3, $4, $5) RETURNING *",
       [name, description, school, category, established_in]
     );
 
