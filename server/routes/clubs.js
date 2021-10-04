@@ -7,10 +7,10 @@ const pool = require("../db");
 // Create Club
 router.post("/", authorize, async (req, res) => {
   try {
-    const { name, description, school, category } = req.body;
+    const { name, description, school, category, established_in } = req.body;
     const newClub = await pool.query(
-      "INSERT INTO clubs (name, description, school, category) VALUES($1, $2, $3, $4) RETURNING *",
-      [name, description, school, category]
+      "INSERT INTO clubs (name, description, school, category, established_in) VALUES($1, $2, $3, $4) RETURNING *",
+      [name, description, school, category, established_in]
     );
 
     let clubId = newClub.rows[0].club_id;
@@ -33,6 +33,24 @@ router.post("/", authorize, async (req, res) => {
   }
 });
 
+// Club Posts Router
+router.post("/:id/post", authorize, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { title, description } = req.body;
+
+    const insertPost = await pool.query(
+      "INSERT INTO posts(club_id, title, description) VALUES ($1, $2, $3) RETURNING *",
+      [id, title, description]
+    );
+
+    res.json(insertPost.rows);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
+
 // Get all Clubs
 router.get("/", authorize, async (req, res) => {
   try {
@@ -43,27 +61,6 @@ router.get("/", authorize, async (req, res) => {
     res.status(500).send("Server error");
   }
 });
-
-// Check if User follows that club; return True or False
-// router.get("/:id/follow", authorize, async (req, res) => {
-//   try {
-//     const { id } = req.params;
-
-//     const followRes = await pool.query(
-//       "SELECT * FROM followers WHERE user_id = $1 and club_id = $2",
-//       [req.user.id, id]
-//     );
-
-//     if (followRes.rows.length > 0) {
-//       res.json(true);
-//     } else {
-//       res.json(false);
-//     }
-//   } catch (err) {
-//     console.error(err.message);
-//     res.status(500).send("Server error");
-//   }
-// });
 
 // If User doesn't follow that club, then user can follow a club
 router.post("/:id/follow", authorize, async (req, res) => {

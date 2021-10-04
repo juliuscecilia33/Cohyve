@@ -6,6 +6,8 @@ CREATE TABLE clubs(
   description VARCHAR(255),
   school VARCHAR(255) NOT NULL,
   category VARCHAR(255) NOT NULL,
+  created_at DATE NOT NULL DEFAULT CURRENT_DATE,
+  established_in INTEGER,
   PRIMARY KEY (club_id)
 );
 
