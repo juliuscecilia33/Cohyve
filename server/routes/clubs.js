@@ -33,7 +33,7 @@ router.post("/", authorize, async (req, res) => {
   }
 });
 
-// Club Posts Router
+// Club post
 router.post("/:id/post", authorize, async (req, res) => {
   try {
     const { id } = req.params;
@@ -45,6 +45,56 @@ router.post("/:id/post", authorize, async (req, res) => {
     );
 
     res.json(insertPost.rows);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
+
+// Get club post
+router.get("/:id/post/:postid", authorize, async (req, res) => {
+  try {
+    const { id, postId } = req.params;
+
+    const getClubPost = await pool.query(
+      "SELECT * FROM posts WHERE club_id = $1 and post_id = $2",
+      [id, postId]
+    );
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
+
+// Delete club post
+router.delete("/:id/post/:postid", authorize, async (req, res) => {
+  try {
+    const { id, postid } = req.params;
+
+    const deleteClubPost = await pool.addListener.query(
+      "DELETE FROM posts WHERE club_id = $1 and post_id = $2",
+      [id, postid]
+    );
+
+    res.json("Post Deleted!");
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
+
+// Edit club post
+router.put("/:id/post/:postid", authorize, async (req, res) => {
+  try {
+    const { id, postid } = req.params;
+    const { title, description } = req.body;
+
+    const updateClubPost = await pool.query(
+      "UPDATE posts SET title = $1, description = $2 WHERE club_id = $3 AND post_id = $4 RETURNING *",
+      [title, description, id, postid]
+    );
+
+    res.json(updateClubPost.rows);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error");
