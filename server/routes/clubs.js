@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const authorize = require("../middleware/authorize");
+const checkRole = require("../middleware/checkRole");
 const pool = require("../db");
 
 // Routes
@@ -34,7 +35,7 @@ router.post("/", authorize, async (req, res) => {
 });
 
 // Club post
-router.post("/:id/post", authorize, async (req, res) => {
+router.post("/:id/post", authorize, checkRole, async (req, res) => {
   try {
     const { id } = req.params;
     const { title, description } = req.body;
@@ -54,6 +55,8 @@ router.post("/:id/post", authorize, async (req, res) => {
 // Get club post
 router.get("/:id/post/:postid", authorize, async (req, res) => {
   try {
+    // req.user.id
+
     const { id, postid } = req.params;
 
     const getClubPost = await pool.query(
@@ -73,12 +76,24 @@ router.delete("/:id/post/:postid", authorize, async (req, res) => {
   try {
     const { id, postid } = req.params;
 
-    const deleteClubPost = await pool.query(
-      "DELETE FROM posts WHERE club_id = $1 and post_id = $2",
-      [id, postid]
+    const checkUserRole = await pool.query(
+      "SELECT role FROM members WHERE club_id = $1 and user_id = $2",
+      [id, req.user.id]
     );
 
-    res.json("Post Deleted!");
+    if (
+      checkUserRole.rows[0].role === "Owner" ||
+      checkUserRole.rows[0].role === "President"
+    ) {
+      const deleteClubPost = await pool.query(
+        "DELETE FROM posts WHERE club_id = $1 and post_id = $2",
+        [id, postid]
+      );
+
+      res.json("Post Deleted!");
+    } else {
+      res.json("No Permission");
+    }
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error");
@@ -229,7 +244,7 @@ router.get("/:id/members", authorize, async (req, res) => {
 });
 
 // Approve pending member
-router.put("/:id/:user", authorize, async (req, res) => {
+router.put("/:id/:user", authorize, checkRole, async (req, res) => {
   try {
     const { id, user } = req.params;
     const updatePendingMember = await pool.query(
