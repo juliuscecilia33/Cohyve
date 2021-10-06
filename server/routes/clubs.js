@@ -72,28 +72,15 @@ router.get("/:id/post/:postid", authorize, async (req, res) => {
 });
 
 // Delete club post
-router.delete("/:id/post/:postid", authorize, async (req, res) => {
+router.delete("/:id/post/:postid", authorize, checkRole, async (req, res) => {
   try {
     const { id, postid } = req.params;
-
-    const checkUserRole = await pool.query(
-      "SELECT role FROM members WHERE club_id = $1 and user_id = $2",
-      [id, req.user.id]
+    const deleteClubPost = await pool.query(
+      "DELETE FROM posts WHERE club_id = $1 and post_id = $2",
+      [id, postid]
     );
 
-    if (
-      checkUserRole.rows[0].role === "Owner" ||
-      checkUserRole.rows[0].role === "President"
-    ) {
-      const deleteClubPost = await pool.query(
-        "DELETE FROM posts WHERE club_id = $1 and post_id = $2",
-        [id, postid]
-      );
-
-      res.json("Post Deleted!");
-    } else {
-      res.json("No Permission");
-    }
+    res.json("Post Deleted!");
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error");
@@ -101,7 +88,7 @@ router.delete("/:id/post/:postid", authorize, async (req, res) => {
 });
 
 // Edit club post
-router.put("/:id/post/:postid", authorize, async (req, res) => {
+router.put("/:id/post/:postid", authorize, checkRole, async (req, res) => {
   try {
     const { id, postid } = req.params;
     const { title, description } = req.body;
@@ -291,7 +278,7 @@ router.get("/:id", authorize, async (req, res) => {
 
 // Update a Club Name/Description
 
-router.put("/:id", authorize, async (req, res) => {
+router.put("/:id", authorize, checkRole, async (req, res) => {
   try {
     const { id } = req.params;
     const { name, description, school, category } = req.body;
@@ -307,7 +294,7 @@ router.put("/:id", authorize, async (req, res) => {
 });
 
 // Delete a Club
-router.delete("/:id", authorize, async (req, res) => {
+router.delete("/:id", authorize, checkRole, async (req, res) => {
   try {
     const { id } = req.params;
     const deleteClub = await pool.query(
