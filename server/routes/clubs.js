@@ -296,23 +296,6 @@ router.get("/:id", authorize, async (req, res) => {
   }
 });
 
-// Update a Club Name/Description
-
-router.put("/:id", authorize, checkRole, async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { name, description, school, category } = req.body;
-    const updateClub = await pool.query(
-      "UPDATE clubs SET name = $1, description = $2, school = $3, category = $4 WHERE club_id = $5 RETURNIING *",
-      [name, description, school, category, id]
-    );
-
-    res.json("Club was updated!");
-  } catch (err) {
-    console.error(err.message);
-  }
-});
-
 // Delete a Club
 router.delete("/:id", authorize, checkRole, async (req, res) => {
   try {
