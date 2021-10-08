@@ -36,7 +36,7 @@ router.post("/", authorize, async (req, res) => {
 });
 
 // Edit Club Information
-router.put("/clubs/:id", authorize, checkRole, async (req, res) => {
+router.put("/:id", authorize, checkRole, async (req, res) => {
   try {
     const { id } = req.params;
     const { name, description, school, category, established_in, state } =
