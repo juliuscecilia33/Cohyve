@@ -1,5 +1,14 @@
 CREATE DATABASE cohyve;
 
+CREATE TABLE users(
+  user_id UUID DEFAULT uuid_generate_v4(),
+  user_name VARCHAR(255) NOT NULL UNIQUE,
+  user_email VARCHAR(255) NOT NULL UNIQUE,
+  user_password VARCHAR(255) NOT NULL,
+  school VARCHAR(255) NOT NULL,
+  PRIMARY KEY (user_id)
+);
+
 CREATE TABLE clubs(
   club_id SERIAL,
   name VARCHAR(255) NOT NULL,
@@ -8,6 +17,7 @@ CREATE TABLE clubs(
   category VARCHAR(255) NOT NULL,
   created_at DATE NOT NULL DEFAULT CURRENT_DATE,
   established_in INTEGER,
+  state VARCHAR(255),
   PRIMARY KEY (club_id)
 );
 
@@ -19,15 +29,6 @@ CREATE TABLE members(
   FOREIGN KEY (club_id) REFERENCES clubs(club_id),
   FOREIGN KEY (user_id) REFERENCES users(user_id),
   PRIMARY KEY (club_id, user_id)
-);
-
-CREATE TABLE users(
-  user_id UUID DEFAULT uuid_generate_v4(),
-  user_name VARCHAR(255) NOT NULL UNIQUE,
-  user_email VARCHAR(255) NOT NULL UNIQUE,
-  user_password VARCHAR(255) NOT NULL,
-  school VARCHAR(255) NOT NULL,
-  PRIMARY KEY (user_id)
 );
 
 CREATE TABLE followers(

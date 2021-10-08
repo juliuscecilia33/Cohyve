@@ -8,10 +8,11 @@ const pool = require("../db");
 // Create Club
 router.post("/", authorize, async (req, res) => {
   try {
-    const { name, description, school, category, established_in } = req.body;
+    const { name, description, school, category, established_in, state } =
+      req.body;
     const newClub = await pool.query(
-      "INSERT INTO clubs (name, description, school, category, established_in) VALUES($1, $2, $3, $4, $5) RETURNING *",
-      [name, description, school, category, established_in]
+      "INSERT INTO clubs (name, description, school, category, established_in, state) VALUES($1, $2, $3, $4, $5, $6) RETURNING *",
+      [name, description, school, category, established_in, state]
     );
 
     let clubId = newClub.rows[0].club_id;
@@ -31,6 +32,25 @@ router.post("/", authorize, async (req, res) => {
     res.json(newClub.rows[0]);
   } catch (err) {
     console.error(err.message);
+  }
+});
+
+// Edit Club Information
+router.put("/clubs/:id", authorize, checkRole, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, description, school, category, established_in, state } =
+      req.body;
+
+    const updateClubInfo = await pool.query(
+      "UPDATE clubs SET name = $1, description = $2, school = $3, category = $4, established_in = $5, state = $6 WHERE club_id = $7",
+      [name, description, school, category, established_in, state, id]
+    );
+
+    res.json(updateClubInfo.rows);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
   }
 });
 
