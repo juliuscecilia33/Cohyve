@@ -17,8 +17,8 @@ export const GlobalStyles = createGlobalStyle`
         padding: 0;
         line-height: 1;
         font-family: 'Poppins', sans-serif;
-        color: #000000;
-        background-color: #2A2F45;
+        color: #284B63;
+        background-color: #FAFCFA;
         font-smooth: always;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -27,7 +27,7 @@ export const GlobalStyles = createGlobalStyle`
 
         &::-webkit-scrollbar {
             width: 10.5px;
-            background-color: #262A3A;
+            background-color: #F4F9E9;
 
             border-radius: 15px;
         }

@@ -126,7 +126,7 @@ router.put("/:id/post/:postid", authorize, checkRole, async (req, res) => {
 });
 
 // Get all Clubs
-router.get("/", authorize, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const allClubs = await pool.query("SELECT * FROM clubs");
     res.json(allClubs.rows);
