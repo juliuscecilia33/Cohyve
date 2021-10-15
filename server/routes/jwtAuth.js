@@ -35,8 +35,6 @@ router.post("/register", validate, async (req, res) => {
       [name, email, bcryptPassword, school]
     );
 
-    // res.json(newUser.rows[0]);
-
     // 5. Generate our jwt token
 
     const jwtToken = jwtGenerator(newUser.rows[0].user_id);

@@ -47,7 +47,7 @@ router.put("/:id", authorize, checkRole, async (req, res) => {
       [name, description, school, category, established_in, state, id]
     );
 
-    res.json(updateClubInfo.rows);
+    res.json("Club updated!");
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error");
