@@ -19,27 +19,28 @@ function App() {
 
   console.log(clubsData);
 
-  // const checkAuthenticated = async () => {
-  //   try {
-  //     const res = await fetch("http://localhost:5000/authentication/verify", {
-  //       method: "POST",
-  //       headers: { jwt_token: localStorage.token },
-  //     });
+  const checkAuthenticated = async () => {
+    try {
+      const res = await fetch("http://localhost:5000/authentication/verify", {
+        method: "POST",
+        headers: { jwt_token: localStorage.token },
+      });
 
-  //     const parseRes = await res.json();
+      const parseRes = await res.json();
 
-  //     parseRes === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
+      parseRes === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
 
-  //     console.log("is authenticated:", isAuthenticated);
-  //   } catch (err: any) {
-  //     console.error(err.message);
-  //   }
-  // };
+      console.log("is authenticated:", isAuthenticated);
+    } catch (err: any) {
+      console.error(err.message);
+    }
+  };
 
-  // // Verify if user is authenticated
-  // useEffect(() => {
-  //   checkAuthenticated();
-  // }, []);
+  // Verify if user is authenticated
+  useEffect(() => {
+    checkAuthenticated();
+  }, []);
+
   return <div>Hello Cohyve</div>;
 }
 

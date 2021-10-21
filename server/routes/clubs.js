@@ -186,7 +186,7 @@ router.post("/:id/follow", authorize, async (req, res) => {
 router.get("/public", authorize, async (req, res) => {
   try {
     const allMembers = await pool.query(
-      "SELECT club_id, count(*) member_count FROM members GROUP BY club_id"
+      "SELECT club_id, count(*) member_count FROM members WHERE pending = false GROUP BY club_id"
     );
     let publicClubs = [];
     for (const index in allMembers.rows) {
