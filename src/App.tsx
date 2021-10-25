@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
+import { LoginPage } from "./pages";
+import * as ROUTES from "./constants/routes";
 
 function App() {
   const [clubsData, setClubsData] = useState(null);
@@ -37,11 +40,19 @@ function App() {
   };
 
   // Verify if user is authenticated
-  useEffect(() => {
-    checkAuthenticated();
-  }, []);
+  // useEffect(() => {
+  //   checkAuthenticated();
+  // }, []);
 
-  return <div>Hello Cohyve</div>;
+  return (
+    <Router>
+      <Switch>
+        <Route path={ROUTES.LOGIN} exact>
+          <LoginPage />
+        </Route>
+      </Switch>
+    </Router>
+  );
 }
 
 export default App;

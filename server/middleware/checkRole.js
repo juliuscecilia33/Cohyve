@@ -13,7 +13,10 @@ module.exports = async function (req, res, next) {
 
     if (
       checkUserRole.rows[0].role === "Owner" ||
-      checkUserRole.rows[0].role === "President"
+      checkUserRole.rows[0].role === "President" ||
+      checkUserRole.rows[0].role === "Vice President" ||
+      checkUserRole.rows[0].role === "Secretary" ||
+      checkUserRole.rows[0].role === "Treasurer"
     ) {
       next();
     } else {
