@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-export function LoginContainer() {
+import { toast } from "react-toastify";
+
+interface DataProps {
+  setIsAuthenticated: any;
+}
+
+export function LoginContainer({ setIsAuthenticated }: DataProps) {
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
@@ -14,20 +20,32 @@ export function LoginContainer() {
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setInputs({ ...inputs, [e.target.name]: e.target.value });
 
-  const onSubmitForm = (e: any) => {
+  const onSubmitForm = async (e: any) => {
     e.preventDefault();
 
-    const loginBody = { email, password };
-
-    axios
-      .post("http://localhost:5000/auth/login", loginBody)
-      .then((response) => {
-        setToken(response);
-        console.log(response);
-      })
-      .catch((error) => {
-        console.error("There was an error!", error);
+    try {
+      const body = { email, password };
+      const response = await fetch("http://localhost:5000/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(body),
       });
+
+      const parseRes = await response.json();
+
+      if (parseRes.jwtToken) {
+        localStorage.setItem("token", parseRes.jwtToken);
+        setIsAuthenticated(true);
+        toast.success("Logged in Successfully");
+      } else {
+        setIsAuthenticated(false);
+        toast.error(parseRes);
+      }
+    } catch (err: any) {
+      console.error(err.message);
+    }
   };
 
   return (

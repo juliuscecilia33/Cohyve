@@ -48,7 +48,7 @@ function App() {
     <Router>
       <Switch>
         <Route path={ROUTES.LOGIN} exact>
-          <LoginPage />
+          <LoginPage setIsAuthenticated={setIsAuthenticated} />
         </Route>
       </Switch>
     </Router>
