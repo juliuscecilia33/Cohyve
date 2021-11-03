@@ -6,6 +6,6 @@ type Props = {
   children?: React.ReactNode;
 };
 
-export default function Navbar({ children, ...restProps }: Props) {
+export default function ActionButton({ children, ...restProps }: Props) {
   return <Container {...restProps}>{children}</Container>;
 }

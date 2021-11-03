@@ -2,6 +2,7 @@ import React from "react";
 
 import {
   Container,
+  ContainerMed,
   Promo,
   PromoHeader,
   PromoImage,
@@ -40,6 +41,13 @@ Login.PromoImage = function LoginPromoImage({ children, ...restProps }: Props) {
 
 Login.PromoText = function LoginPromoText({ children, ...restProps }: Props) {
   return <PromoText {...restProps}>{children}</PromoText>;
+};
+
+Login.ContainerMed = function LoginContainerMed({
+  children,
+  ...restProps
+}: Props) {
+  return <ContainerMed {...restProps}>{children}</ContainerMed>;
 };
 
 Login.Heading = function LoginHeading({ children, ...restProps }: Props) {
