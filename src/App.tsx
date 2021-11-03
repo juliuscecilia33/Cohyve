@@ -39,11 +39,6 @@ function App() {
     }
   };
 
-  // Verify if user is authenticated
-  // useEffect(() => {
-  //   checkAuthenticated();
-  // }, []);
-
   return (
     <Router>
       <Switch>

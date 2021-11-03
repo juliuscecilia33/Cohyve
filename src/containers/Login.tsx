@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
-
-import { toast } from "react-toastify";
 
 interface DataProps {
   setIsAuthenticated: any;
@@ -12,8 +9,6 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
     email: "",
     password: "",
   });
-
-  const [token, setToken] = useState(null);
 
   const { email, password } = inputs;
 
@@ -38,10 +33,8 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
       if (parseRes.jwtToken) {
         localStorage.setItem("token", parseRes.jwtToken);
         setIsAuthenticated(true);
-        toast.success("Logged in Successfully");
       } else {
         setIsAuthenticated(false);
-        toast.error(parseRes);
       }
     } catch (err: any) {
       console.error(err.message);
