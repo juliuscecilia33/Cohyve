@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, ActionButton } from "../components";
+import { Navbar, LinkButton } from "../components";
 import Logo from "../images/Logo.png";
 
 export function NavbarContainer() {
@@ -14,7 +14,7 @@ export function NavbarContainer() {
         </Navbar.Tabs>
       </Navbar.ContainerMed>
       <Navbar.ContainerMed>
-        <ActionButton>Get Started</ActionButton>
+        <LinkButton>Get Started</LinkButton>
       </Navbar.ContainerMed>
     </Navbar>
   );

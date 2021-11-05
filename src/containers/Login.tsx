@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ActionButton } from "../components";
 
 interface DataProps {
   setIsAuthenticated: any;
@@ -15,7 +16,7 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setInputs({ ...inputs, [e.target.name]: e.target.value });
 
-  const onSubmitForm = async (e: any) => {
+  const handleLogin = async (e: any) => {
     e.preventDefault();
 
     try {
@@ -36,6 +37,8 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
       } else {
         setIsAuthenticated(false);
       }
+
+      setInputs({ email: "", password: "" });
     } catch (err: any) {
       console.error(err.message);
     }
@@ -43,21 +46,19 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
 
   return (
     <>
-      <form onSubmit={onSubmitForm}>
-        <input
-          type="text"
-          name="email"
-          value={email}
-          onChange={(e) => onChange(e)}
-        />
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={(e) => onChange(e)}
-        />
-        <button>Submit</button>
-      </form>
+      <input
+        type="text"
+        name="email"
+        value={email}
+        onChange={(e) => onChange(e)}
+      />
+      <input
+        type="password"
+        name="password"
+        value={password}
+        onChange={(e) => onChange(e)}
+      />
+      <ActionButton onClick={(e) => handleLogin(e)}>Submit</ActionButton>
     </>
   );
 }
