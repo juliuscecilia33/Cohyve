@@ -8,6 +8,7 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 15%;
+  margin-bottom: 2rem;
 `;
 
 export const ContainerMed = styled.div`
@@ -38,7 +39,7 @@ export const Tab = styled.h2`
   font-family: Poppins;
   font-style: normal;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 18px;
   color: #284b63;
   margin-right: 4rem;
 `;

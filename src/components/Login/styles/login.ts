@@ -9,19 +9,24 @@ export const Container = styled.div`
 `;
 
 export const Promo = styled.div`
-  width: 45%;
-  padding: 2rem;
+  width: 90%;
+  padding: 3rem 2rem;
   background: #f4f9e9;
   border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const PromoHeader = styled.h1`
   font-family: Work Sans;
   font-style: normal;
   font-weight: bold;
-  font-size: 48px;
+  font-size: 38px;
   text-align: center;
   color: #284b63;
+  width: 75%;
+  line-height: 46px;
 
   span {
     color: #afd5aa;
@@ -29,7 +34,7 @@ export const PromoHeader = styled.h1`
 `;
 
 export const PromoImage = styled.img`
-  height: 615px;
+  height: 500px;
   width: auto;
   margin: 1.5rem 0;
 `;
@@ -38,7 +43,7 @@ export const PromoText = styled.p`
   font-family: Poppins;
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 16px;
   color: #afb3a7;
 `;
 

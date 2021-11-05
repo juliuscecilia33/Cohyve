@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { ActionButton } from "../components";
+import { ActionButton, Login } from "../components";
+import Promo from "../images/Clubs.png";
 
 interface DataProps {
   setIsAuthenticated: any;
@@ -13,7 +14,7 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
 
   const { email, password } = inputs;
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+  const onChange = (e: any) =>
     setInputs({ ...inputs, [e.target.name]: e.target.value });
 
   const handleLogin = async (e: any) => {
@@ -46,19 +47,35 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
 
   return (
     <>
-      <input
-        type="text"
-        name="email"
-        value={email}
-        onChange={(e) => onChange(e)}
-      />
-      <input
-        type="password"
-        name="password"
-        value={password}
-        onChange={(e) => onChange(e)}
-      />
-      <ActionButton onClick={(e) => handleLogin(e)}>Submit</ActionButton>
+      <Login>
+        <Login.ContainerMed>
+          <Login.Promo>
+            <Login.PromoHeader>
+              Grow your <span>Club</span> today
+            </Login.PromoHeader>
+            <Login.PromoImage src={Promo} />
+            <Login.PromoText>Collaborate, Compete, Promote</Login.PromoText>
+          </Login.Promo>
+        </Login.ContainerMed>
+        <Login.ContainerMed>
+          <Login.Heading>Login</Login.Heading>
+          <Login.Input
+            name="email"
+            value={email}
+            placeholder="Email"
+            onChange={(e: any) => onChange(e)}
+            type="email"
+          />
+          <Login.Input
+            name="password"
+            value={password}
+            placeholder="Pasword"
+            onChange={(e: any) => onChange(e)}
+            type="password"
+          />
+          <ActionButton onClick={(e) => handleLogin(e)}>Submit</ActionButton>
+        </Login.ContainerMed>
+      </Login>
     </>
   );
 }

@@ -14,10 +14,12 @@ import {
 
 type Props = {
   children?: React.ReactNode;
-  title?: string;
   type?: string;
-  setValue?: any;
+  name?: string;
+  placeholder?: string;
+  onChange?: any;
   value?: any;
+  src?: any;
 };
 
 export default function Login({ children, ...restProps }: Props) {
@@ -35,8 +37,16 @@ Login.PromoHeader = function LoginPromoHeader({
   return <PromoHeader {...restProps}>{children}</PromoHeader>;
 };
 
-Login.PromoImage = function LoginPromoImage({ children, ...restProps }: Props) {
-  return <PromoImage {...restProps}>{children}</PromoImage>;
+Login.PromoImage = function LoginPromoImage({
+  src,
+  children,
+  ...restProps
+}: Props) {
+  return (
+    <PromoImage src={src} {...restProps}>
+      {children}
+    </PromoImage>
+  );
 };
 
 Login.PromoText = function LoginPromoText({ children, ...restProps }: Props) {
@@ -59,20 +69,23 @@ Login.Inputs = function LoginInputs({ children, ...restProps }: Props) {
 };
 
 Login.Input = function LoginInput({
-  setValue,
+  name,
+  onChange,
+  placeholder,
   value,
-  title,
   type,
   children,
   ...restProps
 }: Props) {
   return (
     <Input {...restProps}>
-      <p>{title}</p>
+      <p>{name}</p>
       <input
-        onChange={(event: any) => setValue(event.target.value)}
+        name={name}
+        type={type}
+        onChange={onChange}
         value={value}
-        placeholder={title}
+        placeholder={placeholder}
       />
     </Input>
   );
