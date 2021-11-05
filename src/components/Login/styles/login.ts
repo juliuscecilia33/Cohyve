@@ -57,6 +57,12 @@ export const Heading = styled.h1`
   color: #284b63;
 `;
 
+export const Inputs = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
 export const Input = styled.div`
   display: flex;
   flex-direction: column;

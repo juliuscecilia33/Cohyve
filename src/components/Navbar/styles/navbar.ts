@@ -13,6 +13,7 @@ export const Container = styled.div`
 export const ContainerMed = styled.div`
   display: flex;
   align-items: center;
+  height: 100%;
 `;
 
 export const Logo = styled.img`

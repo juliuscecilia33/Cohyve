@@ -1,3 +1,4 @@
+import { AnyTxtRecord } from "dns";
 import React from "react";
 
 import {
@@ -11,6 +12,7 @@ import {
 
 type Props = {
   children?: React.ReactNode;
+  src?: any;
 };
 
 export default function Navbar({ children, ...restProps }: Props) {
@@ -24,8 +26,12 @@ Navbar.ContainerMed = function NavbarContainerMed({
   return <ContainerMed {...restProps}>{children}</ContainerMed>;
 };
 
-Navbar.Logo = function NavbarLogo({ children, ...restProps }: Props) {
-  return <Logo {...restProps}>{children}</Logo>;
+Navbar.Logo = function NavbarLogo({ src, children, ...restProps }: Props) {
+  return (
+    <Logo src={src} {...restProps}>
+      {children}
+    </Logo>
+  );
 };
 
 Navbar.Border = function NavbarBorder({ children, ...restProps }: Props) {
