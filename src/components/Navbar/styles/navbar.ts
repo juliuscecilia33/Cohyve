@@ -2,7 +2,7 @@ import styled from "styled-components/macro";
 
 export const Container = styled.div`
   width: 100%;
-  height: 10vh;
+  height: 9vh;
   background: #fafcfa;
   display: flex;
   justify-content: space-between;
@@ -17,14 +17,15 @@ export const ContainerMed = styled.div`
 `;
 
 export const Logo = styled.img`
-  height: 45px;
+  height: 25px;
+  cursor: pointer;
   width: auto;
 `;
 
 export const Border = styled.div`
-  border-left: 1px solid red;
-  height: 100%;
-  margin: 0 1rem;
+  border-left: 1.5px solid #dadada;
+  height: 60%;
+  margin: 2rem;
 `;
 
 export const Tabs = styled.div`
@@ -37,6 +38,7 @@ export const Tab = styled.h2`
   font-family: Poppins;
   font-style: normal;
   font-weight: bold;
-  font-size: 26px;
+  font-size: 20px;
   color: #284b63;
+  margin-right: 4rem;
 `;
