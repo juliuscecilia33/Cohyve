@@ -16,6 +16,8 @@ export const Promo = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  height: 80vh;
 `;
 
 export const PromoHeader = styled.h1`
@@ -34,9 +36,11 @@ export const PromoHeader = styled.h1`
 `;
 
 export const PromoImage = styled.img`
-  height: 500px;
+  height: 65%;
   width: auto;
+  border-radius: 20px;
   margin: 1.5rem 0;
+  box-shadow: -1px 10px 60px rgba(27, 27, 30, 0.1);
 `;
 
 export const PromoText = styled.p`
@@ -58,8 +62,9 @@ export const Heading = styled.h1`
   font-family: Work Sans;
   font-style: normal;
   font-weight: bold;
-  font-size: 48px;
+  font-size: 50px;
   color: #284b63;
+  margin-bottom: 2rem;
 `;
 
 export const Inputs = styled.div`
@@ -72,6 +77,7 @@ export const Input = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: 3.5rem;
 
   p {
     font-family: Poppins;
@@ -81,11 +87,12 @@ export const Input = styled.div`
     line-height: 27px;
     color: #373f51;
     margin-bottom: 0.5rem;
+    text-transform: capitalize;
   }
 
   input {
-    height: 65px;
-    padding: 0 1rem;
+    height: 60px;
+    padding: 0 2rem;
     width: 100%;
     background: linear-gradient(
       90deg,
@@ -95,13 +102,23 @@ export const Input = styled.div`
     border: 1px solid #ffffff;
     border-radius: 100px;
     transition: 0.3s ease all;
+    outline: none;
+    transition: 0.5s ease all;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+
+    &::placeholder {
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 15px;
+    }
 
     &:focus,
     &:hover {
       background: rgba(255, 255, 255, 0.35);
-      &::placeholder {
-        color: #ffffff;
-      }
     }
   }
 `;

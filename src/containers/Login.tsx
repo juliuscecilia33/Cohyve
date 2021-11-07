@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ActionButton, Login } from "../components";
-import Promo from "../images/Clubs.png";
+import Promo from "../images/Club Page.png";
 
 interface DataProps {
   setIsAuthenticated: any;
@@ -69,11 +69,13 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
           <Login.Input
             name="password"
             value={password}
-            placeholder="Pasword"
+            placeholder="Password"
             onChange={(e: any) => onChange(e)}
             type="password"
           />
-          <ActionButton onClick={(e) => handleLogin(e)}>Submit</ActionButton>
+          <div>
+            <ActionButton onClick={(e) => handleLogin(e)}>Submit</ActionButton>
+          </div>
         </Login.ContainerMed>
       </Login>
     </>
