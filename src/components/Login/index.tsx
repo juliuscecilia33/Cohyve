@@ -10,6 +10,7 @@ import {
   Heading,
   Input,
   Inputs,
+  Message,
 } from "./styles/login";
 
 type Props = {
@@ -20,6 +21,7 @@ type Props = {
   onChange?: any;
   value?: any;
   src?: any;
+  color?: string;
 };
 
 export default function Login({ children, ...restProps }: Props) {
@@ -60,8 +62,16 @@ Login.ContainerMed = function LoginContainerMed({
   return <ContainerMed {...restProps}>{children}</ContainerMed>;
 };
 
-Login.Heading = function LoginHeading({ children, ...restProps }: Props) {
-  return <Heading {...restProps}>{children}</Heading>;
+Login.Heading = function LoginHeading({
+  color,
+  children,
+  ...restProps
+}: Props) {
+  return (
+    <Heading color={color} {...restProps}>
+      {children}
+    </Heading>
+  );
 };
 
 Login.Inputs = function LoginInputs({ children, ...restProps }: Props) {
@@ -89,4 +99,8 @@ Login.Input = function LoginInput({
       />
     </Input>
   );
+};
+
+Login.Message = function LoginMessage({ children, ...restProps }: Props) {
+  return <Message {...restProps}>{children}</Message>;
 };

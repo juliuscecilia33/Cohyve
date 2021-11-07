@@ -58,7 +58,7 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
           </Login.Promo>
         </Login.ContainerMed>
         <Login.ContainerMed>
-          <Login.Heading>Login</Login.Heading>
+          <Login.Heading color="#284b63">Login</Login.Heading>
           <Login.Input
             name="email"
             value={email}
@@ -73,9 +73,10 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
             onChange={(e: any) => onChange(e)}
             type="password"
           />
-          <div>
-            <ActionButton onClick={(e) => handleLogin(e)}>Submit</ActionButton>
-          </div>
+          <ActionButton onClick={(e) => handleLogin(e)}>Login</ActionButton>
+          <Login.Message>
+            Not registered yet? <span>Create an account!</span>
+          </Login.Message>
         </Login.ContainerMed>
       </Login>
     </>

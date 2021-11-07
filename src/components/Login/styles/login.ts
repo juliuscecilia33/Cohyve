@@ -26,7 +26,7 @@ export const PromoHeader = styled.h1`
   font-weight: bold;
   font-size: 38px;
   text-align: center;
-  color: #284b63;
+  color: ${({ color }) => color};
   width: 75%;
   line-height: 46px;
 
@@ -64,7 +64,7 @@ export const Heading = styled.h1`
   font-weight: bold;
   font-size: 50px;
   color: #284b63;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 `;
 
 export const Inputs = styled.div`
@@ -119,6 +119,25 @@ export const Input = styled.div`
     &:focus,
     &:hover {
       background: rgba(255, 255, 255, 0.35);
+    }
+  }
+`;
+
+export const Message = styled.p`
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: #c4c4c4;
+  margin-top: 3rem;
+  transition: 0.5s ease all;
+
+  span {
+    color: #afd5aa;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
     }
   }
 `;
