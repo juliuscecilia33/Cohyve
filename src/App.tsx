@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
-import { LoginPage } from "./pages";
+import { LoginPage, RegisterPage } from "./pages";
 import * as ROUTES from "./constants/routes";
 
 function App() {
@@ -44,6 +44,9 @@ function App() {
       <Switch>
         <Route path={ROUTES.LOGIN} exact>
           <LoginPage setIsAuthenticated={setIsAuthenticated} />
+        </Route>
+        <Route path={ROUTES.REGISTER} exact>
+          <RegisterPage setIsAuthenticated={setIsAuthenticated} />
         </Route>
       </Switch>
     </Router>

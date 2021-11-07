@@ -78,6 +78,7 @@ export const Input = styled.div`
   flex-direction: column;
   justify-content: center;
   margin-bottom: 3.5rem;
+  transition: 0.5s ease all;
 
   p {
     font-family: Poppins;
@@ -101,7 +102,6 @@ export const Input = styled.div`
     );
     border: 1px solid #ffffff;
     border-radius: 100px;
-    transition: 0.3s ease all;
     outline: none;
     transition: 0.5s ease all;
     font-family: Poppins;
