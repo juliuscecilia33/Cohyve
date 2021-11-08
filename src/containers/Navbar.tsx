@@ -1,12 +1,16 @@
 import React from "react";
-import { Navbar, LinkButton } from "../components";
+import { Navbar, ActionButton } from "../components";
 import Logo from "../images/Logo.png";
+import { Link as ReactRouterLink, useHistory } from "react-router-dom";
+import * as ROUTES from "../constants/routes";
 
 export function NavbarContainer() {
   return (
     <Navbar>
       <Navbar.ContainerMed>
-        <Navbar.Logo src={Logo} />
+        <ReactRouterLink to={ROUTES.HOME}>
+          <Navbar.Logo src={Logo} />
+        </ReactRouterLink>
         <Navbar.Border />
         <Navbar.Tabs>
           <Navbar.Tab>Clubs</Navbar.Tab>
@@ -14,7 +18,9 @@ export function NavbarContainer() {
         </Navbar.Tabs>
       </Navbar.ContainerMed>
       <Navbar.ContainerMed>
-        <LinkButton>Get Started</LinkButton>
+        <ReactRouterLink to={ROUTES.REGISTER}>
+          <ActionButton>Get Started</ActionButton>
+        </ReactRouterLink>
       </Navbar.ContainerMed>
     </Navbar>
   );
