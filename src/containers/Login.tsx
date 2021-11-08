@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { ActionButton, Login } from "../components";
 import Promo from "../images/Club Page.png";
+import { Link as ReactRouterLink, useHistory } from "react-router-dom";
+import * as ROUTES from "../constants/routes";
 
 interface DataProps {
   setIsAuthenticated: any;
@@ -75,7 +77,10 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
           />
           <ActionButton onClick={(e) => handleLogin(e)}>Login</ActionButton>
           <Login.Message>
-            Not registered yet? <span>Create an account!</span>
+            Not registered yet?{" "}
+            <ReactRouterLink to={ROUTES.REGISTER}>
+              <span>Create an account!</span>
+            </ReactRouterLink>
           </Login.Message>
         </Login.ContainerMed>
       </Login>

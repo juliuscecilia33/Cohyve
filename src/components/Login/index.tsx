@@ -102,5 +102,9 @@ Login.Input = function LoginInput({
 };
 
 Login.Message = function LoginMessage({ children, ...restProps }: Props) {
-  return <Message {...restProps}>{children}</Message>;
+  return (
+    <Message {...restProps}>
+      <p>{children}</p>
+    </Message>
+  );
 };

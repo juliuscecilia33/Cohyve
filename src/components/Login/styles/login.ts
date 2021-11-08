@@ -6,6 +6,7 @@ export const Container = styled.div`
   align-items: center;
   width: 100%;
   padding: 0 15%;
+  margin-bottom: 10vh;
 `;
 
 export const Promo = styled.div`
@@ -54,7 +55,6 @@ export const PromoText = styled.p`
 export const ContainerMed = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   width: 45%;
 `;
 
@@ -77,7 +77,7 @@ export const Input = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 3.5rem;
+  margin-bottom: 3rem;
   transition: 0.5s ease all;
 
   p {
@@ -123,21 +123,28 @@ export const Input = styled.div`
   }
 `;
 
-export const Message = styled.p`
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  color: #c4c4c4;
-  margin-top: 3rem;
-  transition: 0.5s ease all;
+export const Message = styled.div`
+  display: flex;
+  padding: 0;
 
-  span {
-    color: #afd5aa;
-    cursor: pointer;
+  p {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    color: #c4c4c4;
+    margin-top: 2rem;
+    transition: 0.5s ease all;
+    display: flex;
 
-    &:hover {
-      text-decoration: underline;
+    span {
+      color: #afd5aa;
+      cursor: pointer;
+      margin-left: 0.2rem;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 `;
