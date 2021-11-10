@@ -2,31 +2,39 @@ import styled from "styled-components/macro";
 
 export const Container = styled.div`
   width: 100%;
-  height: 20vh;
   background: #f4f9e9;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 15%;
+  padding: 3rem 15%;
   margin-top: 2rem;
 `;
 
 export const ContainerMed = styled.div`
   display: flex;
-  flex-direction: column;
   height: 100%;
 `;
 
-export const Logo = styled.img`
-  height: 25px;
-  cursor: pointer;
-  width: auto;
+export const Logo = styled.div`
+  height: 100%;
+  margin-top: 6rem;
+  margin-right: 2rem;
+
+  img {
+    margin-top: 0.3rem;
+    height: 25px;
+    cursor: pointer;
+    width: auto;
+  }
 `;
 
 export const Tabs = styled.div`
+  height: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 0 2.5rem;
+  margin-top: 3rem;
 `;
 
 export const Tab = styled.h2`
@@ -48,7 +56,7 @@ export const TabHeading = styled.h1`
   font-family: Work Sans;
   font-style: normal;
   font-weight: bold;
-  font-size: 36px;
+  font-size: 30px;
   color: #284b63;
   margin-bottom: 2rem;
 `;

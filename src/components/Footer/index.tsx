@@ -27,8 +27,8 @@ Footer.ContainerMed = function FooterContainerMed({
 
 Footer.Logo = function FooterLogo({ src, children, ...restProps }: Props) {
   return (
-    <Logo src={src} {...restProps}>
-      {children}
+    <Logo {...restProps}>
+      <img src={src} alt="Logo" />
     </Logo>
   );
 };
