@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ActionButton, Login } from "../components";
 import Promo from "../images/Club Page.png";
-import { Link as ReactRouterLink } from "react-router-dom";
+import { Link as ReactRouterLink, useHistory } from "react-router-dom";
 import * as ROUTES from "../constants/routes";
 
 interface DataProps {
@@ -16,6 +16,7 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
 
   const { email, password } = inputs;
 
+  const history = useHistory();
   const onChange = (e: any) =>
     setInputs({ ...inputs, [e.target.name]: e.target.value });
 
@@ -37,11 +38,11 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
       if (parseRes.jwtToken) {
         localStorage.setItem("token", parseRes.jwtToken);
         setIsAuthenticated(true);
+        setInputs({ email: "", password: "" });
+        history.push(ROUTES.HOME);
       } else {
         setIsAuthenticated(false);
       }
-
-      setInputs({ email: "", password: "" });
     } catch (err: any) {
       console.error(err.message);
     }
