@@ -6,7 +6,6 @@ import {
   Logo,
   Tabs,
   Tab,
-  Border,
   TabHeading,
 } from "./styles/footer";
 

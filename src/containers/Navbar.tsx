@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, ActionButton } from "../components";
 import Logo from "../images/Logo.png";
-import { Link as ReactRouterLink, useHistory } from "react-router-dom";
+import { Link as ReactRouterLink } from "react-router-dom";
 import * as ROUTES from "../constants/routes";
 
 export function NavbarContainer() {

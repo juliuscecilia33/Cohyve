@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ActionButton, Login } from "../components";
 import Promo from "../images/Club Page.png";
-import { Link as ReactRouterLink, useHistory } from "react-router-dom";
+import { Link as ReactRouterLink } from "react-router-dom";
 import * as ROUTES from "../constants/routes";
 
 interface DataProps {

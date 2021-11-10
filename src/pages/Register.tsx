@@ -1,5 +1,9 @@
 import React from "react";
-import { RegisterContainer, NavbarContainer } from "../containers";
+import {
+  RegisterContainer,
+  NavbarContainer,
+  FooterContainer,
+} from "../containers";
 
 interface DataProps {
   setIsAuthenticated: any;
@@ -10,6 +14,7 @@ export default function RegisterPage({ setIsAuthenticated }: DataProps) {
     <>
       <NavbarContainer />
       <RegisterContainer />
+      <FooterContainer />
     </>
   );
 }

@@ -1,5 +1,9 @@
 import React from "react";
-import { LoginContainer, NavbarContainer } from "../containers";
+import {
+  LoginContainer,
+  NavbarContainer,
+  FooterContainer,
+} from "../containers";
 
 interface DataProps {
   setIsAuthenticated: any;
@@ -10,6 +14,7 @@ export default function LoginPage({ setIsAuthenticated }: DataProps) {
     <>
       <NavbarContainer />
       <LoginContainer setIsAuthenticated={setIsAuthenticated} />
+      <FooterContainer />
     </>
   );
 }
