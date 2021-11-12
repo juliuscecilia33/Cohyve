@@ -12,6 +12,13 @@ import {
   Description,
   Name,
   SchoolAndLocation,
+  Links,
+  Icon,
+  Stats,
+  FollowersAndMembers,
+  Members,
+  Partners,
+  Followers,
 } from "./styles/createClub";
 
 type Props = {
@@ -101,5 +108,49 @@ CreateClub.SchoolAndLocation = function CreateClubSchoolAndLocation({
       <p>{school}</p>
       <p>{location}</p>
     </SchoolAndLocation>
+  );
+};
+
+CreateClub.Links = function CreateClubLinks({ children, ...restProps }: Props) {
+  return <Links {...restProps}>{children}</Links>;
+};
+
+CreateClub.Icon = function CreateClubIcon({ children, ...restProps }: Props) {
+  return <Icon {...restProps}>{children}</Icon>;
+};
+
+CreateClub.Stats = function CreateClubStats({ children, ...restProps }: Props) {
+  return <Stats {...restProps}>{children}</Stats>;
+};
+
+CreateClub.FollowersAndMembers = function CreateClubFollowersAndMembers({
+  children,
+  ...restProps
+}: Props) {
+  return <FollowersAndMembers {...restProps}>{children}</FollowersAndMembers>;
+};
+
+CreateClub.Followers = function CreateClubFollowers({
+  children,
+  ...restProps
+}: Props) {
+  return <Followers {...restProps}>{children}</Followers>;
+};
+
+CreateClub.Members = function CreateClubMembers({
+  children,
+  ...restProps
+}: Props) {
+  return <Members {...restProps}>{children}</Members>;
+};
+
+CreateClub.Partners = function CreateClubPartners({
+  children,
+  ...restProps
+}: Props) {
+  return (
+    <Partners {...restProps}>
+      <h3>Partners</h3>
+    </Partners>
   );
 };
