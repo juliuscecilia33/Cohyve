@@ -10,10 +10,11 @@ import { LoginPage, RegisterPage, UserPage } from "./pages";
 import * as ROUTES from "./constants/routes";
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(() => {
-    const token = localStorage.getItem("token");
-    return token !== null;
-  });
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  // use context for local storage
+  // still have to verify
+
   const [isLoading, setIsLoading] = useState(true);
 
   // Get clubs
@@ -28,30 +29,30 @@ function App() {
   //     });
   // }, []);
 
-  // useEffect(() => {
-  //   let checkAuthenticated = async () => {
-  //     try {
-  //       const res = await fetch("http://localhost:5000/auth/verify", {
-  //         method: "POST",
-  //         headers: { jwt_token: localStorage.token },
-  //       });
+  useEffect(() => {
+    let checkAuthenticated = async () => {
+      try {
+        const res = await fetch("http://localhost:5000/auth/verify", {
+          method: "POST",
+          headers: { jwt_token: localStorage.token },
+        });
 
-  //       const parseRes = await res.json();
+        const parseRes = await res.json();
 
-  //       parseRes === true
-  //         ? setIsAuthenticated(true)
-  //         : setIsAuthenticated(false);
-  //       setIsLoading(false);
-  //       console.log("is authenticated:", isAuthenticated);
-  //     } catch (err: any) {
-  //       setIsLoading(false);
-  //       setIsAuthenticated(false);
-  //       console.error(err.message);
-  //     }
-  //   };
+        parseRes === true
+          ? setIsAuthenticated(true)
+          : setIsAuthenticated(false);
+        setIsLoading(false);
+        console.log("is authenticated:", isAuthenticated);
+      } catch (err: any) {
+        setIsLoading(false);
+        setIsAuthenticated(false);
+        console.error(err.message);
+      }
+    };
 
-  //   checkAuthenticated();
-  // }, []);
+    checkAuthenticated();
+  }, []);
 
   console.log(isAuthenticated);
 
