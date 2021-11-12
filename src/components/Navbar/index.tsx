@@ -10,12 +10,17 @@ import {
 } from "./styles/navbar";
 
 type Props = {
+  background?: string;
   children?: React.ReactNode;
   src?: any;
 };
 
-export default function Navbar({ children, ...restProps }: Props) {
-  return <Container {...restProps}>{children}</Container>;
+export default function Navbar({ background, children, ...restProps }: Props) {
+  return (
+    <Container background={background} {...restProps}>
+      {children}
+    </Container>
+  );
 }
 
 Navbar.ContainerMed = function NavbarContainerMed({

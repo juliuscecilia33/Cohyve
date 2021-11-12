@@ -1,9 +1,13 @@
 import styled from "styled-components/macro";
 
-export const Container = styled.div`
+interface ActiveProps {
+  background?: string;
+}
+
+export const Container = styled.div<ActiveProps>`
   width: 100%;
   height: 9vh;
-  background: #fafcfa;
+  background: ${({ background }) => background}
   display: flex;
   justify-content: space-between;
   align-items: center;

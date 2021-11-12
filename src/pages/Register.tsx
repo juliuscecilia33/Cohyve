@@ -12,7 +12,7 @@ interface DataProps {
 export default function RegisterPage({ setIsAuthenticated }: DataProps) {
   return (
     <>
-      <NavbarContainer />
+      <NavbarContainer background="#FAFCFA" />
       <RegisterContainer />
       <FooterContainer />
     </>

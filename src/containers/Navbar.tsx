@@ -4,9 +4,13 @@ import Logo from "../images/Logo.png";
 import { Link as ReactRouterLink } from "react-router-dom";
 import * as ROUTES from "../constants/routes";
 
-export function NavbarContainer() {
+interface DataProps {
+  background: string;
+}
+
+export function NavbarContainer({ background }: DataProps) {
   return (
-    <Navbar>
+    <Navbar background={background}>
       <Navbar.ContainerMed>
         <ReactRouterLink to={ROUTES.HOME}>
           <Navbar.Logo src={Logo} />

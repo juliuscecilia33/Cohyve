@@ -12,7 +12,7 @@ interface DataProps {
 export default function LoginPage({ setIsAuthenticated }: DataProps) {
   return (
     <>
-      <NavbarContainer />
+      <NavbarContainer background="#FAFCFA" />
       <LoginContainer setIsAuthenticated={setIsAuthenticated} />
       <FooterContainer />
     </>

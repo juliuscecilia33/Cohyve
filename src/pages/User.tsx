@@ -4,7 +4,7 @@ import { NavbarContainer, FooterContainer } from "../containers";
 export default function UserPage() {
   return (
     <>
-      <NavbarContainer />
+      <NavbarContainer background="#FAFCFA" />
       <div>"User"</div>
       <FooterContainer />
     </>
