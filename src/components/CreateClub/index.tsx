@@ -8,17 +8,18 @@ import {
   Banner,
   Info,
   ProfilePic,
+  InfoText,
+  Description,
+  Name,
+  SchoolAndLocation,
 } from "./styles/createClub";
 
 type Props = {
   children?: React.ReactNode;
-  type?: string;
   name?: string;
-  placeholder?: string;
-  onChange?: any;
-  value?: any;
-  src?: any;
-  color?: string;
+  year?: any;
+  school?: string;
+  location?: string;
 };
 
 export default function CreateClub({ children, ...restProps }: Props) {
@@ -59,4 +60,46 @@ CreateClub.ProfilePic = function CreateClubProfilePic({
   ...restProps
 }: Props) {
   return <ProfilePic {...restProps}>{children}</ProfilePic>;
+};
+
+CreateClub.InfoText = function CreateClubInfoText({
+  children,
+  ...restProps
+}: Props) {
+  return <InfoText {...restProps}>{children}</InfoText>;
+};
+
+CreateClub.Description = function CreateClubDescription({
+  children,
+  ...restProps
+}: Props) {
+  return <Description {...restProps}>{children}</Description>;
+};
+
+CreateClub.Name = function CreateClubName({
+  name,
+  year,
+  children,
+  ...restProps
+}: Props) {
+  return (
+    <Name {...restProps}>
+      <h1>{name}</h1>
+      <p>{year}</p>
+    </Name>
+  );
+};
+
+CreateClub.SchoolAndLocation = function CreateClubSchoolAndLocation({
+  school,
+  location,
+  children,
+  ...restProps
+}: Props) {
+  return (
+    <SchoolAndLocation {...restProps}>
+      <p>{school}</p>
+      <p>{location}</p>
+    </SchoolAndLocation>
+  );
 };

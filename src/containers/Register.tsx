@@ -84,7 +84,9 @@ export function RegisterContainer() {
             onChange={(e: any) => onChange(e)}
             type="text"
           />
-          <ActionButton>Register</ActionButton>
+          <ActionButton background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;">
+            Register
+          </ActionButton>
           <Login.Message>
             Already have an account?{" "}
             <ReactRouterLink to={ROUTES.LOGIN}>

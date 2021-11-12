@@ -1,9 +1,12 @@
 import styled from "styled-components/macro";
 
-export const Container = styled.button`
-  // height: 42px;
+interface ActiveProps {
+  background?: string;
+}
+
+export const Container = styled.button<ActiveProps>`
   padding: 0.7rem 2.5rem;
-  background: linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;
+  background: ${({ background }) => background}
   border-radius: 100px;
   cursor: pointer;
   font-family: Poppins;

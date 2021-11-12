@@ -26,7 +26,9 @@ export function FooterContainer() {
         </Footer.ContainerMed>
         <Footer.ContainerMed>
           <ReactRouterLink to={ROUTES.REGISTER}>
-            <ActionButton>Get Started</ActionButton>
+            <ActionButton background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;">
+              Get Started
+            </ActionButton>
           </ReactRouterLink>
         </Footer.ContainerMed>
       </Footer>

@@ -80,7 +80,12 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
             onChange={(e: any) => onChange(e)}
             type="password"
           />
-          <ActionButton onClick={(e) => handleLogin(e)}>Login</ActionButton>
+          <ActionButton
+            background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;"
+            onClick={(e) => handleLogin(e)}
+          >
+            Login
+          </ActionButton>
           <Login.Message>
             Not registered yet?{" "}
             <ReactRouterLink to={ROUTES.REGISTER}>
