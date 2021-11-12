@@ -19,6 +19,12 @@ import {
   Members,
   Partners,
   Followers,
+  Section,
+  Inputs,
+  HalfInput,
+  LargeInput,
+  QuarterInput,
+  SmInputs,
 } from "./styles/createClub";
 
 type Props = {
@@ -27,6 +33,11 @@ type Props = {
   year?: any;
   school?: string;
   location?: string;
+  type?: string;
+  placeholder?: string;
+  onChange?: any;
+  value?: any;
+  src?: any;
 };
 
 export default function CreateClub({ children, ...restProps }: Props) {
@@ -152,5 +163,95 @@ CreateClub.Partners = function CreateClubPartners({
     <Partners {...restProps}>
       <h3>Partners</h3>
     </Partners>
+  );
+};
+
+CreateClub.Section = function CreateClubSection({
+  children,
+  ...restProps
+}: Props) {
+  return <Section {...restProps}>{children}</Section>;
+};
+
+CreateClub.Inputs = function CreateClubInputs({
+  children,
+  ...restProps
+}: Props) {
+  return <Inputs {...restProps}>{children}</Inputs>;
+};
+
+CreateClub.SmInputs = function CreateClubSmInputs({
+  children,
+  ...restProps
+}: Props) {
+  return <SmInputs {...restProps}>{children}</SmInputs>;
+};
+
+CreateClub.HalfInput = function CreateClubHalfInput({
+  name,
+  onChange,
+  placeholder,
+  value,
+  type,
+  children,
+  ...restProps
+}: Props) {
+  return (
+    <HalfInput {...restProps}>
+      <p>{name}</p>
+      <input
+        name={name}
+        type={type}
+        onChange={onChange}
+        value={value}
+        placeholder={placeholder}
+      />
+    </HalfInput>
+  );
+};
+
+CreateClub.LargeInput = function CreateClubLargeInput({
+  name,
+  onChange,
+  placeholder,
+  value,
+  type,
+  children,
+  ...restProps
+}: Props) {
+  return (
+    <LargeInput {...restProps}>
+      <p>{name}</p>
+      <input
+        name={name}
+        type={type}
+        onChange={onChange}
+        value={value}
+        placeholder={placeholder}
+      />
+    </LargeInput>
+  );
+};
+
+CreateClub.QuarterInput = function CreateClubQuarterInput({
+  name,
+  onChange,
+  placeholder,
+  value,
+  type,
+  children,
+  ...restProps
+}: Props) {
+  return (
+    <QuarterInput {...restProps}>
+      <p>{name}</p>
+      <input
+        name={name}
+        type={type}
+        onChange={onChange}
+        value={value}
+        placeholder={placeholder}
+      />
+    </QuarterInput>
   );
 };
