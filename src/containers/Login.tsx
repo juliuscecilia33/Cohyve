@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { ActionButton, Login } from "../components";
 import Promo from "../images/Club Page.png";
 import { Link as ReactRouterLink, useHistory } from "react-router-dom";
+import { UserTokenContext } from "../context/UserToken";
 import * as ROUTES from "../constants/routes";
 
 interface DataProps {
@@ -13,6 +14,8 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
     email: "",
     password: "",
   });
+
+  const { setUserToken } = useContext(UserTokenContext);
 
   const { email, password } = inputs;
 
@@ -38,8 +41,9 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
       if (parseRes.jwtToken) {
         localStorage.setItem("token", parseRes.jwtToken);
         setIsAuthenticated(true);
+        setUserToken(parseRes.jwtToken);
         setInputs({ email: "", password: "" });
-        history.push(ROUTES.HOME);
+        history.push(ROUTES.USER);
       } else {
         setIsAuthenticated(false);
       }

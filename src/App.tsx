@@ -8,12 +8,11 @@ import {
 import axios from "axios";
 import { LoginPage, RegisterPage, UserPage } from "./pages";
 import * as ROUTES from "./constants/routes";
+import { UserTokenContext } from "./context/UserToken";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  // use context for local storage
-  // still have to verify
+  const [userToken, setUserToken] = useState("");
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -43,6 +42,11 @@ function App() {
           ? setIsAuthenticated(true)
           : setIsAuthenticated(false);
         setIsLoading(false);
+
+        if (isAuthenticated) {
+          setUserToken(localStorage.token);
+        }
+
         console.log("is authenticated:", isAuthenticated);
       } catch (err: any) {
         setIsLoading(false);
@@ -54,42 +58,46 @@ function App() {
     checkAuthenticated();
   }, []);
 
-  console.log(isAuthenticated);
+  console.log(userToken);
 
   return (
-    <Router>
-      <Switch>
-        <Route
-          exact
-          path={ROUTES.LOGIN}
-          render={(props) =>
-            isAuthenticated ? (
-              <Redirect to={ROUTES.USER} />
-            ) : (
-              <LoginPage setIsAuthenticated={setIsAuthenticated} />
-            )
-          }
-        />
-        <Route
-          exact
-          path={ROUTES.REGISTER}
-          render={(props) =>
-            isAuthenticated ? (
-              <Redirect to={ROUTES.USER} />
-            ) : (
-              <RegisterPage setIsAuthenticated={setIsAuthenticated} />
-            )
-          }
-        />
-        <Route
-          exact
-          path={ROUTES.USER}
-          render={(props) =>
-            !isAuthenticated ? <Redirect to={ROUTES.LOGIN} /> : <UserPage />
-          }
-        />
-      </Switch>
-    </Router>
+    <>
+      <UserTokenContext.Provider value={{ userToken, setUserToken }}>
+        <Router>
+          <Switch>
+            <Route
+              exact
+              path={ROUTES.LOGIN}
+              render={(props) =>
+                isAuthenticated ? (
+                  <Redirect to={ROUTES.USER} />
+                ) : (
+                  <LoginPage setIsAuthenticated={setIsAuthenticated} />
+                )
+              }
+            />
+            <Route
+              exact
+              path={ROUTES.REGISTER}
+              render={(props) =>
+                isAuthenticated ? (
+                  <Redirect to={ROUTES.USER} />
+                ) : (
+                  <RegisterPage setIsAuthenticated={setIsAuthenticated} />
+                )
+              }
+            />
+            <Route
+              exact
+              path={ROUTES.USER}
+              render={(props) =>
+                !isAuthenticated ? <Redirect to={ROUTES.LOGIN} /> : <UserPage />
+              }
+            />
+          </Switch>
+        </Router>
+      </UserTokenContext.Provider>
+    </>
   );
 }
 
