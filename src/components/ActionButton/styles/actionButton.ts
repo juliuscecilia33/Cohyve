@@ -14,5 +14,5 @@ export const Container = styled.button<ActiveProps>`
   font-weight: 600;
   font-size: 16px;
   color: #f0f2ef;
-  margin-top: 1rem;
+  // margin-top: 1rem;
 `;

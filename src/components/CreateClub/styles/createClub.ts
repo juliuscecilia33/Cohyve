@@ -55,6 +55,15 @@ export const Banner = styled.div`
   height: 15vh;
 `;
 
+export const Description = styled.h3`
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 27px;
+  color: #79a1bc;
+`;
+
 export const ImageBanner = styled.div<ActiveProps>`
   background: ${({ imageUrl }) => {
     if (imageUrl) {
@@ -126,4 +135,116 @@ export const ProfilePic = styled.div<ActiveProps>`
   background-size: cover;
   background-position: center;
   border-radius: 100%;
+`;
+
+export const InfoText = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Name = styled.div`
+  display: flex;
+
+  h1 {
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    color: #f0f2ef;
+  }
+
+  p {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    color: #b4b8ab;
+  }
+`;
+
+export const SchoolAndLocation = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 13px;
+  color: #f0f2ef;
+`;
+
+export const ButtonsAndLinks = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 50%;
+  padding: 1rem 0;
+  height: 100%;
+`;
+
+export const Buttons = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 65%;
+`;
+
+export const Links = styled.div`
+  width: 65%;
+  height: 27px;
+  background: rgba(244, 249, 233, 0.14);
+  box-shadow: -1px 10px 60px rgba(27, 27, 30, 0.1);
+  border-radius: 100px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+`;
+
+export const Icon = styled.div`
+  i {
+    color: #f0f2ef;
+    box-shadow: -1px 10px 60px rgba(27, 27, 30, 0.1);
+    font-size: 12px;
+  }
+`;
+
+export const Stats = styled.div`
+  width: 75%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+`;
+
+export const FollowersAndMembers = styled.div`
+  background: #eef0eb;
+  box-shadow: -1px 10px 60px rgba(27, 27, 30, 0.1);
+  border-radius: 40px;
+  width: 60%;
+  height: 50px;
+`;
+
+export const FollowersAndMembersText = styled.h3`
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  color: #284b63;
+
+  span {
+    color: #58a4b0;
+  }
+`;
+
+export const Partners = styled.div`
+  background: #f4f9e9;
+  box-shadow: -1px 10px 60px rgba(27, 27, 30, 0.1);
+  border-radius: 40px;
+  width: 40%;
+  height: 50px;
 `;

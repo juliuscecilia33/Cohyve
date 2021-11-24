@@ -12,6 +12,8 @@ import {
   BasicInfo,
   ProfilePic,
   InfoText,
+  Buttons,
+  ButtonsAndLinks,
   Description,
   Name,
   SchoolAndLocation,
@@ -19,9 +21,8 @@ import {
   Icon,
   Stats,
   FollowersAndMembers,
-  Members,
   Partners,
-  Followers,
+  FollowersAndMembersText,
   Section,
   Inputs,
   HalfInput,
@@ -152,10 +153,24 @@ CreateClub.SchoolAndLocation = function CreateClubSchoolAndLocation({
 }: Props) {
   return (
     <SchoolAndLocation {...restProps}>
-      <p>{school}</p>
-      <p>{location}</p>
+      <p>{school} |</p>
+      <p> {location}</p>
     </SchoolAndLocation>
   );
+};
+
+CreateClub.ButtonsAndLinks = function CreateClubButtonsAndLinks({
+  children,
+  ...restProps
+}: Props) {
+  return <ButtonsAndLinks {...restProps}>{children}</ButtonsAndLinks>;
+};
+
+CreateClub.Buttons = function CreateClubButtons({
+  children,
+  ...restProps
+}: Props) {
+  return <Buttons {...restProps}>{children}</Buttons>;
 };
 
 CreateClub.Links = function CreateClubLinks({ children, ...restProps }: Props) {
@@ -177,19 +192,17 @@ CreateClub.FollowersAndMembers = function CreateClubFollowersAndMembers({
   return <FollowersAndMembers {...restProps}>{children}</FollowersAndMembers>;
 };
 
-CreateClub.Followers = function CreateClubFollowers({
-  children,
-  ...restProps
-}: Props) {
-  return <Followers {...restProps}>{children}</Followers>;
-};
-
-CreateClub.Members = function CreateClubMembers({
-  children,
-  ...restProps
-}: Props) {
-  return <Members {...restProps}>{children}</Members>;
-};
+CreateClub.FollowersAndMembersText =
+  function CreateClubFollowersAndMembersText({
+    children,
+    ...restProps
+  }: Props) {
+    return (
+      <FollowersAndMembersText {...restProps}>
+        {children}
+      </FollowersAndMembersText>
+    );
+  };
 
 CreateClub.Partners = function CreateClubPartners({
   children,
