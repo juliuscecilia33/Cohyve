@@ -6,7 +6,10 @@ import {
   Heading,
   PreviewText,
   Banner,
+  ImageBanner,
+  InfoContainer,
   Info,
+  BasicInfo,
   ProfilePic,
   InfoText,
   Description,
@@ -38,6 +41,8 @@ type Props = {
   onChange?: any;
   value?: any;
   src?: any;
+  imageUrl?: any;
+  profileImageUrl?: any;
 };
 
 export default function CreateClub({ children, ...restProps }: Props) {
@@ -69,15 +74,46 @@ CreateClub.Banner = function CreateClubBanner({
   return <Banner {...restProps}>{children}</Banner>;
 };
 
+CreateClub.ImageBanner = function CreateClubImageBanner({
+  imageUrl,
+  children,
+  ...restProps
+}: Props) {
+  return (
+    <ImageBanner imageUrl={imageUrl} {...restProps}>
+      {children}
+    </ImageBanner>
+  );
+};
+
+CreateClub.InfoContainer = function CreateClubInfoContainer({
+  children,
+  ...restProps
+}: Props) {
+  return <InfoContainer {...restProps}>{children}</InfoContainer>;
+};
+
 CreateClub.Info = function CreateClubInfo({ children, ...restProps }: Props) {
   return <Info {...restProps}>{children}</Info>;
 };
 
-CreateClub.ProfilePic = function CreateClubProfilePic({
+CreateClub.BasicInfo = function CreateClubBasicInfo({
   children,
   ...restProps
 }: Props) {
-  return <ProfilePic {...restProps}>{children}</ProfilePic>;
+  return <BasicInfo {...restProps}>{children}</BasicInfo>;
+};
+
+CreateClub.ProfilePic = function CreateClubProfilePic({
+  profileImageUrl,
+  children,
+  ...restProps
+}: Props) {
+  return (
+    <ProfilePic profileImageUrl={profileImageUrl} {...restProps}>
+      {children}
+    </ProfilePic>
+  );
 };
 
 CreateClub.InfoText = function CreateClubInfoText({
