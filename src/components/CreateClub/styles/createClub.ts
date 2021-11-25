@@ -47,14 +47,6 @@ export const PreviewText = styled.p`
   margin-bottom: 1rem;
 `;
 
-export const Banner = styled.div`
-  background: linear-gradient(94.39deg, #afd5aa 8.09%, #58a4b0 93.12%);
-  border-radius: 40px;
-  position: relative;
-  width: 100%;
-  height: 15vh;
-`;
-
 export const Description = styled.h3`
   font-family: Poppins;
   font-style: normal;
@@ -93,6 +85,7 @@ export const InfoContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 100;
 `;
 
 export const Info = styled.div`
@@ -219,6 +212,7 @@ export const Stats = styled.div`
   margin-right: auto;
   left: 0;
   right: 0;
+  z-index: 101;
 `;
 
 export const FollowersAndMembers = styled.div`
@@ -227,6 +221,10 @@ export const FollowersAndMembers = styled.div`
   border-radius: 40px;
   width: 60%;
   height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.5rem;
 `;
 
 export const FollowersAndMembersText = styled.h3`
@@ -247,6 +245,17 @@ export const Partners = styled.div`
   border-radius: 40px;
   width: 40%;
   height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
+
+  h3 {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: #284b63;
+  }
 `;
 
 export const Section = styled.div`
@@ -283,6 +292,7 @@ export const HalfInput = styled.div`
     font-size: 18px;
     color: #373f51;
     margin-bottom: 0.3rem;
+    text-transform: capitalize;
   }
 
   input {
@@ -311,6 +321,7 @@ export const LargeInput = styled.div`
     font-size: 18px;
     color: #373f51;
     margin-bottom: 0.3rem;
+    text-transform: capitalize;
   }
 
   input {
@@ -339,6 +350,7 @@ export const QuarterInput = styled.div`
     font-size: 18px;
     color: #373f51;
     margin-bottom: 0.3rem;
+    text-transform: capitalize;
   }
 
   input {

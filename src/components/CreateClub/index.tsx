@@ -5,7 +5,6 @@ import {
   Hero,
   Heading,
   PreviewText,
-  Banner,
   ImageBanner,
   InfoContainer,
   Info,
@@ -44,6 +43,7 @@ type Props = {
   src?: any;
   imageUrl?: any;
   profileImageUrl?: any;
+  title?: string;
 };
 
 export default function CreateClub({ children, ...restProps }: Props) {
@@ -65,14 +65,7 @@ CreateClub.PreviewText = function CreateClubPreviewText({
   children,
   ...restProps
 }: Props) {
-  return <PreviewText {...restProps}>{children}</PreviewText>;
-};
-
-CreateClub.Banner = function CreateClubBanner({
-  children,
-  ...restProps
-}: Props) {
-  return <Banner {...restProps}>{children}</Banner>;
+  return <PreviewText {...restProps}>Preview</PreviewText>;
 };
 
 CreateClub.ImageBanner = function CreateClubImageBanner({
@@ -237,6 +230,7 @@ CreateClub.SmInputs = function CreateClubSmInputs({
 };
 
 CreateClub.HalfInput = function CreateClubHalfInput({
+  title,
   name,
   onChange,
   placeholder,
@@ -247,7 +241,7 @@ CreateClub.HalfInput = function CreateClubHalfInput({
 }: Props) {
   return (
     <HalfInput {...restProps}>
-      <p>{name}</p>
+      <p>{title}</p>
       <input
         name={name}
         type={type}
@@ -260,6 +254,7 @@ CreateClub.HalfInput = function CreateClubHalfInput({
 };
 
 CreateClub.LargeInput = function CreateClubLargeInput({
+  title,
   name,
   onChange,
   placeholder,
@@ -270,7 +265,7 @@ CreateClub.LargeInput = function CreateClubLargeInput({
 }: Props) {
   return (
     <LargeInput {...restProps}>
-      <p>{name}</p>
+      <p>{title}</p>
       <input
         name={name}
         type={type}
@@ -283,6 +278,7 @@ CreateClub.LargeInput = function CreateClubLargeInput({
 };
 
 CreateClub.QuarterInput = function CreateClubQuarterInput({
+  title,
   name,
   onChange,
   placeholder,
@@ -293,7 +289,7 @@ CreateClub.QuarterInput = function CreateClubQuarterInput({
 }: Props) {
   return (
     <QuarterInput {...restProps}>
-      <p>{name}</p>
+      <p>{title}</p>
       <input
         name={name}
         type={type}
