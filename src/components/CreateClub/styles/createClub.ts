@@ -248,3 +248,109 @@ export const Partners = styled.div`
   width: 40%;
   height: 50px;
 `;
+
+export const Section = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0;
+`;
+
+export const Inputs = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+`;
+
+export const SmInputs = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 45%;
+`;
+
+export const HalfInput = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+
+  p {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    color: #373f51;
+    margin-bottom: 0.3rem;
+  }
+
+  input {
+    background: linear-gradient(
+      90deg,
+      rgba(211, 211, 211, 0.3) 0%,
+      rgba(204, 204, 204, 0.3) 89.47%
+    );
+    border: 1px solid #ffffff;
+    border-radius: 100px;
+    width: 100%;
+    height: 56px;
+    padding: 0.5rem;
+  }
+`;
+
+export const LargeInput = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  p {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    color: #373f51;
+    margin-bottom: 0.3rem;
+  }
+
+  input {
+    background: linear-gradient(
+      90deg,
+      rgba(211, 211, 211, 0.3) 0%,
+      rgba(204, 204, 204, 0.3) 89.47%
+    );
+    border: 1px solid #ffffff;
+    border-radius: 15px;
+    width: 100%;
+    height: 245px;
+    padding: 0.5rem;
+  }
+`;
+
+export const QuarterInput = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+
+  p {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    color: #373f51;
+    margin-bottom: 0.3rem;
+  }
+
+  input {
+    background: linear-gradient(
+      90deg,
+      rgba(211, 211, 211, 0.3) 0%,
+      rgba(204, 204, 204, 0.3) 89.47%
+    );
+    border: 1px solid #ffffff;
+    border-radius: 100px;
+    width: 100%;
+    height: 56px;
+    padding: 0.5rem;
+  }
+`;
