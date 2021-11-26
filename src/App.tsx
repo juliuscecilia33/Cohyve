@@ -6,7 +6,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import axios from "axios";
-import { LoginPage, RegisterPage, UserPage } from "./pages";
+import { LoginPage, RegisterPage, UserPage, CreateClubPage } from "./pages";
 import * as ROUTES from "./constants/routes";
 import { UserTokenContext } from "./context/UserToken";
 
@@ -94,6 +94,9 @@ function App() {
                 !isAuthenticated ? <Redirect to={ROUTES.LOGIN} /> : <UserPage />
               }
             />
+            <Route exact path={ROUTES.CREATE}>
+              <CreateClubPage />
+            </Route>
           </Switch>
         </Router>
       </UserTokenContext.Provider>
