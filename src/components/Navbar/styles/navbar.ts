@@ -37,6 +37,7 @@ export const Tabs = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
 `;
 
 export const Tab = styled.h2`

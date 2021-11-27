@@ -6,7 +6,7 @@ export function CreateClubContainer() {
     <CreateClub>
       <CreateClub.Hero>
         <CreateClub.Heading>
-          create <span>club</span>
+          create<span>club</span>
         </CreateClub.Heading>
         <CreateClub.PreviewText />
         <CreateClub.ImageBanner imageUrl={null}>

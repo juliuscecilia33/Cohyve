@@ -14,11 +14,12 @@ export const Container = styled.div`
 `;
 
 export const Hero = styled.div`
-  padding: 10rem 0;
+  padding: 1rem 0 10rem 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 100%;
+  margin-bottom: 5rem;
 `;
 
 export const Heading = styled.h1`
@@ -27,7 +28,7 @@ export const Heading = styled.h1`
   font-weight: bold;
   font-size: 96px;
   color: #afd5aa;
-  margin-bottom: 3rem;
+  margin-bottom: 5rem;
 
   span {
     font-family: Poppins;
@@ -35,6 +36,7 @@ export const Heading = styled.h1`
     font-weight: bold;
     font-size: 42px;
     color: #284b63;
+    margin-left: 1rem;
   }
 `;
 
@@ -42,9 +44,10 @@ export const PreviewText = styled.p`
   font-family: Work Sans;
   font-style: normal;
   font-weight: 500;
-  font-size: 24px;
+  font-size: 16px;
   color: #c4c4c4;
   margin-bottom: 1rem;
+  text-align: center;
 `;
 
 export const Description = styled.h3`
@@ -63,21 +66,20 @@ export const ImageBanner = styled.div<ActiveProps>`
     } else {
       return `linear-gradient(94.39deg, #afd5aa 8.09%, #58a4b0 93.12%)`;
     }
-  }}
+  }};
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   border-radius: 40px;
   position: relative;
   width: 100%;
-  height: 15vh;
+  height: 25vh;
 `;
 
 export const InfoContainer = styled.div`
   width: 75%;
-  height: 10vh;
   position: absolute;
-  bottom: 0;
+  bottom: -35%;
   margin-left: auto;
   margin-right: auto;
   left: 0;
@@ -97,7 +99,7 @@ export const Info = styled.div`
   box-shadow: -1px 10px 60px rgba(27, 27, 30, 0.1);
   border-radius: 40px;
   width: 100%;
-  height: 100%;
+  padding: 2rem;
   position: relative;
   display: flex;
   justify-content: center;
@@ -172,7 +174,6 @@ export const ButtonsAndLinks = styled.div`
   justify-content: space-around;
   width: 50%;
   padding: 1rem 0;
-  height: 100%;
 `;
 
 export const Buttons = styled.div`
@@ -180,6 +181,7 @@ export const Buttons = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 65%;
+  margin-left: auto;
 `;
 
 export const Links = styled.div`
@@ -191,6 +193,7 @@ export const Links = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin-left: auto;
 `;
 
 export const Icon = styled.div`
@@ -207,7 +210,7 @@ export const Stats = styled.div`
   justify-content: space-between;
   align-items: center;
   position: absolute;
-  bottom: 0;
+  bottom: -10%;
   margin-left: auto;
   margin-right: auto;
   left: 0;
@@ -219,12 +222,12 @@ export const FollowersAndMembers = styled.div`
   background: #eef0eb;
   box-shadow: -1px 10px 60px rgba(27, 27, 30, 0.1);
   border-radius: 40px;
-  width: 60%;
+  width: 58%;
   height: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 0.5rem;
+  padding: 0 2rem;
 `;
 
 export const FollowersAndMembersText = styled.h3`
@@ -243,11 +246,11 @@ export const Partners = styled.div`
   background: #f4f9e9;
   box-shadow: -1px 10px 60px rgba(27, 27, 30, 0.1);
   border-radius: 40px;
-  width: 40%;
+  width: 38%;
   height: 50px;
   display: flex;
   align-items: center;
-  padding: 0 0.5rem;
+  padding: 0 2rem;
 
   h3 {
     font-family: Poppins;
