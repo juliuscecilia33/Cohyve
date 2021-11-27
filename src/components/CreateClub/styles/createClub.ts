@@ -287,7 +287,7 @@ export const Inputs = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin-bottom: 1.5rem;
+  margin: 2.2rem 0;
 `;
 
 export const SmInputs = styled.div`
@@ -308,7 +308,7 @@ export const HalfInput = styled.div`
     font-weight: 600;
     font-size: 18px;
     color: #373f51;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.5rem;
     text-transform: capitalize;
   }
 
@@ -324,12 +324,18 @@ export const HalfInput = styled.div`
     height: 56px;
     padding: 1.5rem 1.7rem;
     outline: none;
+    transition: 0.5s ease all;
 
     &::placeholder {
       font-family: Poppins;
       font-style: normal;
       font-weight: 500;
       font-size: 12px;
+    }
+
+    &:focus,
+    &:hover {
+      background: rgba(255, 255, 255, 0.35);
     }
   }
 `;
@@ -345,7 +351,7 @@ export const LargeInput = styled.div`
     font-weight: 600;
     font-size: 18px;
     color: #373f51;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.5rem;
     text-transform: capitalize;
   }
 
@@ -362,12 +368,18 @@ export const LargeInput = styled.div`
     padding: 1rem 1.7rem;
     outline: none;
     resize: none;
+    transition: 0.5s ease all;
 
     &::placeholder {
       font-family: Poppins;
       font-style: normal;
       font-weight: 500;
       font-size: 12px;
+    }
+
+    &:focus,
+    &:hover {
+      background: rgba(255, 255, 255, 0.35);
     }
   }
 `;
@@ -383,7 +395,7 @@ export const QuarterInput = styled.div`
     font-weight: 600;
     font-size: 18px;
     color: #373f51;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.5rem;
     text-transform: capitalize;
   }
 
@@ -399,12 +411,18 @@ export const QuarterInput = styled.div`
     height: 56px;
     outline: none;
     padding: 1.5rem 1.7rem;
+    transition: 0.5s ease all;
 
     &::placeholder {
       font-family: Poppins;
       font-style: normal;
       font-weight: 500;
       font-size: 12px;
+    }
+
+    &:focus,
+    &:hover {
+      background: rgba(255, 255, 255, 0.35);
     }
   }
 `;

@@ -116,9 +116,9 @@ export function CreateClubContainer() {
           <CreateClub.SmInputs>
             <CreateClub.QuarterInput
               name="uploadProfile"
-              title="Upload Profile"
+              title="Upload Club Profile"
               type="text"
-              placeholder="State"
+              placeholder="Profile"
               value=""
               onChange={null}
             />
@@ -126,7 +126,7 @@ export function CreateClubContainer() {
               name="uploadBanner"
               title="Upload Banner"
               type="text"
-              placeholder="Upload Banner"
+              placeholder="Upload Club Banner"
               value=""
               onChange={null}
             />

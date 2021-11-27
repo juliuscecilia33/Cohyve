@@ -12,7 +12,7 @@ export const Container = styled.button<ActiveProps>`
   font-family: Poppins;
   font-style: normal;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14px;
   color: #f0f2ef;
   // margin-top: 1rem;
 `;

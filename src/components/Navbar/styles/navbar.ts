@@ -6,7 +6,7 @@ interface ActiveProps {
 
 export const Container = styled.div<ActiveProps>`
   width: 100%;
-  height: 9vh;
+  height: 10vh;
   background: ${({ background }) => background}
   display: flex;
   justify-content: space-between;
