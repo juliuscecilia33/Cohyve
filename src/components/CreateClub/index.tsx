@@ -267,9 +267,9 @@ CreateClub.LargeInput = function CreateClubLargeInput({
   return (
     <LargeInput {...restProps}>
       <p>{title}</p>
-      <input
+      <textarea
         name={name}
-        type={type}
+        // type={type}
         onChange={onChange}
         value={value}
         placeholder={placeholder}

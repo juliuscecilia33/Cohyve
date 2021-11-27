@@ -26,7 +26,7 @@ export const Heading = styled.h1`
   font-family: Work Sans;
   font-style: normal;
   font-weight: bold;
-  font-size: 96px;
+  font-size: 10vh;
   color: #afd5aa;
   margin-bottom: 5rem;
 
@@ -64,13 +64,13 @@ export const ImageBanner = styled.div<ActiveProps>`
   border-radius: 40px;
   position: relative;
   width: 100%;
-  height: 25vh;
+  height: 30vh;
 `;
 
 export const InfoContainer = styled.div`
-  width: 75%;
+  width: 85%;
   position: absolute;
-  bottom: -35%;
+  bottom: -45%;
   margin-left: auto;
   margin-right: auto;
   left: 0;
@@ -90,7 +90,7 @@ export const Info = styled.div`
   box-shadow: -1px 10px 60px rgba(27, 27, 30, 0.1);
   border-radius: 40px;
   width: 100%;
-  padding: 2rem;
+  padding: 1.5rem;
   position: relative;
   display: flex;
   justify-content: center;
@@ -106,8 +106,8 @@ export const BasicInfo = styled.div`
 `;
 
 export const ProfilePic = styled.div<ActiveProps>`
-  width: 150px;
-  height: 150px;
+  width: 10vw;
+  height: 10vw;
   margin-right: 1rem;
   background: ${({ profileImageUrl }) => {
     if (profileImageUrl) {
@@ -119,7 +119,7 @@ export const ProfilePic = styled.div<ActiveProps>`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  border-radius: 100%;
+  border-radius: 50%;
 `;
 
 export const InfoText = styled.div`
@@ -184,7 +184,7 @@ export const ButtonsAndLinks = styled.div`
 
 export const Buttons = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   width: 65%;
   margin-left: auto;
@@ -322,7 +322,15 @@ export const HalfInput = styled.div`
     border-radius: 100px;
     width: 100%;
     height: 56px;
-    padding: 0.5rem;
+    padding: 1.5rem 1.7rem;
+    outline: none;
+
+    &::placeholder {
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+    }
   }
 `;
 
@@ -341,7 +349,7 @@ export const LargeInput = styled.div`
     text-transform: capitalize;
   }
 
-  input {
+  textarea {
     background: linear-gradient(
       90deg,
       rgba(211, 211, 211, 0.3) 0%,
@@ -351,7 +359,16 @@ export const LargeInput = styled.div`
     border-radius: 15px;
     width: 100%;
     height: 245px;
-    padding: 0.5rem;
+    padding: 1rem 1.7rem;
+    outline: none;
+    resize: none;
+
+    &::placeholder {
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+    }
   }
 `;
 
@@ -380,6 +397,14 @@ export const QuarterInput = styled.div`
     border-radius: 100px;
     width: 100%;
     height: 56px;
-    padding: 0.5rem;
+    outline: none;
+    padding: 1.5rem 1.7rem;
+
+    &::placeholder {
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+    }
   }
 `;
