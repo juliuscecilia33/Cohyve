@@ -50,15 +50,6 @@ export const PreviewText = styled.p`
   text-align: center;
 `;
 
-export const Description = styled.h3`
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 18px;
-  line-height: 27px;
-  color: #79a1bc;
-`;
-
 export const ImageBanner = styled.div<ActiveProps>`
   background: ${({ imageUrl }) => {
     if (imageUrl) {
@@ -117,7 +108,7 @@ export const BasicInfo = styled.div`
 export const ProfilePic = styled.div<ActiveProps>`
   width: 150px;
   height: 150px;
-
+  margin-right: 1rem;
   background: ${({ profileImageUrl }) => {
     if (profileImageUrl) {
       return `url(imageUrl)`;
@@ -125,7 +116,6 @@ export const ProfilePic = styled.div<ActiveProps>`
       return `linear-gradient(94.39deg, #afd5aa 8.09%, #58a4b0 93.12%)`;
     }
   }};
-
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -139,6 +129,7 @@ export const InfoText = styled.div`
 
 export const Name = styled.div`
   display: flex;
+  margin-bottom: 0.3rem;
 
   h1 {
     font-family: Work Sans;
@@ -154,18 +145,33 @@ export const Name = styled.div`
     font-weight: normal;
     font-size: 11px;
     color: #b4b8ab;
+    margin-top: auto;
+    margin-bottom: 0.25rem;
+    margin-left: 0.3rem;
   }
+`;
+
+export const Description = styled.h3`
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 27px;
+  color: #79a1bc;
+  margin-bottom: 1rem;
 `;
 
 export const SchoolAndLocation = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 13px;
-  color: #f0f2ef;
+
+  p {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 13px;
+    color: #f0f2ef;
+  }
 `;
 
 export const ButtonsAndLinks = styled.div`
@@ -182,25 +188,33 @@ export const Buttons = styled.div`
   align-items: center;
   width: 65%;
   margin-left: auto;
+  margin-bottom: 1.5rem;
 `;
 
 export const Links = styled.div`
   width: 65%;
-  height: 27px;
+  height: 32px;
   background: rgba(244, 249, 233, 0.14);
   box-shadow: -1px 10px 60px rgba(27, 27, 30, 0.1);
   border-radius: 100px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   margin-left: auto;
+  padding: 0 0.5rem;
 `;
 
 export const Icon = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
   i {
     color: #f0f2ef;
     box-shadow: -1px 10px 60px rgba(27, 27, 30, 0.1);
-    font-size: 12px;
+    font-size: 18px;
+    cursor: pointer;
   }
 `;
 

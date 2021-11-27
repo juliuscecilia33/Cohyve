@@ -77,7 +77,7 @@ export const Input = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 3rem;
+  margin-bottom: 5rem;
   transition: 0.5s ease all;
 
   p {

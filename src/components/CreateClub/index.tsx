@@ -146,8 +146,9 @@ CreateClub.SchoolAndLocation = function CreateClubSchoolAndLocation({
 }: Props) {
   return (
     <SchoolAndLocation {...restProps}>
-      <p>{school} |</p>
-      <p> {location}</p>
+      <p>
+        {school} | {location}
+      </p>
     </SchoolAndLocation>
   );
 };
