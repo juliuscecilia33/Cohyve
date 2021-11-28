@@ -340,10 +340,13 @@ export const HalfInput = styled.div`
   }
 `;
 
-export const DropdownContainer = styled.div``;
+export const DropdownContainer = styled.div`
+  width: 45%;
+  position: relative;
+`;
 
 export const Dropdown = styled.div`
-  width: 45%;
+  width: 100%;
   display: flex;
   flex-direction: column;
 
@@ -362,7 +365,7 @@ export const Dropdown = styled.div`
     padding: 1rem;
     align-items: center;
     width: 100%;
-    position: relative;
+
     height: 56px;
     background: linear-gradient(
       90deg,
@@ -375,6 +378,7 @@ export const Dropdown = styled.div`
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
+    cursor: pointer;
 
     &:hover {
       background: rgba(255, 255, 255, 0.35);
@@ -388,21 +392,22 @@ export const DropdownItems = styled.div<ActiveProps>`
   text-align: left;
   padding: 1.5rem;
   position: absolute;
-  bottom: 0;
+  bottom: -165%;
   margin-left: auto;
   margin-right: auto;
   left: 0;
   right: 0;
   background: linear-gradient(
     90deg,
-    rgba(211, 211, 211, 0.3) 0%,
-    rgba(204, 204, 204, 0.3) 89.47%
+    rgba(211, 211, 211, 0.7) 0%,
+    rgba(204, 204, 204, 0.7) 89.47%
   );
   border: 1px solid #ffffff;
   border-radius: 20px;
+  z-index: 1000;
 `;
 
-export const DropdownItem = styled.div`
+export const DropdownItem = styled.button`
   background: linear-gradient(
     90deg,
     rgba(211, 211, 211, 0.3) 0%,
@@ -416,6 +421,8 @@ export const DropdownItem = styled.div`
   font-weight: 500;
   font-size: 12px;
   transition: 0.5 ease all;
+  cursor: pointer;
+  height: 20px;
 
   &:hover {
     background: rgba(255, 255, 255, 0.35);

@@ -57,6 +57,7 @@ type ButtonProps = {
   onClick?: any;
   value?: string;
   title?: string;
+  setShowItems?: any;
 };
 
 export default function CreateClub({ children, ...restProps }: Props) {
@@ -264,10 +265,15 @@ CreateClub.DropdownItems = function CreateClubDropdownItems({
 };
 
 CreateClub.DropdownItem = function CreateClubDropdownItem({
+  onClick,
   children,
   ...restProps
-}: Props) {
-  return <DropdownItem {...restProps}>{children}</DropdownItem>;
+}: ButtonProps) {
+  return (
+    <DropdownItem onClick={onClick} {...restProps}>
+      {children}
+    </DropdownItem>
+  );
 };
 
 CreateClub.Inputs = function CreateClubInputs({

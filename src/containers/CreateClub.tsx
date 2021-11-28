@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { CreateClub, ActionButton } from "../components";
 
 export function CreateClubContainer() {
+  const [showItems, setShowItems] = useState(false);
+
   return (
     <CreateClub>
       <CreateClub.Hero>
@@ -105,14 +107,41 @@ export function CreateClubContainer() {
           />
         </CreateClub.Inputs>
         <CreateClub.Inputs>
-          <CreateClub.HalfInput
-            name="state"
-            title="State"
-            type="text"
-            placeholder="State"
-            value=""
-            onChange={null}
-          />
+          <CreateClub.DropdownContainer>
+            <CreateClub.Dropdown
+              onClick={() => {
+                setShowItems(true);
+                console.log(showItems);
+              }}
+              title="State"
+            ></CreateClub.Dropdown>
+            <CreateClub.DropdownItems showItems={showItems}>
+              <CreateClub.DropdownItem onClick={() => setShowItems(false)}>
+                California
+              </CreateClub.DropdownItem>
+              <CreateClub.DropdownItem onClick={() => setShowItems(false)}>
+                Washington
+              </CreateClub.DropdownItem>
+              <CreateClub.DropdownItem onClick={() => setShowItems(false)}>
+                New York
+              </CreateClub.DropdownItem>
+              <CreateClub.DropdownItem onClick={() => setShowItems(false)}>
+                Florida
+              </CreateClub.DropdownItem>
+              <CreateClub.DropdownItem onClick={() => setShowItems(false)}>
+                Florida
+              </CreateClub.DropdownItem>
+              <CreateClub.DropdownItem onClick={() => setShowItems(false)}>
+                Florida
+              </CreateClub.DropdownItem>
+              <CreateClub.DropdownItem onClick={() => setShowItems(false)}>
+                Florida
+              </CreateClub.DropdownItem>
+              <CreateClub.DropdownItem onClick={() => setShowItems(false)}>
+                Florida
+              </CreateClub.DropdownItem>
+            </CreateClub.DropdownItems>
+          </CreateClub.DropdownContainer>
           <CreateClub.SmInputs>
             <CreateClub.QuarterInput
               name="uploadProfile"
