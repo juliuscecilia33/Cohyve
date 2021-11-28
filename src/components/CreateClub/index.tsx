@@ -28,6 +28,10 @@ import {
   LargeInput,
   QuarterInput,
   SmInputs,
+  DropdownContainer,
+  Dropdown,
+  DropdownItems,
+  DropdownItem,
 } from "./styles/createClub";
 
 type Props = {
@@ -44,6 +48,12 @@ type Props = {
   imageUrl?: any;
   profileImageUrl?: any;
   title?: string;
+  onClick?: any;
+};
+
+type ButtonProps = {
+  children?: React.ReactNode;
+  onClick?: any;
 };
 
 export default function CreateClub({ children, ...restProps }: Props) {
@@ -214,6 +224,39 @@ CreateClub.Section = function CreateClubSection({
   ...restProps
 }: Props) {
   return <Section {...restProps}>{children}</Section>;
+};
+
+CreateClub.DropdownContainer = function CreateClubDropdownContainer({
+  children,
+  ...restProps
+}: Props) {
+  return <DropdownContainer {...restProps}>{children}</DropdownContainer>;
+};
+
+CreateClub.Dropdown = function CreateClubDropdown({
+  onClick,
+  children,
+  ...restProps
+}: ButtonProps) {
+  return (
+    <Dropdown onClick={onClick} {...restProps}>
+      {children}
+    </Dropdown>
+  );
+};
+
+CreateClub.DropdownItems = function CreateClubDropdownItems({
+  children,
+  ...restProps
+}: Props) {
+  return <DropdownItems {...restProps}>{children}</DropdownItems>;
+};
+
+CreateClub.DropdownItem = function CreateClubDropdownItem({
+  children,
+  ...restProps
+}: Props) {
+  return <DropdownItem {...restProps}>{children}</DropdownItem>;
 };
 
 CreateClub.Inputs = function CreateClubInputs({

@@ -1,9 +1,9 @@
-import { url } from "inspector";
 import styled from "styled-components/macro";
 
 interface ActiveProps {
   imageUrl?: string;
   profileImageUrl?: string;
+  showItems?: boolean;
 }
 
 export const Container = styled.div`
@@ -337,6 +337,72 @@ export const HalfInput = styled.div`
     &:hover {
       background: rgba(255, 255, 255, 0.35);
     }
+  }
+`;
+
+export const DropdownContainer = styled.div``;
+
+export const Dropdown = styled.button`
+  display: flex;
+  padding: 1rem;
+  align-items: center;
+  width: 45%;
+  position: relative;
+  height: 56px;
+  background: linear-gradient(
+    90deg,
+    rgba(211, 211, 211, 0.3) 0%,
+    rgba(204, 204, 204, 0.3) 89.47%
+  );
+  border: 1px solid #ffffff;
+  border-radius: 100px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.35);
+  }
+`;
+
+export const DropdownItems = styled.div<ActiveProps>`
+  display: ${({ showItems }) => (showItems ? "flex" : "none")};
+  flex-direction: column;
+  text-align: left;
+  padding: 1.5rem;
+  position: absolute;
+  bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(211, 211, 211, 0.3) 0%,
+    rgba(204, 204, 204, 0.3) 89.47%
+  );
+  border: 1px solid #ffffff;
+  border-radius: 20px;
+`;
+
+export const DropdownItem = styled.div`
+  background: linear-gradient(
+    90deg,
+    rgba(211, 211, 211, 0.3) 0%,
+    rgba(204, 204, 204, 0.3) 89.47%
+  );
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  transition: 0.5 ease all;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.35);
   }
 `;
 
