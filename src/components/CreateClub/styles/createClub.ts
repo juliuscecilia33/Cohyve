@@ -342,27 +342,43 @@ export const HalfInput = styled.div`
 
 export const DropdownContainer = styled.div``;
 
-export const Dropdown = styled.button`
-  display: flex;
-  padding: 1rem;
-  align-items: center;
+export const Dropdown = styled.div`
   width: 45%;
-  position: relative;
-  height: 56px;
-  background: linear-gradient(
-    90deg,
-    rgba(211, 211, 211, 0.3) 0%,
-    rgba(204, 204, 204, 0.3) 89.47%
-  );
-  border: 1px solid #ffffff;
-  border-radius: 100px;
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
+  display: flex;
+  flex-direction: column;
 
-  &:hover {
-    background: rgba(255, 255, 255, 0.35);
+  p {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    color: #373f51;
+    margin-bottom: 0.5rem;
+    text-transform: capitalize;
+  }
+
+  button {
+    display: flex;
+    padding: 1rem;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    height: 56px;
+    background: linear-gradient(
+      90deg,
+      rgba(211, 211, 211, 0.3) 0%,
+      rgba(204, 204, 204, 0.3) 89.47%
+    );
+    border: 1px solid #ffffff;
+    border-radius: 100px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.35);
+    }
   }
 `;
 

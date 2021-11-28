@@ -49,11 +49,14 @@ type Props = {
   profileImageUrl?: any;
   title?: string;
   onClick?: any;
+  showItems?: boolean;
 };
 
 type ButtonProps = {
   children?: React.ReactNode;
   onClick?: any;
+  value?: string;
+  title?: string;
 };
 
 export default function CreateClub({ children, ...restProps }: Props) {
@@ -234,22 +237,30 @@ CreateClub.DropdownContainer = function CreateClubDropdownContainer({
 };
 
 CreateClub.Dropdown = function CreateClubDropdown({
+  value,
+  title,
   onClick,
   children,
   ...restProps
 }: ButtonProps) {
   return (
-    <Dropdown onClick={onClick} {...restProps}>
-      {children}
+    <Dropdown {...restProps}>
+      <p>{title}</p>
+      <button onClick={onClick}>{value}</button>
     </Dropdown>
   );
 };
 
 CreateClub.DropdownItems = function CreateClubDropdownItems({
+  showItems,
   children,
   ...restProps
 }: Props) {
-  return <DropdownItems {...restProps}>{children}</DropdownItems>;
+  return (
+    <DropdownItems showItems={showItems} {...restProps}>
+      {children}
+    </DropdownItems>
+  );
 };
 
 CreateClub.DropdownItem = function CreateClubDropdownItem({
