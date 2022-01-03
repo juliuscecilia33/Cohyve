@@ -17,7 +17,6 @@ export const Container = styled.div<ActiveProps>`
 
 export const ContainerMed = styled.div`
   display: flex;
-  align-items: center;
   height: 100%;
 `;
 
@@ -30,7 +29,7 @@ export const Logo = styled.img`
 export const Border = styled.div`
   border-left: 1.5px solid #dadada;
   height: 60%;
-  margin: 2rem;
+  margin: auto 2rem;
 `;
 
 export const Tabs = styled.div`
@@ -38,6 +37,7 @@ export const Tabs = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
+  margin-right: auto;
 `;
 
 export const Tab = styled.h2`
