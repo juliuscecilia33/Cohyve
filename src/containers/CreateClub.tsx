@@ -140,6 +140,30 @@ export function CreateClubContainer() {
               <CreateClub.DropdownItem onClick={() => setShowItems(false)}>
                 Florida
               </CreateClub.DropdownItem>
+              <CreateClub.DropdownItem onClick={() => setShowItems(false)}>
+                California
+              </CreateClub.DropdownItem>
+              <CreateClub.DropdownItem onClick={() => setShowItems(false)}>
+                Washington
+              </CreateClub.DropdownItem>
+              <CreateClub.DropdownItem onClick={() => setShowItems(false)}>
+                New York
+              </CreateClub.DropdownItem>
+              <CreateClub.DropdownItem onClick={() => setShowItems(false)}>
+                Florida
+              </CreateClub.DropdownItem>
+              <CreateClub.DropdownItem onClick={() => setShowItems(false)}>
+                Florida
+              </CreateClub.DropdownItem>
+              <CreateClub.DropdownItem onClick={() => setShowItems(false)}>
+                Florida
+              </CreateClub.DropdownItem>
+              <CreateClub.DropdownItem onClick={() => setShowItems(false)}>
+                Florida
+              </CreateClub.DropdownItem>
+              <CreateClub.DropdownItem onClick={() => setShowItems(false)}>
+                Florida
+              </CreateClub.DropdownItem>
             </CreateClub.DropdownItems>
           </CreateClub.DropdownContainer>
           <CreateClub.SmInputs>

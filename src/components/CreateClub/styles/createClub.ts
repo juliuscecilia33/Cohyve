@@ -10,7 +10,9 @@ export const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  background: #f4f9e9;
   padding: 0 15%;
+  padding-top: 2rem;
 `;
 
 export const Hero = styled.div`
@@ -276,6 +278,7 @@ export const Partners = styled.div`
 `;
 
 export const Section = styled.div`
+  background-color: #fafcfa;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -392,37 +395,45 @@ export const DropdownItems = styled.div<ActiveProps>`
   text-align: left;
   padding: 1.5rem;
   position: absolute;
-  bottom: -165%;
+  top: 115%;
   margin-left: auto;
   margin-right: auto;
   left: 0;
   right: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(211, 211, 211, 0.7) 0%,
-    rgba(204, 204, 204, 0.7) 89.47%
-  );
-  border: 1px solid #ffffff;
+  background: #fafcfa;
+  // border: #cdcdcd 1px solid;
   border-radius: 20px;
   z-index: 1000;
+  overflow-y: scroll;
+  height: 40vh;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    background-color: #f4f9e9;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%),
+      #284b63;
+    border-radius: 20px;
+  }
 `;
 
 export const DropdownItem = styled.button`
-  background: linear-gradient(
-    90deg,
-    rgba(211, 211, 211, 0.3) 0%,
-    rgba(204, 204, 204, 0.3) 89.47%
-  );
+  background: #fafcfa;
   width: 100%;
   display: flex;
   align-items: center;
   font-family: Poppins;
   font-style: normal;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 13px;
+  padding: 0.5rem 1.5rem;
   transition: 0.5 ease all;
   cursor: pointer;
-  height: 20px;
+  border-radius: 60px;
+  border: 1px solid #cdcdcd;
+  margin-bottom: 1rem;
 
   &:hover {
     background: rgba(255, 255, 255, 0.35);

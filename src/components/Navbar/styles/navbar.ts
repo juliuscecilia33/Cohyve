@@ -7,12 +7,13 @@ interface ActiveProps {
 export const Container = styled.div<ActiveProps>`
   width: 100%;
   height: 10vh;
-  background: ${({ background }) => background}
+  background: ${({ background }) => background};
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 15%;
-  margin-bottom: 2rem;
+  // padding-bottom: 2rem;
+  // margin-bottom: 2rem;
 `;
 
 export const ContainerMed = styled.div`
