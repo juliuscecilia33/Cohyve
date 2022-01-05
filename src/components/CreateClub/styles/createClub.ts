@@ -11,17 +11,18 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   background: #f4f9e9;
-  padding: 0 15%;
+
   padding-top: 2rem;
 `;
 
 export const Hero = styled.div`
-  padding: 1rem 0 10rem 0;
+  padding: 1rem 15% 10rem 15%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 100%;
   margin-bottom: 5rem;
+  // padding: 0 15%;
 `;
 
 export const Heading = styled.h1`
@@ -66,13 +67,13 @@ export const ImageBanner = styled.div<ActiveProps>`
   border-radius: 40px;
   position: relative;
   width: 100%;
-  height: 30vh;
+  height: 35vh;
 `;
 
 export const InfoContainer = styled.div`
   width: 85%;
   position: absolute;
-  bottom: -45%;
+  bottom: -55%;
   margin-left: auto;
   margin-right: auto;
   left: 0;
@@ -282,7 +283,7 @@ export const Section = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 2rem 0;
+  padding: 2rem 15% 2rem 15%;
 `;
 
 export const Inputs = styled.div`

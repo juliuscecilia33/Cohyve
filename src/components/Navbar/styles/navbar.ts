@@ -19,6 +19,7 @@ export const Container = styled.div<ActiveProps>`
 export const ContainerMed = styled.div`
   display: flex;
   height: 100%;
+  width: 100%;
 `;
 
 export const Logo = styled.img`
