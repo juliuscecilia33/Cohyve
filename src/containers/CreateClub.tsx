@@ -5,6 +5,58 @@ export function CreateClubContainer() {
   const [showItems, setShowItems] = useState(false);
   const [value, setValue] = useState("");
 
+  let states = [
+    "Alaska",
+    "Arizona",
+    "Arkansas",
+    "California",
+    "Colorado",
+    "Connecticut",
+    "Delaware",
+    "Florida",
+    "Georgia",
+    "Hawaii",
+    "Idaho",
+    "Illinois",
+    "Indiana",
+    "Iowa",
+    "Kansas",
+    "Kentucky",
+    "Louisiana",
+    "Maine",
+    "Maryland",
+    "Massachusetts",
+    "Michigan",
+    "Minnesota",
+    "Mississippi",
+    "Missouri",
+    "Montana",
+    "Nebraska",
+    "Nevada",
+    "New Hampshire",
+    "New Jersey",
+    "New Mexico",
+    "New York",
+    "North Carolina",
+    "North Dakota",
+    "Ohio",
+    "Oklahoma",
+    "Oregon",
+    "Pennsylvania",
+    "Rhode Island",
+    "South Carolina",
+    "South Dakota",
+    "Tennessee",
+    "Texas",
+    "Utah",
+    "Vermont",
+    "Virginia",
+    "Washington",
+    "West Virginia",
+    "Wisconsin",
+    "Wyoming",
+  ];
+
   return (
     <CreateClub>
       <CreateClub.Hero>
@@ -122,41 +174,19 @@ export function CreateClubContainer() {
               }}
               showItems={showItems}
             >
-              <CreateClub.DropdownItem
-                onClick={() => {
-                  setShowItems(false);
-                  setValue("California");
-                }}
-                onBlur={() => {
-                  setShowItems(false);
-                }}
-              >
-                California
-              </CreateClub.DropdownItem>
-              <CreateClub.DropdownItem
-                onClick={() => {
-                  setShowItems(false);
-                  setValue("Washington");
-                }}
-              >
-                Washington
-              </CreateClub.DropdownItem>
-              <CreateClub.DropdownItem
-                onClick={() => {
-                  setShowItems(false);
-                  setValue("New York");
-                }}
-              >
-                New York
-              </CreateClub.DropdownItem>
-              <CreateClub.DropdownItem
-                onClick={() => {
-                  setShowItems(false);
-                  setValue("Florida");
-                }}
-              >
-                Florida
-              </CreateClub.DropdownItem>
+              {states.map((state) => (
+                <CreateClub.DropdownItem
+                  onClick={() => {
+                    setShowItems(false);
+                    setValue(state);
+                  }}
+                  onBlur={() => {
+                    setShowItems(false);
+                  }}
+                >
+                  {state}
+                </CreateClub.DropdownItem>
+              ))}
             </CreateClub.DropdownItems>
           </CreateClub.DropdownContainer>
           <CreateClub.SmInputs>
