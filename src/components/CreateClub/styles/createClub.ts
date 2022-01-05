@@ -401,7 +401,7 @@ export const DropdownItems = styled.div<ActiveProps>`
   margin-right: auto;
   left: 0;
   right: 0;
-  background: #fafcfa;
+  background-color: #f4f9e9;
   // border: #cdcdcd 1px solid;
   border-radius: 20px;
   z-index: 1000;
@@ -433,11 +433,13 @@ export const DropdownItem = styled.button`
   transition: 0.5 ease all;
   cursor: pointer;
   border-radius: 60px;
-  border: 1px solid #cdcdcd;
+  border: 1px solid #afd5aa;
   margin-bottom: 1rem;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.35);
+    transition: 0.2s ease all;
+    background: #afd5aa;
+    color: #fafcfa;
   }
 `;
 

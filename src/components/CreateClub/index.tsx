@@ -50,11 +50,13 @@ type Props = {
   title?: string;
   onClick?: any;
   showItems?: boolean;
+  onBlur?: any;
 };
 
 type ButtonProps = {
   children?: React.ReactNode;
   onClick?: any;
+  onBlur?: any;
   value?: string;
   title?: string;
   setShowItems?: any;
@@ -238,6 +240,7 @@ CreateClub.DropdownContainer = function CreateClubDropdownContainer({
 };
 
 CreateClub.Dropdown = function CreateClubDropdown({
+  onBlur,
   value,
   title,
   onClick,
@@ -247,18 +250,21 @@ CreateClub.Dropdown = function CreateClubDropdown({
   return (
     <Dropdown {...restProps}>
       <p>{title}</p>
-      <button onClick={onClick}>{value}</button>
+      <button onBlur={onBlur} onClick={onClick}>
+        {value}
+      </button>
     </Dropdown>
   );
 };
 
 CreateClub.DropdownItems = function CreateClubDropdownItems({
+  onBlur,
   showItems,
   children,
   ...restProps
 }: Props) {
   return (
-    <DropdownItems showItems={showItems} {...restProps}>
+    <DropdownItems onBlur={onBlur} showItems={showItems} {...restProps}>
       {children}
     </DropdownItems>
   );

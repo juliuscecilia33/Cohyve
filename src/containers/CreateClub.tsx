@@ -3,6 +3,7 @@ import { CreateClub, ActionButton } from "../components";
 
 export function CreateClubContainer() {
   const [showItems, setShowItems] = useState(false);
+  const [value, setValue] = useState("");
 
   return (
     <CreateClub>
@@ -110,58 +111,50 @@ export function CreateClubContainer() {
           <CreateClub.DropdownContainer>
             <CreateClub.Dropdown
               onClick={() => {
-                setShowItems(true);
+                setShowItems(!showItems);
                 console.log(showItems);
               }}
               title="State"
             ></CreateClub.Dropdown>
-            <CreateClub.DropdownItems showItems={showItems}>
-              <CreateClub.DropdownItem onClick={() => setShowItems(false)}>
+            <CreateClub.DropdownItems
+              onBlur={() => {
+                setShowItems(false);
+              }}
+              showItems={showItems}
+            >
+              <CreateClub.DropdownItem
+                onClick={() => {
+                  setShowItems(false);
+                  setValue("California");
+                }}
+                onBlur={() => {
+                  setShowItems(false);
+                }}
+              >
                 California
               </CreateClub.DropdownItem>
-              <CreateClub.DropdownItem onClick={() => setShowItems(false)}>
+              <CreateClub.DropdownItem
+                onClick={() => {
+                  setShowItems(false);
+                  setValue("Washington");
+                }}
+              >
                 Washington
               </CreateClub.DropdownItem>
-              <CreateClub.DropdownItem onClick={() => setShowItems(false)}>
+              <CreateClub.DropdownItem
+                onClick={() => {
+                  setShowItems(false);
+                  setValue("New York");
+                }}
+              >
                 New York
               </CreateClub.DropdownItem>
-              <CreateClub.DropdownItem onClick={() => setShowItems(false)}>
-                Florida
-              </CreateClub.DropdownItem>
-              <CreateClub.DropdownItem onClick={() => setShowItems(false)}>
-                Florida
-              </CreateClub.DropdownItem>
-              <CreateClub.DropdownItem onClick={() => setShowItems(false)}>
-                Florida
-              </CreateClub.DropdownItem>
-              <CreateClub.DropdownItem onClick={() => setShowItems(false)}>
-                Florida
-              </CreateClub.DropdownItem>
-              <CreateClub.DropdownItem onClick={() => setShowItems(false)}>
-                Florida
-              </CreateClub.DropdownItem>
-              <CreateClub.DropdownItem onClick={() => setShowItems(false)}>
-                California
-              </CreateClub.DropdownItem>
-              <CreateClub.DropdownItem onClick={() => setShowItems(false)}>
-                Washington
-              </CreateClub.DropdownItem>
-              <CreateClub.DropdownItem onClick={() => setShowItems(false)}>
-                New York
-              </CreateClub.DropdownItem>
-              <CreateClub.DropdownItem onClick={() => setShowItems(false)}>
-                Florida
-              </CreateClub.DropdownItem>
-              <CreateClub.DropdownItem onClick={() => setShowItems(false)}>
-                Florida
-              </CreateClub.DropdownItem>
-              <CreateClub.DropdownItem onClick={() => setShowItems(false)}>
-                Florida
-              </CreateClub.DropdownItem>
-              <CreateClub.DropdownItem onClick={() => setShowItems(false)}>
-                Florida
-              </CreateClub.DropdownItem>
-              <CreateClub.DropdownItem onClick={() => setShowItems(false)}>
+              <CreateClub.DropdownItem
+                onClick={() => {
+                  setShowItems(false);
+                  setValue("Florida");
+                }}
+              >
                 Florida
               </CreateClub.DropdownItem>
             </CreateClub.DropdownItems>
