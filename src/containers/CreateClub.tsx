@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import { CreateClub, ActionButton } from "../components";
 
 export function CreateClubContainer() {
-  const [showItems, setShowItems] = useState(false);
-  const [value, setValue] = useState("");
-
   let states = [
     "Alaska",
     "Arizona",
@@ -56,6 +53,9 @@ export function CreateClubContainer() {
     "Wisconsin",
     "Wyoming",
   ];
+
+  const [showItems, setShowItems] = useState(false);
+  const [state, setState] = useState(states[0]);
 
   return (
     <CreateClub>
@@ -167,6 +167,7 @@ export function CreateClubContainer() {
                 console.log(showItems);
               }}
               title="State"
+              value={state}
             ></CreateClub.Dropdown>
             <CreateClub.DropdownItems
               onBlur={() => {
@@ -178,7 +179,7 @@ export function CreateClubContainer() {
                 <CreateClub.DropdownItem
                   onClick={() => {
                     setShowItems(false);
-                    setValue(state);
+                    setState(state);
                   }}
                   onBlur={() => {
                     setShowItems(false);

@@ -383,6 +383,8 @@ export const Dropdown = styled.div`
     font-weight: 500;
     font-size: 12px;
     cursor: pointer;
+    color: #373f51;
+    padding-left: 1.7rem;
 
     &:hover {
       background: rgba(255, 255, 255, 0.35);
