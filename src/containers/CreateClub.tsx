@@ -54,8 +54,33 @@ export function CreateClubContainer() {
     "Wyoming",
   ];
 
+  let categories = [
+    "Academic",
+    "Business",
+    "Cultural/International",
+    "Engineering",
+    "Environmental",
+    "Fraternities & Sororities",
+    "Gaming/Esports",
+    "Graduate/Professional",
+    "Health Sciences",
+    "Honorary",
+    "Law",
+    "Medical/Dental/Nursing",
+    "Performing",
+    "Political",
+    "Social Action",
+    "Recreation",
+    "Religious/Spiritual",
+    "Sciences",
+    "Special Interest",
+    "Sports",
+    "Student Government",
+  ];
+
   const [showItems, setShowItems] = useState(false);
   const [state, setState] = useState(states[0]);
+  const [category, setCategory] = useState(categories[0]);
 
   return (
     <CreateClub>
@@ -122,14 +147,36 @@ export function CreateClubContainer() {
             value=""
             onChange={null}
           />
-          <CreateClub.HalfInput
-            name="category"
-            title="Category"
-            type="text"
-            placeholder="Category"
-            value=""
-            onChange={null}
-          />
+          <CreateClub.DropdownContainer>
+            <CreateClub.Dropdown
+              onClick={() => {
+                setShowItems(!showItems);
+                console.log(showItems);
+              }}
+              title="Category"
+              value={category}
+            ></CreateClub.Dropdown>
+            <CreateClub.DropdownItems
+              onBlur={() => {
+                setShowItems(false);
+              }}
+              showItems={showItems}
+            >
+              {categories.map((category) => (
+                <CreateClub.DropdownItem
+                  onClick={() => {
+                    setShowItems(false);
+                    setCategory(category);
+                  }}
+                  onBlur={() => {
+                    setShowItems(false);
+                  }}
+                >
+                  {category}
+                </CreateClub.DropdownItem>
+              ))}
+            </CreateClub.DropdownItems>
+          </CreateClub.DropdownContainer>
         </CreateClub.Inputs>
         <CreateClub.Inputs>
           <CreateClub.LargeInput
