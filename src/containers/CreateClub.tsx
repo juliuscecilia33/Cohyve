@@ -142,7 +142,7 @@ export function CreateClubContainer() {
         <CreateClub.Inputs>
           <CreateClub.HalfInput
             name="clubName"
-            title="Club Name"
+            title="Club Name*"
             type="text"
             placeholder="Club Name"
             value=""
@@ -153,7 +153,7 @@ export function CreateClubContainer() {
               onClick={() => {
                 setShowCategories(!showCategories);
               }}
-              title="Category"
+              title="Category*"
               value={category}
             ></CreateClub.Dropdown>
             <CreateClub.DropdownItems
@@ -191,7 +191,7 @@ export function CreateClubContainer() {
         <CreateClub.Inputs>
           <CreateClub.HalfInput
             name="school"
-            title="School"
+            title="School*"
             type="text"
             placeholder="School"
             value=""
@@ -199,7 +199,7 @@ export function CreateClubContainer() {
           />
           <CreateClub.HalfInput
             name="established"
-            title="Established"
+            title="Established*"
             type="text"
             placeholder="Established"
             value=""
@@ -213,7 +213,7 @@ export function CreateClubContainer() {
                 setShowStates(!showStates);
                 console.log(showStates);
               }}
-              title="State"
+              title="State*"
               value={state}
             ></CreateClub.Dropdown>
             <CreateClub.DropdownItems
