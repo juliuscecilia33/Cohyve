@@ -78,7 +78,8 @@ export function CreateClubContainer() {
     "Student Government",
   ];
 
-  const [showItems, setShowItems] = useState(false);
+  const [showStates, setShowStates] = useState(false);
+  const [showCategories, setShowCategories] = useState(false);
   const [state, setState] = useState(states[0]);
   const [category, setCategory] = useState(categories[0]);
 
@@ -150,26 +151,25 @@ export function CreateClubContainer() {
           <CreateClub.DropdownContainer>
             <CreateClub.Dropdown
               onClick={() => {
-                setShowItems(!showItems);
-                console.log(showItems);
+                setShowCategories(!showCategories);
               }}
               title="Category"
               value={category}
             ></CreateClub.Dropdown>
             <CreateClub.DropdownItems
               onBlur={() => {
-                setShowItems(false);
+                setShowCategories(false);
               }}
-              showItems={showItems}
+              showItems={showCategories}
             >
               {categories.map((category) => (
                 <CreateClub.DropdownItem
                   onClick={() => {
-                    setShowItems(false);
+                    setShowCategories(false);
                     setCategory(category);
                   }}
                   onBlur={() => {
-                    setShowItems(false);
+                    setShowCategories(false);
                   }}
                 >
                   {category}
@@ -210,26 +210,26 @@ export function CreateClubContainer() {
           <CreateClub.DropdownContainer>
             <CreateClub.Dropdown
               onClick={() => {
-                setShowItems(!showItems);
-                console.log(showItems);
+                setShowStates(!showStates);
+                console.log(showStates);
               }}
               title="State"
               value={state}
             ></CreateClub.Dropdown>
             <CreateClub.DropdownItems
               onBlur={() => {
-                setShowItems(false);
+                setShowStates(false);
               }}
-              showItems={showItems}
+              showItems={showStates}
             >
               {states.map((state) => (
                 <CreateClub.DropdownItem
                   onClick={() => {
-                    setShowItems(false);
+                    setShowStates(false);
                     setState(state);
                   }}
                   onBlur={() => {
-                    setShowItems(false);
+                    setShowStates(false);
                   }}
                 >
                   {state}
