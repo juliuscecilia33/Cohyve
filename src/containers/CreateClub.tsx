@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { CreateClub, ActionButton } from "../components";
+import SchoolData from "../schools.json";
 
 export function CreateClubContainer() {
   let states = [
@@ -78,10 +79,32 @@ export function CreateClubContainer() {
     "Student Government",
   ];
 
+  const [filteredData, setFilteredData] = useState([]);
+  const [wordEntered, setWordEntered] = useState("");
+
   const [showStates, setShowStates] = useState(false);
   const [showCategories, setShowCategories] = useState(false);
   const [state, setState] = useState(states[0]);
   const [category, setCategory] = useState(categories[0]);
+
+  const handleFilter = (event: any) => {
+    const searchWord = event.target.value;
+    setWordEntered(searchWord);
+    const newFilter = SchoolData.filter((value: any) => {
+      return value.name.toLowerCase().includes(searchWord.toLowerCase());
+    });
+
+    if (searchWord === "") {
+      setFilteredData([]);
+    } else {
+      setFilteredData(newFilter);
+    }
+  };
+
+  const clearInput = () => {
+    setFilteredData([]);
+    setWordEntered("");
+  };
 
   return (
     <CreateClub>
@@ -189,14 +212,26 @@ export function CreateClubContainer() {
           />
         </CreateClub.Inputs>
         <CreateClub.Inputs>
-          <CreateClub.SearchInput
-            name="school"
-            title="School*"
-            type="text"
-            placeholder="School"
-            value=""
-            onChange={null}
-          />
+          <CreateClub.SearchContainer>
+            <CreateClub.SearchInput
+              name="school"
+              title="School*"
+              type="text"
+              placeholder="School"
+              value={wordEntered}
+              onChange={handleFilter}
+            />
+            {filteredData.length !== 0 && (
+              <CreateClub.SearchItems>
+                {filteredData.slice(0, 15).map((value, key) => {
+                  return (
+                    <CreateClub.SearchItem>{value.name}</CreateClub.SearchItem>
+                  );
+                })}
+              </CreateClub.SearchItems>
+            )}
+          </CreateClub.SearchContainer>
+
           <CreateClub.HalfInput
             name="established"
             title="Established*"

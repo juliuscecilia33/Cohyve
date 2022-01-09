@@ -33,6 +33,9 @@ import {
   DropdownItems,
   DropdownItem,
   SearchInput,
+  SearchContainer,
+  SearchItems,
+  SearchItem
 } from "./styles/createClub";
 
 type Props = {
@@ -233,6 +236,62 @@ CreateClub.Section = function CreateClubSection({
   return <Section {...restProps}>{children}</Section>;
 };
 
+CreateClub.SearchContainer = function CreateClubSearchContainer({
+  children,
+  ...restProps
+}: Props) {
+  return <SearchContainer {...restProps}>{children}</SearchContainer>;
+};
+
+CreateClub.SearchInput = function CreateClubSearchInput({
+  title,
+  name,
+  onChange,
+  placeholder,
+  value,
+  type,
+  children,
+  ...restProps
+}: Props) {
+  return (
+    <SearchInput {...restProps}>
+      <p>{title}</p>
+      <input
+        name={name}
+        type={type}
+        onChange={onChange}
+        value={value}
+        placeholder={placeholder}
+      />
+    </SearchInput>
+  );
+};
+
+CreateClub.SearchItems = function CreateClubSearchItems({
+  onBlur,
+  showItems,
+  children,
+  ...restProps
+}: Props) {
+  return (
+    <SearchItems {...restProps}>
+      {children}
+    </SearchItems>
+  );
+};
+
+CreateClub.SearchItem = function CreateClubSearchItem({
+  onClick,
+  children,
+  ...restProps
+}: ButtonProps) {
+  return (
+    <SearchItem onClick={onClick} {...restProps}>
+      {children}
+    </SearchItem>
+  );
+};
+
 CreateClub.DropdownContainer = function CreateClubDropdownContainer({
   children,
   ...restProps
@@ -318,30 +377,6 @@ CreateClub.HalfInput = function CreateClubHalfInput({
         placeholder={placeholder}
       />
     </HalfInput>
-  );
-};
-
-CreateClub.SearchInput = function CreateClubSearchInput({
-  title,
-  name,
-  onChange,
-  placeholder,
-  value,
-  type,
-  children,
-  ...restProps
-}: Props) {
-  return (
-    <SearchInput {...restProps}>
-      <p>{title}</p>
-      <input
-        name={name}
-        type={type}
-        onChange={onChange}
-        value={value}
-        placeholder={placeholder}
-      />
-    </SearchInput>
   );
 };
 

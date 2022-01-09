@@ -48,7 +48,7 @@ export function SearchBarContainer({ placeholder, data }: DataProps) {
           )}
         </div>
       </div>
-      {filteredData.length != 0 && (
+      {filteredData.length !== 0 && (
         <div className="dataResult">
           {filteredData.slice(0, 15).map((value, key) => {
             return <p>{value.name} </p>;

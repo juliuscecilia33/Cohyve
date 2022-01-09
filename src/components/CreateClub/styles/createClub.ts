@@ -344,10 +344,15 @@ export const HalfInput = styled.div`
   }
 `;
 
+export const SearchContainer = styled.div`
+  width: 45%;
+  position: relative;
+`;
+
 export const SearchInput = styled.div`
   display: flex;
   flex-direction: column;
-  width: 45%;
+  width: 100%;
 
   p {
     font-family: Poppins;
@@ -384,6 +389,58 @@ export const SearchInput = styled.div`
     &:hover {
       background: rgba(255, 255, 255, 0.35);
     }
+  }
+`;
+
+export const SearchItems = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding: 1.5rem;
+  position: absolute;
+  top: 115%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  background-color: #f4f9e9;
+  border-radius: 20px;
+  z-index: 1000;
+  overflow-y: scroll;
+  height: 40vh;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    background-color: #f4f9e9;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%),
+      #284b63;
+    border-radius: 20px;
+  }
+`;
+
+export const SearchItem = styled.div`
+  background: #fafcfa;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  padding: 0.5rem 1.5rem;
+  transition: 0.5 ease all;
+  cursor: pointer;
+  border-radius: 60px;
+  border: 1px solid #afd5aa;
+  margin-bottom: 1rem;
+
+  &:hover {
+    transition: 0.2s ease all;
+    background: #afd5aa;
+    color: #fafcfa;
   }
 `;
 
