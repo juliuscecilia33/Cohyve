@@ -103,9 +103,6 @@ function App() {
             <Route exact path={ROUTES.CREATE}>
               <CreateClubPage />
             </Route>
-            <Route exact path={ROUTES.SEARCH}>
-              <SearchTestPage />
-            </Route>
           </Switch>
         </Router>
       </UserTokenContext.Provider>

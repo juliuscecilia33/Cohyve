@@ -86,6 +86,7 @@ export function CreateClubContainer() {
   const [showCategories, setShowCategories] = useState(false);
   const [state, setState] = useState(states[0]);
   const [category, setCategory] = useState(categories[0]);
+  const [school, setSchool] = useState("");
 
   const handleFilter = (event: any) => {
     const searchWord = event.target.value;
@@ -101,9 +102,10 @@ export function CreateClubContainer() {
     }
   };
 
-  const clearInput = () => {
+  const setSchoolValue = (school: string) => {
     setFilteredData([]);
-    setWordEntered("");
+    setWordEntered(school);
+    setSchool(school);
   };
 
   return (
@@ -225,7 +227,11 @@ export function CreateClubContainer() {
               <CreateClub.SearchItems>
                 {filteredData.slice(0, 15).map((value, key) => {
                   return (
-                    <CreateClub.SearchItem>{value.name}</CreateClub.SearchItem>
+                    <CreateClub.SearchItem
+                      onClick={() => setSchoolValue(value.name)}
+                    >
+                      {value.name}
+                    </CreateClub.SearchItem>
                   );
                 })}
               </CreateClub.SearchItems>
