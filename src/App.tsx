@@ -6,7 +6,13 @@ import {
   Redirect,
 } from "react-router-dom";
 import axios from "axios";
-import { LoginPage, RegisterPage, UserPage, CreateClubPage } from "./pages";
+import {
+  LoginPage,
+  RegisterPage,
+  UserPage,
+  CreateClubPage,
+  SearchTestPage,
+} from "./pages";
 import * as ROUTES from "./constants/routes";
 import { UserTokenContext } from "./context/UserToken";
 
@@ -96,6 +102,9 @@ function App() {
             />
             <Route exact path={ROUTES.CREATE}>
               <CreateClubPage />
+            </Route>
+            <Route exact path={ROUTES.SEARCH}>
+              <SearchTestPage />
             </Route>
           </Switch>
         </Router>

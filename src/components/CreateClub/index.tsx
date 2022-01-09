@@ -32,6 +32,7 @@ import {
   Dropdown,
   DropdownItems,
   DropdownItem,
+  SearchInput,
 } from "./styles/createClub";
 
 type Props = {
@@ -317,6 +318,30 @@ CreateClub.HalfInput = function CreateClubHalfInput({
         placeholder={placeholder}
       />
     </HalfInput>
+  );
+};
+
+CreateClub.SearchInput = function CreateClubSearchInput({
+  title,
+  name,
+  onChange,
+  placeholder,
+  value,
+  type,
+  children,
+  ...restProps
+}: Props) {
+  return (
+    <SearchInput {...restProps}>
+      <p>{title}</p>
+      <input
+        name={name}
+        type={type}
+        onChange={onChange}
+        value={value}
+        placeholder={placeholder}
+      />
+    </SearchInput>
   );
 };
 

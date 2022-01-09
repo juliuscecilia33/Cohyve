@@ -189,7 +189,7 @@ export function CreateClubContainer() {
           />
         </CreateClub.Inputs>
         <CreateClub.Inputs>
-          <CreateClub.HalfInput
+          <CreateClub.SearchInput
             name="school"
             title="School*"
             type="text"

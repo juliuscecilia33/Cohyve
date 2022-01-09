@@ -344,6 +344,49 @@ export const HalfInput = styled.div`
   }
 `;
 
+export const SearchInput = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+
+  p {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    color: #373f51;
+    margin-bottom: 0.5rem;
+    text-transform: capitalize;
+  }
+
+  input {
+    background: linear-gradient(
+      90deg,
+      rgba(211, 211, 211, 0.3) 0%,
+      rgba(204, 204, 204, 0.3) 89.47%
+    );
+    border: 1px solid #ffffff;
+    border-radius: 100px;
+    width: 100%;
+    height: 56px;
+    padding: 1.5rem 1.7rem;
+    outline: none;
+    transition: 0.5s ease all;
+
+    &::placeholder {
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+    }
+
+    &:focus,
+    &:hover {
+      background: rgba(255, 255, 255, 0.35);
+    }
+  }
+`;
+
 export const DropdownContainer = styled.div`
   width: 45%;
   position: relative;
