@@ -56,6 +56,8 @@ type Props = {
   showItems?: boolean;
   onBlur?: any;
   maxLength?: any;
+  pattern?: string;
+  required?: boolean;
 };
 
 type ButtonProps = {
@@ -354,6 +356,8 @@ CreateClub.SmInputs = function CreateClubSmInputs({
 };
 
 CreateClub.HalfInput = function CreateClubHalfInput({
+  required,
+  pattern,
   maxLength,
   title,
   name,
@@ -367,14 +371,28 @@ CreateClub.HalfInput = function CreateClubHalfInput({
   return (
     <HalfInput {...restProps}>
       <p>{title}</p>
-      <input
-        name={name}
-        type={type}
-        onChange={onChange}
-        value={value}
-        placeholder={placeholder}
-        maxLength={maxLength}
-      />
+      {required ? (
+        <input
+          name={name}
+          type={type}
+          onChange={onChange}
+          value={value}
+          placeholder={placeholder}
+          maxLength={maxLength}
+          pattern={pattern}
+          required
+        />
+      ) : (
+        <input
+          name={name}
+          type={type}
+          onChange={onChange}
+          value={value}
+          placeholder={placeholder}
+          maxLength={maxLength}
+          pattern={pattern}
+        />
+      )}
     </HalfInput>
   );
 };

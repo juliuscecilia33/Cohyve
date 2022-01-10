@@ -116,6 +116,11 @@ export function CreateClubContainer() {
   const [clubName, setClubName] = useState("");
   const [description, setDescription] = useState("");
   const [established, setEstablished] = useState(years[0]);
+  const [website, setWebsite] = useState("");
+  const [twitter, setTwitter] = useState("");
+  const [instagram, setInstagram] = useState("");
+  const [facebook, setFacebook] = useState("");
+  const [email, setEmail] = useState("");
 
   const handleFilter = (event: any) => {
     const searchWord = event.target.value;
@@ -135,6 +140,12 @@ export function CreateClubContainer() {
     setFilteredData([]);
     setWordEntered(school);
     setSchool(school);
+  };
+
+  const onSubmit = (e: any) => {
+    if (clubName === "" || school === "") {
+      return false;
+    }
   };
 
   return (
@@ -201,6 +212,7 @@ export function CreateClubContainer() {
             placeholder="Club Name"
             value={clubName}
             onChange={(e: any) => setClubName(e.target.value)}
+            required={true}
           />
           <CreateClub.DropdownContainer>
             <CreateClub.Dropdown
@@ -240,6 +252,7 @@ export function CreateClubContainer() {
             placeholder="Description"
             value={description}
             onChange={(e: any) => setDescription(e.target.value)}
+            required={false}
           />
         </CreateClub.Inputs>
         <CreateClub.Inputs>
@@ -351,18 +364,21 @@ export function CreateClubContainer() {
           <CreateClub.HalfInput
             name="website"
             title="Website"
-            type="text"
-            placeholder="Website"
-            value=""
-            onChange={null}
+            type="url"
+            placeholder="https://example.com"
+            pattern="https://.*"
+            value={website}
+            onChange={(e: any) => setWebsite(e.target.value)}
+            required={false}
           />
           <CreateClub.HalfInput
             name="twitter"
             title="Twitter"
             type="text"
             placeholder="Twitter"
-            value=""
-            onChange={null}
+            value={twitter}
+            onChange={(e: any) => setTwitter(e.target.value)}
+            required={false}
           />
         </CreateClub.Inputs>
         <CreateClub.Inputs>
@@ -371,16 +387,18 @@ export function CreateClubContainer() {
             title="Instagram"
             type="text"
             placeholder="Instagram"
-            value=""
-            onChange={null}
+            value={instagram}
+            onChange={(e: any) => setInstagram(e.target.value)}
+            required={false}
           />
           <CreateClub.HalfInput
             name="facebook"
             title="Facebook"
             type="text"
             placeholder="Facebook"
-            value=""
-            onChange={null}
+            value={facebook}
+            onChange={(e: any) => setFacebook(e.target.value)}
+            required={false}
           />
         </CreateClub.Inputs>
         <CreateClub.Inputs>
@@ -389,8 +407,9 @@ export function CreateClubContainer() {
             title="Email"
             type="text"
             placeholder="Email"
-            value=""
-            onChange={null}
+            value={email}
+            onChange={(e: any) => setEmail(e.target.value)}
+            required={false}
           />
         </CreateClub.Inputs>
       </CreateClub.Section>
