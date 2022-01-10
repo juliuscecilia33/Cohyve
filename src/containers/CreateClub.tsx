@@ -3,7 +3,7 @@ import { CreateClub, ActionButton } from "../components";
 import SchoolData from "../schools.json";
 
 export function CreateClubContainer() {
-  let states = [
+  const states = [
     "Alaska",
     "Arizona",
     "Arkansas",
@@ -54,8 +54,7 @@ export function CreateClubContainer() {
     "Wisconsin",
     "Wyoming",
   ];
-
-  let categories = [
+  const categories = [
     "Academic",
     "Business",
     "Cultural/International",
@@ -78,15 +77,45 @@ export function CreateClubContainer() {
     "Sports",
     "Student Government",
   ];
+  const years = [
+    2022,
+    2021,
+    2020,
+    2019,
+    2018,
+    2017,
+    2016,
+    2015,
+    2014,
+    2013,
+    2012,
+    2011,
+    2010,
+    2009,
+    2008,
+    2007,
+    2006,
+    2005,
+    2004,
+    2003,
+    2002,
+    2001,
+    2000,
+    "< 2000",
+  ];
 
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
 
   const [showStates, setShowStates] = useState(false);
   const [showCategories, setShowCategories] = useState(false);
+  const [showYears, setShowYears] = useState(false);
   const [state, setState] = useState(states[0]);
   const [category, setCategory] = useState(categories[0]);
   const [school, setSchool] = useState("");
+  const [clubName, setClubName] = useState("");
+  const [description, setDescription] = useState("");
+  const [established, setEstablished] = useState(years[0]);
 
   const handleFilter = (event: any) => {
     const searchWord = event.target.value;
@@ -170,8 +199,8 @@ export function CreateClubContainer() {
             title="Club Name*"
             type="text"
             placeholder="Club Name"
-            value=""
-            onChange={null}
+            value={clubName}
+            onChange={(e: any) => setClubName(e.target.value)}
           />
           <CreateClub.DropdownContainer>
             <CreateClub.Dropdown
@@ -209,8 +238,8 @@ export function CreateClubContainer() {
             title="Description"
             type="text"
             placeholder="Description"
-            value=""
-            onChange={null}
+            value={description}
+            onChange={(e: any) => setDescription(e.target.value)}
           />
         </CreateClub.Inputs>
         <CreateClub.Inputs>
@@ -238,14 +267,35 @@ export function CreateClubContainer() {
             )}
           </CreateClub.SearchContainer>
 
-          <CreateClub.HalfInput
-            name="established"
-            title="Established*"
-            type="text"
-            placeholder="Established"
-            value=""
-            onChange={null}
-          />
+          <CreateClub.DropdownContainer>
+            <CreateClub.Dropdown
+              onClick={() => {
+                setShowYears(!showYears);
+              }}
+              title="Year Established*"
+              value={established}
+            ></CreateClub.Dropdown>
+            <CreateClub.DropdownItems
+              onBlur={() => {
+                setShowYears(false);
+              }}
+              showItems={showYears}
+            >
+              {years.map((year: any) => (
+                <CreateClub.DropdownItem
+                  onClick={() => {
+                    setShowYears(false);
+                    setEstablished(year);
+                  }}
+                  onBlur={() => {
+                    setShowYears(false);
+                  }}
+                >
+                  {year}
+                </CreateClub.DropdownItem>
+              ))}
+            </CreateClub.DropdownItems>
+          </CreateClub.DropdownContainer>
         </CreateClub.Inputs>
         <CreateClub.Inputs>
           <CreateClub.DropdownContainer>

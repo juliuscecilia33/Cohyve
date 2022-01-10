@@ -35,7 +35,7 @@ import {
   SearchInput,
   SearchContainer,
   SearchItems,
-  SearchItem
+  SearchItem,
 } from "./styles/createClub";
 
 type Props = {
@@ -55,13 +55,14 @@ type Props = {
   onClick?: any;
   showItems?: boolean;
   onBlur?: any;
+  maxLength?: any;
 };
 
 type ButtonProps = {
   children?: React.ReactNode;
   onClick?: any;
   onBlur?: any;
-  value?: string;
+  value?: string | number;
   title?: string;
   setShowItems?: any;
 };
@@ -273,11 +274,7 @@ CreateClub.SearchItems = function CreateClubSearchItems({
   children,
   ...restProps
 }: Props) {
-  return (
-    <SearchItems {...restProps}>
-      {children}
-    </SearchItems>
-  );
+  return <SearchItems {...restProps}>{children}</SearchItems>;
 };
 
 CreateClub.SearchItem = function CreateClubSearchItem({
@@ -357,6 +354,7 @@ CreateClub.SmInputs = function CreateClubSmInputs({
 };
 
 CreateClub.HalfInput = function CreateClubHalfInput({
+  maxLength,
   title,
   name,
   onChange,
@@ -375,6 +373,7 @@ CreateClub.HalfInput = function CreateClubHalfInput({
         onChange={onChange}
         value={value}
         placeholder={placeholder}
+        maxLength={maxLength}
       />
     </HalfInput>
   );
