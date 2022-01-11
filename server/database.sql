@@ -18,6 +18,7 @@ CREATE TABLE clubs(
   created_at DATE NOT NULL DEFAULT CURRENT_DATE,
   established_in INTEGER,
   state VARCHAR(255),
+  firebase_id VARCHAR(255),
   PRIMARY KEY (club_id)
 );
 
@@ -73,6 +74,7 @@ CREATE TABLE posts(
   title VARCHAR(255) NOT NULL,
   description VARCHAR(255),
   created_at DATE NOT NULL DEFAULT CURRENT_DATE,
+  firebase_id VARCHAR(255),
   PRIMARY KEY (post_id),
   FOREIGN KEY (club_id) REFERENCES clubs(club_id)
 );
@@ -169,3 +171,6 @@ values
     1,
     '08aa64a3 - fead -4757 - 840d - 6e6508b23a1a'
   );
+
+-- add a table column
+ALTER TABLE clubs ADD COLUMN firebase_id VARCHAR;
