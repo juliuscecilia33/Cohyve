@@ -412,6 +412,11 @@ export function CreateClubContainer() {
             required={false}
           />
         </CreateClub.Inputs>
+        <CreateClub.ButtonContainer>
+          <ActionButton background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;">
+            Submit
+          </ActionButton>
+        </CreateClub.ButtonContainer>
       </CreateClub.Section>
     </CreateClub>
   );

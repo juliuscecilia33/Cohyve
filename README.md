@@ -1,11 +1,15 @@
 # Getting Started
 
-### Backend:
+## Backend:
 
 - cd server
 - nodemon server.js
 
-### Frontend:
+### Connect to Database
+
+- Terminal -> psql -U postgres -> \c cohyve
+
+## Frontend:
 
 - npm i
 - npm start

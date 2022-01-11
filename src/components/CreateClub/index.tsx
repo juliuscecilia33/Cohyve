@@ -35,6 +35,7 @@ import {
   SearchInput,
   SearchContainer,
   SearchItems,
+  ButtonContainer,
   SearchItem,
 } from "./styles/createClub";
 
@@ -443,4 +444,11 @@ CreateClub.QuarterInput = function CreateClubQuarterInput({
       />
     </QuarterInput>
   );
+};
+
+CreateClub.ButtonContainer = function CreateClubButtonContainer({
+  children,
+  ...restProps
+}: Props) {
+  return <ButtonContainer {...restProps}>{children}</ButtonContainer>;
 };
