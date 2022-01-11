@@ -73,7 +73,7 @@ CREATE TABLE posts(
   club_id SERIAL,
   title VARCHAR(255) NOT NULL,
   description VARCHAR(255),
-  created_at DATE NOT NULL DEFAULT CURRENT_DATE,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
   firebase_id VARCHAR(255),
   PRIMARY KEY (post_id),
   FOREIGN KEY (club_id) REFERENCES clubs(club_id)

@@ -148,8 +148,6 @@ export function CreateClubContainer() {
     }
   };
 
-  // In database, create a firebase id field
-
   return (
     <CreateClub>
       <CreateClub.Hero>
