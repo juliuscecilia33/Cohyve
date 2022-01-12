@@ -8,7 +8,7 @@ import {
 export default function CreateClubPage() {
   return (
     <>
-      <NavbarContainer background="#f4f9e9" />
+      <NavbarContainer background="#F4FAF4" />
       <CreateClubContainer />
       <FooterContainer />
     </>

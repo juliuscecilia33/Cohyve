@@ -6,7 +6,7 @@ export const Container = styled.div`
   align-items: center;
   width: 100%;
   padding: 0 15%;
-  margin-bottom: 10vh;
+  margin: 5vh 0 10vh 0;
 `;
 
 export const Promo = styled.div`

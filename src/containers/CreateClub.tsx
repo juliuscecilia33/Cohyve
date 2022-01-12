@@ -161,11 +161,12 @@ export function CreateClubContainer() {
               <CreateClub.BasicInfo>
                 <CreateClub.ProfilePic profileImageUrl={null} />
                 <CreateClub.InfoText>
-                  <CreateClub.Name name="Club Name" year="Year" />
-                  <CreateClub.Description>Description</CreateClub.Description>
-                  <CreateClub.SchoolAndLocation
-                    school="School"
-                    location="Location"
+                  <CreateClub.Name name={clubName} year={established} />
+                  <CreateClub.Description>{description}</CreateClub.Description>
+                  <CreateClub.SchoolLocationCategory
+                    school={school}
+                    location={state}
+                    category={category}
                   />
                 </CreateClub.InfoText>
               </CreateClub.BasicInfo>

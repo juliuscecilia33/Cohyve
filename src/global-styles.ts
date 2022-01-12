@@ -66,6 +66,7 @@ export const GlobalStyles = createGlobalStyle`
 
         &:hover {
             text-decoration: none;
+            background: none;
         }
     }
 

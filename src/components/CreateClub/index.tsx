@@ -15,7 +15,7 @@ import {
   ButtonsAndLinks,
   Description,
   Name,
-  SchoolAndLocation,
+  SchoolLocationCategory,
   Links,
   Icon,
   Stats,
@@ -59,6 +59,7 @@ type Props = {
   maxLength?: any;
   pattern?: string;
   required?: boolean;
+  category?: string;
 };
 
 type ButtonProps = {
@@ -162,18 +163,19 @@ CreateClub.Name = function CreateClubName({
   );
 };
 
-CreateClub.SchoolAndLocation = function CreateClubSchoolAndLocation({
+CreateClub.SchoolLocationCategory = function CreateClubSchoolLocationCategory({
+  category,
   school,
   location,
   children,
   ...restProps
 }: Props) {
   return (
-    <SchoolAndLocation {...restProps}>
+    <SchoolLocationCategory {...restProps}>
       <p>
-        {school} | {location}
+        {school} | {location} | {category}
       </p>
-    </SchoolAndLocation>
+    </SchoolLocationCategory>
   );
 };
 

@@ -10,13 +10,13 @@ export const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  background: #f4f9e9;
+  background: #f4faf4;
 
   padding-top: 2rem;
 `;
 
 export const Hero = styled.div`
-  padding: 1rem 15% 10rem 15%;
+  padding: 1rem 15% 15rem 15%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -164,7 +164,7 @@ export const Description = styled.h3`
   margin-bottom: 1rem;
 `;
 
-export const SchoolAndLocation = styled.div`
+export const SchoolLocationCategory = styled.div`
   display: flex;
   align-items: center;
 
@@ -329,6 +329,8 @@ export const HalfInput = styled.div`
     padding: 1.5rem 1.7rem;
     outline: none;
     transition: 0.5s ease all;
+    font-family: Poppins;
+    font-style: normal;
 
     &::placeholder {
       font-family: Poppins;
@@ -377,6 +379,8 @@ export const SearchInput = styled.div`
     padding: 1.5rem 1.7rem;
     outline: none;
     transition: 0.5s ease all;
+    font-family: Poppins;
+    font-style: normal;
 
     &::placeholder {
       font-family: Poppins;
@@ -574,6 +578,8 @@ export const LargeInput = styled.div`
     outline: none;
     resize: none;
     transition: 0.5s ease all;
+    font-family: Poppins;
+    font-style: normal;
 
     &::placeholder {
       font-family: Poppins;
@@ -617,6 +623,8 @@ export const QuarterInput = styled.div`
     outline: none;
     padding: 1.5rem 1.7rem;
     transition: 0.5s ease all;
+    font-family: Poppins;
+    font-style: normal;
 
     &::placeholder {
       font-family: Poppins;
