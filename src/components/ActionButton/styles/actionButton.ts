@@ -5,14 +5,14 @@ interface ActiveProps {
 }
 
 export const Container = styled.button<ActiveProps>`
-  padding: 1vh 2vw;
+  padding: 1.3vh 2.1vw;
   background: ${({ background }) => background}
   border-radius: 100px;
   cursor: pointer;
   font-family: Poppins;
   font-style: normal;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 15px;
   color: #f0f2ef;
   // margin-top: 1rem;
   
