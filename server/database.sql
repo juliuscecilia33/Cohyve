@@ -19,6 +19,11 @@ CREATE TABLE clubs(
   established_in INTEGER,
   state VARCHAR(255),
   firebase_id VARCHAR(255),
+  website VARCHAR(255),
+  instagram VARCHAR(255),
+  facebook VARCHAR(255),
+  twitter VARCHAR(255),
+  email VARCHAR(255),
   PRIMARY KEY (club_id)
 );
 
@@ -44,18 +49,6 @@ CREATE TABLE followers(
 CREATE TABLE total_followers(
   club_id SERIAL,
   follower_count INTEGER NOT NULL,
-  FOREIGN KEY (club_id) REFERENCES clubs(club_id)
-);
-
-CREATE TABLE socials(
-  social_id SERIAL,
-  website VARCHAR(255),
-  instagram VARCHAR(255),
-  facebook VARCHAR(255),
-  twitter VARCHAR(255),
-  email VARCHAR(255),
-  club_id SERIAL,
-  PRIMARY KEY (social_id),
   FOREIGN KEY (club_id) REFERENCES clubs(club_id)
 );
 
@@ -107,25 +100,6 @@ insert into
 values
   (2, 3);
 
--- insert fake club socials
-insert into
-  socials(
-    website,
-    instagram,
-    facebook,
-    twitter,
-    email,
-    club_id
-  )
-values
-  (
-    'www.chemistryclubatuw.com',
-    '@chemclubatuw',
-    'chemclubatuw',
-    '@chemclubatuw',
-    'chemclub@uw.edu',
-    2
-  );
 
 -- inserting fake club posts 
 insert into

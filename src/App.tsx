@@ -15,7 +15,7 @@ import {
 } from "./pages";
 import * as ROUTES from "./constants/routes";
 import { UserTokenContext } from "./context/UserToken";
-import { db } from "./firebase";
+import { db, storage } from "./firebase";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -37,7 +37,7 @@ function App() {
   //     });
   // }, []);
 
-  console.log(db);
+  console.log(storage);
 
   useEffect(() => {
     let checkAuthenticated = async () => {

@@ -142,6 +142,8 @@ export function CreateClubContainer() {
     setSchool(school);
   };
 
+  // When club gets created, we'll first create a firebase id for it, then add that firebase id to the postgresql data 
+
   const onSubmit = (e: any) => {
     if (clubName === "" || school === "") {
       return false;
