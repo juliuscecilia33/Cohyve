@@ -15,27 +15,16 @@ import {
 } from "./pages";
 import * as ROUTES from "./constants/routes";
 import { UserTokenContext } from "./context/UserToken";
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyBTGpBByc86CchFs5ttkCWFytM9UgU56WQ",
-  authDomain: "cohyve.firebaseapp.com",
-  projectId: "cohyve",
-  storageBucket: "cohyve.appspot.com",
-  messagingSenderId: "814912928639",
-  appId: "1:814912928639:web:b81586702f59bd116c384a",
-};
-
-// Initialize Firebase
+// import { initializeApp } from "firebase/app";
+// import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userToken, setUserToken] = useState("");
 
   const [isLoading, setIsLoading] = useState(true);
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+  // const app = initializeApp(firebaseConfig);
+  // const db = getFirestore(app);
 
   // Get clubs
   // useEffect(() => {
@@ -48,16 +37,6 @@ function App() {
   //       console.error(error);
   //     });
   // }, []);
-
-  async function getClubs() {
-    const querySnapshot = await getDocs(collection(db, "clubs"));
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, " => ", doc.data());
-    });
-  }
-
-  getClubs();
 
   useEffect(() => {
     let checkAuthenticated = async () => {
