@@ -5,7 +5,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import axios from "axios";
+
 import {
   LoginPage,
   RegisterPage,
@@ -37,39 +37,42 @@ function App() {
   //     });
   // }, []);
 
-  console.log(storage);
+  const checkAuthenticated = async () => {
+    try {
+      const res = await fetch("http://localhost:5000/auth/verify", {
+        method: "POST",
+        headers: { jwt_token: localStorage.token },
+      });
+
+      const parseRes = await res.json();
+      console.log("parse res:" + parseRes);
+      console.log("after");
+      if (parseRes) {
+        setIsAuthenticated(true);
+        setUserToken(localStorage.token);
+        console.log(userToken);
+      } else {
+        setIsAuthenticated(false);
+      }
+
+      setIsLoading(false);
+
+      // if (isAuthenticated) {
+      //   setUserToken(localStorage.token);
+      //   console.log(userToken);
+      // }
+
+      console.log("is authenticated:", isAuthenticated);
+    } catch (err: any) {
+      setIsLoading(false);
+      setIsAuthenticated(false);
+      console.error(err.message);
+    }
+  };
 
   useEffect(() => {
-    let checkAuthenticated = async () => {
-      try {
-        const res = await fetch("http://localhost:5000/auth/verify", {
-          method: "POST",
-          headers: { jwt_token: localStorage.token },
-        });
-
-        const parseRes = await res.json();
-
-        parseRes === true
-          ? setIsAuthenticated(true)
-          : setIsAuthenticated(false);
-        setIsLoading(false);
-
-        if (isAuthenticated) {
-          setUserToken(localStorage.token);
-        }
-
-        console.log("is authenticated:", isAuthenticated);
-      } catch (err: any) {
-        setIsLoading(false);
-        setIsAuthenticated(false);
-        console.error(err.message);
-      }
-    };
-
     checkAuthenticated();
   }, []);
-
-  console.log(userToken);
 
   return (
     <>

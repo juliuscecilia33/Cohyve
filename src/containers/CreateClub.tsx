@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { CreateClub, ActionButton } from "../components";
 import SchoolData from "../schools.json";
+import axios from "axios";
+import { collection, addDoc } from "firebase/firestore";
+
+import { db } from "../firebase";
 
 export function CreateClubContainer() {
   const states = [
@@ -121,6 +125,8 @@ export function CreateClubContainer() {
   const [instagram, setInstagram] = useState("");
   const [facebook, setFacebook] = useState("");
   const [email, setEmail] = useState("");
+  const [firebaseId, setFirebaseId] = useState("");
+  const [submitError, setSubmitError] = useState(false);
 
   const handleFilter = (event: any) => {
     const searchWord = event.target.value;
@@ -142,12 +148,53 @@ export function CreateClubContainer() {
     setSchool(school);
   };
 
-  // When club gets created, we'll first create a firebase id for it, then add that firebase id to the postgresql data 
+  // When club gets created, we'll first create a firebase id for it, then add that firebase id to the postgresql data
 
-  const onSubmit = (e: any) => {
+  const handleSubmit = async () => {
     if (clubName === "" || school === "") {
-      return false;
+      setSubmitError(true);
+      return;
     }
+
+    const newClub = await addDoc(collection(db, "clubs"), {
+      name: clubName,
+      school: school,
+    });
+
+    console.log("New Club FirebaseID: ", newClub.id);
+    setFirebaseId(newClub.id);
+
+    const appBody = {
+      name: clubName,
+      description: description,
+      school: school,
+      category: category,
+      established_in: established,
+      state: state,
+      firebase_id: newClub.id,
+      website: website,
+      instagram: instagram,
+      facebook: facebook,
+      twitter: twitter,
+      email: email,
+    };
+
+    axios
+      .post("http://localhost:5000/clubs/", appBody, {
+        headers: {
+          jwt_token: localStorage.token,
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        console.log("Successfully created club");
+        // Direct to clubs page
+      })
+      .catch((error) => {
+        setSubmitError(error.message);
+        console.error("There was an error!", error);
+      });
+    console.log("Done");
   };
 
   return (
@@ -318,7 +365,6 @@ export function CreateClubContainer() {
             <CreateClub.Dropdown
               onClick={() => {
                 setShowStates(!showStates);
-                console.log(showStates);
               }}
               title="State*"
               value={state}
@@ -416,7 +462,10 @@ export function CreateClubContainer() {
           />
         </CreateClub.Inputs>
         <CreateClub.ButtonContainer>
-          <ActionButton background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;">
+          <ActionButton
+            onClick={() => handleSubmit()}
+            background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;"
+          >
             Submit
           </ActionButton>
         </CreateClub.ButtonContainer>

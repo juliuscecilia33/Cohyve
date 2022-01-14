@@ -8,11 +8,36 @@ const pool = require("../db");
 // Create Club
 router.post("/", authorize, async (req, res) => {
   try {
-    const { name, description, school, category, established_in, state } =
-      req.body;
+    const {
+      name,
+      description,
+      school,
+      category,
+      established_in,
+      state,
+      firebase_id,
+      website,
+      instagram,
+      facebook,
+      twitter,
+      email,
+    } = req.body;
     const newClub = await pool.query(
-      "INSERT INTO clubs (name, description, school, category, established_in, state) VALUES($1, $2, $3, $4, $5, $6) RETURNING *",
-      [name, description, school, category, established_in, state]
+      "INSERT INTO clubs (name, description, school, category, established_in, state, firebase_id, website, instagram, facebook, twitter, email) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING *",
+      [
+        name,
+        description,
+        school,
+        category,
+        established_in,
+        state,
+        firebase_id,
+        website,
+        instagram,
+        facebook,
+        twitter,
+        email,
+      ]
     );
 
     let clubId = newClub.rows[0].club_id;
