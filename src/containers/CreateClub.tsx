@@ -315,7 +315,7 @@ export function CreateClubContainer() {
             placeholder="Description"
             value={description}
             onChange={(e: any) => setDescription(e.target.value)}
-            required={false}
+            maxLength={300}
           />
         </CreateClub.Inputs>
         <CreateClub.Inputs>

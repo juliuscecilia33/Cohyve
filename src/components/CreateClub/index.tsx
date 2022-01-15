@@ -411,6 +411,7 @@ CreateClub.LargeInput = function CreateClubLargeInput({
   value,
   type,
   children,
+  maxLength,
   ...restProps
 }: Props) {
   return (
@@ -418,13 +419,15 @@ CreateClub.LargeInput = function CreateClubLargeInput({
       <p>{title}</p>
       <textarea
         name={name}
-        // type={type}
         onChange={onChange}
         value={value}
         placeholder={placeholder}
+        maxLength={maxLength}
       />
       <div>
-        <p>Max Length</p>
+        <p>
+          {value.trim().length}/{maxLength}
+        </p>
       </div>
     </LargeInput>
   );
