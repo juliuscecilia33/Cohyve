@@ -305,6 +305,18 @@ export const HalfInput = styled.div`
   display: flex;
   flex-direction: column;
   width: 45%;
+  position: relative;
+
+  div {
+    position: absolute;
+    right: 7%;
+    top: 60%;
+    bottom: -50%;
+    p {
+      font-size: 10px;
+      color: #cdcdcd;
+    }
+  }
 
   p {
     font-family: Poppins;
@@ -553,6 +565,7 @@ export const LargeInput = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  position: relative;
 
   p {
     font-family: Poppins;
@@ -562,6 +575,17 @@ export const LargeInput = styled.div`
     color: #373f51;
     margin-bottom: 0.5rem;
     text-transform: capitalize;
+  }
+
+  div {
+    position: absolute;
+    right: 3%;
+    // top: 18%;
+    bottom: 3%;
+    p {
+      font-size: 10px;
+      color: #cdcdcd;
+    }
   }
 
   textarea {

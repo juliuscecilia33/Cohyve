@@ -396,6 +396,9 @@ CreateClub.HalfInput = function CreateClubHalfInput({
           pattern={pattern}
         />
       )}
+      <div>
+        <p>Max Length</p>
+      </div>
     </HalfInput>
   );
 };
@@ -420,6 +423,9 @@ CreateClub.LargeInput = function CreateClubLargeInput({
         value={value}
         placeholder={placeholder}
       />
+      <div>
+        <p>Max Length</p>
+      </div>
     </LargeInput>
   );
 };
