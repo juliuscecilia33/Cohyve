@@ -632,7 +632,7 @@ export const LargeInput = styled.div`
   }
 `;
 
-export const QuarterInput = styled.div`
+export const ImageUpload = styled.div`
   display: flex;
   flex-direction: column;
   width: 45%;
@@ -647,33 +647,107 @@ export const QuarterInput = styled.div`
     text-transform: capitalize;
   }
 
+  // input {
+    // background: linear-gradient(
+    //   90deg,
+    //   rgba(211, 211, 211, 0.3) 0%,
+    //   rgba(204, 204, 204, 0.3) 89.47%
+    // );
+  //   border: 1px solid #ffffff;
+  //   border-radius: 100px;
+  //   width: 100%;
+  //   height: 56px;
+  //   outline: none;
+  //   padding: 1.5rem 1.7rem;
+  //   transition: 0.5s ease all;
+  //   font-family: Poppins;
+  //   font-style: normal;
+
+  //   &::placeholder {
+  //     font-family: Poppins;
+  //     font-style: normal;
+  //     font-weight: 500;
+  //     font-size: 12px;
+  //   }
+
+  //   &:focus,
+  //   &:hover {
+  //     background: rgba(255, 255, 255, 0.35);
+  //   }
+  }
+`;
+
+export const ImageInputs = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   input {
-    background: linear-gradient(
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+
+  input + label {
+    width: 100%;
+    height: 56px;
+    font-size: 1vw;
+    /* 20px */
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    outline: none;
+    padding: 0.625rem 1.25rem;
+    /* 10px 20px */
+    color: #f1e5e6;
+    background-color: linear-gradient(
       90deg,
       rgba(211, 211, 211, 0.3) 0%,
       rgba(204, 204, 204, 0.3) 89.47%
     );
-    border: 1px solid #ffffff;
-    border-radius: 100px;
-    width: 100%;
-    height: 56px;
-    outline: none;
-    padding: 1.5rem 1.7rem;
-    transition: 0.5s ease all;
-    font-family: Poppins;
-    font-style: normal;
+    border-radius: 10px;
+    transition: 0.5s all ease;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  }
 
-    &::placeholder {
-      font-family: Poppins;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 12px;
-    }
+  .no-js input + label {
+    display: none;
+  }
 
-    &:focus,
-    &:hover {
-      background: rgba(255, 255, 255, 0.35);
-    }
+  input:focus + label,
+  input.has-focus + label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+  }
+
+  input:focus + label,
+  input.has-focus + label,
+  input + label:hover {
+    background-color: linear-gradient(
+      90deg,
+      rgba(211, 211, 211, 0.3) 0%,
+      rgba(204, 204, 204, 0.3) 89.47%
+    );
+  }
+
+  input + label svg {
+    width: 1.25vw;
+    height: auto;
+    vertical-align: middle;
+    fill: currentColor;
+    margin-top: -0.25em;
+    /* 4px */
+    margin-right: 0.25em;
+    /* 4px */
   }
 `;
 

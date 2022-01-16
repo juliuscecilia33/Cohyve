@@ -180,34 +180,26 @@ export function CreateClubContainer() {
       email: email,
     };
 
-    axios
-      .post("http://localhost:5000/clubs/", appBody, {
-        headers: {
-          jwt_token: localStorage.token,
-        },
-      })
-      .then((response) => {
-        console.log(response);
-        console.log("Successfully created club");
-        // Direct to clubs page
-        // setClubName("");
-        // setSchool("");
-        // setState(states[0]);
-        // setCategory(categories[0]);
-        // setDescription("");
-        // setEstablished(years[0]);
-        // setWebsite("");
-        // setTwitter("");
-        // setInstagram("");
-        // setFacebook("");
-        // setEmail("");
-        // setFirebaseId("");
-      })
-      .catch((error) => {
-        setSubmitError(error.message);
-        console.error("There was an error!", error);
-      });
-    console.log("Done");
+    // axios
+    //   .post("http://localhost:5000/clubs/", appBody, {
+    //     headers: {
+    //       jwt_token: localStorage.token,
+    //     },
+    //   })
+    //   .then((response) => {
+    //     console.log(response);
+    //     console.log("Successfully created club");
+    //     // Direct to clubs page
+    //   })
+    //   .catch((error) => {
+    //     setSubmitError(error.message);
+    //     console.error("There was an error!", error);
+    //   });
+    // console.log("Done");
+  };
+
+  const handleChange = (e: any) => {
+    console.log(e.target.files[0]);
   };
 
   return (
@@ -406,21 +398,13 @@ export function CreateClubContainer() {
             </CreateClub.DropdownItems>
           </CreateClub.DropdownContainer>
           <CreateClub.SmInputs>
-            <CreateClub.QuarterInput
-              name="uploadProfile"
+            <CreateClub.ImageUpload
               title="Upload Club Profile"
-              type="text"
-              placeholder="Profile"
-              value=""
-              onChange={null}
+              handleChange={handleChange}
             />
-            <CreateClub.QuarterInput
-              name="uploadBanner"
+            <CreateClub.ImageUpload
               title="Upload Banner"
-              type="text"
-              placeholder="Upload Club Banner"
-              value=""
-              onChange={null}
+              handleChange={handleChange}
             />
           </CreateClub.SmInputs>
         </CreateClub.Inputs>
