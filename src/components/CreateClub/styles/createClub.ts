@@ -352,6 +352,7 @@ export const HalfInput = styled.div`
       font-style: normal;
       font-weight: 500;
       font-size: 12px;
+      color: #cdcdcd;
     }
 
     &:focus,

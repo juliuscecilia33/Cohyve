@@ -60,6 +60,7 @@ type Props = {
   pattern?: string;
   required?: boolean;
   category?: string;
+  showMax?: boolean;
 };
 
 type ButtonProps = {
@@ -369,6 +370,7 @@ CreateClub.HalfInput = function CreateClubHalfInput({
   value,
   type,
   children,
+  showMax,
   ...restProps
 }: Props) {
   return (
@@ -396,11 +398,13 @@ CreateClub.HalfInput = function CreateClubHalfInput({
           pattern={pattern}
         />
       )}
-      <div>
-        <p>
-          {value.trim().length}/{maxLength}
-        </p>
-      </div>
+      {showMax && (
+        <div>
+          <p>
+            {value.trim().length}/{maxLength}
+          </p>
+        </div>
+      )}
     </HalfInput>
   );
 };

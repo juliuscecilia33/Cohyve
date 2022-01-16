@@ -277,6 +277,7 @@ export function CreateClubContainer() {
             onChange={(e: any) => setClubName(e.target.value)}
             required={true}
             maxLength={30}
+            showMax={true}
           />
           <CreateClub.DropdownContainer>
             <CreateClub.Dropdown
@@ -433,15 +434,18 @@ export function CreateClubContainer() {
             value={website}
             onChange={(e: any) => setWebsite(e.target.value)}
             required={false}
+            showMax={false}
           />
           <CreateClub.HalfInput
             name="twitter"
             title="Twitter"
             type="text"
-            placeholder="Twitter"
+            placeholder="https://twitter.com"
+            pattern="https://.*"
             value={twitter}
             onChange={(e: any) => setTwitter(e.target.value)}
             required={false}
+            showMax={false}
           />
         </CreateClub.Inputs>
         <CreateClub.Inputs>
@@ -449,30 +453,36 @@ export function CreateClubContainer() {
             name="instagram"
             title="Instagram"
             type="text"
-            placeholder="Instagram"
+            placeholder="https://instagram.com"
+            pattern="https://.*"
             value={instagram}
             onChange={(e: any) => setInstagram(e.target.value)}
             required={false}
+            showMax={false}
           />
           <CreateClub.HalfInput
             name="facebook"
             title="Facebook"
             type="text"
-            placeholder="Facebook"
+            placeholder="https://facebook.com"
+            pattern="https://.*"
             value={facebook}
             onChange={(e: any) => setFacebook(e.target.value)}
             required={false}
+            showMax={false}
           />
         </CreateClub.Inputs>
         <CreateClub.Inputs>
           <CreateClub.HalfInput
             name="email"
             title="Email"
-            type="text"
+            type="email"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
             placeholder="Email"
             value={email}
             onChange={(e: any) => setEmail(e.target.value)}
             required={false}
+            showMax={false}
           />
         </CreateClub.Inputs>
         <CreateClub.ButtonContainer>
