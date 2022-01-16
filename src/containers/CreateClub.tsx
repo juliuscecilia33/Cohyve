@@ -276,6 +276,7 @@ export function CreateClubContainer() {
             value={clubName}
             onChange={(e: any) => setClubName(e.target.value)}
             required={true}
+            maxLength={30}
           />
           <CreateClub.DropdownContainer>
             <CreateClub.Dropdown
@@ -312,10 +313,10 @@ export function CreateClubContainer() {
             name="description"
             title="Description"
             type="text"
-            placeholder="Description"
+            placeholder="Write a short description about your club"
             value={description}
             onChange={(e: any) => setDescription(e.target.value)}
-            maxLength={300}
+            maxLength={50}
           />
         </CreateClub.Inputs>
         <CreateClub.Inputs>

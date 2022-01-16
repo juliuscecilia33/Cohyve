@@ -397,7 +397,9 @@ CreateClub.HalfInput = function CreateClubHalfInput({
         />
       )}
       <div>
-        <p>Max Length</p>
+        <p>
+          {value.trim().length}/{maxLength}
+        </p>
       </div>
     </HalfInput>
   );

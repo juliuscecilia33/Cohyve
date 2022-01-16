@@ -128,6 +128,7 @@ export const ProfilePic = styled.div<ActiveProps>`
 export const InfoText = styled.div`
   display: flex;
   flex-direction: column;
+  width: 60%;
 `;
 
 export const Name = styled.div`
@@ -138,8 +139,9 @@ export const Name = styled.div`
     font-family: Work Sans;
     font-style: normal;
     font-weight: bold;
-    font-size: 36px;
+    font-size: 30px;
     color: #f0f2ef;
+    text-overflow: ellipsis;
   }
 
   p {
@@ -158,10 +160,11 @@ export const Description = styled.h3`
   font-family: Poppins;
   font-style: normal;
   font-weight: bold;
-  font-size: 18px;
-  line-height: 27px;
+  font-size: 14px;
+  line-height: 20px;
   color: #79a1bc;
   margin-bottom: 1rem;
+  overflow: none;
 `;
 
 export const SchoolLocationCategory = styled.div`
@@ -580,8 +583,8 @@ export const LargeInput = styled.div`
   div {
     position: absolute;
     right: 3%;
-    // top: 18%;
-    bottom: 3%;
+    top: 60%;
+    bottom: -50%;
     p {
       font-size: 10px;
       color: #cdcdcd;
@@ -595,10 +598,10 @@ export const LargeInput = styled.div`
       rgba(204, 204, 204, 0.3) 89.47%
     );
     border: 1px solid #ffffff;
-    border-radius: 15px;
+    border-radius: 40px;
     width: 100%;
-    height: 245px;
-    padding: 1rem 1.7rem;
+    height: 60px;
+    padding: 1.2rem 1.7rem;
     outline: none;
     resize: none;
     transition: 0.5s ease all;
@@ -610,6 +613,7 @@ export const LargeInput = styled.div`
       font-style: normal;
       font-weight: 500;
       font-size: 12px;
+      // margin-top: 0.5rem;
     }
 
     &:focus,
