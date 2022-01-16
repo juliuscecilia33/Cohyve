@@ -355,6 +355,10 @@ export const HalfInput = styled.div`
       color: #cdcdcd;
     }
 
+    &:invalid {
+      border-color: #dd2c00;
+    }
+
     &:focus,
     &:hover {
       background: rgba(255, 255, 255, 0.35);
@@ -403,6 +407,10 @@ export const SearchInput = styled.div`
       font-style: normal;
       font-weight: 500;
       font-size: 12px;
+    }
+
+    &:invalid {
+      border-color: #dd2c00;
     }
 
     &:focus,

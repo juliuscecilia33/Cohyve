@@ -269,6 +269,7 @@ CreateClub.SearchInput = function CreateClubSearchInput({
         onChange={onChange}
         value={value}
         placeholder={placeholder}
+        required
       />
     </SearchInput>
   );
