@@ -399,12 +399,20 @@ export function CreateClubContainer() {
           </CreateClub.DropdownContainer>
           <CreateClub.SmInputs>
             <CreateClub.ImageUpload
-              title="Upload Club Profile"
+              title="Club Profile"
               handleChange={handleChange}
+              passiveBg="linear-gradient(
+      94.39deg,
+      rgba(88, 164, 176, 0.5) 8.09%,
+      rgba(175, 213, 170, 0.5) 93.12%
+    );"
+              activeBg="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%);"
+              uploaded={false}
             />
             <CreateClub.ImageUpload
-              title="Upload Banner"
+              title="Club Banner"
               handleChange={handleChange}
+              // background=""
             />
           </CreateClub.SmInputs>
         </CreateClub.Inputs>

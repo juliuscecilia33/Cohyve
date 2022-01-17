@@ -695,8 +695,9 @@ export const ImageInputs = styled.div`
   input + label {
     width: 100%;
     height: 56px;
-    font-size: 1vw;
+    font-size: 1rem;
     /* 20px */
+    font-family: Poppins;
     font-weight: 700;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -708,15 +709,14 @@ export const ImageInputs = styled.div`
     outline: none;
     padding: 0.625rem 1.25rem;
     /* 10px 20px */
-    color: #f1e5e6;
-    background-color: linear-gradient(
-      90deg,
-      rgba(211, 211, 211, 0.3) 0%,
-      rgba(204, 204, 204, 0.3) 89.47%
+    color: #fafcfa;
+    background: linear-gradient(
+      94.39deg,
+      rgba(88, 164, 176, 0.5) 8.09%,
+      rgba(175, 213, 170, 0.5) 93.12%
     );
-    border-radius: 10px;
+    border-radius: 40px;
     transition: 0.5s all ease;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   }
 
   .no-js input + label {
@@ -727,16 +727,13 @@ export const ImageInputs = styled.div`
   input.has-focus + label {
     outline: 1px dotted #000;
     outline: -webkit-focus-ring-color auto 5px;
+    background: linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%);
   }
 
   input:focus + label,
   input.has-focus + label,
   input + label:hover {
-    background-color: linear-gradient(
-      90deg,
-      rgba(211, 211, 211, 0.3) 0%,
-      rgba(204, 204, 204, 0.3) 89.47%
-    );
+    background: linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%);
   }
 
   input + label svg {
@@ -744,9 +741,8 @@ export const ImageInputs = styled.div`
     height: auto;
     vertical-align: middle;
     fill: currentColor;
-    margin-top: -0.25em;
     /* 4px */
-    margin-right: 0.25em;
+    margin-right: 0.5rem;
     /* 4px */
   }
 `;

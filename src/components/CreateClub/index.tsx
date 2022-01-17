@@ -456,7 +456,9 @@ CreateClub.ImageUpload = function CreateClubImageUpload({
   return (
     <ImageUpload {...restProps}>
       <p>{title}</p>
-      <CreateClub.ImageInputs handleChange={handleChange} />
+      <CreateClub.ImageInputs handleChange={handleChange}>
+        Upload
+      </CreateClub.ImageInputs>
     </ImageUpload>
   );
 };
