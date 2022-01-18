@@ -130,6 +130,8 @@ export function CreateClubContainer() {
   const [submitError, setSubmitError] = useState(false);
   const [profileUploaded, setProfileUploaded] = useState(false);
   const [bannerUploaded, setBannerUploaded] = useState(false);
+  const [profile, setProfile] = useState(null);
+  const [banner, setBanner] = useState(null);
 
   const handleFilter = (event: any) => {
     const searchWord = event.target.value;
@@ -203,11 +205,15 @@ export function CreateClubContainer() {
   const handleProfileChange = (e: any) => {
     console.log("Profile");
     console.log(e.target.files[0]);
+    setProfile(e.target.files[0]);
+    setProfileUploaded(true);
   };
 
   const handleBannerChange = (e: any) => {
     console.log("Banner");
     console.log(e.target.files[0]);
+    setBanner(e.target.files[0]);
+    setBannerUploaded(true);
   };
 
   return (
@@ -412,6 +418,7 @@ export function CreateClubContainer() {
               passiveBg="linear-gradient(94.39deg, rgba(88, 164, 176, 0.5) 8.09%, rgba(175, 213, 170, 0.5) 93.12%);"
               activeBg="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%);"
               uploaded={profileUploaded}
+              file={profile}
             />
             <CreateClub.ImageUpload
               title="Club Banner"
@@ -419,6 +426,7 @@ export function CreateClubContainer() {
               passiveBg="linear-gradient(94.39deg, rgba(245, 231, 171, 0.5) 8.09%, rgba(197, 176, 90, 0.5) 93.12%);"
               activeBg="linear-gradient(94.39deg, #F5E7AB 8.09%, #C5B05A 93.12%);"
               uploaded={bannerUploaded}
+              file={banner}
             />
           </CreateClub.SmInputs>
         </CreateClub.Inputs>

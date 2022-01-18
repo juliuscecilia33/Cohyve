@@ -69,6 +69,7 @@ type Props = {
   passive?: string;
   active?: string;
   upload?: boolean;
+  file?: any;
 };
 
 type ButtonProps = {
@@ -460,6 +461,7 @@ CreateClub.ImageUpload = function CreateClubImageUpload({
   passiveBg,
   activeBg,
   uploaded,
+  file,
   ...restProps
 }: Props) {
   return (
@@ -471,7 +473,7 @@ CreateClub.ImageUpload = function CreateClubImageUpload({
         upload={uploaded}
         handleChange={handleChange}
       >
-        Upload
+        <p>{uploaded ? file.name : "Upload"}</p>
       </CreateClub.ImageInputs>
     </ImageUpload>
   );

@@ -671,10 +671,6 @@ export const ImageInputs = styled.div<ActiveProps>`
     height: 56px;
     font-size: 1rem;
     /* 20px */
-    font-family: Poppins;
-    font-weight: 700;
-    text-overflow: ellipsis;
-    white-space: nowrap;
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -688,6 +684,20 @@ export const ImageInputs = styled.div<ActiveProps>`
       uploaded ? activeBg : passiveBg}
     border-radius: 40px;
     transition: 0.5s all ease;
+  }
+
+  p {
+    font-size: 0.9rem;
+    /* 20px */
+    font-family: Poppins;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #fafcfa;
+    margin: 0;
+    margin-left: .15rem;
+    max-width: 60%;
   }
 
   .no-js input + label {
