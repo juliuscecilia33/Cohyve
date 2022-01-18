@@ -4,6 +4,9 @@ interface ActiveProps {
   imageUrl?: string;
   profileImageUrl?: string;
   showItems?: boolean;
+  passiveBg?: string;
+  activeBg?: string;
+  uploaded?: boolean;
 }
 
 export const Container = styled.div`
@@ -646,38 +649,9 @@ export const ImageUpload = styled.div`
     margin-bottom: 0.5rem;
     text-transform: capitalize;
   }
-
-  // input {
-    // background: linear-gradient(
-    //   90deg,
-    //   rgba(211, 211, 211, 0.3) 0%,
-    //   rgba(204, 204, 204, 0.3) 89.47%
-    // );
-  //   border: 1px solid #ffffff;
-  //   border-radius: 100px;
-  //   width: 100%;
-  //   height: 56px;
-  //   outline: none;
-  //   padding: 1.5rem 1.7rem;
-  //   transition: 0.5s ease all;
-  //   font-family: Poppins;
-  //   font-style: normal;
-
-  //   &::placeholder {
-  //     font-family: Poppins;
-  //     font-style: normal;
-  //     font-weight: 500;
-  //     font-size: 12px;
-  //   }
-
-  //   &:focus,
-  //   &:hover {
-  //     background: rgba(255, 255, 255, 0.35);
-  //   }
-  }
 `;
 
-export const ImageInputs = styled.div`
+export const ImageInputs = styled.div<ActiveProps>`
   width: 100%;
   display: flex;
   justify-content: center;
@@ -710,11 +684,8 @@ export const ImageInputs = styled.div`
     padding: 0.625rem 1.25rem;
     /* 10px 20px */
     color: #fafcfa;
-    background: linear-gradient(
-      94.39deg,
-      rgba(88, 164, 176, 0.5) 8.09%,
-      rgba(175, 213, 170, 0.5) 93.12%
-    );
+    background: ${({ uploaded, activeBg, passiveBg }) =>
+      uploaded ? activeBg : passiveBg}
     border-radius: 40px;
     transition: 0.5s all ease;
   }
@@ -727,13 +698,13 @@ export const ImageInputs = styled.div`
   input.has-focus + label {
     outline: 1px dotted #000;
     outline: -webkit-focus-ring-color auto 5px;
-    background: linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%);
+    background: ${({ activeBg }) => activeBg}
   }
 
   input:focus + label,
   input.has-focus + label,
   input + label:hover {
-    background: linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%);
+    background: ${({ activeBg }) => activeBg}
   }
 
   input + label svg {

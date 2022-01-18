@@ -63,6 +63,12 @@ type Props = {
   category?: string;
   showMax?: boolean;
   handleChange?: any;
+  passiveBg?: string;
+  activeBg?: string;
+  uploaded?: boolean;
+  passive?: string;
+  active?: string;
+  upload?: boolean;
 };
 
 type ButtonProps = {
@@ -451,12 +457,20 @@ CreateClub.ImageUpload = function CreateClubImageUpload({
   value,
   type,
   children,
+  passiveBg,
+  activeBg,
+  uploaded,
   ...restProps
 }: Props) {
   return (
     <ImageUpload {...restProps}>
       <p>{title}</p>
-      <CreateClub.ImageInputs handleChange={handleChange}>
+      <CreateClub.ImageInputs
+        passive={passiveBg}
+        active={activeBg}
+        upload={uploaded}
+        handleChange={handleChange}
+      >
         Upload
       </CreateClub.ImageInputs>
     </ImageUpload>
@@ -464,12 +478,20 @@ CreateClub.ImageUpload = function CreateClubImageUpload({
 };
 
 CreateClub.ImageInputs = function CreateClubImageInputs({
+  passive,
+  active,
+  upload,
   handleChange,
   children,
   ...restProps
 }: Props) {
   return (
-    <ImageInputs {...restProps}>
+    <ImageInputs
+      passiveBg={passive}
+      activeBg={active}
+      uploaded={upload}
+      {...restProps}
+    >
       <input
         type="file"
         name="file-1[]"
