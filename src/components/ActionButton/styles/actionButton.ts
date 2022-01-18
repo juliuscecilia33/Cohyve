@@ -16,4 +16,8 @@ export const Container = styled.button<ActiveProps>`
   color: #f0f2ef;
   // margin-top: 1rem;
   
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 `;

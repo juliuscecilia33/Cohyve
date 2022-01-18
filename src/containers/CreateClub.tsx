@@ -499,6 +499,7 @@ export function CreateClubContainer() {
           <ActionButton
             onClick={() => handleSubmit()}
             background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;"
+            disabled={true}
           >
             Submit
           </ActionButton>
