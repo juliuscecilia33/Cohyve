@@ -419,6 +419,8 @@ export function CreateClubContainer() {
               activeBg="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%);"
               uploaded={profileUploaded}
               file={profile}
+              fileName="file-1[]"
+              fileId="file-1"
             />
             <CreateClub.ImageUpload
               title="Club Banner"
@@ -427,6 +429,8 @@ export function CreateClubContainer() {
               activeBg="linear-gradient(94.39deg, #F5E7AB 8.09%, #C5B05A 93.12%);"
               uploaded={bannerUploaded}
               file={banner}
+              fileName="file-2[]"
+              fileId="file-2"
             />
           </CreateClub.SmInputs>
         </CreateClub.Inputs>

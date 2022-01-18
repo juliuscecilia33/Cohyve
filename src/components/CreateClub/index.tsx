@@ -70,6 +70,8 @@ type Props = {
   active?: string;
   upload?: boolean;
   file?: any;
+  fileName?: string;
+  fileId?: string;
 };
 
 type ButtonProps = {
@@ -462,6 +464,8 @@ CreateClub.ImageUpload = function CreateClubImageUpload({
   activeBg,
   uploaded,
   file,
+  fileName,
+  fileId,
   ...restProps
 }: Props) {
   return (
@@ -472,6 +476,8 @@ CreateClub.ImageUpload = function CreateClubImageUpload({
         active={activeBg}
         upload={uploaded}
         handleChange={handleChange}
+        fileName={fileName}
+        fileId={fileId}
       >
         <p>{uploaded ? file.name : "Upload"}</p>
       </CreateClub.ImageInputs>
@@ -480,6 +486,8 @@ CreateClub.ImageUpload = function CreateClubImageUpload({
 };
 
 CreateClub.ImageInputs = function CreateClubImageInputs({
+  fileName,
+  fileId,
   passive,
   active,
   upload,
@@ -496,13 +504,13 @@ CreateClub.ImageInputs = function CreateClubImageInputs({
     >
       <input
         type="file"
-        name="file-1[]"
-        id="file-1"
+        name={fileName}
+        id={fileId}
         data-multiple-caption="{count} files selected"
         multiple
         onChange={handleChange}
       />
-      <label htmlFor="file-1">
+      <label htmlFor={fileId}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
