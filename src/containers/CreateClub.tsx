@@ -4,7 +4,7 @@ import SchoolData from "../schools.json";
 import axios from "axios";
 import { collection, addDoc } from "firebase/firestore";
 
-import { db } from "../firebase";
+import { storage, db, ref, uploadBytesResumable } from "../firebase";
 
 export function CreateClubContainer() {
   const states = [
@@ -132,6 +132,10 @@ export function CreateClubContainer() {
   const [bannerUploaded, setBannerUploaded] = useState(false);
   const [profile, setProfile] = useState(null);
   const [banner, setBanner] = useState(null);
+  const [disabled, setDisabled] = useState(false);
+  const [progress, setProgress] = useState(0);
+
+  const storageRef = ref(storage);
 
   const handleFilter = (event: any) => {
     const searchWord = event.target.value;
@@ -183,6 +187,49 @@ export function CreateClubContainer() {
       twitter: twitter,
       email: email,
     };
+
+    if (profile) {
+      const storageRef = ref(storage, `images/${profile.name}`);
+
+      const uploadTask = uploadBytesResumable(storageRef, profile);
+      
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          // progress function ...
+          const progress = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+          setProgress(progress);
+        },
+        (error) => {
+          // Error function...
+          alert(error.message);
+        },
+        () => {
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+      console.log('File available at', downloadURL);
+    }); // thet image is already uploaded, this gives us a download link for the uploaded image
+            .then((url) => {
+              // post image inside database
+              db.collection("posts").add({
+                timestamp: firebase.firestore.FieldValue.serverTimestamp(), // allows the most recent image to be on top
+                caption: caption,
+                imageUrl: url,
+                username: user.displayName,
+                usernamepic: user.photoURL,
+                likes: 0,
+                comments: 0,
+                userId: user.uid,
+              });
+  
+              setProgress(0);
+              setCaption("");
+              setImage(null);
+            });
+        }
+    }
+    );
 
     // axios
     //   .post("http://localhost:5000/clubs/", appBody, {
@@ -499,7 +546,7 @@ export function CreateClubContainer() {
           <ActionButton
             onClick={() => handleSubmit()}
             background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;"
-            disabled={true}
+            disabled={false}
           >
             Submit
           </ActionButton>
