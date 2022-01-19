@@ -4,7 +4,13 @@ import SchoolData from "../schools.json";
 import axios from "axios";
 import { collection, addDoc } from "firebase/firestore";
 
-import { storage, db, ref, uploadBytesResumable } from "../firebase";
+import {
+  storage,
+  db,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "../firebase";
 
 export function CreateClubContainer() {
   const states = [
@@ -165,34 +171,11 @@ export function CreateClubContainer() {
       return;
     }
 
-    const newClub = await addDoc(collection(db, "clubs"), {
-      name: clubName,
-      school: school,
-    });
-
-    console.log("New Club FirebaseID: ", newClub.id);
-    setFirebaseId(newClub.id);
-
-    const appBody = {
-      name: clubName,
-      description: description,
-      school: school,
-      category: category,
-      established_in: established,
-      state: state,
-      firebase_id: newClub.id,
-      website: website,
-      instagram: instagram,
-      facebook: facebook,
-      twitter: twitter,
-      email: email,
-    };
-
     if (profile) {
       const storageRef = ref(storage, `images/${profile.name}`);
 
       const uploadTask = uploadBytesResumable(storageRef, profile);
-      
+
       uploadTask.on(
         "state_changed",
         (snapshot) => {
@@ -207,29 +190,42 @@ export function CreateClubContainer() {
           alert(error.message);
         },
         () => {
-            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-      console.log('File available at', downloadURL);
-    }); // thet image is already uploaded, this gives us a download link for the uploaded image
+          getDownloadURL(uploadTask.snapshot.ref)
+            .then((downloadURL) => {
+              console.log("File available at", downloadURL);
+            }) // thet image is already uploaded, this gives us a download link for the uploaded image
             .then((url) => {
               // post image inside database
-              db.collection("posts").add({
-                timestamp: firebase.firestore.FieldValue.serverTimestamp(), // allows the most recent image to be on top
-                caption: caption,
-                imageUrl: url,
-                username: user.displayName,
-                usernamepic: user.photoURL,
-                likes: 0,
-                comments: 0,
-                userId: user.uid,
+
+              // gonna instead add doc and collection before uploading image and adding it to database,
+              // then going to edit fields of that doc in clubs collection with download; think I have to use set() method to edit
+              const newClub = addDoc(collection(db, "clubs"), {
+                name: clubName,
+                school: school,
+                imageUrl: "",
               });
-  
-              setProgress(0);
-              setCaption("");
-              setImage(null);
+
+              console.log("New Club FirebaseID: ", newClub.id);
+              setFirebaseId(newClub.id);
+
+              const appBody = {
+                name: clubName,
+                description: description,
+                school: school,
+                category: category,
+                established_in: established,
+                state: state,
+                firebase_id: newClub.id,
+                website: website,
+                instagram: instagram,
+                facebook: facebook,
+                twitter: twitter,
+                email: email,
+              };
             });
         }
+      );
     }
-    );
 
     // axios
     //   .post("http://localhost:5000/clubs/", appBody, {
