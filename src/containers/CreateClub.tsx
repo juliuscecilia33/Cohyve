@@ -140,7 +140,8 @@ export function CreateClubContainer() {
   const [profile, setProfile] = useState(null);
   const [banner, setBanner] = useState(null);
   const [disabled, setDisabled] = useState(false);
-  const [progress, setProgress] = useState(0);
+  const [profileProgress, setProfileProgress] = useState(0);
+  const [bannerProgress, setBannerProgress] = useState(0);
 
   const storageRef = ref(storage);
 
@@ -179,9 +180,6 @@ export function CreateClubContainer() {
       bannerImageUrl: "",
     });
 
-    console.log("New Club FirebaseID: ", newClub.id);
-    setFirebaseId(newClub.id);
-
     const appBody = {
       name: clubName,
       description: description,
@@ -197,6 +195,22 @@ export function CreateClubContainer() {
       email: email,
     };
 
+    axios
+      .post("http://localhost:5000/clubs/", appBody, {
+        headers: {
+          jwt_token: localStorage.token,
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        console.log("Successfully created club");
+        // Direct to clubs page
+      })
+      .catch((error) => {
+        setSubmitError(error.message);
+        console.error("There was an error!", error);
+      });
+
     if (profile) {
       const storageRef = ref(storage, `images/${profile.name}`);
 
@@ -210,7 +224,7 @@ export function CreateClubContainer() {
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100
           );
           console.log(progress);
-          setProgress(progress);
+          setProfileProgress(progress);
         },
         (error) => {
           // Error function...
@@ -219,33 +233,53 @@ export function CreateClubContainer() {
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             console.log("File available at", downloadURL);
-            setDoc(doc(db, "clubs", newClub.id), {
-              name: clubName,
-              school: school,
-              profileImageUrl: downloadURL,
-              bannerImageUrl: "",
-            });
+            setDoc(
+              doc(db, "clubs", newClub.id),
+              {
+                profileImageUrl: downloadURL,
+              },
+              { merge: true }
+            );
           });
         }
       );
     }
 
-    // axios
-    //   .post("http://localhost:5000/clubs/", appBody, {
-    //     headers: {
-    //       jwt_token: localStorage.token,
-    //     },
-    //   })
-    //   .then((response) => {
-    //     console.log(response);
-    //     console.log("Successfully created club");
-    //     // Direct to clubs page
-    //   })
-    //   .catch((error) => {
-    //     setSubmitError(error.message);
-    //     console.error("There was an error!", error);
-    //   });
-    // console.log("Done");
+    if (banner) {
+      const storageRef = ref(storage, `images/${banner.name}`);
+
+      const uploadTask = uploadBytesResumable(storageRef, banner);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          // progress function ...
+          const progress = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+          console.log(progress);
+          setBannerProgress(progress);
+        },
+        (error) => {
+          // Error function...
+          alert(error.message);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            console.log("File available at", downloadURL);
+            setDoc(
+              doc(db, "clubs", newClub.id),
+              {
+                bannerImageUrl: downloadURL,
+              },
+              { merge: true }
+            );
+          });
+        }
+      );
+    }
+
+    console.log("Done");
   };
 
   const handleProfileChange = (e: any) => {

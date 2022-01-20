@@ -47,10 +47,11 @@ function App() {
       const parseRes = await res.json();
       console.log("parse res:" + parseRes);
       console.log("after");
+
       if (parseRes) {
         setIsAuthenticated(true);
         setUserToken(localStorage.token);
-        console.log(userToken);
+        console.log(localStorage.token);
       } else {
         setIsAuthenticated(false);
       }
@@ -73,6 +74,8 @@ function App() {
   useEffect(() => {
     checkAuthenticated();
   }, []);
+
+  console.log(isAuthenticated);
 
   return (
     <>
