@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { CreateClub, ActionButton } from "../components";
 import SchoolData from "../schools.json";
 import axios from "axios";
+import { doc, setDoc } from "firebase/firestore";
 import { collection, addDoc } from "firebase/firestore";
 
 import {
@@ -171,6 +172,31 @@ export function CreateClubContainer() {
       return;
     }
 
+    const newClub = await addDoc(collection(db, "clubs"), {
+      name: clubName,
+      school: school,
+      profileImageUrl: "",
+      bannerImageUrl: "",
+    });
+
+    console.log("New Club FirebaseID: ", newClub.id);
+    setFirebaseId(newClub.id);
+
+    const appBody = {
+      name: clubName,
+      description: description,
+      school: school,
+      category: category,
+      established_in: established,
+      state: state,
+      firebase_id: newClub.id,
+      website: website,
+      instagram: instagram,
+      facebook: facebook,
+      twitter: twitter,
+      email: email,
+    };
+
     if (profile) {
       const storageRef = ref(storage, `images/${profile.name}`);
 
@@ -183,6 +209,7 @@ export function CreateClubContainer() {
           const progress = Math.round(
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100
           );
+          console.log(progress);
           setProgress(progress);
         },
         (error) => {
@@ -190,39 +217,15 @@ export function CreateClubContainer() {
           alert(error.message);
         },
         () => {
-          getDownloadURL(uploadTask.snapshot.ref)
-            .then((downloadURL) => {
-              console.log("File available at", downloadURL);
-            }) // thet image is already uploaded, this gives us a download link for the uploaded image
-            .then((url) => {
-              // post image inside database
-
-              // gonna instead add doc and collection before uploading image and adding it to database,
-              // then going to edit fields of that doc in clubs collection with download; think I have to use set() method to edit
-              const newClub = addDoc(collection(db, "clubs"), {
-                name: clubName,
-                school: school,
-                imageUrl: "",
-              });
-
-              console.log("New Club FirebaseID: ", newClub.id);
-              setFirebaseId(newClub.id);
-
-              const appBody = {
-                name: clubName,
-                description: description,
-                school: school,
-                category: category,
-                established_in: established,
-                state: state,
-                firebase_id: newClub.id,
-                website: website,
-                instagram: instagram,
-                facebook: facebook,
-                twitter: twitter,
-                email: email,
-              };
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            console.log("File available at", downloadURL);
+            setDoc(doc(db, "clubs", newClub.id), {
+              name: clubName,
+              school: school,
+              profileImageUrl: downloadURL,
+              bannerImageUrl: "",
             });
+          });
         }
       );
     }
