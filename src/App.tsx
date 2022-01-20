@@ -45,28 +45,31 @@ function App() {
       });
 
       const parseRes = await res.json();
-      console.log("parse res:" + parseRes);
-      console.log("after");
+      console.log("parse res:");
+      console.log(parseRes);
+      // console.log("after");
 
-      if (parseRes) {
-        setIsAuthenticated(true);
-        setUserToken(localStorage.token);
-        console.log(localStorage.token);
-      } else {
+      if ((parseRes.msg = "Token is not valid")) {
         setIsAuthenticated(false);
+        console.log("Removed expired token");
+        // remove expired token
+        localStorage.removeItem("token");
+      } else if (parseRes) {
+        setIsAuthenticated(true);
       }
 
-      setIsLoading(false);
+      // setIsLoading(false);
 
       // if (isAuthenticated) {
       //   setUserToken(localStorage.token);
       //   console.log(userToken);
       // }
 
-      console.log("is authenticated:", isAuthenticated);
+      // console.log("is authenticated:", isAuthenticated);
     } catch (err: any) {
       setIsLoading(false);
       setIsAuthenticated(false);
+      console.log("reached error");
       console.error(err.message);
     }
   };
