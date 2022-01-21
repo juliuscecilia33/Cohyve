@@ -48,12 +48,6 @@ router.post("/", authorize, async (req, res) => {
       [clubId, req.user.id]
     );
 
-    // We automatically insert into Followers table set to 0
-    const insertFollowersCount = await pool.query(
-      "INSERT INTO total_followers(club_id, follower_count) VALUES($1, $2) RETURNING *",
-      [clubId, 0]
-    );
-
     res.json(newClub.rows[0]);
   } catch (err) {
     console.error(err.message);
@@ -182,7 +176,7 @@ router.post("/:id/follow", authorize, async (req, res) => {
       );
       // Decrement follower count of club
       const decrementFollowersCount = await pool.query(
-        "UPDATE total_followers SET follower_count = follower_count - 1 WHERE club_id = $1",
+        "UPDATE clubs SET follower_count = follower_count - 1 WHERE club_id = $1",
         [id]
       );
       res.json("Unfollowed");
@@ -195,7 +189,7 @@ router.post("/:id/follow", authorize, async (req, res) => {
 
       // Increment follower count of club
       const incrementFollowersCount = await pool.query(
-        "UPDATE total_followers SET follower_count = follower_count + 1 WHERE club_id = $1",
+        "UPDATE clubs SET follower_count = follower_count + 1 WHERE club_id = $1",
         [id]
       );
       res.json("Followed!");

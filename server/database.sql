@@ -25,6 +25,7 @@ CREATE TABLE clubs(
   facebook VARCHAR(255),
   twitter VARCHAR(255),
   email VARCHAR(255),
+  follower_count INTEGER NOT NULL DEFAULT 0,
   PRIMARY KEY (club_id)
 );
 
@@ -47,11 +48,11 @@ CREATE TABLE followers(
   PRIMARY KEY(club_id, user_id)
 );
 
-CREATE TABLE total_followers(
-  club_id SERIAL,
-  follower_count INTEGER NOT NULL,
-  FOREIGN KEY (club_id) REFERENCES clubs(club_id)
-);
+-- CREATE TABLE total_followers(
+--   club_id SERIAL,
+--   follower_count INTEGER NOT NULL,
+--   FOREIGN KEY (club_id) REFERENCES clubs(club_id)
+-- );
 
 CREATE TABLE partners(
   partner_id SERIAL,

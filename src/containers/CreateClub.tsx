@@ -133,7 +133,6 @@ export function CreateClubContainer() {
   const [instagram, setInstagram] = useState("");
   const [facebook, setFacebook] = useState("");
   const [email, setEmail] = useState("");
-  const [firebaseId, setFirebaseId] = useState("");
   const [submitError, setSubmitError] = useState(false);
   const [profileUploaded, setProfileUploaded] = useState(false);
   const [bannerUploaded, setBannerUploaded] = useState(false);
