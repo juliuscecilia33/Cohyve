@@ -16,6 +16,7 @@ CREATE TABLE clubs(
   school VARCHAR(255) NOT NULL,
   category VARCHAR(255) NOT NULL,
   created_at DATE NOT NULL DEFAULT CURRENT_DATE,
+  verified BOOLEAN NOT NULL DEFAULT FALSE,
   established_in INTEGER,
   state VARCHAR(255),
   firebase_id VARCHAR(255),

@@ -8,6 +8,8 @@ export const Container = styled.div`
   align-items: center;
   padding: 3rem 15%;
   margin-top: 2rem;
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
 `;
 
 export const ContainerMed = styled.div`

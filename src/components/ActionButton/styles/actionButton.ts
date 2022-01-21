@@ -13,7 +13,7 @@ export const Container = styled.button<ActiveProps>`
   font-style: normal;
   font-weight: 600;
   font-size: 15px;
-  color: #f0f2ef;
+  color: #F4FAF4;
   // margin-top: 1rem;
   
   &:disabled {
