@@ -6,16 +6,9 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import {
-  LoginPage,
-  RegisterPage,
-  UserPage,
-  CreateClubPage,
-  SearchTestPage,
-} from "./pages";
+import { LoginPage, RegisterPage, UserPage, CreateClubPage } from "./pages";
 import * as ROUTES from "./constants/routes";
 import { UserTokenContext } from "./context/UserToken";
-import { db, storage } from "./firebase";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -41,21 +34,8 @@ function App() {
       });
 
       const parseRes = await res.json();
-      console.log("parse res:");
-      console.log(parseRes);
 
-      if (parseRes) {
-        setIsAuthenticated(true);
-      }
-
-      if ((parseRes.msg = "Token is not valid")) {
-        setIsAuthenticated(false);
-        console.log("Removed expired token");
-        // remove expired token
-        localStorage.removeItem("token");
-      }
-
-      console.log("is authenticated:", isAuthenticated);
+      parseRes === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
     } catch (err: any) {
       setIsAuthenticated(false);
       console.error(err.message);

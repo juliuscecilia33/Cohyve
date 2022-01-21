@@ -212,7 +212,7 @@ export function CreateClubContainer() {
       });
 
     if (profile) {
-      const storageRef = ref(storage, `images/${profile.name}`);
+      const storageRef = ref(storage, `clubProfiles/${profile.name}`);
 
       const uploadTask = uploadBytesResumable(storageRef, profile);
 
@@ -246,7 +246,7 @@ export function CreateClubContainer() {
     }
 
     if (banner) {
-      const storageRef = ref(storage, `images/${banner.name}`);
+      const storageRef = ref(storage, `clubBanners/${banner.name}`);
 
       const uploadTask = uploadBytesResumable(storageRef, banner);
 
