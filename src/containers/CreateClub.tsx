@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { CreateClub, ActionButton } from "../components";
+import { CreateClub, ActionButton, Hero } from "../components";
 import SchoolData from "../schools.json";
 import axios from "axios";
 import { doc, setDoc } from "firebase/firestore";
@@ -298,10 +298,10 @@ export function CreateClubContainer() {
 
   return (
     <CreateClub>
-      <CreateClub.Hero>
-        <CreateClub.Heading>
+      <Hero>
+        <Hero.Heading>
           create<span>club</span>
-        </CreateClub.Heading>
+        </Hero.Heading>
         <CreateClub.PreviewText />
         <CreateClub.ImageBanner imageUrl={null}>
           <CreateClub.InfoContainer>
@@ -351,7 +351,7 @@ export function CreateClubContainer() {
             </CreateClub.Info>
           </CreateClub.InfoContainer>
         </CreateClub.ImageBanner>
-      </CreateClub.Hero>
+      </Hero>
       <CreateClub.Section>
         <CreateClub.Inputs>
           <CreateClub.HalfInput

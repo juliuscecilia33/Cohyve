@@ -2,8 +2,6 @@ import React from "react";
 
 import {
   Container,
-  Hero,
-  Heading,
   PreviewText,
   ImageBanner,
   InfoContainer,
@@ -86,17 +84,6 @@ type ButtonProps = {
 export default function CreateClub({ children, ...restProps }: Props) {
   return <Container {...restProps}>{children}</Container>;
 }
-
-CreateClub.Hero = function CreateClubHero({ children, ...restProps }: Props) {
-  return <Hero {...restProps}>{children}</Hero>;
-};
-
-CreateClub.Heading = function CreateClubHeading({
-  children,
-  ...restProps
-}: Props) {
-  return <Heading {...restProps}>{children}</Heading>;
-};
 
 CreateClub.PreviewText = function CreateClubPreviewText({
   children,
