@@ -21,10 +21,6 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userToken, setUserToken] = useState("");
 
-  const [isLoading, setIsLoading] = useState(true);
-  // const app = initializeApp(firebaseConfig);
-  // const db = getFirestore(app);
-
   // Get clubs
   // useEffect(() => {
   //   axios
@@ -47,29 +43,21 @@ function App() {
       const parseRes = await res.json();
       console.log("parse res:");
       console.log(parseRes);
-      // console.log("after");
+
+      if (parseRes) {
+        setIsAuthenticated(true);
+      }
 
       if ((parseRes.msg = "Token is not valid")) {
         setIsAuthenticated(false);
         console.log("Removed expired token");
         // remove expired token
         localStorage.removeItem("token");
-      } else if (parseRes) {
-        setIsAuthenticated(true);
       }
 
-      // setIsLoading(false);
-
-      // if (isAuthenticated) {
-      //   setUserToken(localStorage.token);
-      //   console.log(userToken);
-      // }
-
-      // console.log("is authenticated:", isAuthenticated);
+      console.log("is authenticated:", isAuthenticated);
     } catch (err: any) {
-      setIsLoading(false);
       setIsAuthenticated(false);
-      console.log("reached error");
       console.error(err.message);
     }
   };
