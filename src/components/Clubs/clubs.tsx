@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Container, ClubBlock } from "./styles/clubs";
+import { Container } from "./styles/clubs";
 
 type Props = {
   children?: React.ReactNode;
@@ -10,11 +10,3 @@ type Props = {
 export default function Clubs({ children, ...restProps }: Props) {
   return <Container {...restProps}>{children}</Container>;
 }
-
-Clubs.ClubBlock = function ClubsClubBlock({
-  rank,
-  children,
-  ...restProps
-}: Props) {
-  return <ClubBlock {...restProps}>{children}</ClubBlock>;
-};
