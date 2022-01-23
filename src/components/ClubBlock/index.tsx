@@ -26,6 +26,7 @@ type Props = {
   school?: string;
   profilePic?: string;
   user?: string;
+  backgroundColor?: string;
 };
 
 export default function ClubBlock({ children, ...restProps }: Props) {
@@ -44,7 +45,7 @@ ClubBlock.ImageContainer = function ClubBlockImageContainer({
     <ImageContainer {...restProps}>
       {rank && (
         <ClubBlock.RankLabel rankCount={rankCount}>
-          {rankCount}
+          <h3>{rankCount}</h3>
         </ClubBlock.RankLabel>
       )}
       <img src={src} alt={clubName} />
@@ -95,11 +96,11 @@ ClubBlock.Stats = function ClubBlockStats({
   return (
     <Stats {...restProps}>
       <div>
-        {followers}
+        <p>{followers}</p>
         <i className="fas fa-users"></i>
       </div>
       <div>
-        {members}
+        <p>{members}</p>
         <i className="fas fa-user-check"></i>
       </div>
     </Stats>
@@ -127,13 +128,14 @@ ClubBlock.Members = function ClubBlockMembers({
 };
 
 ClubBlock.Member = function ClubBlockMember({
+  backgroundColor,
   profilePic,
   user,
   children,
   ...restProps
 }: Props) {
   return (
-    <Member {...restProps}>
+    <Member backgroundColor={backgroundColor} {...restProps}>
       <img src={profilePic} alt={user} />
     </Member>
   );
