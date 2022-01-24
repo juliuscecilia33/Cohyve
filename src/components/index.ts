@@ -4,3 +4,4 @@ export { default as Footer } from "./Footer";
 export { default as CreateClub } from "./CreateClub";
 export { default as Login } from "./Login";
 export { default as Hero } from "./Hero";
+export { default as ClubBlock } from "./ClubBlock";

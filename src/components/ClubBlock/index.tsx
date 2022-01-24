@@ -22,7 +22,7 @@ type Props = {
   rankCount?: number;
   verified?: boolean;
   followers?: number;
-  members?: number;
+  members?: any;
   school?: string;
   profilePic?: string;
   user?: string;
@@ -59,11 +59,7 @@ ClubBlock.RankLabel = function ClubBlockRankLabel({
   children,
   ...restProps
 }: Props) {
-  return (
-    <RankLabel rankCount={rankCount} {...restProps}>
-      {children}
-    </RankLabel>
-  );
+  return <RankLabel {...restProps}>{children}</RankLabel>;
 };
 
 ClubBlock.InformationContainer = function ClubBlockInformationContainer({
