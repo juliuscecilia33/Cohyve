@@ -11,11 +11,12 @@ import {
 import EnterIcon from "../../../public/images/EnterIcon.png";
 
 type Props = {
+  children?: React.ReactNode;
+};
+
+type ButtonProps = {
   name?: string;
-  type?: string;
   placeholder?: string;
-  onChange?: any;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   value?: any;
   showItems?: boolean;
   clubProfileImage?: any;
@@ -24,6 +25,16 @@ type Props = {
   clubState?: string;
   children?: React.ReactNode;
   schoolName?: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+};
+
+type InputProps = {
+  onChange?: React.FormEventHandler<HTMLDivElement>;
+  name?: string;
+  type?: string;
+  placeholder?: string;
+  value?: any;
+  children?: React.ReactNode;
 };
 
 export default function Search({
@@ -34,7 +45,7 @@ export default function Search({
   type,
   children,
   ...restProps
-}: Props) {
+}: InputProps) {
   return (
     <Container {...restProps}>
       <input
@@ -72,7 +83,7 @@ Search.DropdownClubItem = function SearchDropdownClubItem({
   onClick,
   children,
   ...restProps
-}: Props) {
+}: ButtonProps) {
   return (
     <DropdownClubItem onClick={onClick} {...restProps}>
       <div className="club">
@@ -95,7 +106,7 @@ Search.DropdownSchoolItem = function SearchDropdownSchoolItem({
   onClick,
   children,
   ...restProps
-}: Props) {
+}: ButtonProps) {
   return (
     <DropdownSchoolItem onClick={onClick} {...restProps}>
       <h3>{schoolName}</h3>
