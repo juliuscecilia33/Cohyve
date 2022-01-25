@@ -2,7 +2,6 @@ import React from "react";
 
 import {
   Container,
-  Dropdown,
   Icon,
   DropdownItems,
   DropdownClubItem,
@@ -58,20 +57,11 @@ Search.Icon = function SearchIcon({ children, ...restProps }: Props) {
   );
 };
 
-Search.Dropdown = function SearchDropdown({ children, ...restProps }: Props) {
-  return <Dropdown {...restProps}>{children}</Dropdown>;
-};
-
 Search.DropdownItems = function SearchDropdownItems({
-  showItems,
   children,
   ...restProps
 }: Props) {
-  return (
-    <DropdownItems showItems={showItems} {...restProps}>
-      {children}
-    </DropdownItems>
-  );
+  return <DropdownItems {...restProps}>{children}</DropdownItems>;
 };
 
 Search.DropdownClubItem = function SearchDropdownClubItem({
@@ -85,12 +75,14 @@ Search.DropdownClubItem = function SearchDropdownClubItem({
 }: Props) {
   return (
     <DropdownClubItem onClick={onClick} {...restProps}>
-      <img src={clubProfileImage} alt={clubName} />
-      <h3>{clubName}</h3>
-      <p>
-        - {clubSchool}, {clubState}
-      </p>
-      <div>
+      <div className="club">
+        <img src={clubProfileImage} alt={clubName} />
+        <h3>{clubName}</h3>
+        <p>
+          - {clubSchool}, {clubState}
+        </p>
+      </div>
+      <div className="enter">
         <p>Enter</p>
         <img src={EnterIcon} alt="Enter" />
       </div>
@@ -107,7 +99,7 @@ Search.DropdownSchoolItem = function SearchDropdownSchoolItem({
   return (
     <DropdownSchoolItem onClick={onClick} {...restProps}>
       <h3>{schoolName}</h3>
-      <div>
+      <div className="enter">
         <p>Enter</p>
         <img src={EnterIcon} alt="Enter" />
       </div>

@@ -242,6 +242,8 @@ export function CreateClubContainer() {
           });
         }
       );
+    } else {
+      // set firebase doc to random background color string;
     }
 
     if (banner) {
@@ -276,6 +278,8 @@ export function CreateClubContainer() {
           });
         }
       );
+    } else {
+      // set firebase doc to random background color string;
     }
 
     console.log("Done");
