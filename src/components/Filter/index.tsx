@@ -3,7 +3,7 @@ import React from "react";
 import {
   Container,
   Block,
-  Input,
+  Button,
   Dropdown,
   DropdownItem,
 } from "./styles/filter";
@@ -14,12 +14,9 @@ type Props = {
   title?: string;
 };
 
-type InputProps = {
-  onChange?: React.FormEventHandler<HTMLDivElement>;
-  name?: string;
-  type?: string;
-  placeholder?: string;
-  value?: any;
+type ButtonProps = {
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  title?: string;
   children?: React.ReactNode;
 };
 
@@ -46,26 +43,17 @@ Filter.Block = function FilterBlock({ title, children, ...restProps }: Props) {
   );
 };
 
-Filter.Input = function FilterInput({
-  name,
-  type,
-  onChange,
-  value,
-  placeholder,
+Filter.Button = function FilterButton({
+  onClick,
+  title,
   children,
   ...restProps
-}: InputProps) {
+}: ButtonProps) {
   return (
-    <Input {...restProps}>
-      <input
-        name={name}
-        type={type}
-        onChange={onChange}
-        value={value}
-        placeholder={placeholder}
-      />
+    <Button onClick={onClick} {...restProps}>
+      {title}
       <i className="fas fa-chevron-down"></i>
-    </Input>
+    </Button>
   );
 };
 
