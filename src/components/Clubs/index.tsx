@@ -1,6 +1,10 @@
 import React from "react";
 
-import { Container } from "./styles/clubs";
+import {
+  Container,
+  CreateButtonContainer,
+  SectionContainer,
+} from "./styles/clubs";
 
 type Props = {
   children?: React.ReactNode;
@@ -11,9 +15,18 @@ export default function Clubs({ children, ...restProps }: Props) {
   return <Container {...restProps}>{children}</Container>;
 }
 
-Clubs.DropdownItem = function ClubsDropdownItem({
+Clubs.CreateButtonContainer = function ClubsCreateButtonContainer({
   children,
   ...restProps
 }: Props) {
-  return <DropdownItem {...restProps}>{children}</DropdownItem>;
+  return (
+    <CreateButtonContainer {...restProps}>{children}</CreateButtonContainer>
+  );
+};
+
+Clubs.SectionContainer = function ClubsSectionContainer({
+  children,
+  ...restProps
+}: Props) {
+  return <SectionContainer {...restProps}>{children}</SectionContainer>;
 };

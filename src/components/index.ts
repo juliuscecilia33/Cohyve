@@ -5,4 +5,5 @@ export { default as CreateClub } from "./CreateClub";
 export { default as Login } from "./Login";
 export { default as Hero } from "./Hero";
 export { default as Search } from "./Search";
+export { default as Filter } from "./Filter";
 export { default as ClubBlock } from "./ClubBlock";
