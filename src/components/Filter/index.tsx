@@ -24,6 +24,7 @@ type ItemProps = {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   schoolName?: string;
   children?: React.ReactNode;
+  active?: boolean;
 };
 
 export default function Filter({ horizontal, children, ...restProps }: Props) {
@@ -62,13 +63,14 @@ Filter.Dropdown = function FilterDropdown({ children, ...restProps }: Props) {
 };
 
 Filter.DropdownItem = function FilterDropdownItem({
+  active,
   onClick,
   schoolName,
   children,
   ...restProps
 }: ItemProps) {
   return (
-    <DropdownItem onClick={onClick} {...restProps}>
+    <DropdownItem active={active} onClick={onClick} {...restProps}>
       {children} <h3>{schoolName}</h3>
     </DropdownItem>
   );
