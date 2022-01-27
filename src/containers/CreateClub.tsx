@@ -169,6 +169,10 @@ export function CreateClubContainer() {
       return;
     }
 
+    if (established === "< 2000") {
+      setEstablished(1000);
+    }
+
     // const newClub = await addDoc(collection(db, "clubs"), {
     //   name: clubName,
     //   school: school,
