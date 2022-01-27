@@ -19,7 +19,6 @@ CREATE TABLE clubs(
   verified BOOLEAN NOT NULL DEFAULT FALSE,
   established_in INTEGER,
   state VARCHAR(255),
-  firebase_id VARCHAR(255),
   website VARCHAR(255),
   instagram VARCHAR(255),
   facebook VARCHAR(255),

@@ -8,7 +8,7 @@ import {
   DropdownSchoolItem,
 } from "./styles/search";
 
-import EnterIcon from "../../../public/images/EnterIcon.png";
+import EnterIcon from "../Images/EnterIcon.png";
 
 type Props = {
   children?: React.ReactNode;

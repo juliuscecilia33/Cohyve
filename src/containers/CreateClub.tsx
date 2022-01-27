@@ -2,12 +2,9 @@ import React, { useState } from "react";
 import { CreateClub, ActionButton, Hero } from "../components";
 import SchoolData from "../schools.json";
 import axios from "axios";
-import { doc, setDoc } from "firebase/firestore";
-import { collection, addDoc } from "firebase/firestore";
 
 import {
   storage,
-  db,
   ref,
   uploadBytesResumable,
   getDownloadURL,
@@ -182,7 +179,9 @@ export function CreateClubContainer() {
     if (profile && banner) {
       const storageRef = ref(
         storage,
-        `clubs/${clubName}/clubProfile/${profile.name}`
+        `clubs/${clubName.trim()}-${school.trim()}-${established}/clubProfile/${
+          profile.name
+        }`
       );
 
       const uploadProfile = uploadBytesResumable(storageRef, profile);
@@ -205,11 +204,13 @@ export function CreateClubContainer() {
           getDownloadURL(uploadProfile.snapshot.ref).then((profileURL) => {
             console.log("Profile Image URL available at", profileURL);
 
-            const profileUrl = profileURL;
+            // const profileUrl = profileURL;
 
             const storageRef = ref(
               storage,
-              `clubs/${clubName}/clubBanner/${banner.name}`
+              `clubs/${clubName.trim()}-${school.trim()}-${established}/clubBanner/${
+                banner.name
+              }`
             );
 
             const uploadBanner = uploadBytesResumable(storageRef, banner);
@@ -231,7 +232,7 @@ export function CreateClubContainer() {
               () => {
                 getDownloadURL(uploadBanner.snapshot.ref).then((bannerURL) => {
                   console.log("File available at", bannerURL);
-                  const bannerUrl = bannerURL;
+                  // const bannerUrl = bannerURL;
 
                   const appBody = {
                     name: clubName,
@@ -245,8 +246,8 @@ export function CreateClubContainer() {
                     facebook: facebook,
                     twitter: twitter,
                     email: email,
-                    profileURL: profileUrl,
-                    bannerURL: bannerUrl,
+                    profileURL: profileURL,
+                    bannerURL: bannerURL,
                   };
 
                   axios
@@ -273,7 +274,9 @@ export function CreateClubContainer() {
     } else if (profile) {
       const storageRef = ref(
         storage,
-        `clubs/${clubName}/clubProfile/${profile.name}`
+        `clubs/${clubName.trim()}-${school.trim()}-${established}/clubProfile/${
+          profile.name
+        }`
       );
 
       const uploadProfile = uploadBytesResumable(storageRef, profile);
@@ -310,7 +313,7 @@ export function CreateClubContainer() {
               facebook: facebook,
               twitter: twitter,
               email: email,
-              profileURL: profileUrl,
+              profileURL: profileURL,
               bannerURl: "",
             };
 
@@ -335,7 +338,9 @@ export function CreateClubContainer() {
     } else if (banner) {
       const storageRef = ref(
         storage,
-        `clubs/${clubName}/clubBanner/${banner.name}`
+        `clubs/${clubName.trim()}-${school.trim()}-${established}/clubBanner/${
+          banner.name
+        }`
       );
 
       const uploadBanner = uploadBytesResumable(storageRef, banner);
@@ -372,7 +377,7 @@ export function CreateClubContainer() {
               twitter: twitter,
               email: email,
               profileURL: "",
-              bannerURL: bannerUrl,
+              bannerURL: bannerURL,
             };
 
             axios
@@ -426,8 +431,6 @@ export function CreateClubContainer() {
           console.error("There was an error!", error);
         });
     }
-
-    console.log("Done");
   };
 
   const handleProfileChange = (e: any) => {

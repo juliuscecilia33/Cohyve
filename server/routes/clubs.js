@@ -15,15 +15,16 @@ router.post("/", authorize, async (req, res) => {
       category,
       established_in,
       state,
-      firebase_id,
       website,
       instagram,
       facebook,
       twitter,
       email,
+      profileURL,
+      bannerURL,
     } = req.body;
     const newClub = await pool.query(
-      "INSERT INTO clubs (name, description, school, category, established_in, state, firebase_id, website, instagram, facebook, twitter, email) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING *",
+      "INSERT INTO clubs (name, description, school, category, established_in, state, website, instagram, facebook, twitter, email, profileURL, bannerURL) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING *",
       [
         name,
         description,
@@ -31,12 +32,13 @@ router.post("/", authorize, async (req, res) => {
         category,
         established_in,
         state,
-        firebase_id,
         website,
         instagram,
         facebook,
         twitter,
         email,
+        profileURL,
+        bannerURL,
       ]
     );
 
@@ -58,12 +60,40 @@ router.post("/", authorize, async (req, res) => {
 router.put("/:id", authorize, checkRole, async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, description, school, category, established_in, state } =
-      req.body;
+    const {
+      name,
+      description,
+      school,
+      category,
+      established_in,
+      state,
+      website,
+      instagram,
+      facebook,
+      twitter,
+      email,
+      profileURL,
+      bannerURL,
+    } = req.body;
 
     const updateClubInfo = await pool.query(
-      "UPDATE clubs SET name = $1, description = $2, school = $3, category = $4, established_in = $5, state = $6 WHERE club_id = $7",
-      [name, description, school, category, established_in, state, id]
+      "UPDATE clubs SET name = $1, description = $2, school = $3, category = $4, established_in = $5, state = $6, website = $7, instagram = $8, facebook = $9, twitter = $10, email = $11, profileURL = $12, bannerURL = $13 WHERE club_id = $14",
+      [
+        name,
+        description,
+        school,
+        category,
+        established_in,
+        state,
+        website,
+        instagram,
+        facebook,
+        twitter,
+        email,
+        profileURL,
+        bannerURL,
+        id,
+      ]
     );
 
     res.json("Club updated!");

@@ -12,7 +12,7 @@ import {
   SchoolAndMembers,
 } from "./styles/clubBlock";
 
-import VerifiedIcon from "../../images/VerifiedIcon.png";
+import VerifiedIcon from "../Images/VerifiedIcon.png";
 
 type Props = {
   children?: React.ReactNode;
