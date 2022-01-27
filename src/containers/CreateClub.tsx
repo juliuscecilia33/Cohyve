@@ -172,50 +172,19 @@ export function CreateClubContainer() {
       return;
     }
 
-    const newClub = await addDoc(collection(db, "clubs"), {
-      name: clubName,
-      school: school,
-      profileImageUrl: "",
-      bannerImageUrl: "",
-    });
+    // const newClub = await addDoc(collection(db, "clubs"), {
+    //   name: clubName,
+    //   school: school,
+    //   profileImageUrl: "",
+    //   bannerImageUrl: "",
+    // });
 
-    const appBody = {
-      name: clubName,
-      description: description,
-      school: school,
-      category: category,
-      established_in: established,
-      state: state,
-      firebase_id: newClub.id,
-      website: website,
-      instagram: instagram,
-      facebook: facebook,
-      twitter: twitter,
-      email: email,
-    };
-
-    axios
-      .post("http://localhost:5000/clubs/", appBody, {
-        headers: {
-          jwt_token: localStorage.token,
-        },
-      })
-      .then((response) => {
-        console.log(response);
-        console.log("Successfully created club");
-        // Direct to clubs page
-      })
-      .catch((error) => {
-        setSubmitError(error.message);
-        console.error("There was an error!", error);
-      });
-
-    if (profile) {
+    if (profile && banner) {
       const storageRef = ref(storage, `clubProfiles/${profile.name}`);
 
-      const uploadTask = uploadBytesResumable(storageRef, profile);
+      const uploadProfile = uploadBytesResumable(storageRef, profile);
 
-      uploadTask.on(
+      uploadProfile.on(
         "state_changed",
         (snapshot) => {
           // progress function ...
@@ -230,57 +199,112 @@ export function CreateClubContainer() {
           alert(error.message);
         },
         () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            console.log("File available at", downloadURL);
-            setDoc(
-              doc(db, "clubs", newClub.id),
-              {
-                profileImageUrl: downloadURL,
-              },
-              { merge: true }
-            );
+          getDownloadURL(uploadProfile.snapshot.ref).then((profileURL) => {
+            console.log("Profile Image URL available at", profileURL);
+
+            const profileUrl = profileURL;
+
+            if (banner) {
+              const storageRef = ref(storage, `clubBanners/${banner.name}`);
+
+              const uploadBanner = uploadBytesResumable(storageRef, banner);
+
+              uploadBanner.on(
+                "state_changed",
+                (snapshot) => {
+                  // progress function ...
+                  const progress = Math.round(
+                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                  );
+                  console.log(progress);
+                  setBannerProgress(progress);
+                },
+                (error) => {
+                  // Error function...
+                  alert(error.message);
+                },
+                () => {
+                  getDownloadURL(uploadBanner.snapshot.ref).then(
+                    (bannerURL) => {
+                      console.log("File available at", bannerURL);
+                      const bannerUrl = bannerURL;
+
+                      const appBody = {
+                        name: clubName,
+                        description: description,
+                        school: school,
+                        category: category,
+                        established_in: established,
+                        state: state,
+                        website: website,
+                        instagram: instagram,
+                        facebook: facebook,
+                        twitter: twitter,
+                        email: email,
+                        profileURL: profileUrl,
+                        bannerUrl: bannerUrl,
+                      };
+
+                      axios
+                        .post("http://localhost:5000/clubs/", appBody, {
+                          headers: {
+                            jwt_token: localStorage.token,
+                          },
+                        })
+                        .then((response) => {
+                          console.log(response);
+                          console.log("Successfully created club");
+                          // Direct to clubs page
+                        })
+                        .catch((error) => {
+                          setSubmitError(error.message);
+                          console.error("There was an error!", error);
+                        });
+                    }
+                  );
+                }
+              );
+            }
           });
         }
       );
-    } else {
-      // set firebase doc to random background color string;
     }
+    // if (banner) {
+    //   const storageRef = ref(storage, `clubBanners/${banner.name}`);
 
-    if (banner) {
-      const storageRef = ref(storage, `clubBanners/${banner.name}`);
+    //   const uploadTask = uploadBytesResumable(storageRef, banner);
 
-      const uploadTask = uploadBytesResumable(storageRef, banner);
-
-      uploadTask.on(
-        "state_changed",
-        (snapshot) => {
-          // progress function ...
-          const progress = Math.round(
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-          );
-          console.log(progress);
-          setBannerProgress(progress);
-        },
-        (error) => {
-          // Error function...
-          alert(error.message);
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            console.log("File available at", downloadURL);
-            setDoc(
-              doc(db, "clubs", newClub.id),
-              {
-                bannerImageUrl: downloadURL,
-              },
-              { merge: true }
-            );
-          });
-        }
-      );
-    } else {
-      // set firebase doc to random background color string;
-    }
+    //   const bannerUrl = uploadTask.on(
+    //     "state_changed",
+    //     (snapshot) => {
+    //       // progress function ...
+    //       const progress = Math.round(
+    //         (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+    //       );
+    //       console.log(progress);
+    //       setBannerProgress(progress);
+    //     },
+    //     (error) => {
+    //       // Error function...
+    //       alert(error.message);
+    //     },
+    //     () => {
+    //       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+    //         console.log("File available at", downloadURL);
+    //         // setDoc(
+    //         //   doc(db, "clubs", newClub.id),
+    //         //   {
+    //         //     bannerImageUrl: downloadURL,
+    //         //   },
+    //         //   { merge: true }
+    //         // );
+    //         return downloadURL;
+    //       });
+    //     }
+    //   );
+    // } else {
+    //   // set firebase doc to random background color string;
+    // }
 
     console.log("Done");
   };
