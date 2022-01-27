@@ -26,6 +26,8 @@ CREATE TABLE clubs(
   twitter VARCHAR(255),
   email VARCHAR(255),
   follower_count INTEGER NOT NULL DEFAULT 0,
+  profileURL VARCHAR,
+  bannerURL VARCHAR,
   PRIMARY KEY (club_id)
 );
 
