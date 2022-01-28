@@ -18,6 +18,8 @@ type ButtonProps = {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   title?: string;
   children?: React.ReactNode;
+  text?: string;
+  dropdownOpen?: boolean;
 };
 
 type ItemProps = {
@@ -45,15 +47,20 @@ Filter.Block = function FilterBlock({ title, children, ...restProps }: Props) {
 };
 
 Filter.Button = function FilterButton({
+  dropdownOpen,
   onClick,
-  title,
+  text,
   children,
   ...restProps
 }: ButtonProps) {
   return (
     <Button onClick={onClick} {...restProps}>
-      {title}
-      <i className="fas fa-chevron-down"></i>
+      {text}
+      {dropdownOpen ? (
+        <i className="fas fa-chevron-up"></i>
+      ) : (
+        <i className="fas fa-chevron-down"></i>
+      )}
     </Button>
   );
 };

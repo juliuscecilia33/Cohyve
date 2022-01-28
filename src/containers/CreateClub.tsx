@@ -173,13 +173,6 @@ export function CreateClubContainer() {
       setEstablished(1000);
     }
 
-    // const newClub = await addDoc(collection(db, "clubs"), {
-    //   name: clubName,
-    //   school: school,
-    //   profileImageUrl: "",
-    //   bannerImageUrl: "",
-    // });
-
     if (profile && banner) {
       const storageRef = ref(
         storage,
@@ -208,8 +201,6 @@ export function CreateClubContainer() {
           getDownloadURL(uploadProfile.snapshot.ref).then((profileURL) => {
             console.log("Profile Image URL available at", profileURL);
 
-            // const profileUrl = profileURL;
-
             const storageRef = ref(
               storage,
               `clubs/${clubName.trim()}-${school.trim()}-${established}/clubBanner/${
@@ -236,7 +227,6 @@ export function CreateClubContainer() {
               () => {
                 getDownloadURL(uploadBanner.snapshot.ref).then((bannerURL) => {
                   console.log("File available at", bannerURL);
-                  // const bannerUrl = bannerURL;
 
                   const appBody = {
                     name: clubName,
