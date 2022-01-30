@@ -16,6 +16,7 @@ export const Block = styled.div`
   flex-direction: column;
   position: relative;
   width: 100%;
+  margin-bottom: 2rem;
 
   h3 {
     margin-left: 0.5rem;
@@ -24,7 +25,7 @@ export const Block = styled.div`
     font-weight: bold;
     font-size: 14px;
     color: #cdcdcd;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     text-transform: uppercase;
   }
 `;

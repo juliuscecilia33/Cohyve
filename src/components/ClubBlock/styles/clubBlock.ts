@@ -5,8 +5,8 @@ interface ActiveProps {
 }
 
 export const Container = styled.div`
-  width: 250px;
-  height: 170px;
+  width: 220px;
+  height: 220px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,10 +44,13 @@ export const ImageContainer = styled.div`
 `;
 
 export const RankLabel = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 46px;
   height: 46px;
   border-top-left-radius: 20px;
-  bordom-bottom-right-radius: 20px;
+  border-bottom-right-radius: 20px;
   background: #f4f9e9;
   display: flex;
   justify-content: center;
