@@ -6,7 +6,13 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import { LoginPage, RegisterPage, UserPage, CreateClubPage } from "./pages";
+import {
+  LoginPage,
+  RegisterPage,
+  UserPage,
+  CreateClubPage,
+  ClubsPage,
+} from "./pages";
 import * as ROUTES from "./constants/routes";
 import { UserTokenContext } from "./context/UserToken";
 
@@ -84,6 +90,9 @@ function App() {
             />
             <Route exact path={ROUTES.CREATE}>
               <CreateClubPage />
+            </Route>
+            <Route exact path={ROUTES.CLUBS}>
+              <ClubsPage />
             </Route>
           </Switch>
         </Router>

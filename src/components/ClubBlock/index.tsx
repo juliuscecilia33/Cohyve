@@ -16,13 +16,14 @@ import VerifiedIcon from "../Images/VerifiedIcon.png";
 
 type Props = {
   children?: React.ReactNode;
-  rank?: boolean;
+  ranked?: boolean;
   src?: string;
   clubName?: string;
   rankCount?: number;
   verified?: boolean;
   followers?: number;
   members?: any;
+  memberCount?: number;
   school?: string;
   profilePic?: string;
   user?: string;
@@ -36,16 +37,16 @@ export default function ClubBlock({ children, ...restProps }: Props) {
 ClubBlock.ImageContainer = function ClubBlockImageContainer({
   src,
   clubName,
-  rank,
+  ranked,
   rankCount,
   children,
   ...restProps
 }: Props) {
   return (
     <ImageContainer {...restProps}>
-      {rank && (
+      {ranked && (
         <ClubBlock.RankLabel rankCount={rankCount}>
-          <h3>{rankCount}</h3>
+          <h3>#{rankCount}</h3>
         </ClubBlock.RankLabel>
       )}
       <img src={src} alt={clubName} />
@@ -84,7 +85,7 @@ ClubBlock.Name = function ClubBlockName({
 
 ClubBlock.Stats = function ClubBlockStats({
   followers,
-  members,
+  memberCount,
   verified,
   children,
   ...restProps
@@ -96,7 +97,7 @@ ClubBlock.Stats = function ClubBlockStats({
         <i className="fas fa-users"></i>
       </div>
       <div>
-        <p>{members}</p>
+        <p>{memberCount}</p>
         <i className="fas fa-user-check"></i>
       </div>
     </Stats>

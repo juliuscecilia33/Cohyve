@@ -4,7 +4,7 @@ import { ClubBlock } from "../components";
 
 interface DataProps {
   children?: React.ReactNode;
-  rank?: boolean;
+  ranked?: boolean;
   src?: string;
   clubName?: string;
   rankCount?: number;
@@ -15,17 +15,19 @@ interface DataProps {
   profilePic?: string;
   user?: string;
   backgroundColor?: string;
+  memberCount?: number;
 }
 
 export function ClubBlockContainer({
   rankCount,
-  rank,
+  ranked,
   clubName,
   src,
   verified,
   followers,
   members,
   school,
+  memberCount,
 }: DataProps) {
   const bgColors = [
     "#D5AAAA",
@@ -54,12 +56,12 @@ export function ClubBlockContainer({
       <ClubBlock.ImageContainer
         src={src}
         clubName={clubName}
-        rank={rank}
+        ranked={ranked}
         rankCount={rankCount}
       />
       <ClubBlock.InformationContainer>
         <ClubBlock.Name verified={verified}>{clubName}</ClubBlock.Name>
-        <ClubBlock.Stats followers={followers} members={members} />
+        <ClubBlock.Stats followers={followers} memberCount={members.length} />
         <ClubBlock.SchoolAndMembers school={school}>
           {members.map((member: any) => {
             <ClubBlock.Member
