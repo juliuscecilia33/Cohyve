@@ -85,6 +85,9 @@ export const Name = styled.div`
     font-size: 16px;
     color: #153243;
     margin-right: 0.4rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
 
   img {

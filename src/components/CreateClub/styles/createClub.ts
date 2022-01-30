@@ -116,6 +116,8 @@ export const Name = styled.div`
     font-size: 30px;
     color: #f0f2ef;
     text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
 
   p {

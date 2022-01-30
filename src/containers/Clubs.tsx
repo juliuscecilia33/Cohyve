@@ -39,6 +39,22 @@ export function ClubsContainer() {
   ];
 
   const [searchedData, setSearchedData] = useState([]);
+  const [clubSearched, setClubSearched] = useState("");
+
+  const handleFilter = (event: any) => {
+    const searchClub = event.target.value;
+    setClubSearched(searchClub);
+
+    // const newFilter = SchoolData.filter((value: any) => {
+    //   return value.name.toLowerCase().includes(searchWord.toLowerCase());
+    // });
+
+    // if (searchWord === "") {
+    //   setFilteredData([]);
+    // } else {
+    //   setFilteredData(newFilter);
+    // }
+  };
 
   return (
     <>
@@ -59,7 +75,7 @@ export function ClubsContainer() {
             school="University of Washington"
           />
           <ClubBlockContainer
-            rankCount={1}
+            rankCount={2}
             ranked={true}
             clubName="Chemistry Club"
             src={Banner}
@@ -67,10 +83,10 @@ export function ClubsContainer() {
             followers={50}
             memberCount={12}
             members={members.slice(0, 4)}
-            school="University of Washington"
+            school="University of California, Irvine"
           />
           <ClubBlockContainer
-            rankCount={1}
+            rankCount={3}
             ranked={true}
             clubName="Baseball Club"
             src={Banner}
@@ -78,10 +94,10 @@ export function ClubsContainer() {
             followers={50}
             memberCount={12}
             members={members.slice(0, 4)}
-            school="University of Washington"
+            school="University of California, Riverside"
           />
           <ClubBlockContainer
-            rankCount={1}
+            rankCount={4}
             ranked={true}
             clubName="Basketball Club"
             src={Banner}
@@ -89,7 +105,7 @@ export function ClubsContainer() {
             followers={50}
             memberCount={12}
             members={members.slice(0, 4)}
-            school="University of Washington"
+            school="Duke University"
           />
         </Clubs.ClubsRow>
       </Hero>
@@ -97,7 +113,7 @@ export function ClubsContainer() {
         name="school"
         type="text"
         placeholder="School"
-        value={wordEntered}
+        value={clubSearched}
         onChange={handleFilter}
       />
       {searchedData.length !== 0 && (
@@ -157,7 +173,96 @@ export function ClubsContainer() {
             </ActionButton>
           </ReactRouterLink>
         </Filter>
-        <Clubs.ClubsContainer></Clubs.ClubsContainer>
+        <Clubs.ClubsContainer>
+          <ClubBlockContainer
+            rankCount={null}
+            ranked={false}
+            clubName="Ping Pong Club"
+            src={Banner}
+            verified={true}
+            followers={50}
+            memberCount={12}
+            members={members.slice(0, 4)}
+            school="University of Washington"
+          />
+          <ClubBlockContainer
+            rankCount={null}
+            ranked={false}
+            clubName="Ping Pong Club"
+            src={Banner}
+            verified={true}
+            followers={50}
+            memberCount={12}
+            members={members.slice(0, 4)}
+            school="University of Washington"
+          />
+          <ClubBlockContainer
+            rankCount={null}
+            ranked={false}
+            clubName="Ping Pong Club"
+            src={Banner}
+            verified={true}
+            followers={50}
+            memberCount={12}
+            members={members.slice(0, 4)}
+            school="University of Washington"
+          />
+          <ClubBlockContainer
+            rankCount={null}
+            ranked={false}
+            clubName="Ping Pong Club"
+            src={Banner}
+            verified={true}
+            followers={50}
+            memberCount={12}
+            members={members.slice(0, 4)}
+            school="University of Washington"
+          />
+          <ClubBlockContainer
+            rankCount={null}
+            ranked={false}
+            clubName="Ping Pong Club"
+            src={Banner}
+            verified={true}
+            followers={50}
+            memberCount={12}
+            members={members.slice(0, 4)}
+            school="University of Washington"
+          />
+          <ClubBlockContainer
+            rankCount={null}
+            ranked={false}
+            clubName="Ping Pong Club"
+            src={Banner}
+            verified={true}
+            followers={50}
+            memberCount={12}
+            members={members.slice(0, 4)}
+            school="University of Washington"
+          />
+          <ClubBlockContainer
+            rankCount={null}
+            ranked={false}
+            clubName="Ping Pong Club"
+            src={Banner}
+            verified={true}
+            followers={50}
+            memberCount={12}
+            members={members.slice(0, 4)}
+            school="University of Washington"
+          />
+          <ClubBlockContainer
+            rankCount={null}
+            ranked={false}
+            clubName="Ping Pong Club"
+            src={Banner}
+            verified={true}
+            followers={50}
+            memberCount={12}
+            members={members.slice(0, 4)}
+            school="University of Washington"
+          />
+        </Clubs.ClubsContainer>
       </Clubs.SectionContainer>
     </>
   );
