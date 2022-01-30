@@ -25,8 +25,10 @@ export const SectionContainer = styled.div`
 export const ClubsContainer = styled.div`
   width: 80%;
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 `;
 
 export const ClubsRow = styled.div`

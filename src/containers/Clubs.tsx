@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { Hero, Search, Filter, Clubs } from "../components";
+import { Hero, Search, Filter, Clubs, ActionButton } from "../components";
 import { ClubBlockContainer } from "../containers";
 import Banner from "../images/BannerTest.jpeg";
 import Profile from "../images/Profile.jpeg";
+import { Link as ReactRouterLink } from "react-router-dom";
+import * as ROUTES from "../constants/routes";
 
 export function ClubsContainer() {
   const members = [
@@ -36,7 +38,7 @@ export function ClubsContainer() {
     },
   ];
 
-  const [filteredData, setFilteredData] = useState([]);
+  const [searchedData, setSearchedData] = useState([]);
 
   return (
     <>
@@ -98,9 +100,9 @@ export function ClubsContainer() {
         value={wordEntered}
         onChange={handleFilter}
       />
-      {filteredData.length !== 0 && (
+      {searchedData.length !== 0 && (
         <Search.DropdownItems>
-          {filteredData.slice(0, 8).map((value, key) => {
+          {searchedData.slice(0, 8).map((value, key) => {
             return (
               <Search.DropdownClubItem onClick={null}>
                 {value.name}
@@ -109,6 +111,54 @@ export function ClubsContainer() {
           })}
         </Search.DropdownItems>
       )}
+      <Clubs.CreateButtonContainer>
+        <ReactRouterLink to={null}>
+          <ActionButton background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;">
+            Add Club
+          </ActionButton>
+        </ReactRouterLink>
+      </Clubs.CreateButtonContainer>
+      <Clubs.SectionContainer>
+        <Filter horizontal={false}>
+          <Filter.Block title="All Clubs">
+            <Filter.Button
+              dropdownOpen={false}
+              onClick={null}
+              text="All Clubs"
+            />
+            <Filter.Dropdown></Filter.Dropdown>
+          </Filter.Block>
+          <Filter.Block title="Schools">
+            <Filter.Button
+              dropdownOpen={false}
+              onClick={null}
+              text="All Schools"
+            />
+            <Filter.Dropdown></Filter.Dropdown>
+          </Filter.Block>
+          <Filter.Block title="Established">
+            <Filter.Button dropdownOpen={false} onClick={null} text="Year" />
+          </Filter.Block>
+          <Filter.Block title="Category">
+            <Filter.Button
+              dropdownOpen={false}
+              onClick={null}
+              text="Category"
+            />
+            <Filter.Dropdown></Filter.Dropdown>
+          </Filter.Block>
+          <Filter.Block title="State">
+            <Filter.Button dropdownOpen={false} onClick={null} text="State" />
+            <Filter.Dropdown></Filter.Dropdown>
+          </Filter.Block>
+          <ReactRouterLink to={null}>
+            <ActionButton background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;">
+              Add Club
+            </ActionButton>
+          </ReactRouterLink>
+        </Filter>
+        <Clubs.ClubsContainer></Clubs.ClubsContainer>
+      </Clubs.SectionContainer>
     </>
   );
 }

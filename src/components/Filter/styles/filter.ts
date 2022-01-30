@@ -14,6 +14,7 @@ export const Container = styled.div<ActiveProps>`
 export const Block = styled.div`
   display: flex;
   flex-direction: column;
+  position: relative;
   width: 100%;
 
   h3 {
@@ -24,12 +25,12 @@ export const Block = styled.div`
     font-size: 14px;
     color: #cdcdcd;
     margin-bottom: 1.5rem;
+    text-transform: uppercase;
   }
 `;
 
 export const Button = styled.button`
   width: 100%;
-  position: relative;
   height: 40px;
   background: none;
   border: 1.5px solid #dedede;
