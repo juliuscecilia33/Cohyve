@@ -40,6 +40,7 @@ export function ClubsContainer() {
 
   const [searchedData, setSearchedData] = useState([]);
   const [clubSearched, setClubSearched] = useState("");
+  const [filterSelected, setFilterSelected] = useState(null);
 
   const handleFilter = (event: any) => {
     const searchClub = event.target.value;
@@ -54,6 +55,14 @@ export function ClubsContainer() {
     // } else {
     //   setFilteredData(newFilter);
     // }
+  };
+
+  const filterClickHandler = (param: string) => {
+    if (filterSelected === param) {
+      setFilterSelected(null);
+    } else {
+      setFilterSelected(param);
+    }
   };
 
   return (
@@ -137,35 +146,44 @@ export function ClubsContainer() {
         </Clubs.CreateButtonContainer>
         <Clubs.SectionContainer>
           <Filter horizontal={false}>
-            <Filter.Block title="All Clubs">
+            <Filter.Block title="Clubs">
               <Filter.Button
-                dropdownOpen={false}
-                onClick={null}
+                dropdownOpen={filterSelected === "Clubs" ? true : false}
+                onClick={() => filterClickHandler("Clubs")}
                 text="All Clubs"
               />
               <Filter.Dropdown></Filter.Dropdown>
             </Filter.Block>
             <Filter.Block title="Schools">
               <Filter.Button
-                dropdownOpen={false}
-                onClick={null}
+                dropdownOpen={filterSelected === "Schools" ? true : false}
+                onClick={() => filterClickHandler("Schools")}
                 text="All Schools"
               />
               <Filter.Dropdown></Filter.Dropdown>
             </Filter.Block>
             <Filter.Block title="Established">
-              <Filter.Button dropdownOpen={false} onClick={null} text="Year" />
+              <Filter.Button
+                dropdownOpen={filterSelected === "Established" ? true : false}
+                onClick={() => filterClickHandler("Established")}
+                text="Year"
+              />
+              <Filter.Dropdown></Filter.Dropdown>
             </Filter.Block>
             <Filter.Block title="Category">
               <Filter.Button
-                dropdownOpen={false}
-                onClick={null}
+                dropdownOpen={filterSelected === "Category" ? true : false}
+                onClick={() => filterClickHandler("Category")}
                 text="Category"
               />
               <Filter.Dropdown></Filter.Dropdown>
             </Filter.Block>
             <Filter.Block title="State">
-              <Filter.Button dropdownOpen={false} onClick={null} text="State" />
+              <Filter.Button
+                dropdownOpen={filterSelected === "State" ? true : false}
+                onClick={() => filterClickHandler("State")}
+                text="State"
+              />
               <Filter.Dropdown></Filter.Dropdown>
             </Filter.Block>
             <ReactRouterLink to={null}>
