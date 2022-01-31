@@ -6,6 +6,8 @@ CREATE TABLE users(
   user_email VARCHAR(255) NOT NULL UNIQUE,
   user_password VARCHAR(255) NOT NULL,
   school VARCHAR(255) NOT NULL,
+  profileURL VARCHAR,
+  bannerURL VARCHAR,
   PRIMARY KEY (user_id)
 );
 

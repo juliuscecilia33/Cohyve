@@ -141,6 +141,7 @@ export const StatsAndMembers = styled.div`
 export const School = styled.div`
   margin-bottom: 1rem;
   width: 100%;
+
   p {
     font-family: Work Sans;
     font-style: italic;
@@ -175,7 +176,6 @@ export const Member = styled.div<ActiveProps>`
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
-    background-image: ${({ background }) => background};
     margin: 0;
   }
 `;
