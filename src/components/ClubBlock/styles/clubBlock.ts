@@ -63,9 +63,9 @@ export const RankLabel = styled.div<ActiveProps>`
   h3 {
     font-family: Work Sans;
     font-style: normal;
-    font-weight: 600;
-    font-size: 14px;
-    color: #153243;
+    font-weight: 700;
+    font-size: 17px;
+    color: #fafcfa;
   }
 `;
 
@@ -95,6 +95,7 @@ export const Name = styled.div`
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    padding: 0.3rem 0;
   }
 
   img {
@@ -142,7 +143,7 @@ export const SchoolAndMembers = styled.div`
     font-weight: 600;
     font-size: 12px;
     color: #b4b8ab;
-    width: 80%;
+    width: 100%;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
