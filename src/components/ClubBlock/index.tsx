@@ -28,7 +28,35 @@ type Props = {
   profilePic?: string;
   user?: string;
   backgroundColor?: string;
+  background?: any;
 };
+
+const bgColors = [
+  "#D5AAAA",
+  "#D5C9AA",
+  "#C2D5AA",
+  "#AAD5AC",
+  "#AAD5C6",
+  "#AAD0D5",
+  "#AAB3D5",
+  "#BDAAD5",
+  "#D5AAD3",
+  "#D5AAD3",
+  "#B8D5AA",
+  "#D5D1AA",
+  "#AAD5C8",
+  "#AAB6D5",
+  "#BDAAD5",
+  "#D5AAC4",
+  "#CCD5AA",
+  "#D5BFAA",
+];
+
+function getRandomColor() {
+  const random = Math.floor(Math.random() * bgColors.length);
+
+  return bgColors[random];
+}
 
 export default function ClubBlock({ children, ...restProps }: Props) {
   return <Container {...restProps}>{children}</Container>;
@@ -45,7 +73,10 @@ ClubBlock.ImageContainer = function ClubBlockImageContainer({
   return (
     <ImageContainer {...restProps}>
       {ranked && (
-        <ClubBlock.RankLabel rankCount={rankCount}>
+        <ClubBlock.RankLabel
+          background={() => getRandomColor()}
+          rankCount={rankCount}
+        >
           <h3>#{rankCount}</h3>
         </ClubBlock.RankLabel>
       )}
@@ -56,11 +87,16 @@ ClubBlock.ImageContainer = function ClubBlockImageContainer({
 };
 
 ClubBlock.RankLabel = function ClubBlockRankLabel({
+  background,
   rankCount,
   children,
   ...restProps
 }: Props) {
-  return <RankLabel {...restProps}>{children}</RankLabel>;
+  return (
+    <RankLabel background={background} {...restProps}>
+      {children}
+    </RankLabel>
+  );
 };
 
 ClubBlock.InformationContainer = function ClubBlockInformationContainer({

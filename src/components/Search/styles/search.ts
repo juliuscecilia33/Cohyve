@@ -2,7 +2,7 @@ import styled from "styled-components/macro";
 
 export const Container = styled.div`
   width: 100%;
-  padding: 3rem 15%;
+  padding: 2rem 15%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11,13 +11,21 @@ export const Container = styled.div`
 
   input {
     width: 65%;
-    background: red;
+    background: none;
+    border: none;
+    outline: none;
+    padding: 1.5rem 0.3rem;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    color: #8d8d8d;
 
     &::placeholder {
       font-family: Poppins;
       font-style: normal;
       font-weight: bold;
-      font-size: 36px;
+      font-size: 30px;
       color: #cdcdcd;
     }
   }
@@ -27,14 +35,15 @@ export const Icon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 85px;
-  height: 85px;
+  width: 75px;
+  height: 75px;
   border-radius: 50%;
   background: #f1f7ed;
+  box-shadow: -1px 10px 60px rgba(27, 27, 30, 0.1);
+  cursor: pointer;
 
   i {
-    width: 75%;
-    height: auto;
+    font-size: 1.5rem;
     color: #284b63;
   }
 `;

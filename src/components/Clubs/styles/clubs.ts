@@ -14,6 +14,7 @@ export const CreateButtonContainer = styled.div`
   justify-content: end;
   align-items: center;
   margin: 1rem 0;
+  padding: 3rem 15% 0rem 15%;
 `;
 
 export const SectionContainer = styled.div`

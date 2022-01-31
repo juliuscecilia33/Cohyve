@@ -180,7 +180,7 @@ export function ClubsContainer() {
               ranked={false}
               clubName="Ping Pong Club"
               src={Banner}
-              verified={true}
+              verified={false}
               followers={50}
               memberCount={12}
               members={members.slice(0, 4)}
@@ -191,7 +191,7 @@ export function ClubsContainer() {
               ranked={false}
               clubName="Ping Pong Club"
               src={Banner}
-              verified={true}
+              verified={false}
               followers={50}
               memberCount={12}
               members={members.slice(0, 4)}
@@ -202,7 +202,7 @@ export function ClubsContainer() {
               ranked={false}
               clubName="Ping Pong Club"
               src={Banner}
-              verified={true}
+              verified={false}
               followers={50}
               memberCount={12}
               members={members.slice(0, 4)}
@@ -213,7 +213,7 @@ export function ClubsContainer() {
               ranked={false}
               clubName="Ping Pong Club"
               src={Banner}
-              verified={true}
+              verified={false}
               followers={50}
               memberCount={12}
               members={members.slice(0, 4)}
@@ -224,7 +224,7 @@ export function ClubsContainer() {
               ranked={false}
               clubName="Ping Pong Club"
               src={Banner}
-              verified={true}
+              verified={false}
               followers={50}
               memberCount={12}
               members={members.slice(0, 4)}
@@ -235,7 +235,7 @@ export function ClubsContainer() {
               ranked={false}
               clubName="Ping Pong Club"
               src={Banner}
-              verified={true}
+              verified={false}
               followers={50}
               memberCount={12}
               members={members.slice(0, 4)}
