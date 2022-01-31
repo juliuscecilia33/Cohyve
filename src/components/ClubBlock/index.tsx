@@ -154,6 +154,7 @@ ClubBlock.School = function ClubBlockSchool({
 };
 
 ClubBlock.StatsAndMembers = function ClubBlockStatsAndMembers({
+  members,
   followers,
   memberCount,
   verified,
@@ -167,27 +168,40 @@ ClubBlock.StatsAndMembers = function ClubBlockStatsAndMembers({
         memberCount={memberCount}
         verified={verified}
       />
-      {children}
+      <ClubBlock.Members members={members} />
     </StatsAndMembers>
   );
 };
 
 ClubBlock.Members = function ClubBlockMembers({
+  members,
   children,
   ...restProps
 }: Props) {
-  return <Members {...restProps}>{children}</Members>;
+  return (
+    <Members {...restProps}>
+      {members.map((member: any) => {
+        return (
+          <ClubBlock.Member
+            profilePic={member.profilePic}
+            user={member.user}
+            background={() => getRandomColor()}
+          />
+        );
+      })}
+    </Members>
+  );
 };
 
 ClubBlock.Member = function ClubBlockMember({
-  backgroundColor,
+  background,
   profilePic,
   user,
   children,
   ...restProps
 }: Props) {
   return (
-    <Member backgroundColor={backgroundColor} {...restProps}>
+    <Member background={background} {...restProps}>
       <img src={profilePic} alt={user} />
     </Member>
   );

@@ -9,31 +9,31 @@ import * as ROUTES from "../constants/routes";
 export function ClubsContainer() {
   const members = [
     {
-      profilePic: { Profile },
+      profilePic: Profile,
       user: "JarredKelenic",
     },
     {
-      profilePic: "",
+      profilePic: Profile,
       user: "JulioRodriguez",
     },
     {
-      profilePic: { Profile },
+      profilePic: Profile,
       user: "JuanSoto",
     },
     {
-      profilePic: { Profile },
+      profilePic: Profile,
       user: "MikeTrout",
     },
     {
-      profilePic: { Profile },
+      profilePic: Profile,
       user: "FernandoTatis",
     },
     {
-      profilePic: { Profile },
+      profilePic: Profile,
       user: "RafaelDevers",
     },
     {
-      profilePic: { Profile },
+      profilePic: Profile,
       user: "LuisRobert",
     },
   ];

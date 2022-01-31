@@ -106,7 +106,7 @@ export const Name = styled.div`
 
 export const Stats = styled.div`
   display: flex;
-  width: 100%;
+  width: 50%;
   align-items: center;
   // margin-bottom: 0.8rem;
 

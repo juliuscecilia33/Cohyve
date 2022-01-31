@@ -14,7 +14,7 @@ interface DataProps {
   school?: string;
   profilePic?: string;
   user?: string;
-  backgroundColor?: string;
+  backgroundColor?: any;
   memberCount?: number;
 }
 
@@ -29,6 +29,8 @@ export function ClubBlockContainer({
   school,
   memberCount,
 }: DataProps) {
+  console.log(members);
+
   const bgColors = [
     "#D5AAAA",
     "#D5C9AA",
@@ -65,15 +67,8 @@ export function ClubBlockContainer({
         <ClubBlock.StatsAndMembers
           followers={followers}
           memberCount={members.length}
-        >
-          {members.map((member: any) => {
-            <ClubBlock.Member
-              profilePic={member.profilePic}
-              user={member.user}
-              backgroundColor={bgColors[random]}
-            />;
-          })}
-        </ClubBlock.StatsAndMembers>
+          members={members}
+        />
       </ClubBlock.InformationContainer>
     </ClubBlock>
   );
