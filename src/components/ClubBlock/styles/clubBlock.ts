@@ -6,8 +6,8 @@ interface ActiveProps {
 }
 
 export const Container = styled.div`
-  width: 220px;
-  height: 245px;
+  width: 250px;
+  height: 260px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,7 +15,7 @@ export const Container = styled.div`
   border-radius: 20px;
   cursor: pointer;
   box-shadow: -1px 10px 60px rgba(27, 27, 30, 0.1);
-  margin-bottom: 3rem;
+  margin: 0rem 0.5rem 3rem 0.5rem;
 `;
 
 export const ImageContainer = styled.div`
@@ -83,7 +83,7 @@ export const Name = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.1rem;
 
   p {
     font-family: Poppins;
@@ -108,7 +108,7 @@ export const Stats = styled.div`
   display: flex;
   width: 100%;
   align-items: center;
-  margin-bottom: 0.8rem;
+  // margin-bottom: 0.8rem;
 
   div {
     margin-right: 0.7rem;
@@ -131,22 +131,27 @@ export const Stats = styled.div`
   }
 `;
 
-export const SchoolAndMembers = styled.div`
+export const StatsAndMembers = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
+`;
 
+export const School = styled.div`
+  margin-bottom: 1rem;
+  width: 100%;
   p {
     font-family: Work Sans;
     font-style: italic;
     font-weight: 600;
-    font-size: 12px;
+    font-size: 13px;
     color: #b4b8ab;
     width: 100%;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    text-align: left;
   }
 `;
 

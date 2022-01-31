@@ -9,7 +9,8 @@ import {
   Stats,
   Members,
   Member,
-  SchoolAndMembers,
+  StatsAndMembers,
+  School,
 } from "./styles/clubBlock";
 
 import VerifiedIcon from "../Images/VerifiedIcon.png";
@@ -140,16 +141,34 @@ ClubBlock.Stats = function ClubBlockStats({
   );
 };
 
-ClubBlock.SchoolAndMembers = function ClubBlockSchoolAndMembers({
+ClubBlock.School = function ClubBlockSchool({
   school,
   children,
   ...restProps
 }: Props) {
   return (
-    <SchoolAndMembers {...restProps}>
+    <School {...restProps}>
       <p>{school}</p>
+    </School>
+  );
+};
+
+ClubBlock.StatsAndMembers = function ClubBlockStatsAndMembers({
+  followers,
+  memberCount,
+  verified,
+  children,
+  ...restProps
+}: Props) {
+  return (
+    <StatsAndMembers {...restProps}>
+      <ClubBlock.Stats
+        followers={followers}
+        memberCount={memberCount}
+        verified={verified}
+      />
       {children}
-    </SchoolAndMembers>
+    </StatsAndMembers>
   );
 };
 

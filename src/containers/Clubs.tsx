@@ -111,9 +111,9 @@ export function ClubsContainer() {
           </Clubs.ClubsRow>
         </Hero>
         <Search
-          name="school"
+          name="clubs"
           type="text"
-          placeholder="School"
+          placeholder="Search for a club"
           value={clubSearched}
           onChange={handleFilter}
         />

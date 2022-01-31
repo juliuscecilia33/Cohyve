@@ -38,19 +38,23 @@ export const Button = styled.button`
   border-radius: 15px;
   display: flex;
   align-items: center;
-  padding: 0 0.5rem;
+  padding: 0 1.2rem;
   font-family: Work Sans;
   font-style: normal;
   font-weight: bold;
   font-size: 15px;
   color: #284b63;
+  position: relative;
+  cursor: pointer;
 
   i {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 6%;
     font-size: 10px;
     color: #153243;
+    cursor: pointer;
   }
 `;
 

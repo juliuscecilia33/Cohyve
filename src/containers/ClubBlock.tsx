@@ -61,8 +61,11 @@ export function ClubBlockContainer({
       />
       <ClubBlock.InformationContainer>
         <ClubBlock.Name verified={verified}>{clubName}</ClubBlock.Name>
-        <ClubBlock.Stats followers={followers} memberCount={members.length} />
-        <ClubBlock.SchoolAndMembers school={school}>
+        <ClubBlock.School school={school} />
+        <ClubBlock.StatsAndMembers
+          followers={followers}
+          memberCount={members.length}
+        >
           {members.map((member: any) => {
             <ClubBlock.Member
               profilePic={member.profilePic}
@@ -70,7 +73,7 @@ export function ClubBlockContainer({
               backgroundColor={bgColors[random]}
             />;
           })}
-        </ClubBlock.SchoolAndMembers>
+        </ClubBlock.StatsAndMembers>
       </ClubBlock.InformationContainer>
     </ClubBlock>
   );
