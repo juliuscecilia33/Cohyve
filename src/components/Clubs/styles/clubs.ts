@@ -5,7 +5,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 3rem 15%;
+  // padding: 3rem 15%;
 `;
 
 export const CreateButtonContainer = styled.div`

@@ -443,7 +443,7 @@ export function CreateClubContainer() {
 
   return (
     <CreateClub>
-      <Hero>
+      <Hero padding="3rem 15% 15rem 15%">
         <Hero.Heading>
           create<span>club</span>
         </Hero.Heading>

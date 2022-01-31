@@ -4,12 +4,17 @@ import { Container, Heading } from "./styles/hero";
 
 type Props = {
   children?: React.ReactNode;
+  padding?: string;
 };
 
-export default function Hero({ children, ...restProps }: Props) {
-  return <Container {...restProps}>{children}</Container>;
+export default function Hero({ padding, children, ...restProps }: Props) {
+  return (
+    <Container padding={padding} {...restProps}>
+      {children}
+    </Container>
+  );
 }
 
-Hero.Heading = function HerobHeading({ children, ...restProps }: Props) {
+Hero.Heading = function HeroHeading({ children, ...restProps }: Props) {
   return <Heading {...restProps}>{children}</Heading>;
 };

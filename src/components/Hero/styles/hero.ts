@@ -1,12 +1,16 @@
 import styled from "styled-components/macro";
 
-export const Container = styled.div`
-  padding: 1rem 15% 15rem 15%;
+interface ActiveProps {
+  padding?: string;
+}
+
+export const Container = styled.div<ActiveProps>`
+  padding: ${({ padding }) => padding};
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  margin-bottom: 5rem;
+  // margin-bottom: 5rem;
   background: #f4faf4;
   // padding: 0 15%;
 `;

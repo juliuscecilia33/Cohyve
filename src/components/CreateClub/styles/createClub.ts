@@ -14,7 +14,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   background: #f4faf4;
-  padding-top: 2rem;
 `;
 
 export const PreviewText = styled.p`
