@@ -169,7 +169,7 @@ export const Member = styled.div<ActiveProps>`
   object-fit: cover;
   border-radius: 50%;
   background: ${({ background }) => background};
-  margin: 0;
+  margin-left: -0.3rem;
 
   img {
     width: 100%;
