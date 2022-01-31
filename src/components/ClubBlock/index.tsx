@@ -202,7 +202,7 @@ ClubBlock.Member = function ClubBlockMember({
 }: Props) {
   return (
     <Member background={background} {...restProps}>
-      <img src={profilePic} alt={user} />
+      {profilePic !== "" && <img src={profilePic} alt={user} />}
     </Member>
   );
 };

@@ -157,18 +157,25 @@ export const School = styled.div`
 
 export const Members = styled.div`
   display: flex;
+  justify-content: end;
   align-items: center;
   width: 50%;
-  padding-left: auto;
 `;
 
 export const Member = styled.div<ActiveProps>`
+  width: 23px;
+  height: 23px;
+  object-fit: cover;
+  border-radius: 50%;
+  background: ${({ background }) => background};
+  margin: 0;
+
   img {
-    width: 19px;
-    height: 19px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     border-radius: 50%;
-    background-color: ${({ backgroundColor }) => backgroundColor};
+    background-image: ${({ background }) => background};
     margin: 0;
   }
 `;

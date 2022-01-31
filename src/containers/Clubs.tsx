@@ -13,7 +13,7 @@ export function ClubsContainer() {
       user: "JarredKelenic",
     },
     {
-      profilePic: Profile,
+      profilePic: "",
       user: "JulioRodriguez",
     },
     {
