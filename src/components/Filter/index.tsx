@@ -1,4 +1,6 @@
 import React from "react";
+import { Checkbox } from "@mui/material";
+import { pink } from "@mui/material/colors";
 
 import {
   Container,
@@ -24,9 +26,11 @@ type ButtonProps = {
 
 type ItemProps = {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  schoolName?: string;
+  itemText?: string;
   children?: React.ReactNode;
   active?: boolean;
+  checked?: any;
+  handleChange?: any;
 };
 
 export default function Filter({ horizontal, children, ...restProps }: Props) {
@@ -70,15 +74,28 @@ Filter.Dropdown = function FilterDropdown({ children, ...restProps }: Props) {
 };
 
 Filter.DropdownItem = function FilterDropdownItem({
+  checked,
+  handleChange,
   active,
   onClick,
-  schoolName,
+  itemText,
   children,
   ...restProps
 }: ItemProps) {
   return (
     <DropdownItem active={active} onClick={onClick} {...restProps}>
-      {children} <h3>{schoolName}</h3>
+      <Checkbox
+        checked={checked}
+        onChange={handleChange}
+        inputProps={{ "aria-label": "controlled" }}
+        sx={{
+          "&.Mui-checked": {
+            color: "#AFD5AA",
+          },
+          "& .MuiSvgIcon-root": { fontSize: 20 },
+        }}
+      />
+      <h3>{itemText}</h3>
     </DropdownItem>
   );
 };
