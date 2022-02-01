@@ -130,12 +130,12 @@ ClubBlock.Stats = function ClubBlockStats({
   return (
     <Stats {...restProps}>
       <div>
-        <p>{followers}</p>
         <i className="fas fa-users"></i>
+        <p>{followers}</p>
       </div>
       <div>
-        <p>{memberCount}</p>
         <i className="fas fa-user-check"></i>
+        <p>{memberCount}</p>
       </div>
     </Stats>
   );

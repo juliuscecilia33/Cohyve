@@ -6,8 +6,8 @@ interface ActiveProps {
 }
 
 export const Container = styled.div`
-  width: 250px;
-  height: 260px;
+  width: 225px;
+  height: 250px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,7 +15,7 @@ export const Container = styled.div`
   border-radius: 20px;
   cursor: pointer;
   box-shadow: -1px 10px 60px rgba(27, 27, 30, 0.1);
-  margin: 0rem 0.5rem 3rem 0.5rem;
+  margin: 0rem 0.1rem 3rem 0.1rem;
 `;
 
 export const ImageContainer = styled.div`
@@ -121,11 +121,11 @@ export const Stats = styled.div`
       font-weight: 600;
       font-size: 12px;
       color: #cdcdcd;
-      margin-right: 0.2rem;
     }
 
     i {
       font-size: 12px;
+      margin-right: 0.2rem;
       color: #cdcdcd;
     }
   }

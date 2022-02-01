@@ -66,7 +66,7 @@ export function ClubBlockContainer({
         <ClubBlock.School school={school} />
         <ClubBlock.StatsAndMembers
           followers={followers}
-          memberCount={members.length}
+          memberCount={memberCount}
           members={members}
         />
       </ClubBlock.InformationContainer>
