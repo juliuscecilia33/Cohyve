@@ -10,6 +10,7 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import { makeStyles } from "@material-ui/core/styles";
 
 export function ClubsContainer() {
   const members = [
@@ -50,6 +51,26 @@ export function ClubsContainer() {
   const [clubSearched, setClubSearched] = useState("");
   const [filterSelected, setFilterSelected] = useState(null);
 
+  const useStyles = makeStyles({
+    option: {
+      "&:hover": {
+        backgroundColor: "rgba(175, 213, 170, 0.24) !important",
+        transition: "0.3s",
+      },
+    },
+    textField: {
+      fontWeight: 500,
+      borderRadius: 20,
+    },
+    input: {
+      color: "white",
+      borderRadius: 20,
+    },
+    active: {
+      backgroundColor: "red",
+    },
+  });
+
   const handleFilter = (event: any) => {
     const searchClub = event.target.value;
     setClubSearched(searchClub);
@@ -72,6 +93,8 @@ export function ClubsContainer() {
       setFilterSelected(param);
     }
   };
+
+  const styles = useStyles();
 
   const top100Films = [
     { title: "The Shawshank Redemption", year: 1994 },
@@ -210,6 +233,9 @@ export function ClubsContainer() {
                 id="checkboxes-tags"
                 options={top100Films}
                 disableCloseOnSelect
+                classes={{
+                  option: styles.option,
+                }}
                 getOptionLabel={(option: any) => option.title}
                 renderOption={(props: any, option: any, { selected }: any) => (
                   <li {...props}>
@@ -217,6 +243,12 @@ export function ClubsContainer() {
                       icon={icon}
                       checkedIcon={checkedIcon}
                       style={{ marginRight: 8 }}
+                      sx={{
+                        color: "#AFD5AA",
+                        "&.Mui-checked": {
+                          color: "#AFD5AA",
+                        },
+                      }}
                       checked={selected}
                     />
                     {option.title}
@@ -225,11 +257,7 @@ export function ClubsContainer() {
                 style={{ width: "100%" }}
                 onChange={(event, value) => console.log(value)}
                 renderInput={(params: any) => (
-                  <TextField
-                    {...params}
-                    label="Checkboxes"
-                    placeholder="Select Clubs"
-                  />
+                  <TextField {...params} placeholder="Select Clubs" />
                 )}
               />
             </Filter.Block>
