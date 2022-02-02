@@ -40,6 +40,17 @@ export function ClubsContainer() {
   const [searchedData, setSearchedData] = useState([]);
   const [clubSearched, setClubSearched] = useState("");
   const [filterSelected, setFilterSelected] = useState(null);
+  const [clubFilters, setClubFilters] = useState(null);
+  const [yearFilters, setYearFilters] = useState(null);
+  const [schoolFilters, setSchoolFilters] = useState(null);
+  const [categoryFilters, setCategoryFilters] = useState(null);
+  const [stateFilters, setStateFilters] = useState(null);
+
+  console.log("club filters: ", clubFilters);
+  console.log("year filters: ", yearFilters);
+  console.log("school filters: ", schoolFilters);
+  console.log("category filters: ", categoryFilters);
+  console.log("state filters: ", stateFilters);
 
   const handleFilter = (event: any) => {
     const searchClub = event.target.value;
@@ -252,30 +263,35 @@ export function ClubsContainer() {
               <FilterListContainer
                 options={clubsOptions}
                 placeholder="Filter Clubs"
+                setState={setClubFilters}
               />
             </Filter.Block>
             <Filter.Block title="Schools">
               <FilterListContainer
                 options={schoolOptions}
                 placeholder="Filter By School"
+                setState={setSchoolFilters}
               />
             </Filter.Block>
             <Filter.Block title="Established">
               <FilterListContainer
                 options={yearOptions}
                 placeholder="Filter By Year"
+                setState={setYearFilters}
               />
             </Filter.Block>
             <Filter.Block title="Category">
               <FilterListContainer
                 options={categoryOptions}
                 placeholder="Filter By Category"
+                setState={setCategoryFilters}
               />
             </Filter.Block>
             <Filter.Block title="State">
               <FilterListContainer
                 options={stateOptions}
                 placeholder="Filter By State"
+                setState={setStateFilters}
               />
             </Filter.Block>
             <ReactRouterLink to={null}>

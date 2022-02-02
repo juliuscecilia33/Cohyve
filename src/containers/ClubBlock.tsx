@@ -29,8 +29,6 @@ export function ClubBlockContainer({
   school,
   memberCount,
 }: DataProps) {
-  console.log(members);
-
   const bgColors = [
     "#D5AAAA",
     "#D5C9AA",

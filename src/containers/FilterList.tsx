@@ -8,11 +8,16 @@ import { makeStyles } from "@material-ui/core/styles";
 import { ListItem } from "@mui/material";
 
 interface ListProps {
-  options: Array<string | number>;
-  placeholder: string;
+  options?: Array<string>;
+  placeholder?: string;
+  setState?: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
-export function FilterListContainer({ options, placeholder }: ListProps) {
+export function FilterListContainer({
+  setState,
+  options,
+  placeholder,
+}: ListProps) {
   const useStyles = makeStyles({
     option: {
       "&:hover": {
@@ -79,7 +84,7 @@ export function FilterListContainer({ options, placeholder }: ListProps) {
         </ListItem>
       )}
       style={{ width: "100%" }}
-      onChange={(event, value) => console.log(value)}
+      onChange={(event, value) => setState(value)}
       renderInput={(params: any) => (
         <TextField
           {...params}
