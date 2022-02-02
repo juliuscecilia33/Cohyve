@@ -28,7 +28,7 @@ export const ClubsContainer = styled.div`
   width: 80%;
   display: flex;
   // flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
   padding-left: 4rem;

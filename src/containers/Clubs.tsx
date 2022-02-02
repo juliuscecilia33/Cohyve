@@ -11,6 +11,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import { makeStyles } from "@material-ui/core/styles";
+import { ListItem } from "@mui/material";
 
 export function ClubsContainer() {
   const members = [
@@ -56,18 +57,32 @@ export function ClubsContainer() {
       "&:hover": {
         backgroundColor: "rgba(175, 213, 170, 0.24) !important",
         transition: "0.3s",
+        fontWeight: 600,
       },
-    },
-    textField: {
+      "&$selected": {
+        backgroundColor: "red",
+        color: "white",
+        "& .MuiListItemIcon-root": {
+          color: "white",
+        },
+      },
+      "&$selected:hover": {
+        backgroundColor: "purple",
+        color: "white",
+        "& .MuiListItemIcon-root": {
+          color: "white",
+        },
+      },
+      fontFamily: "Work Sans",
+      fontStyle: "normal",
       fontWeight: 500,
-      borderRadius: 20,
+      fontSize: "14px",
+      color: "#153243",
     },
-    input: {
-      color: "white",
-      borderRadius: 20,
-    },
-    active: {
-      backgroundColor: "red",
+    selected: {
+      backgroundColor: "rgba(175, 213, 170, 0.24) !important",
+      transition: "0.3s",
+      fontWeight: 600,
     },
   });
 
@@ -238,7 +253,7 @@ export function ClubsContainer() {
                 }}
                 getOptionLabel={(option: any) => option.title}
                 renderOption={(props: any, option: any, { selected }: any) => (
-                  <li {...props}>
+                  <ListItem classes={{ selected: styles.selected }} {...props}>
                     <Checkbox
                       icon={icon}
                       checkedIcon={checkedIcon}
@@ -252,12 +267,16 @@ export function ClubsContainer() {
                       checked={selected}
                     />
                     {option.title}
-                  </li>
+                  </ListItem>
                 )}
                 style={{ width: "100%" }}
                 onChange={(event, value) => console.log(value)}
                 renderInput={(params: any) => (
-                  <TextField {...params} placeholder="Select Clubs" />
+                  <TextField
+                    {...params}
+                    id="Text_Field_Input"
+                    placeholder="Select Clubs"
+                  />
                 )}
               />
             </Filter.Block>

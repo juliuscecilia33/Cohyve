@@ -18,6 +18,31 @@ export const Block = styled.div`
   width: 100%;
   margin-bottom: 2rem;
 
+  .MuiAutocomplete-hasPopupIcon.css-16awh2u-MuiAutocomplete-root
+    .MuiOutlinedInput-root,
+  .MuiAutocomplete-hasClearIcon.css-16awh2u-MuiAutocomplete-root
+    .MuiOutlinedInput-root {
+    border-radius: 17px;
+    padding-left: 1rem;
+  }
+
+  .css-16awh2u-MuiAutocomplete-root
+    .MuiOutlinedInput-root
+    .MuiAutocomplete-input {
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    color: #153243;
+    cursor: pointer;
+    height: 10px;
+    border-radius: 25px;
+
+    &::placeholder {
+      color: #153243;
+    }
+  }
+
   h3 {
     margin-left: 0.5rem;
     font-family: Work Sans;

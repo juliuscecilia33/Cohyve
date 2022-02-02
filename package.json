@@ -23,6 +23,7 @@
     "dotenv": "^11.0.0",
     "firebase": "^9.6.2",
     "mui": "0.0.1",
+    "node-sass": "^7.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-instantsearch-dom": "^6.19.0",
