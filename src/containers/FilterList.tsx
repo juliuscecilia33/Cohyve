@@ -8,7 +8,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { ListItem } from "@mui/material";
 
 interface ListProps {
-  options: Array<string>;
+  options: Array<string | number>;
   placeholder: string;
 }
 
@@ -60,7 +60,7 @@ export function FilterListContainer({ options, placeholder }: ListProps) {
       classes={{
         option: styles.option,
       }}
-      getOptionLabel={(option: any) => option.title}
+      getOptionLabel={(option: any) => option}
       renderOption={(props: any, option: any, { selected }: any) => (
         <ListItem classes={{ selected: styles.selected }} {...props}>
           <Checkbox
@@ -75,7 +75,7 @@ export function FilterListContainer({ options, placeholder }: ListProps) {
             }}
             checked={selected}
           />
-          {option.title}
+          {option}
         </ListItem>
       )}
       style={{ width: "100%" }}
