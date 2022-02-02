@@ -18,6 +18,26 @@ export const Block = styled.div`
   width: 100%;
   margin-bottom: 2rem;
 
+  .css-1k430x0-MuiButtonBase-root-MuiChip-root {
+    background-color: rgba(175, 213, 170, 0.24);
+  }
+
+  .css-1k430x0-MuiButtonBase-root-MuiChip-root {
+    font-family: Work Sans;
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 11px;
+    color: #153243;
+  }
+
+  .css-1k430x0-MuiButtonBase-root-MuiChip-root .MuiChip-deleteIcon {
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    &:hover {
+      color: #e75353;
+    }
+  }
+
   .MuiAutocomplete-hasPopupIcon.css-16awh2u-MuiAutocomplete-root
     .MuiOutlinedInput-root,
   .MuiAutocomplete-hasClearIcon.css-16awh2u-MuiAutocomplete-root
