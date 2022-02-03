@@ -27,13 +27,7 @@ export const PreviewText = styled.p`
 `;
 
 export const ImageBanner = styled.div<ActiveProps>`
-  background: ${({ imageUrl }) => {
-    if (imageUrl) {
-      return `url(imageUrl)`;
-    } else {
-      return `linear-gradient(94.39deg, #afd5aa 8.09%, #58a4b0 93.12%)`;
-    }
-  }};
+  background: linear-gradient(94.39deg, #afd5aa 8.09%, #58a4b0 93.12%);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -41,6 +35,20 @@ export const ImageBanner = styled.div<ActiveProps>`
   position: relative;
   width: 100%;
   height: 35vh;
+`;
+
+export const BannerSrc = styled.div`
+  border-radius: 40px;
+  position: relative;
+  width: 100%;
+  height: 35vh;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 40px;
+  }
 `;
 
 export const InfoContainer = styled.div`

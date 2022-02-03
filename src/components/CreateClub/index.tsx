@@ -36,6 +36,7 @@ import {
   ButtonContainer,
   SearchItem,
   ImageInputs,
+  BannerSrc,
 } from "./styles/createClub";
 
 type Props = {
@@ -72,6 +73,14 @@ type Props = {
   fileId?: string;
 };
 
+type ImageProps = {
+  src?: any;
+  alt?: any;
+  imageUrl?: any;
+  imageSource?: any;
+  children?: React.ReactNode;
+};
+
 type ButtonProps = {
   children?: React.ReactNode;
   onClick?: any;
@@ -96,11 +105,28 @@ CreateClub.ImageBanner = function CreateClubImageBanner({
   imageUrl,
   children,
   ...restProps
-}: Props) {
+}: ImageProps) {
+  if (imageUrl) {
+    return (
+      <CreateClub.BannerSrc imageSource={imageUrl}>
+        {children}
+      </CreateClub.BannerSrc>
+    );
+  } else {
+    return <ImageBanner {...restProps}>{children}</ImageBanner>;
+  }
+};
+
+CreateClub.BannerSrc = function CreateClubBannerSrc({
+  imageSource,
+  children,
+  ...restProps
+}: ImageProps) {
   return (
-    <ImageBanner imageUrl={imageUrl} {...restProps}>
+    <BannerSrc {...restProps}>
+      <img src={imageSource} alt="Banner" />
       {children}
-    </ImageBanner>
+    </BannerSrc>
   );
 };
 

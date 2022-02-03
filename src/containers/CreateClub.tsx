@@ -138,7 +138,8 @@ export function CreateClubContainer() {
   const [disabled, setDisabled] = useState(false);
   const [profileProgress, setProfileProgress] = useState(0);
   const [bannerProgress, setBannerProgress] = useState(0);
-  const [previewImage, setPreviewImage] = useState(null);
+  const [previewProfile, setPreviewProfile] = useState(null);
+  const [previewBanner, setPreviewBanner] = useState(null);
 
   const storageRef = ref(storage);
 
@@ -431,13 +432,13 @@ export function CreateClubContainer() {
   const handleProfileChange = (e: any) => {
     console.log("Profile");
     console.log(e.target.files[0]);
-    let file = e.target.files[0];
-    var reader = new FileReader();
+    let profileFile = e.target.files[0];
+    let profileReader = new FileReader();
 
-    reader.readAsDataURL(file);
+    profileReader.readAsDataURL(profileFile);
 
-    reader.onload = function (e) {
-      setPreviewImage(e.target.result);
+    profileReader.onload = function (e) {
+      setPreviewProfile(e.target.result);
     };
 
     setProfile(e.target.files[0]);
@@ -447,6 +448,15 @@ export function CreateClubContainer() {
   const handleBannerChange = (e: any) => {
     console.log("Banner");
     console.log(e.target.files[0]);
+    let bannerFile = e.target.files[0];
+    let bannerReader = new FileReader();
+
+    bannerReader.readAsDataURL(bannerFile);
+
+    bannerReader.onload = function (e) {
+      setPreviewBanner(e.target.result);
+    };
+
     setBanner(e.target.files[0]);
     setBannerUploaded(true);
   };
@@ -458,11 +468,11 @@ export function CreateClubContainer() {
           create<span>club</span>
         </Hero.Heading>
         <CreateClub.PreviewText />
-        <CreateClub.ImageBanner imageUrl={null}>
+        <CreateClub.ImageBanner imageUrl={previewBanner}>
           <CreateClub.InfoContainer>
             <CreateClub.Info>
               <CreateClub.BasicInfo>
-                <CreateClub.ProfilePic profileImageUrl={null} />
+                <CreateClub.ProfilePic profileImageUrl={previewProfile} />
                 <CreateClub.InfoText>
                   <CreateClub.Name name={clubName} year={established} />
                   <CreateClub.Description>{description}</CreateClub.Description>
@@ -508,8 +518,6 @@ export function CreateClubContainer() {
         </CreateClub.ImageBanner>
       </Hero>
       <CreateClub.Section>
-        {previewImage && <img src={previewImage} alt="Preview" />}
-
         <CreateClub.Inputs>
           <CreateClub.HalfInput
             name="clubName"
