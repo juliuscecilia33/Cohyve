@@ -6,6 +6,7 @@ import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import { makeStyles } from "@material-ui/core/styles";
 import { ListItem } from "@mui/material";
+import { withStyles } from "@material-ui/core";
 
 interface ListProps {
   options?: Array<string>;
@@ -25,19 +26,8 @@ export function FilterListContainer({
         transition: "0.3s",
         fontWeight: 600,
       },
-      "&$selected": {
+      "&.Mui-selected": {
         backgroundColor: "red",
-        color: "white",
-        "& .MuiListItemIcon-root": {
-          color: "white",
-        },
-      },
-      "&$selected:hover": {
-        backgroundColor: "purple",
-        color: "white",
-        "& .MuiListItemIcon-root": {
-          color: "white",
-        },
       },
       fontFamily: "Work Sans",
       fontStyle: "normal",
@@ -45,12 +35,16 @@ export function FilterListContainer({
       fontSize: "14px",
       color: "#153243",
     },
-    selected: {
-      backgroundColor: "rgba(175, 213, 170, 0.24) !important",
-      transition: "0.3s",
-      fontWeight: 600,
-    },
   });
+
+  const StyledListItem = withStyles({
+    root: {
+      backgroundColor: "blue",
+      "&.Mui-selected": {
+        backgroundColor: "red",
+      },
+    },
+  })(ListItem);
 
   const styles = useStyles();
   const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
@@ -67,7 +61,7 @@ export function FilterListContainer({
       }}
       getOptionLabel={(option: any) => option}
       renderOption={(props: any, option: any, { selected }: any) => (
-        <ListItem classes={{ selected: styles.selected }} {...props}>
+        <ListItem {...props}>
           <Checkbox
             icon={icon}
             checkedIcon={checkedIcon}

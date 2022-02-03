@@ -22,6 +22,11 @@ export const Block = styled.div`
     background-color: rgba(175, 213, 170, 0.24);
   }
 
+  fieldset {
+    border: 1.5px solid #dedede !important;
+    outline: none !important;
+  }
+
   .css-1k430x0-MuiButtonBase-root-MuiChip-root {
     font-family: Work Sans;
     font-family: Work Sans;
