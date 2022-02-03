@@ -138,6 +138,7 @@ export function CreateClubContainer() {
   const [disabled, setDisabled] = useState(false);
   const [profileProgress, setProfileProgress] = useState(0);
   const [bannerProgress, setBannerProgress] = useState(0);
+  const [previewImage, setPreviewImage] = useState(null);
 
   const storageRef = ref(storage);
 
@@ -430,6 +431,15 @@ export function CreateClubContainer() {
   const handleProfileChange = (e: any) => {
     console.log("Profile");
     console.log(e.target.files[0]);
+    let file = e.target.files[0];
+    var reader = new FileReader();
+
+    reader.readAsDataURL(file);
+
+    reader.onload = function (e) {
+      setPreviewImage(e.target.result);
+    };
+
     setProfile(e.target.files[0]);
     setProfileUploaded(true);
   };
@@ -498,6 +508,8 @@ export function CreateClubContainer() {
         </CreateClub.ImageBanner>
       </Hero>
       <CreateClub.Section>
+        {previewImage && <img src={previewImage} alt="Preview" />}
+
         <CreateClub.Inputs>
           <CreateClub.HalfInput
             name="clubName"
