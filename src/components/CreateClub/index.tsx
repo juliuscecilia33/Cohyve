@@ -3,11 +3,11 @@ import React from "react";
 import {
   Container,
   PreviewText,
-  ImageBanner,
+  BannerPlaceholder,
   InfoContainer,
   Info,
   BasicInfo,
-  ProfilePic,
+  ProfilePlaceholder,
   InfoText,
   Buttons,
   ButtonsAndLinks,
@@ -102,7 +102,7 @@ CreateClub.PreviewText = function CreateClubPreviewText({
   return <PreviewText {...restProps}>Preview</PreviewText>;
 };
 
-CreateClub.ImageBanner = function CreateClubImageBanner({
+CreateClub.BannerPlaceholder = function CreateClubBannerPlaceholder({
   imageUrl,
   children,
   ...restProps
@@ -114,7 +114,7 @@ CreateClub.ImageBanner = function CreateClubImageBanner({
       </CreateClub.BannerSrc>
     );
   } else {
-    return <ImageBanner {...restProps}>{children}</ImageBanner>;
+    return <BannerPlaceholder {...restProps}>{children}</BannerPlaceholder>;
   }
 };
 
@@ -149,7 +149,7 @@ CreateClub.BasicInfo = function CreateClubBasicInfo({
   return <BasicInfo {...restProps}>{children}</BasicInfo>;
 };
 
-CreateClub.ProfilePic = function CreateClubProfilePic({
+CreateClub.ProfilePlaceholder = function CreateClubProfilePlaceholder({
   profileImageUrl,
   children,
   ...restProps
@@ -157,7 +157,7 @@ CreateClub.ProfilePic = function CreateClubProfilePic({
   if (profileImageUrl) {
     return <CreateClub.ProfileSrc profileImageUrl={profileImageUrl} />;
   } else {
-    return <ProfilePic {...restProps}></ProfilePic>;
+    return <ProfilePlaceholder {...restProps}></ProfilePlaceholder>;
   }
 };
 

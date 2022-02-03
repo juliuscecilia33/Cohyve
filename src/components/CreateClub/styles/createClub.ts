@@ -26,7 +26,7 @@ export const PreviewText = styled.p`
   text-align: center;
 `;
 
-export const ImageBanner = styled.div<ActiveProps>`
+export const BannerPlaceholder = styled.div<ActiveProps>`
   background: linear-gradient(94.39deg, #afd5aa 8.09%, #58a4b0 93.12%);
   background-repeat: no-repeat;
   background-size: cover;
@@ -89,7 +89,7 @@ export const BasicInfo = styled.div`
   height: 100%;
 `;
 
-export const ProfilePic = styled.div<ActiveProps>`
+export const ProfilePlaceholder = styled.div<ActiveProps>`
   width: 10vw;
   height: 10vw;
   margin-right: 1rem;

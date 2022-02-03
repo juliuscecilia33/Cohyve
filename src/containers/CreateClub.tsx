@@ -464,11 +464,13 @@ export function CreateClubContainer() {
           create<span>club</span>
         </Hero.Heading>
         <CreateClub.PreviewText />
-        <CreateClub.ImageBanner imageUrl={previewBanner}>
+        <CreateClub.BannerPlaceholder imageUrl={previewBanner}>
           <CreateClub.InfoContainer>
             <CreateClub.Info>
               <CreateClub.BasicInfo>
-                <CreateClub.ProfilePic profileImageUrl={previewProfile} />
+                <CreateClub.ProfilePlaceholder
+                  profileImageUrl={previewProfile}
+                />
                 <CreateClub.InfoText>
                   <CreateClub.Name name={clubName} year={established} />
                   <CreateClub.Description>{description}</CreateClub.Description>
@@ -511,7 +513,7 @@ export function CreateClubContainer() {
               </CreateClub.Stats>
             </CreateClub.Info>
           </CreateClub.InfoContainer>
-        </CreateClub.ImageBanner>
+        </CreateClub.BannerPlaceholder>
       </Hero>
       <CreateClub.Section>
         <CreateClub.Inputs>
@@ -742,7 +744,7 @@ export function CreateClubContainer() {
             background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;"
             disabled={false}
           >
-            Submit
+            Create Club
           </ActionButton>
         </CreateClub.ButtonContainer>
       </CreateClub.Section>
