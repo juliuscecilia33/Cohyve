@@ -37,6 +37,7 @@ import {
   SearchItem,
   ImageInputs,
   BannerSrc,
+  ProfileSrc,
 } from "./styles/createClub";
 
 type Props = {
@@ -153,10 +154,22 @@ CreateClub.ProfilePic = function CreateClubProfilePic({
   children,
   ...restProps
 }: Props) {
+  if (profileImageUrl) {
+    return <CreateClub.ProfileSrc profileImageUrl={profileImageUrl} />;
+  } else {
+    return <ProfilePic {...restProps}></ProfilePic>;
+  }
+};
+
+CreateClub.ProfileSrc = function CreateClubProfileSrc({
+  profileImageUrl,
+  children,
+  ...restProps
+}: Props) {
   return (
-    <ProfilePic profileImageUrl={profileImageUrl} {...restProps}>
-      {children}
-    </ProfilePic>
+    <ProfileSrc {...restProps}>
+      <img src={profileImageUrl} alt="Profile" />
+    </ProfileSrc>
   );
 };
 

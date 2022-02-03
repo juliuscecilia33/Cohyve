@@ -93,17 +93,25 @@ export const ProfilePic = styled.div<ActiveProps>`
   width: 10vw;
   height: 10vw;
   margin-right: 1rem;
-  background: ${({ profileImageUrl }) => {
-    if (profileImageUrl) {
-      return `url(imageUrl)`;
-    } else {
-      return `linear-gradient(94.39deg, #afd5aa 8.09%, #58a4b0 93.12%)`;
-    }
-  }};
+  background: linear-gradient(94.39deg, #afd5aa 8.09%, #58a4b0 93.12%);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   border-radius: 50%;
+`;
+
+export const ProfileSrc = styled.div<ActiveProps>`
+  width: 10vw;
+  height: 10vw;
+  margin-right: 1rem;
+  border-radius: 50%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
 `;
 
 export const InfoText = styled.div`

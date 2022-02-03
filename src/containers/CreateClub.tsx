@@ -141,8 +141,6 @@ export function CreateClubContainer() {
   const [previewProfile, setPreviewProfile] = useState(null);
   const [previewBanner, setPreviewBanner] = useState(null);
 
-  const storageRef = ref(storage);
-
   const handleFilter = (event: any) => {
     const searchWord = event.target.value;
     setWordEntered(searchWord);
@@ -162,8 +160,6 @@ export function CreateClubContainer() {
     setWordEntered(school);
     setSchool(school);
   };
-
-  // When club gets created, we'll first create a firebase id for it, then add that firebase id to the postgresql data
 
   const handleSubmit = async () => {
     if (clubName === "" || school === "") {
