@@ -74,10 +74,13 @@ router.put("/:id", authorize, checkRole, async (req, res) => {
       email,
       profileURL,
       bannerURL,
+      hero,
+      feed,
+      theme,
     } = req.body;
 
     const updateClubInfo = await pool.query(
-      "UPDATE clubs SET name = $1, description = $2, school = $3, category = $4, established_in = $5, state = $6, website = $7, instagram = $8, facebook = $9, twitter = $10, email = $11, profileURL = $12, bannerURL = $13 WHERE club_id = $14",
+      "UPDATE clubs SET name = $1, description = $2, school = $3, category = $4, established_in = $5, state = $6, website = $7, instagram = $8, facebook = $9, twitter = $10, email = $11, profileURL = $12, bannerURL = $13, hero = $14, feed = $15, theme = $16 WHERE club_id = $17",
       [
         name,
         description,
@@ -92,6 +95,9 @@ router.put("/:id", authorize, checkRole, async (req, res) => {
         email,
         profileURL,
         bannerURL,
+        hero,
+        feed,
+        theme,
         id,
       ]
     );
