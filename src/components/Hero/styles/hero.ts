@@ -10,9 +10,7 @@ export const Container = styled.div<ActiveProps>`
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  // margin-bottom: 5rem;
   background: #f4faf4;
-  // padding: 0 15%;
 `;
 
 export const Heading = styled.h1`
