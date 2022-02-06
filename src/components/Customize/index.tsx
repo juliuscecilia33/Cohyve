@@ -18,6 +18,8 @@ type Props = {
   primary?: string;
   shadow?: string;
   secondary?: string;
+  src?: any;
+  alt?: any;
 };
 
 export default function Customize({ children, ...restProps }: Props) {
@@ -51,25 +53,29 @@ Customize.Options = function CustomizeOptions({
 };
 
 Customize.HeroOption = function CustomizeHeroOption({
+  src,
+  alt,
   selected,
   children,
   ...restProps
 }: Props) {
   return (
     <HeroOption selected={selected} {...restProps}>
-      {children}
+      <img src={src} alt={alt} />
     </HeroOption>
   );
 };
 
 Customize.FeedOption = function CustomizeFeedOption({
+  src,
+  alt,
   selected,
   children,
   ...restProps
 }: Props) {
   return (
     <FeedOption selected={selected} {...restProps}>
-      {children}
+      <img src={src} alt={alt} />
     </FeedOption>
   );
 };
