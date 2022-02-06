@@ -8,17 +8,16 @@ import FeedSelectionTwo from "../images/FeedSelection2.png";
 
 export function CustomizeContainer() {
   const [heroSelected, setHeroSelected] = useState(1);
-  const [heroOneSelected, setHeroOneSelected] = useState(false);
+  const [heroOneSelected, setHeroOneSelected] = useState(true);
   const [heroTwoSelected, setHeroTwoSelected] = useState(false);
   const [heroThreeSelected, setHeroThreeSelected] = useState(false);
 
   const [feedSelected, setFeedSelected] = useState(1);
-  const [feedOneSelected, setFeedOneSelected] = useState(false);
+  const [feedOneSelected, setFeedOneSelected] = useState(true);
   const [feedTwoSelected, setFeedTwoSelected] = useState(false);
-  const [feedThreeSelected, setFeedThreeSelected] = useState(false);
 
   const [themeSelected, setThemeSelected] = useState(1);
-  const [themeOneSelected, setThemeOneSelected] = useState(false);
+  const [themeOneSelected, setThemeOneSelected] = useState(true);
   const [themeTwoSelected, setThemeTwoSelected] = useState(false);
   const [themeThreeSelected, setThemeThreeSelected] = useState(false);
   const [themeFourSelected, setThemeFourSelected] = useState(false);
@@ -85,13 +84,62 @@ export function CustomizeContainer() {
               primary="#AFD5AA"
               secondary="#DEECDE"
               shadow="-1px 10px 60px rgba(175, 213, 170, 0.35)"
+              border="6px solid #AFD5AA"
               color="#284B63"
               key={1}
               selected={themeOneSelected}
               onClick={(e: any) => console.log(e)}
+              theme="Default"
+            />
+            <Customize.ThemeOption
+              primary="#FAF4F4"
+              secondary="#ECDEDE"
+              shadow="-1px 10px 60px rgba(213, 170, 175, 0.35)"
+              border="6px solid #D5AAAF"
+              color="#632828"
+              key={2}
+              selected={themeTwoSelected}
+              onClick={(e: any) => console.log(e)}
+              theme="Rosy"
+            />
+            <Customize.ThemeOption
+              primary="#F4F7FA"
+              secondary="#DEE5EC"
+              shadow="-1px 10px 60px rgba(170, 198, 213, 0.35)"
+              border="6px solid #AAC6D5"
+              color="#284A63"
+              key={3}
+              selected={themeThreeSelected}
+              onClick={(e: any) => console.log(e)}
+              theme="Lapis"
+            />
+            <Customize.ThemeOption
+              primary="#FAF9F4"
+              secondary="#ECEBDE"
+              shadow="-1px 10px 60px rgba(213, 204, 170, 0.35)"
+              border="6px solid #D5CCAA"
+              color="#626328"
+              key={4}
+              selected={themeFourSelected}
+              onClick={(e: any) => console.log(e)}
+              theme="Amber"
+            />
+            <Customize.ThemeOption
+              primary="#F7F4FA"
+              secondary="#E5DEEC"
+              shadow="-1px 10px 60px rgba(184, 170, 213, 0.35)"
+              border="6px solid #B8AAD5"
+              color="#502863"
+              key={5}
+              selected={themeFiveSelected}
+              onClick={(e: any) => console.log(e)}
+              theme="Lavender"
             />
           </Customize.Options>
         </Customize.Section>
+        <ActionButton background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;">
+          Finish
+        </ActionButton>
       </Customize>
     </>
   );

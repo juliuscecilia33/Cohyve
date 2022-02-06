@@ -6,6 +6,7 @@ interface ActiveProps {
   shadow?: string;
   primary?: string;
   secondary?: string;
+  border?: string;
 }
 
 export const Container = styled.div`
@@ -76,6 +77,7 @@ export const ThemeOption = styled.button<ActiveProps>`
   box-shadow: ${({ selected, shadow }) =>
     selected ? shadow : `-1px 10px 60px rgba(27, 27, 30, 0.1)`};
   background: ${({ primary }) => primary};
+  border: ${({ border, selected }) => (selected ? border : null)};
   position: relative;
   outline: none;
   cursor: pointer;

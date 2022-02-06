@@ -21,6 +21,7 @@ type Props = {
   src?: any;
   alt?: any;
   theme?: string;
+  border?: string;
   onClick?: any;
 };
 
@@ -85,6 +86,7 @@ Customize.FeedOption = function CustomizeFeedOption({
 };
 
 Customize.ThemeOption = function CustomizeThemeOption({
+  border,
   onClick,
   shadow,
   primary,
@@ -98,6 +100,7 @@ Customize.ThemeOption = function CustomizeThemeOption({
   return (
     <ThemeOption
       primary={primary}
+      border={border}
       secondary={secondary}
       shadow={shadow}
       selected={selected}

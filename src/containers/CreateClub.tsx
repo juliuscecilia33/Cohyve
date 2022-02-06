@@ -542,7 +542,7 @@ export function CreateClubContainer() {
               }}
               showItems={showCategories}
             >
-              {categories.map((category) => (
+              {categories.map((category, key) => (
                 <CreateClub.DropdownItem
                   onClick={() => {
                     setShowCategories(false);
@@ -551,6 +551,7 @@ export function CreateClubContainer() {
                   onBlur={() => {
                     setShowCategories(false);
                   }}
+                  key={key}
                 >
                   {category}
                 </CreateClub.DropdownItem>
@@ -585,6 +586,7 @@ export function CreateClubContainer() {
                   return (
                     <CreateClub.SearchItem
                       onClick={() => setSchoolValue(value.name)}
+                      key={key}
                     >
                       {value.name}
                     </CreateClub.SearchItem>
@@ -608,7 +610,7 @@ export function CreateClubContainer() {
               }}
               showItems={showYears}
             >
-              {years.map((year: any) => (
+              {years.map((year: any, key) => (
                 <CreateClub.DropdownItem
                   onClick={() => {
                     setShowYears(false);
@@ -617,6 +619,7 @@ export function CreateClubContainer() {
                   onBlur={() => {
                     setShowYears(false);
                   }}
+                  key={key}
                 >
                   {year}
                 </CreateClub.DropdownItem>
@@ -639,7 +642,7 @@ export function CreateClubContainer() {
               }}
               showItems={showStates}
             >
-              {states.map((state) => (
+              {states.map((state, key) => (
                 <CreateClub.DropdownItem
                   onClick={() => {
                     setShowStates(false);
@@ -648,6 +651,7 @@ export function CreateClubContainer() {
                   onBlur={() => {
                     setShowStates(false);
                   }}
+                  key={key}
                 >
                   {state}
                 </CreateClub.DropdownItem>
