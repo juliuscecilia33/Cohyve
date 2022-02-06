@@ -39,19 +39,19 @@ export function CustomizeContainer() {
             <Customize.HeroOption
               src={HeroSelectionOne}
               alt={1}
-              onClick={(e: any) => console.log(e)}
+              onClick={(e: any) => console.log(e.target.alt)}
               selected={heroOneSelected}
             />
             <Customize.HeroOption
               src={HeroSelectionTwo}
               alt={2}
-              onClick={(e: any) => console.log(e)}
+              onClick={(e: any) => console.log(e.target.alt)}
               selected={heroTwoSelected}
             />
             <Customize.HeroOption
               src={HeroSelectionThree}
               alt={3}
-              onClick={(e: any) => console.log(e)}
+              onClick={(e: any) => console.log(e.target.alt)}
               selected={heroThreeSelected}
             />
           </Customize.Options>
@@ -64,13 +64,13 @@ export function CustomizeContainer() {
             <Customize.FeedOption
               src={FeedSelectionOne}
               alt={1}
-              onClick={(e: any) => console.log(e)}
+              onClick={(e: any) => console.log(e.target.alt)}
               selected={feedOneSelected}
             />
             <Customize.FeedOption
               src={FeedSelectionTwo}
-              alt={1}
-              onClick={(e: any) => console.log(e)}
+              alt={2}
+              onClick={(e: any) => console.log(e.target.alt)}
               selected={feedTwoSelected}
             />
           </Customize.Options>
@@ -88,8 +88,9 @@ export function CustomizeContainer() {
               color="#284B63"
               key={1}
               selected={themeOneSelected}
-              onClick={(e: any) => console.log(e)}
+              onClick={(e: any) => console.log(e.target.children[0].innerText)}
               theme="Default"
+              alt={1}
             />
             <Customize.ThemeOption
               primary="#FAF4F4"
@@ -99,8 +100,9 @@ export function CustomizeContainer() {
               color="#632828"
               key={2}
               selected={themeTwoSelected}
-              onClick={(e: any) => console.log(e)}
+              onClick={(e: any) => console.log(e.target.children[0].innerText)}
               theme="Rosy"
+              alt={2}
             />
             <Customize.ThemeOption
               primary="#F4F7FA"
@@ -110,8 +112,9 @@ export function CustomizeContainer() {
               color="#284A63"
               key={3}
               selected={themeThreeSelected}
-              onClick={(e: any) => console.log(e)}
+              onClick={(e: any) => console.log(e.target.children[0].innerText)}
               theme="Lapis"
+              alt={3}
             />
             <Customize.ThemeOption
               primary="#FAF9F4"
@@ -121,8 +124,9 @@ export function CustomizeContainer() {
               color="#626328"
               key={4}
               selected={themeFourSelected}
-              onClick={(e: any) => console.log(e)}
+              onClick={(e: any) => console.log(e.target.children[0].innerText)}
               theme="Amber"
+              alt={4}
             />
             <Customize.ThemeOption
               primary="#F7F4FA"
@@ -132,8 +136,9 @@ export function CustomizeContainer() {
               color="#502863"
               key={5}
               selected={themeFiveSelected}
-              onClick={(e: any) => console.log(e)}
+              onClick={(e: any) => console.log(e.target.children[0].innerText)}
               theme="Lavender"
+              alt={5}
             />
           </Customize.Options>
         </Customize.Section>

@@ -12,6 +12,7 @@ import {
   UserPage,
   CreateClubPage,
   ClubsPage,
+  CustomizePage,
 } from "./pages";
 import * as ROUTES from "./constants/routes";
 import { UserTokenContext } from "./context/UserToken";
@@ -93,6 +94,9 @@ function App() {
             </Route>
             <Route exact path={ROUTES.CLUBS}>
               <ClubsPage />
+            </Route>
+            <Route exact path={ROUTES.CUSTOMIZE}>
+              <CustomizePage />
             </Route>
           </Switch>
         </Router>
