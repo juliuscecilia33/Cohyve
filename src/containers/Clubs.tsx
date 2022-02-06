@@ -181,7 +181,7 @@ export function ClubsContainer() {
   return (
     <>
       <Clubs>
-        <Hero padding="3rem 15%">
+        <Hero>
           <Hero.Heading>
             popular<span>clubs</span>
           </Hero.Heading>

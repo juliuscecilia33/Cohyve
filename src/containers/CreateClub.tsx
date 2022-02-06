@@ -459,7 +459,7 @@ export function CreateClubContainer() {
 
   return (
     <CreateClub>
-      <Hero padding="3rem 15% 15rem 15%">
+      <Hero.CreateClub>
         <Hero.Heading>
           create<span>club</span>
         </Hero.Heading>
@@ -514,7 +514,7 @@ export function CreateClubContainer() {
             </CreateClub.Info>
           </CreateClub.InfoContainer>
         </CreateClub.BannerPlaceholder>
-      </Hero>
+      </Hero.CreateClub>
       <CreateClub.Section>
         <CreateClub.Inputs>
           <CreateClub.HalfInput

@@ -1,11 +1,7 @@
 import styled from "styled-components/macro";
 
-interface ActiveProps {
-  padding?: string;
-}
-
-export const Container = styled.div<ActiveProps>`
-  padding: ${({ padding }) => padding};
+export const Container = styled.div`
+  padding: 3rem 15%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -29,4 +25,13 @@ export const Heading = styled.h1`
     color: #284b63;
     margin-left: 1rem;
   }
+`;
+
+export const CreateClub = styled.div`
+  padding: 3rem 15% 15rem 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  background: #f4faf4;
 `;
