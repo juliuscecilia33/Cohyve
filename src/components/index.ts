@@ -8,3 +8,4 @@ export { default as Search } from "./Search";
 export { default as Filter } from "./Filter";
 export { default as ClubBlock } from "./ClubBlock";
 export { default as Clubs } from "./Clubs";
+export { default as Customize } from "./Customize";

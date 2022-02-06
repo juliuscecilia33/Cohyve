@@ -20,6 +20,7 @@ type Props = {
   secondary?: string;
   src?: any;
   alt?: any;
+  theme?: string;
 };
 
 export default function Customize({ children, ...restProps }: Props) {
@@ -85,6 +86,7 @@ Customize.ThemeOption = function CustomizeThemeOption({
   primary,
   secondary,
   color,
+  theme,
   selected,
   children,
   ...restProps
@@ -95,9 +97,10 @@ Customize.ThemeOption = function CustomizeThemeOption({
       secondary={secondary}
       shadow={shadow}
       selected={selected}
+      color={color}
       {...restProps}
     >
-      <p>{color}</p>
+      <p>{theme}</p>
       <div></div>
     </ThemeOption>
   );
