@@ -31,7 +31,7 @@ export const Options = styled.div`
   flex-wrap: wrap;
 `;
 
-export const HeroOption = styled.div<ActiveProps>`
+export const HeroOption = styled.button<ActiveProps>`
   width: 600px;
   height: 526px;
   box-shadow: ${({ selected }) =>
@@ -40,9 +40,17 @@ export const HeroOption = styled.div<ActiveProps>`
       : `-1px 10px 60px rgba(27, 27, 30, 0.1)`};
   border-radius: 30px;
   border: ${({ selected }) => (selected ? `6px solid #afd5aa` : `none`)};
+  cursor: pointer;
+  outline: none;
+
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+  }
 `;
 
-export const FeedOption = styled.div<ActiveProps>`
+export const FeedOption = styled.button<ActiveProps>`
   width: 600px;
   height: 821px;
   box-shadow: ${({ selected }) =>
@@ -51,9 +59,17 @@ export const FeedOption = styled.div<ActiveProps>`
       : `-1px 10px 60px rgba(27, 27, 30, 0.1)`};
   border-radius: 30px;
   border: ${({ selected }) => (selected ? `6px solid #afd5aa` : `none`)};
+  cursor: pointer;
+  outline: none;
+
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+  }
 `;
 
-export const ThemeOption = styled.div<ActiveProps>`
+export const ThemeOption = styled.button<ActiveProps>`
   width: 215px;
   height: 215px;
   border-radius: 20px;
@@ -61,6 +77,8 @@ export const ThemeOption = styled.div<ActiveProps>`
     selected ? shadow : `-1px 10px 60px rgba(27, 27, 30, 0.1)`};
   background: ${({ primary }) => primary};
   position: relative;
+  outline: none;
+  cursor: pointer;
 
   p {
     position: absolute;

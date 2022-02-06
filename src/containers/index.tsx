@@ -6,3 +6,4 @@ export { CreateClubContainer } from "./CreateClub";
 export { ClubBlockContainer } from "./ClubBlock";
 export { ClubsContainer } from "./Clubs";
 export { FilterListContainer } from "./FilterList";
+export { CustomizeContainer } from "./Customize";

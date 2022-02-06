@@ -21,6 +21,7 @@ type Props = {
   src?: any;
   alt?: any;
   theme?: string;
+  onClick?: any;
 };
 
 export default function Customize({ children, ...restProps }: Props) {
@@ -58,10 +59,11 @@ Customize.HeroOption = function CustomizeHeroOption({
   alt,
   selected,
   children,
+  onClick,
   ...restProps
 }: Props) {
   return (
-    <HeroOption selected={selected} {...restProps}>
+    <HeroOption selected={selected} onClick={onClick} {...restProps}>
       <img src={src} alt={alt} />
     </HeroOption>
   );
@@ -71,17 +73,19 @@ Customize.FeedOption = function CustomizeFeedOption({
   src,
   alt,
   selected,
+  onClick,
   children,
   ...restProps
 }: Props) {
   return (
-    <FeedOption selected={selected} {...restProps}>
+    <FeedOption selected={selected} onClick={onClick} {...restProps}>
       <img src={src} alt={alt} />
     </FeedOption>
   );
 };
 
 Customize.ThemeOption = function CustomizeThemeOption({
+  onClick,
   shadow,
   primary,
   secondary,
@@ -97,6 +101,7 @@ Customize.ThemeOption = function CustomizeThemeOption({
       secondary={secondary}
       shadow={shadow}
       selected={selected}
+      onClick={onClick}
       color={color}
       {...restProps}
     >

@@ -35,3 +35,12 @@ export const CreateClub = styled.div`
   width: 100%;
   background: #f4faf4;
 `;
+
+export const Description = styled.p`
+  margin-top: 0.7rem;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  color: #cdcdcd;
+`;
