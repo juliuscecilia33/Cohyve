@@ -7,6 +7,7 @@ import {
   Options,
   Heading,
   FeedOption,
+  ButtonContainer,
   ThemeOption,
 } from "./styles/customize";
 
@@ -46,6 +47,13 @@ Customize.Heading = function CustomizeHeading({
   ...restProps
 }: Props) {
   return <Heading {...restProps}>{children}</Heading>;
+};
+
+Customize.ButtonContainer = function CustomizeButtonContainer({
+  children,
+  ...restProps
+}: Props) {
+  return <ButtonContainer {...restProps}>{children}</ButtonContainer>;
 };
 
 Customize.Options = function CustomizeOptions({

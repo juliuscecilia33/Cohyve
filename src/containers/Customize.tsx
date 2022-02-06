@@ -81,10 +81,10 @@ export function CustomizeContainer() {
           </Customize.Heading>
           <Customize.Options>
             <Customize.ThemeOption
-              primary="#AFD5AA"
+              primary="#F4FAF4"
               secondary="#DEECDE"
-              shadow="-1px 10px 60px rgba(175, 213, 170, 0.35)"
-              border="6px solid #AFD5AA"
+              shadow="-1px 10px 60px rgba(175, 213, 170, 0.6)"
+              border="5px solid #AFD5AA"
               color="#284B63"
               key={1}
               selected={themeOneSelected}
@@ -95,8 +95,8 @@ export function CustomizeContainer() {
             <Customize.ThemeOption
               primary="#FAF4F4"
               secondary="#ECDEDE"
-              shadow="-1px 10px 60px rgba(213, 170, 175, 0.35)"
-              border="6px solid #D5AAAF"
+              shadow="-1px 10px 60px rgba(213, 170, 175, 0.6)"
+              border="5px solid #D5AAAF"
               color="#632828"
               key={2}
               selected={themeTwoSelected}
@@ -107,8 +107,8 @@ export function CustomizeContainer() {
             <Customize.ThemeOption
               primary="#F4F7FA"
               secondary="#DEE5EC"
-              shadow="-1px 10px 60px rgba(170, 198, 213, 0.35)"
-              border="6px solid #AAC6D5"
+              shadow="-1px 10px 60px rgba(170, 198, 213, 0.6)"
+              border="5px solid #AAC6D5"
               color="#284A63"
               key={3}
               selected={themeThreeSelected}
@@ -119,8 +119,8 @@ export function CustomizeContainer() {
             <Customize.ThemeOption
               primary="#FAF9F4"
               secondary="#ECEBDE"
-              shadow="-1px 10px 60px rgba(213, 204, 170, 0.35)"
-              border="6px solid #D5CCAA"
+              shadow="-1px 10px 60px rgba(213, 204, 170, 0.6)"
+              border="5px solid #D5CCAA"
               color="#626328"
               key={4}
               selected={themeFourSelected}
@@ -131,8 +131,8 @@ export function CustomizeContainer() {
             <Customize.ThemeOption
               primary="#F7F4FA"
               secondary="#E5DEEC"
-              shadow="-1px 10px 60px rgba(184, 170, 213, 0.35)"
-              border="6px solid #B8AAD5"
+              shadow="-1px 10px 60px rgba(184, 170, 213, 0.6)"
+              border="5px solid #B8AAD5"
               color="#502863"
               key={5}
               selected={themeFiveSelected}
@@ -142,9 +142,11 @@ export function CustomizeContainer() {
             />
           </Customize.Options>
         </Customize.Section>
-        <ActionButton background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;">
-          Finish
-        </ActionButton>
+        <Customize.ButtonContainer>
+          <ActionButton background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;">
+            Finish
+          </ActionButton>
+        </Customize.ButtonContainer>
       </Customize>
     </>
   );

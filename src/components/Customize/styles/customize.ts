@@ -18,7 +18,7 @@ export const Container = styled.div`
 
 export const Section = styled.div<ActiveProps>`
   width: 100%;
-  padding: 3rem 15%;
+  padding: 6rem 15%;
   background: ${({ background }) => background};
   display: flex;
   flex-direction: column;
@@ -27,22 +27,29 @@ export const Section = styled.div<ActiveProps>`
 export const Options = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
 `;
 
 export const HeroOption = styled.button<ActiveProps>`
-  width: 600px;
-  height: 526px;
+  width: 505px;
+  height: 443px;
   box-shadow: ${({ selected }) =>
     selected
-      ? `-1px 10px 60px rgba(175, 213, 170, 0.35)`
+      ? `-1px 10px 60px rgba(175, 213, 170, 0.4)`
       : `-1px 10px 60px rgba(27, 27, 30, 0.1)`};
   border-radius: 30px;
   border: ${({ selected }) => (selected ? `6px solid #afd5aa` : `none`)};
   cursor: pointer;
   outline: none;
+  margin: 2rem 0;
+  transition: all 100ms cubic-bezier(0.17, 0.67, 0.83, 0.67);
+
+  &:hover {
+    box-shadow: -1px 10px 60px rgba(175, 213, 170, 0.4);
+    border: 6px solid #afd5aa;
+  }
 
   img {
     width: 100%;
@@ -52,16 +59,23 @@ export const HeroOption = styled.button<ActiveProps>`
 `;
 
 export const FeedOption = styled.button<ActiveProps>`
-  width: 600px;
-  height: 821px;
+  width: 505px;
+  height: 691px;
   box-shadow: ${({ selected }) =>
     selected
-      ? `-1px 10px 60px rgba(175, 213, 170, 0.35)`
+      ? `-1px 10px 60px rgba(175, 213, 170, 0.4)`
       : `-1px 10px 60px rgba(27, 27, 30, 0.1)`};
   border-radius: 30px;
   border: ${({ selected }) => (selected ? `6px solid #afd5aa` : `none`)};
   cursor: pointer;
   outline: none;
+  margin: 2rem 0;
+  transition: all 100ms cubic-bezier(0.17, 0.67, 0.83, 0.67);
+
+  &:hover {
+    box-shadow: -1px 10px 60px rgba(175, 213, 170, 0.4);
+    border: 6px solid #afd5aa;
+  }
 
   img {
     width: 100%;
@@ -70,9 +84,17 @@ export const FeedOption = styled.button<ActiveProps>`
   }
 `;
 
+export const ButtonContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem 0;
+`;
+
 export const ThemeOption = styled.button<ActiveProps>`
-  width: 215px;
-  height: 215px;
+  width: 200px;
+  height: 200px;
   border-radius: 20px;
   box-shadow: ${({ selected, shadow }) =>
     selected ? shadow : `-1px 10px 60px rgba(27, 27, 30, 0.1)`};
@@ -81,25 +103,31 @@ export const ThemeOption = styled.button<ActiveProps>`
   position: relative;
   outline: none;
   cursor: pointer;
+  transition: all 100ms cubic-bezier(0.17, 0.67, 0.83, 0.67);
+
+  &:hover {
+    border: ${({ border }) => border};
+    box-shadow: ${({ shadow }) => shadow};
+  }
 
   p {
     position: absolute;
-    bottom: 0;
-    left: 0;
+    bottom: 5%;
+    left: 9%;
     font-family: Poppins;
     font-style: normal;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 16px;
     color: ${({ color }) => color};
   }
 
   div {
     background: ${({ secondary }) => secondary};
-    width: 55px;
-    height: 55px;
+    width: 52px;
+    height: 52px;
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 5%;
+    right: 5%;
     border-radius: 10px;
   }
 `;
@@ -110,7 +138,7 @@ export const Heading = styled.h1`
   font-weight: bold;
   font-size: 64px;
   color: #afd5aa;
-  margin-bottom: 5rem;
+  margin-bottom: 1rem;
 
   span {
     font-family: Poppins;
