@@ -23,8 +23,9 @@ export function CustomizeContainer() {
   const [themeFourSelected, setThemeFourSelected] = useState(false);
   const [themeFiveSelected, setThemeFiveSelected] = useState(false);
 
-  console.log(themeSelected);
-  console.log(heroSelected);
+  console.log("theme: ", themeSelected);
+  console.log("hero: ", heroSelected);
+  console.log("feed: ", feedSelected);
 
   return (
     <>
@@ -43,7 +44,7 @@ export function CustomizeContainer() {
               src={HeroSelectionOne}
               alt={1}
               onClick={(e: any) => {
-                setHeroSelected(e.target.alt);
+                setHeroSelected(Number(e.target.alt));
                 setHeroOneSelected(true);
                 setHeroTwoSelected(false);
                 setHeroThreeSelected(false);
@@ -54,7 +55,7 @@ export function CustomizeContainer() {
               src={HeroSelectionTwo}
               alt={2}
               onClick={(e: any) => {
-                setHeroSelected(e.target.alt);
+                setHeroSelected(Number(e.target.alt));
                 setHeroOneSelected(false);
                 setHeroTwoSelected(true);
                 setHeroThreeSelected(false);
@@ -65,7 +66,7 @@ export function CustomizeContainer() {
               src={HeroSelectionThree}
               alt={3}
               onClick={(e: any) => {
-                setHeroSelected(e.target.alt);
+                setHeroSelected(Number(e.target.alt));
                 setHeroOneSelected(false);
                 setHeroTwoSelected(false);
                 setHeroThreeSelected(true);
@@ -82,13 +83,21 @@ export function CustomizeContainer() {
             <Customize.FeedOption
               src={FeedSelectionOne}
               alt={1}
-              onClick={(e: any) => console.log(e.target.alt)}
+              onClick={(e: any) => {
+                setFeedSelected(Number(e.target.alt));
+                setFeedOneSelected(true);
+                setFeedTwoSelected(false);
+              }}
               selected={feedOneSelected}
             />
             <Customize.FeedOption
               src={FeedSelectionTwo}
               alt={2}
-              onClick={(e: any) => console.log(e.target.alt)}
+              onClick={(e: any) => {
+                setFeedSelected(Number(e.target.alt));
+                setFeedOneSelected(false);
+                setFeedTwoSelected(true);
+              }}
               selected={feedTwoSelected}
             />
           </Customize.Options>
