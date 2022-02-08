@@ -5,9 +5,9 @@ import HeroSelectionTwo from "../images/HeroSelection2.png";
 import HeroSelectionThree from "../images/HeroSelection3.png";
 import FeedSelectionOne from "../images/FeedSelection1.png";
 import FeedSelectionTwo from "../images/FeedSelection2.png";
-import { useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-export function CustomizeContainer(props: any) {
+export function CustomizeContainer() {
   const [heroSelected, setHeroSelected] = useState(1);
   const [heroOneSelected, setHeroOneSelected] = useState(true);
   const [heroTwoSelected, setHeroTwoSelected] = useState(false);
@@ -28,7 +28,9 @@ export function CustomizeContainer(props: any) {
   console.log("hero: ", heroSelected);
   console.log("feed: ", feedSelected);
 
-  console.log(props.location.state.detail);
+  const location = useLocation();
+
+  console.log("state: ", location.state);
 
   return (
     <>

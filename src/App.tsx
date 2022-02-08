@@ -95,7 +95,7 @@ function App() {
             <Route exact path={ROUTES.CLUBS}>
               <ClubsPage />
             </Route>
-            <Route exact path={ROUTES.CUSTOMIZE}>
+            <Route path={ROUTES.CUSTOMIZE}>
               <CustomizePage />
             </Route>
           </Switch>
