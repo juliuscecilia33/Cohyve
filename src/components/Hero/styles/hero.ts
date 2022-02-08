@@ -13,7 +13,7 @@ export const Heading = styled.h1`
   font-family: Work Sans;
   font-style: normal;
   font-weight: bold;
-  font-size: 10vh;
+  font-size: 4rem;
   color: #afd5aa;
   margin-bottom: 5rem;
 
@@ -21,7 +21,7 @@ export const Heading = styled.h1`
     font-family: Poppins;
     font-style: normal;
     font-weight: bold;
-    font-size: 42px;
+    font-size: 36px;
     color: #284b63;
     margin-left: 1rem;
   }

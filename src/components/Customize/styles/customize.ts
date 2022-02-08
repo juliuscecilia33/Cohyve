@@ -104,6 +104,7 @@ export const ThemeOption = styled.button<ActiveProps>`
   outline: none;
   cursor: pointer;
   transition: all 100ms cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  margin-top: 2rem;
 
   &:hover {
     border: ${({ border }) => border};
@@ -136,7 +137,7 @@ export const Heading = styled.h1`
   font-family: Work Sans;
   font-style: normal;
   font-weight: bold;
-  font-size: 64px;
+  font-size: 3.6rem;
   color: #afd5aa;
   margin-bottom: 1rem;
 
@@ -144,7 +145,7 @@ export const Heading = styled.h1`
     font-family: Poppins;
     font-style: normal;
     font-weight: bold;
-    font-size: 42px;
+    font-size: 34px;
     color: #284b63;
     margin-left: 1rem;
   }

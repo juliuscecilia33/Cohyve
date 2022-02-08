@@ -24,6 +24,7 @@ export function CustomizeContainer() {
   const [themeFiveSelected, setThemeFiveSelected] = useState(false);
 
   console.log(themeSelected);
+  console.log(heroSelected);
 
   return (
     <>
@@ -41,19 +42,34 @@ export function CustomizeContainer() {
             <Customize.HeroOption
               src={HeroSelectionOne}
               alt={1}
-              onClick={(e: any) => console.log(e.target.alt)}
+              onClick={(e: any) => {
+                setHeroSelected(e.target.alt);
+                setHeroOneSelected(true);
+                setHeroTwoSelected(false);
+                setHeroThreeSelected(false);
+              }}
               selected={heroOneSelected}
             />
             <Customize.HeroOption
               src={HeroSelectionTwo}
               alt={2}
-              onClick={(e: any) => console.log(e.target.alt)}
+              onClick={(e: any) => {
+                setHeroSelected(e.target.alt);
+                setHeroOneSelected(false);
+                setHeroTwoSelected(true);
+                setHeroThreeSelected(false);
+              }}
               selected={heroTwoSelected}
             />
             <Customize.HeroOption
               src={HeroSelectionThree}
               alt={3}
-              onClick={(e: any) => console.log(e.target.alt)}
+              onClick={(e: any) => {
+                setHeroSelected(e.target.alt);
+                setHeroOneSelected(false);
+                setHeroTwoSelected(false);
+                setHeroThreeSelected(true);
+              }}
               selected={heroThreeSelected}
             />
           </Customize.Options>
