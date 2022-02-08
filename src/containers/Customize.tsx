@@ -16,12 +16,14 @@ export function CustomizeContainer() {
   const [feedOneSelected, setFeedOneSelected] = useState(true);
   const [feedTwoSelected, setFeedTwoSelected] = useState(false);
 
-  const [themeSelected, setThemeSelected] = useState(1);
+  const [themeSelected, setThemeSelected] = useState("Default");
   const [themeOneSelected, setThemeOneSelected] = useState(true);
   const [themeTwoSelected, setThemeTwoSelected] = useState(false);
   const [themeThreeSelected, setThemeThreeSelected] = useState(false);
   const [themeFourSelected, setThemeFourSelected] = useState(false);
   const [themeFiveSelected, setThemeFiveSelected] = useState(false);
+
+  console.log(themeSelected);
 
   return (
     <>
@@ -88,7 +90,14 @@ export function CustomizeContainer() {
               color="#284B63"
               key={1}
               selected={themeOneSelected}
-              onClick={(e: any) => console.log(e.target.children[0].innerText)}
+              onClick={(e: any) => {
+                setThemeSelected(e.target.children[0].innerText);
+                setThemeOneSelected(true);
+                setThemeTwoSelected(false);
+                setThemeThreeSelected(false);
+                setThemeFourSelected(false);
+                setThemeFiveSelected(false);
+              }}
               theme="Default"
               alt={1}
             />
@@ -100,7 +109,14 @@ export function CustomizeContainer() {
               color="#632828"
               key={2}
               selected={themeTwoSelected}
-              onClick={(e: any) => console.log(e.target.children[0].innerText)}
+              onClick={(e: any) => {
+                setThemeSelected(e.target.children[0].innerText);
+                setThemeOneSelected(false);
+                setThemeTwoSelected(true);
+                setThemeThreeSelected(false);
+                setThemeFourSelected(false);
+                setThemeFiveSelected(false);
+              }}
               theme="Rosy"
               alt={2}
             />
@@ -112,7 +128,14 @@ export function CustomizeContainer() {
               color="#284A63"
               key={3}
               selected={themeThreeSelected}
-              onClick={(e: any) => console.log(e.target.children[0].innerText)}
+              onClick={(e: any) => {
+                setThemeSelected(e.target.children[0].innerText);
+                setThemeOneSelected(false);
+                setThemeTwoSelected(false);
+                setThemeThreeSelected(true);
+                setThemeFourSelected(false);
+                setThemeFiveSelected(false);
+              }}
               theme="Lapis"
               alt={3}
             />
@@ -124,7 +147,14 @@ export function CustomizeContainer() {
               color="#626328"
               key={4}
               selected={themeFourSelected}
-              onClick={(e: any) => console.log(e.target.children[0].innerText)}
+              onClick={(e: any) => {
+                setThemeSelected(e.target.children[0].innerText);
+                setThemeOneSelected(false);
+                setThemeTwoSelected(false);
+                setThemeThreeSelected(false);
+                setThemeFourSelected(true);
+                setThemeFiveSelected(false);
+              }}
               theme="Amber"
               alt={4}
             />
@@ -136,7 +166,14 @@ export function CustomizeContainer() {
               color="#502863"
               key={5}
               selected={themeFiveSelected}
-              onClick={(e: any) => console.log(e.target.children[0].innerText)}
+              onClick={(e: any) => {
+                setThemeSelected(e.target.children[0].innerText);
+                setThemeOneSelected(false);
+                setThemeTwoSelected(false);
+                setThemeThreeSelected(false);
+                setThemeFourSelected(false);
+                setThemeFiveSelected(true);
+              }}
               theme="Lavender"
               alt={5}
             />
