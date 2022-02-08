@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { CreateClub, ActionButton, Hero } from "../components";
 import SchoolData from "../schools.json";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 import {
   storage,
@@ -111,6 +112,8 @@ export function CreateClubContainer() {
     2000,
     "< 2000",
   ];
+
+  let history = useHistory();
 
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
@@ -248,10 +251,19 @@ export function CreateClubContainer() {
                         jwt_token: localStorage.token,
                       },
                     })
-                    .then((response) => {
+                    .then((response: any) => {
                       console.log(response);
                       console.log("Successfully created club");
                       // Direct to clubs page
+                      history.push({
+                        pathname:
+                          "/" +
+                          clubName.replace(/\s+/g, "-").toLowerCase() +
+                          "/" +
+                          response.club_id +
+                          "/customize",
+                        state: { club: appBody },
+                      });
                     })
                     .catch((error) => {
                       setSubmitError(error.message);
