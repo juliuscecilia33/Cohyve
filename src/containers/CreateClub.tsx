@@ -327,9 +327,21 @@ export function CreateClubContainer() {
                   jwt_token: localStorage.token,
                 },
               })
-              .then((response) => {
+              .then((response: any) => {
                 console.log(response);
                 console.log("Successfully created club");
+
+                console.log(response.data.club_id);
+                // Direct to clubs page
+                history.push({
+                  pathname:
+                    "/" +
+                    clubName.replace(/\s+/g, "-").toLowerCase() +
+                    "/" +
+                    response.data.club_id +
+                    "/customize",
+                  state: { appBody },
+                });
                 // Direct to clubs page
               })
               .catch((error) => {
@@ -390,10 +402,21 @@ export function CreateClubContainer() {
                   jwt_token: localStorage.token,
                 },
               })
-              .then((response) => {
+              .then((response: any) => {
                 console.log(response);
                 console.log("Successfully created club");
+
+                console.log(response.data.club_id);
                 // Direct to clubs page
+                history.push({
+                  pathname:
+                    "/" +
+                    clubName.replace(/\s+/g, "-").toLowerCase() +
+                    "/" +
+                    response.data.club_id +
+                    "/customize",
+                  state: { appBody },
+                });
               })
               .catch((error) => {
                 setSubmitError(error.message);

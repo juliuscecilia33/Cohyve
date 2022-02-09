@@ -36,6 +36,7 @@ export function CustomizeContainer() {
 
   console.log("state: ", location.state);
   setAppBody(location.state);
+  console.log("appBody: ", appBody);
 
   return (
     <>
