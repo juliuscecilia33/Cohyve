@@ -24,13 +24,18 @@ export function CustomizeContainer() {
   const [themeFourSelected, setThemeFourSelected] = useState(false);
   const [themeFiveSelected, setThemeFiveSelected] = useState(false);
 
+  const [appBody, setAppBody] = useState(null);
+
   console.log("theme: ", themeSelected);
   console.log("hero: ", heroSelected);
   console.log("feed: ", feedSelected);
 
   const location = useLocation();
 
+  const handleSubmit = async () => {};
+
   console.log("state: ", location.state);
+  setAppBody(location.state);
 
   return (
     <>
@@ -210,7 +215,11 @@ export function CustomizeContainer() {
           </Customize.Options>
         </Customize.Section>
         <Customize.ButtonContainer>
-          <ActionButton background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;">
+          <ActionButton
+            onClick={() => handleSubmit()}
+            disabled={false}
+            background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;"
+          >
             Finish
           </ActionButton>
         </Customize.ButtonContainer>
