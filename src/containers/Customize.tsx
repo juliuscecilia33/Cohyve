@@ -6,6 +6,8 @@ import HeroSelectionThree from "../images/HeroSelection3.png";
 import FeedSelectionOne from "../images/FeedSelection1.png";
 import FeedSelectionTwo from "../images/FeedSelection2.png";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 export function CustomizeContainer() {
   const [heroSelected, setHeroSelected] = useState(1);
@@ -24,12 +26,15 @@ export function CustomizeContainer() {
   const [themeFourSelected, setThemeFourSelected] = useState(false);
   const [themeFiveSelected, setThemeFiveSelected] = useState(false);
 
+  const [submitError, setSubmitError] = useState(null);
+
   const [appBody, setAppBody] = useState(null);
 
   console.log("theme: ", themeSelected);
   console.log("hero: ", heroSelected);
   console.log("feed: ", feedSelected);
 
+  const history = useHistory();
   const location = useLocation();
 
   const handleSubmit = async () => {
@@ -41,6 +46,28 @@ export function CustomizeContainer() {
     };
 
     console.log(customizeBody);
+
+    await axios
+      .put("http://localhost:5000/clubs/", appBody, {
+        headers: {
+          jwt_token: localStorage.token,
+        },
+      })
+      .then((response: any) => {
+        console.log(response);
+        console.log("Successfully created club");
+
+        console.log(response.data.club_id);
+        // Direct to clubs page
+        history.push({
+          pathname: "/clubs",
+          state: appBody,
+        });
+      })
+      .catch((error) => {
+        setSubmitError(error.message);
+        console.error("There was an error!", error);
+      });
   };
 
   console.log("state: ", location.state);

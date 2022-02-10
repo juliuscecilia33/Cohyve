@@ -262,7 +262,7 @@ export function CreateClubContainer() {
                           "/" +
                           response.data.club_id +
                           "/customize",
-                        state: { appBody },
+                        state: { appBody, clubId: response.data.club_id },
                       });
                     })
                     .catch((error) => {
@@ -340,7 +340,7 @@ export function CreateClubContainer() {
                     "/" +
                     response.data.club_id +
                     "/customize",
-                  state: { appBody },
+                  state: { appBody, clubId: response.data.club_id },
                 });
                 // Direct to clubs page
               })
@@ -415,7 +415,7 @@ export function CreateClubContainer() {
                     "/" +
                     response.data.club_id +
                     "/customize",
-                  state: appBody,
+                  state: { appBody, clubId: response.data.club_id },
                 });
               })
               .catch((error) => {
@@ -442,7 +442,7 @@ export function CreateClubContainer() {
         bannerURL: "",
       };
 
-      axios
+      await axios
         .post("http://localhost:5000/clubs/", appBody, {
           headers: {
             jwt_token: localStorage.token,
@@ -461,7 +461,7 @@ export function CreateClubContainer() {
               "/" +
               response.data.club_id +
               "/customize",
-            state: { appBody },
+            state: { appBody, clubId: response.data.club_id },
           });
           // Direct to clubs page
         })

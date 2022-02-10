@@ -102,7 +102,7 @@ router.put("/:id", authorize, checkRole, async (req, res) => {
       ]
     );
 
-    res.json("Club updated!");
+    res.json(updateClubInfo);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error");
