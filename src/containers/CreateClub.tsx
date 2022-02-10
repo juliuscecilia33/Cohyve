@@ -262,7 +262,10 @@ export function CreateClubContainer() {
                           "/" +
                           response.data.club_id +
                           "/customize",
-                        state: { appBody, clubId: response.data.club_id },
+                        state: {
+                          clubData: response.data,
+                          clubId: response.data.club_id,
+                        },
                       });
                     })
                     .catch((error) => {
@@ -340,7 +343,10 @@ export function CreateClubContainer() {
                     "/" +
                     response.data.club_id +
                     "/customize",
-                  state: { appBody, clubId: response.data.club_id },
+                  state: {
+                    clubData: response.data,
+                    clubId: response.data.club_id,
+                  },
                 });
                 // Direct to clubs page
               })
@@ -415,7 +421,10 @@ export function CreateClubContainer() {
                     "/" +
                     response.data.club_id +
                     "/customize",
-                  state: { appBody, clubId: response.data.club_id },
+                  state: {
+                    clubData: response.data,
+                    clubId: response.data.club_id,
+                  },
                 });
               })
               .catch((error) => {
@@ -461,7 +470,7 @@ export function CreateClubContainer() {
               "/" +
               response.data.club_id +
               "/customize",
-            state: { appBody, clubId: response.data.club_id },
+            state: { clubData: response.data, clubId: response.data.club_id },
           });
           // Direct to clubs page
         })

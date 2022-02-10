@@ -39,7 +39,7 @@ export function CustomizeContainer() {
 
   const handleSubmit = async () => {
     const customizeBody = {
-      ...clubInfo.appBody,
+      ...clubInfo.clubData,
       hero: heroSelected,
       feed: feedSelected,
       theme: themeSelected,
@@ -49,7 +49,7 @@ export function CustomizeContainer() {
     console.log("clubID: ", clubInfo.clubId);
 
     await axios
-      .put("http://localhost:5000/clubs/" + clubInfo.clubId, clubInfo.appBody, {
+      .put("http://localhost:5000/clubs/" + clubInfo.clubId, customizeBody, {
         headers: {
           jwt_token: localStorage.token,
         },
