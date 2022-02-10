@@ -415,7 +415,7 @@ export function CreateClubContainer() {
                     "/" +
                     response.data.club_id +
                     "/customize",
-                  state: { appBody },
+                  state: appBody,
                 });
               })
               .catch((error) => {

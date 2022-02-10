@@ -32,7 +32,16 @@ export function CustomizeContainer() {
 
   const location = useLocation();
 
-  const handleSubmit = async () => {};
+  const handleSubmit = async () => {
+    const customizeBody = {
+      ...appBody.appBody,
+      hero: heroSelected,
+      feed: feedSelected,
+      theme: themeSelected,
+    };
+
+    console.log(customizeBody);
+  };
 
   console.log("state: ", location.state);
 
