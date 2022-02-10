@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Customize, ActionButton, Hero } from "../components";
 import HeroSelectionOne from "../images/HeroSelection1.png";
 import HeroSelectionTwo from "../images/HeroSelection2.png";
@@ -35,8 +35,13 @@ export function CustomizeContainer() {
   const handleSubmit = async () => {};
 
   console.log("state: ", location.state);
-  setAppBody(location.state);
-  console.log("appBody: ", appBody);
+
+  useEffect(() => {
+    if (location.state) {
+      setAppBody(location.state);
+      console.log("appBody: ", appBody);
+    }
+  }, [appBody, location.state]);
 
   return (
     <>
