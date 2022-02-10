@@ -29,9 +29,9 @@ CREATE TABLE clubs(
   follower_count INTEGER NOT NULL DEFAULT 0,
   profileURL VARCHAR,
   bannerURL VARCHAR,
-  theme VARCHAR DEFAULT 'Default',
-  hero INTEGER DEFAULT 1,
-  feed INTEGER DEFAULT 1,
+  theme VARCHAR NOT NULL DEFAULT 'Default',
+  hero INTEGER NOT NULL DEFAULT 1,
+  feed INTEGER NOT NULL DEFAULT 1,
   PRIMARY KEY (club_id)
 );
 

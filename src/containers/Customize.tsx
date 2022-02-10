@@ -28,7 +28,7 @@ export function CustomizeContainer() {
 
   const [submitError, setSubmitError] = useState(null);
 
-  const [appBody, setAppBody] = useState(null);
+  const [clubInfo, setClubInfo] = useState(null);
 
   console.log("theme: ", themeSelected);
   console.log("hero: ", heroSelected);
@@ -39,30 +39,30 @@ export function CustomizeContainer() {
 
   const handleSubmit = async () => {
     const customizeBody = {
-      ...appBody.appBody,
+      ...clubInfo.appBody,
       hero: heroSelected,
       feed: feedSelected,
       theme: themeSelected,
     };
 
     console.log(customizeBody);
+    console.log("clubID: ", clubInfo.clubId);
 
     await axios
-      .put("http://localhost:5000/clubs/", appBody, {
+      .put("http://localhost:5000/clubs/" + clubInfo.clubId, clubInfo.appBody, {
         headers: {
           jwt_token: localStorage.token,
         },
       })
       .then((response: any) => {
-        console.log(response);
-        console.log("Successfully created club");
+        console.log("Successfully edited club information with customization");
 
-        console.log(response.data.club_id);
+        console.log(response.data);
         // Direct to clubs page
-        history.push({
-          pathname: "/clubs",
-          state: appBody,
-        });
+        // history.push({
+        //   pathname: "/clubs",
+        //   state: appBody,
+        // });
       })
       .catch((error) => {
         setSubmitError(error.message);
@@ -74,10 +74,10 @@ export function CustomizeContainer() {
 
   useEffect(() => {
     if (location.state) {
-      setAppBody(location.state);
-      console.log("appBody: ", appBody);
+      setClubInfo(location.state);
+      console.log("clubInfo: ", clubInfo);
     }
-  }, [appBody, location.state]);
+  }, [clubInfo, location.state]);
 
   return (
     <>
