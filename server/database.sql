@@ -5,9 +5,10 @@ CREATE TABLE users(
   user_name VARCHAR(255) NOT NULL UNIQUE,
   user_email VARCHAR(255) NOT NULL UNIQUE,
   user_password VARCHAR(255) NOT NULL,
-  school VARCHAR(255) NOT NULL,
+  school VARCHAR(255),
   profileURL VARCHAR,
   bannerURL VARCHAR,
+  description VARCHAR,
   PRIMARY KEY (user_id)
 );
 

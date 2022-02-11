@@ -19,6 +19,8 @@ export function RegisterContainer() {
 
   const { name, email, password, school } = inputs;
 
+  // add user profile description input?
+
   const onChange = (e: any) =>
     setInputs({ ...inputs, [e.target.name]: e.target.value });
 
