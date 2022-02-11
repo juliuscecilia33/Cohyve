@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {
   getStorage,
   ref,
@@ -17,7 +17,14 @@ const firebaseConfig = {
 };
 
 const firebaseApp = initializeApp(firebaseConfig);
-const db = getFirestore();
 const storage = getStorage();
+const auth = getAuth();
 
-export { storage, ref, uploadBytesResumable, getDownloadURL };
+export {
+  storage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+  auth,
+  firebaseApp,
+};
