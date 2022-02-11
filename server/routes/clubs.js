@@ -47,7 +47,7 @@ router.post("/", authorize, async (req, res) => {
     // We automatically make the user that made that club a role of "Owner";
     const insertOwner = await pool.query(
       "INSERT INTO members (club_id, user_id, role, pending) VALUES($1, $2, 'Owner', false) RETURNING *",
-      [clubId, req.user.id]
+      [clubId, req.userId]
     );
 
     res.json(newClub.rows[0]);
@@ -199,7 +199,7 @@ router.post("/:id/follow", authorize, async (req, res) => {
     // Check if User follows that club;
     const followRes = await pool.query(
       "SELECT * FROM followers WHERE user_id = $1 and club_id = $2",
-      [req.user.id, id]
+      [req.userId, id] //og req.user.id
     );
 
     if (followRes.rows.length > 0) {
@@ -208,7 +208,7 @@ router.post("/:id/follow", authorize, async (req, res) => {
       // Remove follower from followers table
       const removeFollower = await pool.query(
         "DELETE FROM followers WHERE club_id = $1 and user_id = $2",
-        [id, req.user.id]
+        [id, req.userId]
       );
       // Decrement follower count of club
       const decrementFollowersCount = await pool.query(
@@ -220,7 +220,7 @@ router.post("/:id/follow", authorize, async (req, res) => {
       // Created new follow_count table; so have to update and set both followers table and follow_count table
       const insertFollower = await pool.query(
         "INSERT INTO followers(club_id, user_id) VALUES($1, $2) RETURNING *",
-        [id, req.user.id]
+        [id, req.userId]
       );
 
       // Increment follower count of club
@@ -264,7 +264,7 @@ router.get("/user/clubs", authorize, async (req, res) => {
   try {
     const userClubs = await pool.query(
       "SELECT club_id FROM members WHERE user_id = $1",
-      [req.user.id]
+      [req.userId]
     );
     res.json(userClubs.rows);
   } catch (err) {
@@ -326,7 +326,7 @@ router.post("/:id/request", authorize, async (req, res) => {
     const { id } = req.params;
     const insertMemberRequest = await pool.query(
       "INSERT INTO members (club_id, user_id, role, pending) VALUES($1, $2, 'Pending', true) RETURNING *",
-      [id, req.user.id]
+      [id, req.userId]
     );
     res.json(insertMemberRequest.rows[0]);
   } catch (err) {

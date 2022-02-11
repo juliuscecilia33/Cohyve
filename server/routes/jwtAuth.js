@@ -7,7 +7,7 @@ const authorize = require("../middleware/authorize");
 
 // registering
 
-router.post("/register", validate, async (req, res) => {
+router.post("/register", async (req, res) => {
   try {
     // 1. destructure the req.body (name, email, password, school)
 
@@ -54,7 +54,7 @@ router.post("/register", validate, async (req, res) => {
   }
 });
 
-router.post("/login", validate, async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     // 1, Destructure the Req.body
     const { email, password } = req.body;

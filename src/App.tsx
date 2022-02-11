@@ -5,6 +5,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import axios from "axios";
 
 import {
   LoginPage,
@@ -15,49 +16,86 @@ import {
   CustomizePage,
 } from "./pages";
 import * as ROUTES from "./constants/routes";
-import { UserTokenContext } from "./context/UserToken";
+import { UserContext } from "./context/UserToken";
+// import * as firebase from "firebase/app";
+import { auth } from "./firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [userToken, setUserToken] = useState("");
+  const [user, setUser] = useState(null);
 
-  // Get clubs
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:5000/clubs/")
-  //     .then((response) => {
-  //       setClubsData(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }, []);
-
-  const checkAuthenticated = async () => {
-    try {
-      const res = await fetch("http://localhost:5000/auth/verify", {
-        method: "POST",
-        headers: { jwt_token: localStorage.token },
-      });
-
-      const parseRes = await res.json();
-
-      parseRes === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
-    } catch (err: any) {
-      setIsAuthenticated(false);
-      console.error(err.message);
-    }
-  };
+  // const checkAuthenticated = async () => {
+  // try {
+  //   const res = await fetch("http://localhost:5000/auth/verify", {
+  //     method: "POST",
+  //     headers: { jwt_token: localStorage.token },
+  //   });
+  //   const parseRes = await res.json();
+  //   parseRes === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
+  // } catch (err: any) {
+  //   setIsAuthenticated(false);
+  //   console.error(err.message);
+  // }
+  // auth.currentUser
+  //   .getIdToken(/* forceRefresh */ true)
+  //   .then((idToken) => {
+  //     // Send token to your backend via HTTPS
+  //     axios
+  //       .post("http://localhost:5000/auth/verify", {
+  //         headers: {
+  //           user_token: idToken,
+  //         },
+  //       })
+  //       .then((response: any) => {
+  //         console.log(response);
+  //         console.log("Successfully verified");
+  //         const parseRes = response.json();
+  //         parseRes === true
+  //           ? setIsAuthenticated(true)
+  //           : setIsAuthenticated(false);
+  //         // Direct to clubs page
+  //       })
+  //       .catch((error: any) => {
+  //         setServerError(error.message);
+  //         console.error("There was a server error!", error);
+  //       });
+  //   })
+  //   .catch((error) => {
+  //     setIsAuthenticated(false);
+  //     setAuthError(error.message);
+  //     console.error("There was a firebase auth error: ", error.message);
+  //   });
+  // };
 
   useEffect(() => {
-    checkAuthenticated();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        const uid = user.uid;
+        setUser(user);
+        setIsAuthenticated(true);
+        // ...
+      } else {
+        // User is signed out
+        // ...
+        setIsAuthenticated(false);
+        setUser(null);
+      }
+    });
+
+    return () => {
+      // perform some cleanup actions
+      unsubscribe(); // used for efficiency since it will be an infinite loop of change
+    };
   }, []);
 
   console.log(isAuthenticated);
 
   return (
     <>
-      <UserTokenContext.Provider value={{ userToken, setUserToken }}>
+      <UserContext.Provider value={{ user, setUser }}>
         <Router>
           <Switch>
             <Route
@@ -100,7 +138,7 @@ function App() {
             </Route>
           </Switch>
         </Router>
-      </UserTokenContext.Provider>
+      </UserContext.Provider>
     </>
   );
 }

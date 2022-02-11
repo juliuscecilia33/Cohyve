@@ -12,6 +12,9 @@ module.exports = function (req, res, next) {
     .verifyIdToken(idToken)
     .then((decodedToken) => {
       const uid = decodedToken.uid;
+      console.log("I guess it worked...");
+      req.userId = uid;
+      next();
       // ...
     })
     .catch((error) => {
