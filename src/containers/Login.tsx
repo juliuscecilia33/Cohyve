@@ -2,7 +2,6 @@ import React, { useState, useContext } from "react";
 import { ActionButton, Login } from "../components";
 import Promo from "../images/Club Page.png";
 import { Link as ReactRouterLink, useHistory } from "react-router-dom";
-import { UserTokenContext } from "../context/UserToken";
 import * as ROUTES from "../constants/routes";
 
 interface DataProps {
@@ -15,8 +14,6 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
     password: "",
   });
 
-  const { setUserToken } = useContext(UserTokenContext);
-
   const { email, password } = inputs;
 
   const history = useHistory();
@@ -26,30 +23,30 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
   const handleLogin = async (e: any) => {
     e.preventDefault();
 
-    try {
-      const body = { email, password };
-      const response = await fetch("http://localhost:5000/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(body),
-      });
+    // try {
+    //   const body = { email, password };
+    //   const response = await fetch("http://localhost:5000/auth/login", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-type": "application/json",
+    //     },
+    //     body: JSON.stringify(body),
+    //   });
 
-      const parseRes = await response.json();
+    //   const parseRes = await response.json();
 
-      if (parseRes.jwtToken) {
-        localStorage.setItem("token", parseRes.jwtToken);
-        setIsAuthenticated(true);
-        setUserToken(parseRes.jwtToken);
-        setInputs({ email: "", password: "" });
-        history.push(ROUTES.USER);
-      } else {
-        setIsAuthenticated(false);
-      }
-    } catch (err: any) {
-      console.error(err.message);
-    }
+    //   if (parseRes.jwtToken) {
+    //     localStorage.setItem("token", parseRes.jwtToken);
+    //     setIsAuthenticated(true);
+    //     setUserToken(parseRes.jwtToken);
+    //     setInputs({ email: "", password: "" });
+    //     history.push(ROUTES.USER);
+    //   } else {
+    //     setIsAuthenticated(false);
+    //   }
+    // } catch (err: any) {
+    //   console.error(err.message);
+    // }
   };
 
   return (

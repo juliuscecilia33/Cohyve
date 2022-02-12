@@ -14,6 +14,7 @@ import {
   CreateClubPage,
   ClubsPage,
   CustomizePage,
+  RegisterFinishPage,
 } from "./pages";
 import * as ROUTES from "./constants/routes";
 import { UserContext } from "./context/UserToken";
@@ -132,6 +133,9 @@ function App() {
             </Route>
             <Route exact path={ROUTES.CLUBS}>
               <ClubsPage />
+            </Route>
+            <Route exact path={ROUTES.REGISTERFINISH}>
+              <RegisterFinishPage />
             </Route>
             <Route path={ROUTES.CUSTOMIZE}>
               <CustomizePage />

@@ -1,15 +1,12 @@
 CREATE DATABASE cohyve;
 
 CREATE TABLE users(
-  user_id UUID DEFAULT uuid_generate_v4(),
-  user_name VARCHAR(255) NOT NULL UNIQUE,
-  user_email VARCHAR(255) NOT NULL UNIQUE,
-  user_password VARCHAR(255) NOT NULL,
+  firebase_user_id VARCHAR NOT NULL,
   school VARCHAR(255),
   profileURL VARCHAR,
   bannerURL VARCHAR,
   description VARCHAR,
-  PRIMARY KEY (user_id)
+  PRIMARY KEY (firebase_user_id)
 );
 
 CREATE TABLE clubs(
@@ -38,21 +35,21 @@ CREATE TABLE clubs(
 
 CREATE TABLE members(
   club_id SERIAL,
-  user_id UUID,
+  firebase_user_id VARCHAR,
   role VARCHAR(255),
   pending BOOLEAN NOT NULL,
   FOREIGN KEY (club_id) REFERENCES clubs(club_id),
-  FOREIGN KEY (user_id) REFERENCES users(user_id),
-  PRIMARY KEY (club_id, user_id)
+  FOREIGN KEY (firebase_user_id) REFERENCES users(firebase_user_id),
+  PRIMARY KEY (club_id, firebase_user_id)
 );
 
 CREATE TABLE followers(
   follower_id SERIAL,
   club_id SERIAL,
-  user_id UUID,
-  FOREIGN KEY (user_id) REFERENCES users(user_id),
+  firebase_user_id VARCHAR,
+  FOREIGN KEY (firebase_user_id) REFERENCES users(firebase_user_id),
   FOREIGN KEY (club_id) REFERENCES clubs(club_id),
-  PRIMARY KEY(club_id, user_id)
+  PRIMARY KEY(club_id, firebase_user_id)
 );
 
 -- CREATE TABLE total_followers(
@@ -147,7 +144,7 @@ where
 
 -- user follows a club
 insert into
-  followers(club_id, follower_count, user_id)
+  followers(club_id, follower_count, firebase_user_id)
 values
   (
     9,

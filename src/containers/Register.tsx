@@ -4,8 +4,13 @@ import { ActionButton, Login } from "../components";
 import Promo from "../images/Club Page.png";
 import { Link as ReactRouterLink, useHistory } from "react-router-dom";
 import * as ROUTES from "../constants/routes";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+} from "firebase/auth";
 import { auth } from "../firebase";
+import { updateProfile } from "firebase/auth";
+import axios from "axios";
 
 // interface DataProps {
 //   setIsAuthenticated: any;
@@ -19,7 +24,9 @@ export function RegisterContainer() {
     school: "",
   });
 
-  const { name, email, password, school } = inputs;
+  const { name, email, password } = inputs;
+  const [verified, setVerified] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
 
   const actionCodeSettings = {
     // URL you want to redirect back to. The domain (www.example.com) for this
@@ -50,12 +57,44 @@ export function RegisterContainer() {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        // ...
+
+        console.log(user);
+
+        updateProfile(auth.currentUser, {
+          displayName: name,
+        });
+
+        const appBody = {
+          firebase_user_id: user.uid,
+          school: "",
+          profileURL: "",
+          bannerURL: "",
+          description: "",
+        };
+
+        axios
+          .post("http://localhost:5000/register/", appBody)
+          .then((response: any) => {
+            console.log(response.data);
+            console.log("Successfully created user");
+            // Direct to clubs page
+            // history.push({
+            //   pathname:
+            //     "/" +
+            //     clubName.replace(/\s+/g, "-").toLowerCase() +
+            //     "/" +
+            //     response.data.club_id +
+            //     "/customize",
+            // });
+          })
+          .catch((error) => {
+            setSubmitError(error.message);
+            console.error("There was an error!", error);
+          });
       })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
-        // ..
+        console.log(errorMessage);
       });
 
     // try {
@@ -112,14 +151,10 @@ export function RegisterContainer() {
           {/* User is going to select school from dropdown  */}
           {/* After email confirmation, next page will be customization page, school, profile picture, banner, ask them if they're in any clubs */}
 
-          {/* <Login.Input
-            name="school"
-            value={school}
-            placeholder="School"
-            onChange={(e: any) => onChange(e)}
-            type="text"
-          /> */}
-          <ActionButton background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;">
+          <ActionButton
+            onClick={(e) => handleLogin(e)}
+            background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;"
+          >
             Register
           </ActionButton>
           <Login.Message>
