@@ -73,7 +73,7 @@ export function RegisterContainer() {
         };
 
         axios
-          .post("http://localhost:5000/register/", appBody)
+          .post("http://localhost:5000/auth/register/", appBody)
           .then((response: any) => {
             console.log(response.data);
             console.log("Successfully created user");

@@ -5,7 +5,7 @@ interface ActiveProps {
 }
 
 export const Container = styled.button<ActiveProps>`
-  padding: 1.3vh 2.1vw;
+  padding: 0.7rem 2.1rem;
   background: ${({ background }) => background}
   border-radius: 100px;
   cursor: pointer;
