@@ -1,6 +1,7 @@
+import firebase from "firebase";
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-const getAuth = require("firebase/auth");
+require("firebase/auth");
 
 //this middleware will continue on if the token is inside the local storage
 
@@ -8,7 +9,8 @@ module.exports = function (req, res, next) {
   // Get token from header
   const idToken = req.header("firebase_token");
 
-  getAuth()
+  firebase
+    .getAuth()
     .verifyIdToken(idToken)
     .then((decodedToken) => {
       const uid = decodedToken.uid;

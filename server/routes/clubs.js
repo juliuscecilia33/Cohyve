@@ -46,7 +46,7 @@ router.post("/", authorize, async (req, res) => {
 
     // We automatically make the user that made that club a role of "Owner";
     const insertOwner = await pool.query(
-      "INSERT INTO members (club_id, user_id, role, pending) VALUES($1, $2, 'Owner', false) RETURNING *",
+      "INSERT INTO members (club_id, firebase_user_id, role, pending) VALUES($1, $2, 'Owner', false) RETURNING *",
       [clubId, req.userId]
     );
 
@@ -198,7 +198,7 @@ router.post("/:id/follow", authorize, async (req, res) => {
 
     // Check if User follows that club;
     const followRes = await pool.query(
-      "SELECT * FROM followers WHERE user_id = $1 and club_id = $2",
+      "SELECT * FROM followers WHERE firebase_user_id = $1 and club_id = $2",
       [req.userId, id] //og req.user.id
     );
 
@@ -207,7 +207,7 @@ router.post("/:id/follow", authorize, async (req, res) => {
 
       // Remove follower from followers table
       const removeFollower = await pool.query(
-        "DELETE FROM followers WHERE club_id = $1 and user_id = $2",
+        "DELETE FROM followers WHERE club_id = $1 and firebase_user_id = $2",
         [id, req.userId]
       );
       // Decrement follower count of club
@@ -219,7 +219,7 @@ router.post("/:id/follow", authorize, async (req, res) => {
     } else {
       // Created new follow_count table; so have to update and set both followers table and follow_count table
       const insertFollower = await pool.query(
-        "INSERT INTO followers(club_id, user_id) VALUES($1, $2) RETURNING *",
+        "INSERT INTO followers(club_id, firebase_user_id) VALUES($1, $2) RETURNING *",
         [id, req.userId]
       );
 
@@ -263,7 +263,7 @@ router.get("/public", authorize, async (req, res) => {
 router.get("/user/clubs", authorize, async (req, res) => {
   try {
     const userClubs = await pool.query(
-      "SELECT club_id FROM members WHERE user_id = $1",
+      "SELECT club_id FROM members WHERE firebase_user_id = $1",
       [req.userId]
     );
     res.json(userClubs.rows);
@@ -279,7 +279,7 @@ router.get("/:user/clubs", authorize, async (req, res) => {
 
   try {
     const userClubs = await pool.query(
-      "SELECT club_id FROM members WHERE user_id = $1",
+      "SELECT club_id FROM members WHERE firebase_user_id = $1",
       [user]
     );
     res.json(userClubs.rows);
@@ -310,7 +310,7 @@ router.put("/:id/:user", authorize, checkRole, async (req, res) => {
   try {
     const { id, user } = req.params;
     const updatePendingMember = await pool.query(
-      "UPDATE members SET role = $1, pending = $2 WHERE user_id = $3 AND club_id = $4 RETURNING *",
+      "UPDATE members SET role = $1, pending = $2 WHERE firebase_user_id = $3 AND club_id = $4 RETURNING *",
       ["Member", false, user, id]
     );
     res.json(updatePendingMember.rows);
@@ -325,7 +325,7 @@ router.post("/:id/request", authorize, async (req, res) => {
   try {
     const { id } = req.params;
     const insertMemberRequest = await pool.query(
-      "INSERT INTO members (club_id, user_id, role, pending) VALUES($1, $2, 'Pending', true) RETURNING *",
+      "INSERT INTO members (club_id, firebase_user_id, role, pending) VALUES($1, $2, 'Pending', true) RETURNING *",
       [id, req.userId]
     );
     res.json(insertMemberRequest.rows[0]);
