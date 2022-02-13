@@ -52,6 +52,7 @@ router.post("/", authorize, async (req, res) => {
 
     res.json(newClub.rows[0]);
   } catch (err) {
+    console.log("creating a club error");
     console.error(err.message);
   }
 });

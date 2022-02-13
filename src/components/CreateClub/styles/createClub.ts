@@ -569,6 +569,7 @@ export const LargeInput = styled.div`
   flex-direction: column;
   width: 100%;
   position: relative;
+  overflow-y: hidden;
 
   p {
     font-family: Poppins;
@@ -591,7 +592,7 @@ export const LargeInput = styled.div`
     }
   }
 
-  textarea {
+  input {
     background: linear-gradient(
       90deg,
       rgba(211, 211, 211, 0.3) 0%,
@@ -607,6 +608,7 @@ export const LargeInput = styled.div`
     transition: 0.5s ease all;
     font-family: Poppins;
     font-style: normal;
+    overflow-y: hidden;
 
     &::placeholder {
       font-family: Poppins;
