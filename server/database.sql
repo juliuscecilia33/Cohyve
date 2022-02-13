@@ -1,7 +1,7 @@
 CREATE DATABASE cohyve;
 
 CREATE TABLE users(
-  firebase_user_id UUID NOT NULL,
+  firebase_user_id VARCHAR NOT NULL,
   school VARCHAR(255),
   profileURL VARCHAR,
   bannerURL VARCHAR,
@@ -34,8 +34,8 @@ CREATE TABLE clubs(
 );
 
 CREATE TABLE members(
-  club_id SERIAL,
-  firebase_user_id UUID,
+  club_id SERIAL NOT NULL,
+  firebase_user_id VARCHAR NOT NULL,
   role VARCHAR(255),
   pending BOOLEAN NOT NULL,
   FOREIGN KEY (club_id) REFERENCES clubs(club_id),
@@ -44,24 +44,18 @@ CREATE TABLE members(
 );
 
 CREATE TABLE followers(
-  follower_id SERIAL,
-  club_id SERIAL,
-  firebase_user_id UUID,
+  follower_id VARCHAR NOT NULL,
+  club_id SERIAL NOT NULL,
+  firebase_user_id VARCHAR NOT NULL,
   FOREIGN KEY (firebase_user_id) REFERENCES users(firebase_user_id),
   FOREIGN KEY (club_id) REFERENCES clubs(club_id),
   PRIMARY KEY(club_id, firebase_user_id)
 );
 
--- CREATE TABLE total_followers(
---   club_id SERIAL,
---   follower_count INTEGER NOT NULL,
---   FOREIGN KEY (club_id) REFERENCES clubs(club_id)
--- );
-
 CREATE TABLE partners(
   partner_id SERIAL,
-  club_a_id SERIAL,
-  club_b_id SERIAL,
+  club_a_id SERIAL NOT NULL,
+  club_b_id SERIAL NOT NULL,
   PRIMARY KEY (partner_id),
   FOREIGN KEY (club_a_id) REFERENCES clubs(club_id),
   FOREIGN KEY (club_b_id) REFERENCES clubs(club_id)

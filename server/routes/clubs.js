@@ -44,6 +44,8 @@ router.post("/", authorize, async (req, res) => {
 
     let clubId = newClub.rows[0].club_id;
 
+    console.log("user id from req: ", req.userId);
+
     // We automatically make the user that made that club a role of "Owner";
     const insertOwner = await pool.query(
       "INSERT INTO members (club_id, firebase_user_id, role, pending) VALUES($1, $2, 'Owner', false) RETURNING *",
