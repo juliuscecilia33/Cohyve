@@ -22,31 +22,6 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
-
-    // try {
-    //   const body = { email, password };
-    //   const response = await fetch("http://localhost:5000/auth/login", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-type": "application/json",
-    //     },
-    //     body: JSON.stringify(body),
-    //   });
-
-    //   const parseRes = await response.json();
-
-    //   if (parseRes.jwtToken) {
-    //     localStorage.setItem("token", parseRes.jwtToken);
-    //     setIsAuthenticated(true);
-    //     setUserToken(parseRes.jwtToken);
-    //     setInputs({ email: "", password: "" });
-    //     history.push(ROUTES.USER);
-    //   } else {
-    //     setIsAuthenticated(false);
-    //   }
-    // } catch (err: any) {
-    //   console.error(err.message);
-    // }
   };
 
   return (

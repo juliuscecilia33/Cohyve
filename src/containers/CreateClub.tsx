@@ -3,6 +3,7 @@ import { CreateClub, ActionButton, Hero } from "../components";
 import SchoolData from "../schools.json";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { auth } from "../firebase";
 
 import {
   storage,
@@ -248,7 +249,7 @@ export function CreateClubContainer() {
                   axios
                     .post("http://localhost:5000/clubs/", appBody, {
                       headers: {
-                        jwt_token: localStorage.token,
+                        firebase_token: auth.currentUser.uid,
                       },
                     })
                     .then((response: any) => {
@@ -327,7 +328,7 @@ export function CreateClubContainer() {
             axios
               .post("http://localhost:5000/clubs/", appBody, {
                 headers: {
-                  jwt_token: localStorage.token,
+                  firebase_token: auth.currentUser.uid,
                 },
               })
               .then((response: any) => {
@@ -405,7 +406,7 @@ export function CreateClubContainer() {
             axios
               .post("http://localhost:5000/clubs/", appBody, {
                 headers: {
-                  jwt_token: localStorage.token,
+                  firebase_token: auth.currentUser.uid,
                 },
               })
               .then((response: any) => {
@@ -454,7 +455,7 @@ export function CreateClubContainer() {
       await axios
         .post("http://localhost:5000/clubs/", appBody, {
           headers: {
-            jwt_token: localStorage.token,
+            firebase_token: auth.currentUser.uid,
           },
         })
         .then((response: any) => {
