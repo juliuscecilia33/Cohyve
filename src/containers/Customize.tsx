@@ -8,6 +8,7 @@ import FeedSelectionTwo from "../images/FeedSelection2.png";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { auth } from "../firebase";
 
 export function CustomizeContainer() {
   const [heroSelected, setHeroSelected] = useState(1);
@@ -48,25 +49,42 @@ export function CustomizeContainer() {
     console.log(customizeBody);
     console.log("clubID: ", clubInfo.clubId);
 
-    await axios
-      .put("http://localhost:5000/clubs/" + clubInfo.clubId, customizeBody, {
-        headers: {
-          jwt_token: localStorage.token,
-        },
-      })
-      .then((response: any) => {
-        console.log("Successfully edited club information with customization");
+    auth.currentUser
+      .getIdToken(/* forceRefresh */ true)
+      .then(function (idToken) {
+        // Send token to your backend via HTTPS
+        console.log("idToken: ", idToken);
+        // ...
+        axios
+          .put(
+            "http://localhost:5000/clubs/" + clubInfo.clubId,
+            customizeBody,
+            {
+              headers: {
+                firebase_token: idToken,
+              },
+            }
+          )
+          .then((response: any) => {
+            console.log(
+              "Successfully edited club information with customization"
+            );
 
-        console.log(response.data);
-        // Direct to clubs page
-        // history.push({
-        //   pathname: "/clubs",
-        //   state: appBody,
-        // });
+            console.log(response.data);
+            // Direct to clubs page
+            // history.push({
+            //   pathname: "/clubs",
+            //   state: appBody,
+            // });
+          })
+          .catch((error) => {
+            setSubmitError(error.message);
+            console.error("There was an error!", error);
+          });
       })
-      .catch((error) => {
-        setSubmitError(error.message);
-        console.error("There was an error!", error);
+      .catch(function (error) {
+        // Handle error
+        console.log(error);
       });
   };
 
