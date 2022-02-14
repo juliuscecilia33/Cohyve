@@ -165,6 +165,50 @@ export function CreateClubContainer() {
     setSchool(school);
   };
 
+  const sendToBackend = (appBody: any) => {
+    auth.currentUser
+      .getIdToken(/* forceRefresh */ true)
+      .then(function (idToken) {
+        // Send token to your backend via HTTPS
+        console.log("idToken: ", idToken);
+        // ...
+        axios
+          .post("http://localhost:5000/clubs/", appBody, {
+            headers: {
+              firebase_token: idToken,
+            },
+          })
+          .then((response: any) => {
+            console.log(response);
+            console.log("Successfully created club");
+
+            console.log(response.data.club_id);
+            // Direct to clubs page
+            history.push({
+              pathname:
+                "/" +
+                clubName.replace(/\s+/g, "-").toLowerCase() +
+                "/" +
+                response.data.club_id +
+                "/customize",
+              state: {
+                clubData: response.data,
+                clubId: response.data.club_id,
+              },
+            });
+            // Direct to clubs page
+          })
+          .catch((error) => {
+            setSubmitError(error.message);
+            console.error("There was an error!", error);
+          });
+      })
+      .catch(function (error) {
+        // Handle error
+        console.log(error);
+      });
+  };
+
   const handleSubmit = async () => {
     if (clubName === "" || school === "") {
       setSubmitError(true);
@@ -246,47 +290,7 @@ export function CreateClubContainer() {
                     bannerURL: bannerURL,
                   };
 
-                  auth.currentUser
-                    .getIdToken(/* forceRefresh */ true)
-                    .then(function (idToken) {
-                      // Send token to your backend via HTTPS
-                      console.log("idToken: ", idToken);
-                      // ...
-                      axios
-                        .post("http://localhost:5000/clubs/", appBody, {
-                          headers: {
-                            firebase_token: idToken,
-                          },
-                        })
-                        .then((response: any) => {
-                          console.log(response);
-                          console.log("Successfully created club");
-
-                          console.log(response.data.club_id);
-                          // Direct to clubs page
-                          history.push({
-                            pathname:
-                              "/" +
-                              clubName.replace(/\s+/g, "-").toLowerCase() +
-                              "/" +
-                              response.data.club_id +
-                              "/customize",
-                            state: {
-                              clubData: response.data,
-                              clubId: response.data.club_id,
-                            },
-                          });
-                          // Direct to clubs page
-                        })
-                        .catch((error) => {
-                          setSubmitError(error.message);
-                          console.error("There was an error!", error);
-                        });
-                    })
-                    .catch(function (error) {
-                      // Handle error
-                      console.log(error);
-                    });
+                  sendToBackend(appBody);
                 });
               }
             );
@@ -339,47 +343,7 @@ export function CreateClubContainer() {
               bannerURl: "",
             };
 
-            auth.currentUser
-              .getIdToken(/* forceRefresh */ true)
-              .then(function (idToken) {
-                // Send token to your backend via HTTPS
-                console.log("idToken: ", idToken);
-                // ...
-                axios
-                  .post("http://localhost:5000/clubs/", appBody, {
-                    headers: {
-                      firebase_token: idToken,
-                    },
-                  })
-                  .then((response: any) => {
-                    console.log(response);
-                    console.log("Successfully created club");
-
-                    console.log(response.data.club_id);
-                    // Direct to clubs page
-                    history.push({
-                      pathname:
-                        "/" +
-                        clubName.replace(/\s+/g, "-").toLowerCase() +
-                        "/" +
-                        response.data.club_id +
-                        "/customize",
-                      state: {
-                        clubData: response.data,
-                        clubId: response.data.club_id,
-                      },
-                    });
-                    // Direct to clubs page
-                  })
-                  .catch((error) => {
-                    setSubmitError(error.message);
-                    console.error("There was an error!", error);
-                  });
-              })
-              .catch(function (error) {
-                // Handle error
-                console.log(error);
-              });
+            sendToBackend(appBody);
           });
         }
       );
@@ -428,47 +392,7 @@ export function CreateClubContainer() {
               bannerURL: bannerURL,
             };
 
-            auth.currentUser
-              .getIdToken(/* forceRefresh */ true)
-              .then(function (idToken) {
-                // Send token to your backend via HTTPS
-                console.log("idToken: ", idToken);
-                // ...
-                axios
-                  .post("http://localhost:5000/clubs/", appBody, {
-                    headers: {
-                      firebase_token: idToken,
-                    },
-                  })
-                  .then((response: any) => {
-                    console.log(response);
-                    console.log("Successfully created club");
-
-                    console.log(response.data.club_id);
-                    // Direct to clubs page
-                    history.push({
-                      pathname:
-                        "/" +
-                        clubName.replace(/\s+/g, "-").toLowerCase() +
-                        "/" +
-                        response.data.club_id +
-                        "/customize",
-                      state: {
-                        clubData: response.data,
-                        clubId: response.data.club_id,
-                      },
-                    });
-                    // Direct to clubs page
-                  })
-                  .catch((error) => {
-                    setSubmitError(error.message);
-                    console.error("There was an error!", error);
-                  });
-              })
-              .catch(function (error) {
-                // Handle error
-                console.log(error);
-              });
+            sendToBackend(appBody);
           });
         }
       );
@@ -489,47 +413,7 @@ export function CreateClubContainer() {
         bannerURL: "",
       };
 
-      auth.currentUser
-        .getIdToken(/* forceRefresh */ true)
-        .then(function (idToken) {
-          // Send token to your backend via HTTPS
-          console.log("idToken: ", idToken);
-          // ...
-          axios
-            .post("http://localhost:5000/clubs/", appBody, {
-              headers: {
-                firebase_token: idToken,
-              },
-            })
-            .then((response: any) => {
-              console.log(response);
-              console.log("Successfully created club");
-
-              console.log(response.data.club_id);
-              // Direct to clubs page
-              history.push({
-                pathname:
-                  "/" +
-                  clubName.replace(/\s+/g, "-").toLowerCase() +
-                  "/" +
-                  response.data.club_id +
-                  "/customize",
-                state: {
-                  clubData: response.data,
-                  clubId: response.data.club_id,
-                },
-              });
-              // Direct to clubs page
-            })
-            .catch((error) => {
-              setSubmitError(error.message);
-              console.error("There was an error!", error);
-            });
-        })
-        .catch(function (error) {
-          // Handle error
-          console.log(error);
-        });
+      sendToBackend(appBody);
     }
   };
 

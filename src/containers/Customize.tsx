@@ -72,10 +72,7 @@ export function CustomizeContainer() {
 
             console.log(response.data);
             // Direct to clubs page
-            // history.push({
-            //   pathname: "/clubs",
-            //   state: appBody,
-            // });
+            history.push("/clubs");
           })
           .catch((error) => {
             setSubmitError(error.message);

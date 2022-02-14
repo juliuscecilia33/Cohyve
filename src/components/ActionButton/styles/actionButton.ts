@@ -14,7 +14,7 @@ export const Container = styled.button<ActiveProps>`
   font-weight: 600;
   font-size: 15px;
   color: #FAFCFA;
-  box-shadow: -1px 10px 60px rgba(27, 27, 30, 0.1);
+  // box-shadow: -1px 10px 60px rgba(27, 27, 30, 0.1);
   // margin-top: 1rem;
   
   &:disabled {
