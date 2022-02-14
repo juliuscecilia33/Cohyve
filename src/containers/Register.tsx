@@ -6,7 +6,9 @@ import { Link as ReactRouterLink, useHistory } from "react-router-dom";
 import * as ROUTES from "../constants/routes";
 import {
   createUserWithEmailAndPassword,
+  GoogleAuthProvider,
   sendEmailVerification,
+  signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../firebase";
 import { updateProfile } from "firebase/auth";
@@ -23,6 +25,8 @@ export function RegisterContainer() {
     password: "",
     school: "",
   });
+
+  const provider = new GoogleAuthProvider();
 
   const { name, email, password } = inputs;
   const [verified, setVerified] = useState(false);
@@ -46,6 +50,30 @@ export function RegisterContainer() {
   };
 
   // add user profile description input?
+
+  const handleGoogleLogin = async (e: any) => {
+    e.preventDefault();
+
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        // ...
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+      });
+  };
 
   const onChange = (e: any) =>
     setInputs({ ...inputs, [e.target.name]: e.target.value });
@@ -77,15 +105,6 @@ export function RegisterContainer() {
           .then((response: any) => {
             console.log(response.data);
             console.log("Successfully created user");
-            // Direct to clubs page
-            // history.push({
-            //   pathname:
-            //     "/" +
-            //     clubName.replace(/\s+/g, "-").toLowerCase() +
-            //     "/" +
-            //     response.data.club_id +
-            //     "/customize",
-            // });
           })
           .catch((error) => {
             setSubmitError(error.message);
@@ -132,6 +151,12 @@ export function RegisterContainer() {
             background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;"
           >
             Register
+          </ActionButton>
+          <ActionButton
+            onClick={(e) => handleGoogleLogin(e)}
+            background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;"
+          >
+            Sign in with Google
           </ActionButton>
           <Login.Message>
             Already have an account?{" "}

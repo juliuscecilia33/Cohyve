@@ -17,7 +17,8 @@ export const Container = styled.div`
 `;
 
 export const PreviewText = styled.p`
-  font-family: Work Sans;
+  font-family: Outfit;
+
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -125,7 +126,8 @@ export const Name = styled.div`
   margin-bottom: 0.3rem;
 
   h1 {
-    font-family: Work Sans;
+    font-family: Outfit;
+
     font-style: normal;
     font-weight: bold;
     font-size: 30px;

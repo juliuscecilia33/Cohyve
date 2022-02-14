@@ -55,7 +55,8 @@ export const Tab = styled.h2`
 `;
 
 export const TabHeading = styled.h1`
-  font-family: Work Sans;
+  font-family: Outfit;
+
   font-style: normal;
   font-weight: bold;
   font-size: 30px;

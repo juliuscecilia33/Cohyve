@@ -90,7 +90,8 @@ export const DropdownClubItem = styled.button`
     }
 
     h3 {
-      font-family: Work Sans;
+      font-family: Outfit;
+
       font-style: normal;
       font-weight: 600;
       font-size: 20px;
@@ -99,7 +100,8 @@ export const DropdownClubItem = styled.button`
     }
 
     p {
-      font-family: Work Sans;
+      font-family: Outfit;
+
       font-style: normal;
       font-weight: 500;
       font-size: 18px;
@@ -112,7 +114,8 @@ export const DropdownClubItem = styled.button`
     align-items: center;
 
     p {
-      font-family: Work Sans;
+      font-family: Outfit;
+
       font-style: normal;
       font-weight: normal;
       font-size: 18px;
@@ -139,7 +142,8 @@ export const DropdownSchoolItem = styled.button`
   transition: 0.5s ease all;
 
   h3 {
-    font-family: Work Sans;
+    font-family: Outfit;
+
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
@@ -160,7 +164,7 @@ export const DropdownSchoolItem = styled.button`
     align-items: center;
 
     p {
-      font-family: Work Sans;
+      font-family: Outfit;
       font-style: normal;
       font-weight: normal;
       font-size: 18px;

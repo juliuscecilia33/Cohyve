@@ -28,8 +28,8 @@ export const Block = styled.div`
   }
 
   .css-1k430x0-MuiButtonBase-root-MuiChip-root {
-    font-family: Work Sans;
-    font-family: Work Sans;
+    font-family: Outfit;
+
     font-style: normal;
     font-weight: 600;
     font-size: 11px;
@@ -54,7 +54,8 @@ export const Block = styled.div`
   .css-16awh2u-MuiAutocomplete-root
     .MuiOutlinedInput-root
     .MuiAutocomplete-input {
-    font-family: Work Sans;
+    font-family: Outfit;
+
     font-style: normal;
     font-weight: bold;
     font-size: 15px;
@@ -70,7 +71,8 @@ export const Block = styled.div`
 
   h3 {
     margin-left: 0.5rem;
-    font-family: Work Sans;
+    font-family: Outfit;
+
     font-style: normal;
     font-weight: bold;
     font-size: 14px;
@@ -89,7 +91,8 @@ export const Button = styled.button`
   display: flex;
   align-items: center;
   padding: 0 1.2rem;
-  font-family: Work Sans;
+  font-family: Outfit;
+
   font-style: normal;
   font-weight: bold;
   font-size: 15px;
@@ -136,7 +139,8 @@ export const DropdownItem = styled.button<ActiveProps>`
   }
 
   h3 {
-    font-family: Work Sans;
+    font-family: Outfit;
+
     font-style: normal;
     font-weight: 600;
     font-size: 11px;

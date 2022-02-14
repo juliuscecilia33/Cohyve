@@ -61,7 +61,7 @@ export const RankLabel = styled.div<ActiveProps>`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
   h3 {
-    font-family: Work Sans;
+    font-family: Outfit;
     font-style: normal;
     font-weight: 700;
     font-size: 17px;
@@ -116,7 +116,7 @@ export const Stats = styled.div`
     align-items: center;
 
     p {
-      font-family: Work Sans;
+      font-family: Outfit;
       font-style: normal;
       font-weight: 600;
       font-size: 12px;
@@ -143,7 +143,8 @@ export const School = styled.div`
   width: 100%;
 
   p {
-    font-family: Work Sans;
+    font-family: Outfit;
+
     font-style: italic;
     font-weight: 600;
     font-size: 13px;

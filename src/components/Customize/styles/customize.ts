@@ -136,7 +136,8 @@ export const ThemeOption = styled.button<ActiveProps>`
 `;
 
 export const Heading = styled.h1`
-  font-family: Work Sans;
+  font-family: Outfit;
+
   font-style: normal;
   font-weight: bold;
   font-size: 3.6rem;
