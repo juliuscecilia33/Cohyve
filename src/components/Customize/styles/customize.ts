@@ -120,6 +120,7 @@ export const ThemeOption = styled.button<ActiveProps>`
     font-weight: 600;
     font-size: 16px;
     color: ${({ color }) => color};
+    pointer-events: none;
   }
 
   div {
@@ -130,6 +131,7 @@ export const ThemeOption = styled.button<ActiveProps>`
     top: 5%;
     right: 5%;
     border-radius: 10px;
+    pointer-events: none;
   }
 `;
 
