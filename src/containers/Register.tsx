@@ -35,6 +35,7 @@ export function RegisterContainer() {
   const { name, email, password } = inputs;
   const [verified, setVerified] = useState(false);
   const [submitError, setSubmitError] = useState(null);
+  const [userExistsError, setUserExistsError] = useState(null);
 
   const actionCodeSettings = {
     // URL you want to redirect back to. The domain (www.example.com) for this
@@ -75,6 +76,24 @@ export function RegisterContainer() {
         //   bannerURL: "",
         //   description: "",
         // };
+
+        // do get request?
+
+        axios
+          .get("http://localhost:5000/auth/userexists/" + user.uid)
+          .then((response: any) => {
+            console.log("response of user exists: ", response);
+
+            if (response.data === false) {
+              history.push({
+                pathname: ROUTES.REGISTERFINISH,
+              });
+            }
+          })
+          .catch((error) => {
+            setUserExistsError(error.message);
+            console.error("There was an error!", error);
+          });
 
         // axios
         //   .post("http://localhost:5000/auth/register/", appBody)
@@ -152,7 +171,11 @@ export function RegisterContainer() {
       })
       .catch((error) => {
         const errorMessage = error.message;
-        console.log(errorMessage);
+
+        if (errorMessage === "Firebase: Error (auth/email-already-in-use).") {
+          console.log("correct");
+        }
+        console.log("error message: ", errorMessage);
       });
   };
 

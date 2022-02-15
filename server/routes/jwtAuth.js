@@ -59,6 +59,27 @@ router.post("/login", async (req, res) => {
   }
 });
 
+router.get("/userexists/:uid", async (req, res) => {
+  try {
+    const { uid } = req.params;
+
+    console.log("uid from user exists: ", uid);
+
+    const user = await pool.query(
+      "SELECT * FROM users WHERE firebase_user_id = $1",
+      [uid]
+    );
+
+    if (user.rows.length === 0) {
+      console.log("false");
+      res.json(false);
+    } else {
+      console.log("true");
+      res.json(true);
+    }
+  } catch (error) {}
+});
+
 router.post("/verify", authorize, async (req, res) => {
   try {
     res.json(true);

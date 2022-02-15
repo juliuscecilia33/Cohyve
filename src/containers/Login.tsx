@@ -11,6 +11,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../firebase";
 import GoogleLogo from "../images/GoogleLogo.png";
+import axios from "axios";
 
 interface DataProps {
   setIsAuthenticated: any;
@@ -23,6 +24,7 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
     email: "",
     password: "",
   });
+  const [userExistsError, setUserExistsError] = useState(null);
 
   const { email, password } = inputs;
 
@@ -42,12 +44,56 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
         // The signed-in user info.
         const user = result.user;
         console.log("user: ", user);
+
+        // const appBody = {
+        //   firebase_user_id: user.uid,
+        //   school: "",
+        //   profileURL: "",
+        //   bannerURL: "",
+        //   description: "",
+        // };
+
+        axios
+          .get("http://localhost:5000/auth/userexists/" + user.uid)
+          .then((response: any) => {
+            console.log("response of user exists: ", response);
+
+            if (response.data === false) {
+              history.push({
+                pathname: ROUTES.REGISTERFINISH,
+              });
+            }
+          })
+          .catch((error) => {
+            setUserExistsError(error.message);
+            console.error("There was an error!", error);
+          });
+
+        // axios
+        //   .post("http://localhost:5000/auth/register/", appBody)
+        //   .then((response: any) => {
+        //     console.log(response.data);
+        //     console.log("Successfully created user");
+        //     history.push({
+        //       pathname: ROUTES.REGISTERFINISH,
+        //       state: {
+        //         userData: response.data,
+        //       },
+        //     });
+        //   })
+        //   .catch((error) => {
+        //     setSubmitError(error.message);
+        //     console.error("There was an error!", error);
+        //   });
       })
       .catch((error) => {
         // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(error);
+        console.log("error message: ", errorMessage);
+
+        // do something with error that says email already exists if you logged in with google, but are now trying to log in with that same email through regular email/password way
+
         // The email of the user's account used.
         const email = error.email;
         console.log("error email: ", email);
