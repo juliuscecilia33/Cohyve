@@ -10,6 +10,7 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../firebase";
+import GoogleLogo from "../images/GoogleLogo.png";
 
 interface DataProps {
   setIsAuthenticated: any;
@@ -29,7 +30,7 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
   const onChange = (e: any) =>
     setInputs({ ...inputs, [e.target.name]: e.target.value });
 
-  const handleLogin = async (e: any) => {
+  const handleGoogleLogin = async (e: any) => {
     e.preventDefault();
 
     signInWithPopup(auth, provider)
@@ -54,6 +55,10 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
         const credential = GoogleAuthProvider.credentialFromError(error);
         // ...
       });
+  };
+
+  const handleLogin = async (e: any) => {
+    e.preventDefault();
   };
 
   return (
@@ -90,6 +95,14 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
             onClick={(e) => handleLogin(e)}
           >
             Login
+          </ActionButton>
+          <ActionButton
+            color="#284B63"
+            onClick={(e) => handleGoogleLogin(e)}
+            background="linear-gradient(94.39deg, #F4F9E9 8.09%, #DEECDE 93.12%);"
+          >
+            <img src={GoogleLogo} alt="Google Logo" />
+            Sign in with Google
           </ActionButton>
           <Login.Message>
             Not registered yet?{" "}
