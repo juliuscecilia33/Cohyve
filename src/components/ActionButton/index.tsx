@@ -7,9 +7,11 @@ type Props = {
   background?: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   disabled?: boolean;
+  color?: string;
 };
 
 export default function ActionButton({
+  color,
   disabled,
   background,
   onClick,
@@ -22,13 +24,19 @@ export default function ActionButton({
         <Container
           disabled
           background={background}
+          color={color}
           onClick={onClick}
           {...restProps}
         >
           {children}
         </Container>
       ) : (
-        <Container background={background} onClick={onClick} {...restProps}>
+        <Container
+          background={background}
+          color={color}
+          onClick={onClick}
+          {...restProps}
+        >
           {children}
         </Container>
       )}

@@ -252,7 +252,10 @@ export function ClubsContainer() {
         )}
         <Clubs.CreateButtonContainer>
           <ReactRouterLink to={null}>
-            <ActionButton background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;">
+            <ActionButton
+              color="#FAFCFA"
+              background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;"
+            >
               Create Club
             </ActionButton>
           </ReactRouterLink>
@@ -295,7 +298,7 @@ export function ClubsContainer() {
               />
             </Filter.Block>
             <ReactRouterLink to={null}>
-              <ActionButton background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;">
+              <ActionButton color="#FAFCFA" background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;">
                 Create Club
               </ActionButton>
             </ReactRouterLink>

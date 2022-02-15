@@ -475,10 +475,16 @@ export function CreateClubContainer() {
               </CreateClub.BasicInfo>
               <CreateClub.ButtonsAndLinks>
                 <CreateClub.Buttons>
-                  <ActionButton background="linear-gradient(94.39deg, #58A4B0 8.09%, #AFD5AA 93.12%);">
+                  <ActionButton
+                    color="#FAFCFA"
+                    background="linear-gradient(94.39deg, #58A4B0 8.09%, #AFD5AA 93.12%);"
+                  >
                     Follow
                   </ActionButton>
-                  <ActionButton background="linear-gradient(94.39deg, #F5E7AB 8.09%, #C5B05A 93.12%);">
+                  <ActionButton
+                    color="#FAFCFA"
+                    background="linear-gradient(94.39deg, #F5E7AB 8.09%, #C5B05A 93.12%);"
+                  >
                     Partner
                   </ActionButton>
                 </CreateClub.Buttons>
@@ -736,6 +742,7 @@ export function CreateClubContainer() {
         </CreateClub.Inputs>
         <CreateClub.ButtonContainer>
           <ActionButton
+            color="#FAFCFA"
             onClick={() => handleSubmit()}
             background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;"
             disabled={false}

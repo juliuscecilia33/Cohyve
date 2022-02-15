@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { resourceLimits } from "worker_threads";
 import { ActionButton, Login } from "../components";
 import Promo from "../images/Club Page.png";
-import { Link as ReactRouterLink, useHistory } from "react-router-dom";
+import { Link as ReactRouterLink } from "react-router-dom";
 import * as ROUTES from "../constants/routes";
 import {
   createUserWithEmailAndPassword,
@@ -13,6 +13,8 @@ import {
 import { auth } from "../firebase";
 import { updateProfile } from "firebase/auth";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
+import GoogleLogo from "../images/GoogleLogo.png";
 
 // interface DataProps {
 //   setIsAuthenticated: any;
@@ -27,6 +29,8 @@ export function RegisterContainer() {
   });
 
   const provider = new GoogleAuthProvider();
+
+  let history = useHistory();
 
   const { name, email, password } = inputs;
   const [verified, setVerified] = useState(false);
@@ -105,6 +109,12 @@ export function RegisterContainer() {
           .then((response: any) => {
             console.log(response.data);
             console.log("Successfully created user");
+            history.push({
+              pathname: ROUTES.REGISTERFINISH,
+              state: {
+                userData: response.data,
+              },
+            });
           })
           .catch((error) => {
             setSubmitError(error.message);
@@ -147,14 +157,16 @@ export function RegisterContainer() {
           {/* After email confirmation, next page will be customization page, school, profile picture, banner, ask them if they're in any clubs */}
 
           <ActionButton
+            color="#FAFCFA"
             onClick={(e) => handleLogin(e)}
             background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;"
           >
             Register
           </ActionButton>
           <ActionButton
+            color="#284B63"
             onClick={(e) => handleGoogleLogin(e)}
-            background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;"
+            background="linear-gradient(94.39deg, #F4F9E9 8.09%, #DEECDE 93.12%);"
           >
             Sign in with Google
           </ActionButton>
