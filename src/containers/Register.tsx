@@ -63,16 +63,45 @@ export function RegisterContainer() {
         // This gives you a Google Access Token. You can use it to access the Google API.
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
+        console.log("token: ", token);
         // The signed-in user info.
         const user = result.user;
+        console.log("user: ", user);
+
+        // const appBody = {
+        //   firebase_user_id: user.uid,
+        //   school: "",
+        //   profileURL: "",
+        //   bannerURL: "",
+        //   description: "",
+        // };
+
+        // axios
+        //   .post("http://localhost:5000/auth/register/", appBody)
+        //   .then((response: any) => {
+        //     console.log(response.data);
+        //     console.log("Successfully created user");
+        //     history.push({
+        //       pathname: ROUTES.REGISTERFINISH,
+        //       state: {
+        //         userData: response.data,
+        //       },
+        //     });
+        //   })
+        //   .catch((error) => {
+        //     setSubmitError(error.message);
+        //     console.error("There was an error!", error);
+        //   });
         // ...
       })
       .catch((error) => {
         // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;
+        console.log(error);
         // The email of the user's account used.
         const email = error.email;
+        console.log("error email: ", email);
         // The AuthCredential type that was used.
         const credential = GoogleAuthProvider.credentialFromError(error);
         // ...
@@ -168,6 +197,7 @@ export function RegisterContainer() {
             onClick={(e) => handleGoogleLogin(e)}
             background="linear-gradient(94.39deg, #F4F9E9 8.09%, #DEECDE 93.12%);"
           >
+            <img src={GoogleLogo} alt="Google Logo" />
             Sign in with Google
           </ActionButton>
           <Login.Message>

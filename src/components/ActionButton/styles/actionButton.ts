@@ -20,6 +20,12 @@ export const Container = styled.button<ActiveProps>`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  img {
+    height: 25px;
+    width: auto;
+    margin-right: .2rem;
+  }
   
   &:disabled {
     opacity: 0.5;

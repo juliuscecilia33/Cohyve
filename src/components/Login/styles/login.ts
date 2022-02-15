@@ -83,7 +83,7 @@ export const Input = styled.div`
   transition: 0.5s ease all;
 
   p {
-    font-family: Poppins;
+    font-family: Outfit;
     font-style: normal;
     font-weight: 600;
     font-size: 18px;

@@ -3,12 +3,21 @@ import { ActionButton, Login } from "../components";
 import Promo from "../images/Club Page.png";
 import { Link as ReactRouterLink, useHistory } from "react-router-dom";
 import * as ROUTES from "../constants/routes";
+import {
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  sendEmailVerification,
+  signInWithPopup,
+} from "firebase/auth";
+import { auth } from "../firebase";
 
 interface DataProps {
   setIsAuthenticated: any;
 }
 
 export function LoginContainer({ setIsAuthenticated }: DataProps) {
+  const provider = new GoogleAuthProvider();
+
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
@@ -22,6 +31,29 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
+
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        console.log("token: ", token);
+        // The signed-in user info.
+        const user = result.user;
+        console.log("user: ", user);
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(error);
+        // The email of the user's account used.
+        const email = error.email;
+        console.log("error email: ", email);
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+      });
   };
 
   return (
