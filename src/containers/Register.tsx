@@ -79,14 +79,39 @@ export function RegisterContainer() {
 
         // do get request?
 
+        const appBody = {
+          firebase_user_id: user.uid,
+          school: "",
+          profileURL: "",
+          bannerURL: "",
+          description: "",
+        };
+
         axios
           .get("http://localhost:5000/auth/userexists/" + user.uid)
           .then((response: any) => {
             console.log("response of user exists: ", response);
 
             if (response.data === false) {
+              axios
+                .post("http://localhost:5000/auth/register/", appBody)
+                .then((response: any) => {
+                  console.log(response.data);
+                  console.log("Successfully created user");
+                  history.push({
+                    pathname: ROUTES.REGISTERFINISH,
+                    state: {
+                      userData: response.data,
+                    },
+                  });
+                })
+                .catch((error) => {
+                  setSubmitError(error.message);
+                  console.error("There was an error!", error);
+                });
+            } else {
               history.push({
-                pathname: ROUTES.REGISTERFINISH,
+                pathname: ROUTES.USER,
               });
             }
           })
@@ -94,24 +119,6 @@ export function RegisterContainer() {
             setUserExistsError(error.message);
             console.error("There was an error!", error);
           });
-
-        // axios
-        //   .post("http://localhost:5000/auth/register/", appBody)
-        //   .then((response: any) => {
-        //     console.log(response.data);
-        //     console.log("Successfully created user");
-        //     history.push({
-        //       pathname: ROUTES.REGISTERFINISH,
-        //       state: {
-        //         userData: response.data,
-        //       },
-        //     });
-        //   })
-        //   .catch((error) => {
-        //     setSubmitError(error.message);
-        //     console.error("There was an error!", error);
-        //   });
-        // ...
       })
       .catch((error) => {
         // Handle Errors here.
@@ -130,7 +137,7 @@ export function RegisterContainer() {
   const onChange = (e: any) =>
     setInputs({ ...inputs, [e.target.name]: e.target.value });
 
-  const handleLogin = async (e: any) => {
+  const handleRegister = async (e: any) => {
     e.preventDefault();
 
     createUserWithEmailAndPassword(auth, email, password)
@@ -210,7 +217,7 @@ export function RegisterContainer() {
 
           <ActionButton
             color="#FAFCFA"
-            onClick={(e) => handleLogin(e)}
+            onClick={(e) => handleRegister(e)}
             background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;"
           >
             Register

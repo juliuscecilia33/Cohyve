@@ -25,6 +25,7 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
     password: "",
   });
   const [userExistsError, setUserExistsError] = useState(null);
+  const [submitError, setSubmitError] = useState(null);
 
   const { email, password } = inputs;
 
@@ -45,13 +46,13 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
         const user = result.user;
         console.log("user: ", user);
 
-        // const appBody = {
-        //   firebase_user_id: user.uid,
-        //   school: "",
-        //   profileURL: "",
-        //   bannerURL: "",
-        //   description: "",
-        // };
+        const appBody = {
+          firebase_user_id: user.uid,
+          school: "",
+          profileURL: "",
+          bannerURL: "",
+          description: "",
+        };
 
         axios
           .get("http://localhost:5000/auth/userexists/" + user.uid)
@@ -59,8 +60,25 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
             console.log("response of user exists: ", response);
 
             if (response.data === false) {
+              axios
+                .post("http://localhost:5000/auth/register/", appBody)
+                .then((response: any) => {
+                  console.log(response.data);
+                  console.log("Successfully created user");
+                  history.push({
+                    pathname: ROUTES.REGISTERFINISH,
+                    state: {
+                      userData: response.data,
+                    },
+                  });
+                })
+                .catch((error) => {
+                  setSubmitError(error.message);
+                  console.error("There was an error!", error);
+                });
+            } else {
               history.push({
-                pathname: ROUTES.REGISTERFINISH,
+                pathname: ROUTES.USER,
               });
             }
           })
@@ -68,23 +86,6 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
             setUserExistsError(error.message);
             console.error("There was an error!", error);
           });
-
-        // axios
-        //   .post("http://localhost:5000/auth/register/", appBody)
-        //   .then((response: any) => {
-        //     console.log(response.data);
-        //     console.log("Successfully created user");
-        //     history.push({
-        //       pathname: ROUTES.REGISTERFINISH,
-        //       state: {
-        //         userData: response.data,
-        //       },
-        //     });
-        //   })
-        //   .catch((error) => {
-        //     setSubmitError(error.message);
-        //     console.error("There was an error!", error);
-        //   });
       })
       .catch((error) => {
         // Handle Errors here.
