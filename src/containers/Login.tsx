@@ -4,9 +4,8 @@ import Promo from "../images/Club Page.png";
 import { Link as ReactRouterLink, useHistory } from "react-router-dom";
 import * as ROUTES from "../constants/routes";
 import {
-  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
   GoogleAuthProvider,
-  sendEmailVerification,
   signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../firebase";
@@ -103,6 +102,24 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+
+        history.push({
+          pathname: ROUTES.USER,
+        });
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+        setSubmitError(errorMessage);
+      });
   };
 
   return (
