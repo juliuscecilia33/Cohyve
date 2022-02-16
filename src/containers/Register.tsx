@@ -100,9 +100,6 @@ export function RegisterContainer() {
                   console.log("Successfully created user");
                   history.push({
                     pathname: ROUTES.REGISTERFINISH,
-                    state: {
-                      userData: response.data,
-                    },
                   });
                 })
                 .catch((error) => {

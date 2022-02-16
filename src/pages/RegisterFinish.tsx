@@ -4,7 +4,6 @@ import { auth } from "../firebase";
 
 export default function RegisterFinishPage() {
   console.log(auth.currentUser);
-  console.log("hello");
 
   return (
     <>
