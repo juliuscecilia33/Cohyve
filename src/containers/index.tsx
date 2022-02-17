@@ -4,6 +4,7 @@ export { RegisterContainer } from "./Register";
 export { FooterContainer } from "./Footer";
 export { CreateClubContainer } from "./CreateClub";
 export { ClubBlockContainer } from "./ClubBlock";
+export { ClubBlockV2Container } from "./ClubBlockV2";
 export { ClubsContainer } from "./Clubs";
 export { FilterListContainer } from "./FilterList";
 export { CustomizeContainer } from "./Customize";

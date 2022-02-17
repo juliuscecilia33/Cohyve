@@ -8,7 +8,9 @@ import {
   Stats,
   School,
   MembersAndPartners,
+  InformationContainer,
   Item,
+  Name,
 } from "./styles/clubBlockV2";
 
 import VerifiedIcon from "../Images/VerifiedIcon.png";
@@ -63,16 +65,33 @@ export default function ClubBlockV2({ children, ...restProps }: Props) {
 }
 
 ClubBlockV2.TopBar = function ClubBlockV2TopBar({
+  verified,
+  background,
   src,
   clubName,
   children,
   ...restProps
 }: Props) {
   return (
-    <TopBar {...restProps}>
-      <img src={src} alt={clubName} />
-      <h3>{clubName}</h3>
+    <TopBar background={background} {...restProps}>
+      <div>
+        <img src={src} alt={clubName} />
+      </div>
+      <ClubBlockV2.Name verified={verified}>{clubName}</ClubBlockV2.Name>
     </TopBar>
+  );
+};
+
+ClubBlockV2.Name = function ClubBlockV2Name({
+  verified,
+  children,
+  ...restProps
+}: Props) {
+  return (
+    <Name {...restProps}>
+      <h3>{children}</h3>
+      {verified && <img src={VerifiedIcon} alt="Verified Icon" />}
+    </Name>
   );
 };
 
@@ -112,10 +131,16 @@ ClubBlockV2.RankLabel = function ClubBlockV2RankLabel({
   );
 };
 
+ClubBlockV2.InformationContainer = function ClubBlockV2InformationContainer({
+  children,
+  ...restProps
+}: Props) {
+  return <InformationContainer {...restProps}>{children}</InformationContainer>;
+};
+
 ClubBlockV2.Stats = function ClubBlockV2Stats({
   followers,
   memberCount,
-  verified,
   children,
   ...restProps
 }: Props) {
