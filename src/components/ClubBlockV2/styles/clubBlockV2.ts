@@ -15,12 +15,14 @@ export const Container = styled.div`
   border-radius: 20px;
   background: #f4faf4;
   cursor: pointer;
-  margin: 0rem 0.1rem 3rem 0.1rem;
+  // margin: 0rem 0.1rem 3rem 0.1rem;
+  margin: 0 0.5rem 3rem 0.5rem;
   box-shadow: -1px 10px 60px rgba(27, 27, 30, 0.05);
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 
   &:hover {
     box-shadow: -1px 6px 60px rgba(27, 27, 30, 0.25);
+    transform: translateY(-1.2%);
   }
 `;
 
@@ -97,7 +99,7 @@ export const ImageContainer = styled.div`
 export const RankLabel = styled.div<ActiveProps>`
   position: absolute;
   top: 8%;
-  left: 5%;
+  right: 5%;
   width: 46px;
   height: 46px;
   border-radius: 10px;
@@ -111,8 +113,12 @@ export const RankLabel = styled.div<ActiveProps>`
     font-family: Outfit;
     font-style: normal;
     font-weight: 700;
-    font-size: 17px;
+    font-size: 22px;
     color: #fafcfa;
+
+    span {
+      font-size: 17px;
+    }
   }
 `;
 
@@ -140,12 +146,12 @@ export const Stats = styled.div`
       font-family: Outfit;
       font-style: normal;
       font-weight: 600;
-      font-size: 16px;
+      font-size: 15px;
       color: #cdcdcd;
     }
 
     i {
-      font-size: 16px;
+      font-size: 15px;
       color: #cdcdcd;
       margin-right: 0.4rem;
     }

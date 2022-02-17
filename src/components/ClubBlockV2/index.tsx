@@ -113,7 +113,10 @@ ClubBlockV2.ImageContainer = function ClubBlockV2ImageContainer({
           background={() => getRandomColor()}
           rankCount={rankCount}
         >
-          <h3>#{rankCount}</h3>
+          <h3>
+            <span>#</span>
+            {rankCount}
+          </h3>
         </ClubBlockV2.RankLabel>
       )}
       <img src={src} alt={clubName} />

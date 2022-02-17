@@ -31,7 +31,7 @@ export const ClubsContainer = styled.div`
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
-  padding-left: 4rem;
+  padding-left: 1rem;
 `;
 
 export const ClubsRow = styled.div`
