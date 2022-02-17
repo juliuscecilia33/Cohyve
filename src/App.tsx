@@ -26,49 +26,6 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
 
-  // const checkAuthenticated = async () => {
-  // try {
-  //   const res = await fetch("http://localhost:5000/auth/verify", {
-  //     method: "POST",
-  //     headers: { jwt_token: localStorage.token },
-  //   });
-  //   const parseRes = await res.json();
-  //   parseRes === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
-  // } catch (err: any) {
-  //   setIsAuthenticated(false);
-  //   console.error(err.message);
-  // }
-  // auth.currentUser
-  //   .getIdToken(/* forceRefresh */ true)
-  //   .then((idToken) => {
-  //     // Send token to your backend via HTTPS
-  //     axios
-  //       .post("http://localhost:5000/auth/verify", {
-  //         headers: {
-  //           user_token: idToken,
-  //         },
-  //       })
-  //       .then((response: any) => {
-  //         console.log(response);
-  //         console.log("Successfully verified");
-  //         const parseRes = response.json();
-  //         parseRes === true
-  //           ? setIsAuthenticated(true)
-  //           : setIsAuthenticated(false);
-  //         // Direct to clubs page
-  //       })
-  //       .catch((error: any) => {
-  //         setServerError(error.message);
-  //         console.error("There was a server error!", error);
-  //       });
-  //   })
-  //   .catch((error) => {
-  //     setIsAuthenticated(false);
-  //     setAuthError(error.message);
-  //     console.error("There was a firebase auth error: ", error.message);
-  //   });
-  // };
-
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -80,7 +37,6 @@ function App() {
         // ...
       } else {
         // User is signed out
-        // ...
         setIsAuthenticated(false);
         setUser(null);
       }
