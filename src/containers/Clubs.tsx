@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { Hero, Search, Filter, Clubs, ActionButton } from "../components";
-import { ClubBlockContainer, FilterListContainer } from "../containers";
+import {
+  ClubBlockContainer,
+  FilterListContainer,
+  ClubBlockV2Container,
+} from "../containers";
 import Banner from "../images/BannerTest.jpeg";
 import Profile from "../images/Profile.jpeg";
 import { Link as ReactRouterLink } from "react-router-dom";
@@ -298,99 +302,27 @@ export function ClubsContainer() {
               />
             </Filter.Block>
             <ReactRouterLink to={null}>
-              <ActionButton color="#FAFCFA" background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;">
+              <ActionButton
+                color="#FAFCFA"
+                background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;"
+              >
                 Create Club
               </ActionButton>
             </ReactRouterLink>
           </Filter>
           <Clubs.ClubsContainer>
-            <ClubBlockContainer
+            <ClubBlockV2Container
               rankCount={null}
               ranked={false}
-              clubName="Ping Pong Club"
-              src={Banner}
-              verified={false}
-              followers={50}
-              memberCount={12}
-              members={members.slice(0, 4)}
-              school="University of Washington"
-            />
-            <ClubBlockContainer
-              rankCount={null}
-              ranked={false}
-              clubName="Ping Pong Club"
-              src={Banner}
-              verified={false}
-              followers={50}
-              memberCount={12}
-              members={members.slice(0, 4)}
-              school="University of Washington"
-            />
-            <ClubBlockContainer
-              rankCount={null}
-              ranked={false}
-              clubName="Ping Pong Club"
-              src={Banner}
-              verified={false}
-              followers={50}
-              memberCount={12}
-              members={members.slice(0, 4)}
-              school="University of Washington"
-            />
-            <ClubBlockContainer
-              rankCount={null}
-              ranked={false}
-              clubName="Ping Pong Club"
-              src={Banner}
-              verified={false}
-              followers={50}
-              memberCount={12}
-              members={members.slice(0, 4)}
-              school="University of Washington"
-            />
-            <ClubBlockContainer
-              rankCount={null}
-              ranked={false}
-              clubName="Ping Pong Club"
-              src={Banner}
-              verified={false}
-              followers={50}
-              memberCount={12}
-              members={members.slice(0, 4)}
-              school="University of Washington"
-            />
-            <ClubBlockContainer
-              rankCount={null}
-              ranked={false}
-              clubName="Ping Pong Club"
-              src={Banner}
-              verified={false}
-              followers={50}
-              memberCount={12}
-              members={members.slice(0, 4)}
-              school="University of Washington"
-            />
-            <ClubBlockContainer
-              rankCount={null}
-              ranked={false}
-              clubName="Ping Pong Club"
-              src={Banner}
+              clubName="Ping Pong Club Club Club"
+              banner={Banner}
               verified={true}
               followers={50}
               memberCount={12}
               members={members.slice(0, 4)}
+              partners={members.slice(0, 4)}
               school="University of Washington"
-            />
-            <ClubBlockContainer
-              rankCount={null}
-              ranked={false}
-              clubName="Ping Pong Club"
-              src={Banner}
-              verified={true}
-              followers={50}
-              memberCount={12}
-              members={members.slice(0, 4)}
-              school="University of Washington"
+              profile={Profile}
             />
           </Clubs.ClubsContainer>
         </Clubs.SectionContainer>

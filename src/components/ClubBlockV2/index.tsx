@@ -10,10 +10,13 @@ import {
   MembersAndPartners,
   InformationContainer,
   Item,
+  Members,
+  Partners,
   Name,
 } from "./styles/clubBlockV2";
 
 import VerifiedIcon from "../Images/VerifiedIcon.png";
+import { ClubBlock } from "..";
 
 type Props = {
   children?: React.ReactNode;
@@ -74,9 +77,9 @@ ClubBlockV2.TopBar = function ClubBlockV2TopBar({
 }: Props) {
   return (
     <TopBar background={background} {...restProps}>
-      <div>
+      <span>
         <img src={src} alt={clubName} />
-      </div>
+      </span>
       <ClubBlockV2.Name verified={verified}>{clubName}</ClubBlockV2.Name>
     </TopBar>
   );
@@ -178,26 +181,44 @@ ClubBlockV2.MembersAndPartners = function ClubBlockV2MembersAndPartners({
 }: Props) {
   return (
     <MembersAndPartners {...restProps}>
-      {members.map((member: any) => {
-        return (
-          <ClubBlockV2.Item
-            profilePic={member.profilePic}
-            user={member.user}
-            background={() => getRandomColor()}
-          />
-        );
-      })}
-      {partners.map((partner: any) => {
-        return (
-          <ClubBlockV2.Item
-            profilePic={partner.profilePic}
-            user={partner.user}
-            background={() => getRandomColor()}
-          />
-        );
-      })}
+      <ClubBlockV2.Members>
+        {members.map((member: any) => {
+          return (
+            <ClubBlockV2.Item
+              profilePic={member.profilePic}
+              user={member.user}
+              background={() => getRandomColor()}
+            />
+          );
+        })}
+      </ClubBlockV2.Members>
+      <ClubBlockV2.Partners>
+        {partners.map((partner: any) => {
+          return (
+            <ClubBlockV2.Item
+              profilePic={partner.profilePic}
+              user={partner.user}
+              background={() => getRandomColor()}
+            />
+          );
+        })}
+      </ClubBlockV2.Partners>
     </MembersAndPartners>
   );
+};
+
+ClubBlockV2.Members = function ClubBlockV2Members({
+  children,
+  ...restProps
+}: Props) {
+  return <Members {...restProps}>{children}</Members>;
+};
+
+ClubBlockV2.Partners = function ClubBlockV2Partners({
+  children,
+  ...restProps
+}: Props) {
+  return <Partners {...restProps}>{children}</Partners>;
 };
 
 ClubBlockV2.Item = function ClubBlockV2Item({

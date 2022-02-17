@@ -6,8 +6,8 @@ interface ActiveProps {
 }
 
 export const Container = styled.div`
-  width: 225px;
-  height: 330px;
+  width: 290px;
+  height: 440px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,27 +16,28 @@ export const Container = styled.div`
   background: #f4faf4;
   cursor: pointer;
   margin: 0rem 0.1rem 3rem 0.1rem;
-  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  box-shadow: -1px 10px 60px rgba(27, 27, 30, 0.05);
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 
   &:hover {
-    box-shadow: -1px 10px 60px rgba(27, 27, 30, 0.1);
+    box-shadow: -1px 6px 60px rgba(27, 27, 30, 0.25);
   }
 `;
 
 export const TopBar = styled.div<ActiveProps>`
   width: 100%;
-  height: 10%;
+  height: 15%;
   display: flex;
   align-items: center;
-  padding: 0 0.5rem;
+  padding: 0 1rem;
 
-  div {
-    width: 23px;
-    height: 23px;
+  span {
+    width: 40px;
+    height: 40px;
     object-fit: cover;
     border-radius: 50%;
     background: ${({ background }) => background};
-    margin-right: 0.3rem;
+    margin-right: 0.7rem;
 
     img {
       width: 100%;
@@ -50,26 +51,35 @@ export const TopBar = styled.div<ActiveProps>`
 
 export const Name = styled.div<ActiveProps>`
   display: flex;
+  width: 75%;
   align-items: center;
+  height: 100%;
 
   h3 {
     font-family: Outfit;
     font-style: normal;
-    font-weight: 600;
-    font-size: 12px;
-    color: #cdcdcd;
+    font-weight: 700;
+    font-size: 17px;
+    color: #153243;
     margin-right: 0.1rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    // display: flex;
+    // align-items: center;
+    transform: translateY(13%);
+    height: 32%;
   }
 
-  i {
-    font-size: 12px;
-    color: #cdcdcd;
+  img {
+    width: 35px;
+    height: auto;
   }
 `;
 
 export const ImageContainer = styled.div`
   width: 100%;
-  height: 60%;
+  height: 55%;
   position: relative;
   display: flex;
   justify-content: center;
@@ -81,8 +91,6 @@ export const ImageContainer = styled.div`
     max-height: 100%;
     height: 100%;
     object-fit: cover;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
   }
 `;
 
@@ -110,7 +118,7 @@ export const RankLabel = styled.div<ActiveProps>`
 
 export const InformationContainer = styled.div`
   width: 100%;
-  height: 20%;
+  height: 19%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -132,45 +140,64 @@ export const Stats = styled.div`
       font-family: Outfit;
       font-style: normal;
       font-weight: 600;
-      font-size: 14px;
+      font-size: 16px;
       color: #cdcdcd;
-      margin-right: 0.2rem;
     }
 
     i {
-      font-size: 14px;
+      font-size: 16px;
       color: #cdcdcd;
+      margin-right: 0.4rem;
     }
   }
 `;
 
 export const School = styled.div`
-  margin-bottom: 1rem;
   width: 100%;
 
   p {
     font-family: Outfit;
-
     font-style: italic;
     font-weight: 600;
-    font-size: 13px;
+    font-size: 16px;
     color: #b4b8ab;
     width: 100%;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
     text-align: left;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `;
 
 export const MembersAndPartners = styled.div`
   width: 100%;
-  height: 10%;
+  height: 11%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 1.3rem;
   background: linear-gradient(94.39deg, #f4faf4 8.09%, #deecde 93.12%);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+`;
+
+export const Members = styled.div`
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+`;
+
+export const Partners = styled.div`
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
 `;
 
 export const Item = styled.div<ActiveProps>`

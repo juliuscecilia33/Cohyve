@@ -58,6 +58,7 @@ export function ClubBlockV2Container({
   return (
     <ClubBlockV2>
       <ClubBlockV2.TopBar
+        verified={verified}
         clubName={clubName}
         src={profile}
         background={bgColors[random]}
