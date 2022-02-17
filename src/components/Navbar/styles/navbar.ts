@@ -49,10 +49,11 @@ export const Tab = styled.h2`
   font-size: 18px;
   color: #284b63;
   margin-right: 4rem;
-  transition: 0.3s ease all;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   cursor: pointer;
 
   &:hover {
+    transform: translateY(-2.5%);
     color: #afd5aa;
   }
 `;

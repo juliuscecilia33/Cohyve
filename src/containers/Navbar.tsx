@@ -15,6 +15,8 @@ export function NavbarContainer({ background }: DataProps) {
     signOut(auth);
   };
 
+  console.log("navbar: ", auth.currentUser);
+
   return (
     <Navbar background={background}>
       <Navbar.ContainerMed>
@@ -23,7 +25,9 @@ export function NavbarContainer({ background }: DataProps) {
         </ReactRouterLink>
         <Navbar.Border />
         <Navbar.Tabs>
-          <Navbar.Tab>Clubs</Navbar.Tab>
+          <ReactRouterLink to={ROUTES.CLUBS}>
+            <Navbar.Tab>Clubs</Navbar.Tab>
+          </ReactRouterLink>
           <Navbar.Tab>Schools</Navbar.Tab>
         </Navbar.Tabs>
         <ReactRouterLink to={ROUTES.CREATE}>
@@ -34,15 +38,27 @@ export function NavbarContainer({ background }: DataProps) {
             Create Club
           </ActionButton>
         </ReactRouterLink>
-        <ReactRouterLink to={ROUTES.LOGIN}>
-          <ActionButton
-            color="#FAFCFA"
-            onClick={() => signoutUser()}
-            background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;"
-          >
-            Temporary Signout
-          </ActionButton>
-        </ReactRouterLink>
+        {auth.currentUser ? (
+          <ReactRouterLink to={ROUTES.LOGIN}>
+            <ActionButton
+              color="#FAFCFA"
+              onClick={() => signoutUser()}
+              background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;"
+            >
+              Temporary Signout
+            </ActionButton>
+          </ReactRouterLink>
+        ) : (
+          <ReactRouterLink to={ROUTES.LOGIN}>
+            <ActionButton
+              color="#FAFCFA"
+              onClick={() => signoutUser()}
+              background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;"
+            >
+              Login
+            </ActionButton>
+          </ReactRouterLink>
+        )}
       </Navbar.ContainerMed>
     </Navbar>
   );

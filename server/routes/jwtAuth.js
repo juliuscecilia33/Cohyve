@@ -70,6 +70,8 @@ router.get("/userexists/:uid", async (req, res) => {
       [uid]
     );
 
+    console.log(user);
+
     if (user.rows.length === 0) {
       console.log("false");
       res.json(false);

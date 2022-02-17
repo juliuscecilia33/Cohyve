@@ -20,7 +20,14 @@ export const Container = styled.button<ActiveProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0.6rem 0;
+  margin: 0.5rem;
+
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+  &:hover {
+    box-shadow: -1px 6px 60px rgba(27, 27, 30, 0.20);
+    transform: translateY(-2.5%);
+  }
 
   img {
     height: 25px;
