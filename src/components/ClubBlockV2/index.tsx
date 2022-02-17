@@ -185,9 +185,10 @@ ClubBlockV2.MembersAndPartners = function ClubBlockV2MembersAndPartners({
   return (
     <MembersAndPartners {...restProps}>
       <ClubBlockV2.Members>
-        {members.map((member: any) => {
+        {members.map((member: any, key: any) => {
           return (
             <ClubBlockV2.Item
+              key={key}
               profilePic={member.profilePic}
               user={member.user}
               background={() => getRandomColor()}
@@ -196,9 +197,10 @@ ClubBlockV2.MembersAndPartners = function ClubBlockV2MembersAndPartners({
         })}
       </ClubBlockV2.Members>
       <ClubBlockV2.Partners>
-        {partners.map((partner: any) => {
+        {partners.map((partner: any, key: any) => {
           return (
             <ClubBlockV2.Item
+              key={key}
               profilePic={partner.profilePic}
               user={partner.user}
               background={() => getRandomColor()}

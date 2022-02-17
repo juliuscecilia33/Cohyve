@@ -6,7 +6,7 @@ interface ActiveProps {
 }
 
 export const Container = styled.div`
-  width: 290px;
+  width: 280px;
   height: 440px;
   display: flex;
   flex-direction: column;
@@ -74,7 +74,7 @@ export const Name = styled.div<ActiveProps>`
   }
 
   img {
-    width: 35px;
+    width: 32px;
     height: auto;
   }
 `;

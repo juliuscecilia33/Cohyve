@@ -190,49 +190,57 @@ export function ClubsContainer() {
             popular<span>clubs</span>
           </Hero.Heading>
           <Clubs.ClubsRow>
-            <ClubBlockContainer
+            <ClubBlockV2Container
               rankCount={1}
               ranked={true}
-              clubName="Music Club"
-              src={Banner}
+              clubName="Ping Pong Club Club Club"
+              banner={Banner}
               verified={true}
               followers={50}
               memberCount={12}
               members={members.slice(0, 4)}
+              partners={members.slice(0, 4)}
               school="University of Washington"
+              profile={Profile}
             />
-            <ClubBlockContainer
+            <ClubBlockV2Container
               rankCount={2}
               ranked={true}
-              clubName="Chemistry Club"
-              src={Banner}
+              clubName="Ping Pong Club Club Club"
+              banner={Banner}
               verified={true}
               followers={50}
               memberCount={12}
               members={members.slice(0, 4)}
-              school="University of California, Irvine"
+              partners={members.slice(0, 4)}
+              school="University of Washington"
+              profile={Profile}
             />
-            <ClubBlockContainer
+            <ClubBlockV2Container
               rankCount={3}
               ranked={true}
-              clubName="Baseball Club"
-              src={Banner}
+              clubName="Ping Pong Club Club Club"
+              banner={Banner}
               verified={true}
               followers={50}
               memberCount={12}
               members={members.slice(0, 4)}
-              school="University of California, Riverside"
+              partners={members.slice(0, 4)}
+              school="University of Washington"
+              profile={Profile}
             />
-            <ClubBlockContainer
+            <ClubBlockV2Container
               rankCount={4}
               ranked={true}
-              clubName="Basketball Club"
-              src={Banner}
+              clubName="Ping Pong Club Club Club"
+              banner={Banner}
               verified={true}
               followers={50}
               memberCount={12}
               members={members.slice(0, 4)}
-              school="Duke University"
+              partners={members.slice(0, 4)}
+              school="University of Washington"
+              profile={Profile}
             />
           </Clubs.ClubsRow>
         </Hero>
