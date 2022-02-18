@@ -25,6 +25,7 @@ type Props = {
   name?: string;
   description?: string;
   src?: any;
+  onClick?: any;
 };
 
 type ButtonProps = {
@@ -50,17 +51,23 @@ User.ProfileData = function UserProfileData({
 }: Props) {
   if (profileImageUrl) {
     return (
-      <>
-        <User.ProfileSrc profileImageUrl={profileImageUrl} />
-        <User.ProfileInfo />
-      </>
+      <User.ProfileData>
+        <span>
+          <User.ProfileSrc profileImageUrl={profileImageUrl} />
+          <User.ProfileInfo />
+        </span>
+        {children}
+      </User.ProfileData>
     );
   } else {
     return (
-      <>
-        <User.ProfilePlaceholder {...restProps}></User.ProfilePlaceholder>
-        <User.ProfileInfo />
-      </>
+      <User.ProfileData>
+        <span>
+          <User.ProfilePlaceholder {...restProps}></User.ProfilePlaceholder>
+          <User.ProfileInfo />
+        </span>
+        {children}
+      </User.ProfileData>
     );
   }
 };
@@ -80,13 +87,19 @@ User.ProfileInfo = function UserProfileInfo({
 };
 
 User.ProfilePlaceholder = function UserProfilePlaceholder({
+  onClick,
   children,
   ...restProps
 }: Props) {
-  return <ProfilePlaceholder {...restProps}></ProfilePlaceholder>;
+  return (
+    <ProfilePlaceholder {...restProps}>
+      <User.EditProfile onClick={onClick} />
+    </ProfilePlaceholder>
+  );
 };
 
 User.ProfileSrc = function UserProfileSrc({
+  onClick,
   profileImageUrl,
   children,
   ...restProps
@@ -94,17 +107,18 @@ User.ProfileSrc = function UserProfileSrc({
   return (
     <ProfileSrc {...restProps}>
       <img src={profileImageUrl} alt="Profile" />
+      <User.EditProfile onClick={onClick} />
     </ProfileSrc>
   );
 };
 
 User.EditProfile = function UserEditProfile({
-  profileImageUrl,
+  onClick,
   children,
   ...restProps
-}: Props) {
+}: ButtonProps) {
   return (
-    <EditProfile {...restProps}>
+    <EditProfile onClick={onClick} {...restProps}>
       <i className="fa-solid fa-plus"></i>
     </EditProfile>
   );
