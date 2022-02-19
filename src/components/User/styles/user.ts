@@ -2,6 +2,7 @@ import styled from "styled-components/macro";
 
 interface ActiveProps {
   background?: string;
+  selected?: boolean;
 }
 
 export const Container = styled.div<ActiveProps>`
@@ -59,19 +60,6 @@ export const ProfileSrc = styled.div`
   }
 `;
 
-export const ProfilePlaceholder = styled.div`
-  width: 252px;
-  height: 252px;
-  margin-right: 1rem;
-  background: linear-gradient(94.39deg, #afd5aa 8.09%, #58a4b0 93.12%);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  border-radius: 50%;
-  border: 10px solid #f4faf4;
-  position: relative;
-`;
-
 export const EditProfile = styled.button`
   position: absolute;
   bottom: 0;
@@ -89,4 +77,116 @@ export const EditProfile = styled.button`
     color: #fafcfa;
     font-size: 25px;
   }
+`;
+
+export const Tabs = styled.div`
+  width: 100%;
+  height: 8vh;
+  display: flex;
+  align-items: center;
+`;
+
+export const Tab = styled.button<ActiveProps>`
+  padding: 1rem 2rem;
+  background: ${({ selected }) => (selected ? "#f4f9e9" : "none")};
+  font-family: Outfit;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  color: ${({ selected }) => (selected ? "#afd5aa" : "none")};
+  border-radius: 30px;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  margin-right: 1.5rem;
+
+  &:hover {
+    background: #f4f9e9;
+    color: #afd5aa;
+  }
+`;
+
+export const ContentSection = styled.div`
+  width: 100%;
+  padding: 1.6rem 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+`;
+
+export const Table = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Items = styled.div`
+  width: 100%;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  padding: 0 0.7rem;
+`;
+
+export const Label = styled.h3`
+  width: 25%;
+  font-family: Outfit;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  color: #284b63;
+`;
+
+export const ClubName = styled.div`
+  width: 25%;
+  display: flex;
+  align-items: center;
+
+  h3 {
+    font-family: Outfit;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    color: #153243;
+    margin-right: 0.5rem;
+  }
+
+  img {
+    width: 22px;
+    height: auto;
+  }
+`;
+
+export const ClubProfileSrc = styled.div`
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0;
+  }
+`;
+
+export const Category = styled.h3`
+  width: 25%;
+  font-family: Outfit;
+  font-style: normal;
+  font-weight: 600;
+  color: #afd5aa;
+`;
+
+export const Followers = styled.h3`
+  font-family: Outfit;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  color: #153243;
+`;
+
+export const Role = styled.div`
+  width: 25%;
+  display: flex;
+  align-items: center;
 `;

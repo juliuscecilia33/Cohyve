@@ -16,7 +16,6 @@ import {
 } from "./styles/clubBlockV2";
 
 import VerifiedIcon from "../Images/VerifiedIcon.png";
-import { ClubBlock } from "..";
 
 type Props = {
   children?: React.ReactNode;

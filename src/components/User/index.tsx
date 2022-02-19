@@ -3,20 +3,22 @@ import React from "react";
 import {
   Container,
   ProfileSrc,
-  ProfilePlaceholder,
-  ClubsSection,
-  SchoolSection,
-  FollowingSection,
+  ContentSection,
   Tabs,
   Tab,
   Table,
-  Labels,
   Label,
   Items,
-  Item,
+  ClubName,
+  ClubProfileSrc,
+  Category,
+  Followers,
+  Role,
   EditProfile,
   ProfileInfo,
 } from "./styles/user";
+
+import VerifiedIcon from "../Images/VerifiedIcon.png";
 
 type Props = {
   background?: string;
@@ -25,6 +27,7 @@ type Props = {
   name?: string;
   description?: string;
   src?: any;
+  verified?: boolean;
   onClick?: any;
 };
 
@@ -49,27 +52,15 @@ User.ProfileData = function UserProfileData({
   children,
   ...restProps
 }: Props) {
-  if (profileImageUrl) {
-    return (
-      <User.ProfileData>
-        <span>
-          <User.ProfileSrc profileImageUrl={profileImageUrl} />
-          <User.ProfileInfo />
-        </span>
-        {children}
-      </User.ProfileData>
-    );
-  } else {
-    return (
-      <User.ProfileData>
-        <span>
-          <User.ProfilePlaceholder {...restProps}></User.ProfilePlaceholder>
-          <User.ProfileInfo />
-        </span>
-        {children}
-      </User.ProfileData>
-    );
-  }
+  return (
+    <User.ProfileData>
+      <span>
+        <User.ProfileSrc profileImageUrl={profileImageUrl} />
+        <User.ProfileInfo />
+      </span>
+      {children}
+    </User.ProfileData>
+  );
 };
 
 User.ProfileInfo = function UserProfileInfo({
@@ -83,18 +74,6 @@ User.ProfileInfo = function UserProfileInfo({
       <h3>{name}</h3>
       <p>{description}</p>
     </ProfileInfo>
-  );
-};
-
-User.ProfilePlaceholder = function UserProfilePlaceholder({
-  onClick,
-  children,
-  ...restProps
-}: Props) {
-  return (
-    <ProfilePlaceholder {...restProps}>
-      <User.EditProfile onClick={onClick} />
-    </ProfilePlaceholder>
   );
 };
 
@@ -124,25 +103,11 @@ User.EditProfile = function UserEditProfile({
   );
 };
 
-User.ClubsSection = function UserClubsSection({
+User.ContentSection = function UserContentSection({
   children,
   ...restProps
 }: Props) {
-  return <ClubsSection {...restProps}>{children}</ClubsSection>;
-};
-
-User.SchoolSection = function UserSchoolSection({
-  children,
-  ...restProps
-}: Props) {
-  return <SchoolSection {...restProps}>{children}</SchoolSection>;
-};
-
-User.FollowingSection = function UserFollowingSection({
-  children,
-  ...restProps
-}: Props) {
-  return <FollowingSection {...restProps}>{children}</FollowingSection>;
+  return <ContentSection {...restProps}>{children}</ContentSection>;
 };
 
 User.Tabs = function UserTabs({ children, ...restProps }: Props) {
@@ -166,10 +131,6 @@ User.Table = function UserTable({ children, ...restProps }: Props) {
   return <Table {...restProps}>{children}</Table>;
 };
 
-User.Labels = function UserLabels({ children, ...restProps }: Props) {
-  return <Labels {...restProps}>{children}</Labels>;
-};
-
 User.Label = function UserLabel({ children, ...restProps }: Props) {
   return <Label {...restProps}>{children}</Label>;
 };
@@ -178,6 +139,41 @@ User.Items = function UserItems({ children, ...restProps }: Props) {
   return <Items {...restProps}>{children}</Items>;
 };
 
-User.Item = function UserItem({ children, ...restProps }: Props) {
-  return <Item {...restProps}>{children}</Item>;
+User.ClubName = function UserClubName({
+  profileImageUrl,
+  verified,
+  children,
+  ...restProps
+}: Props) {
+  return (
+    <ClubName {...restProps}>
+      <User.ClubProfileSrc profileImageUrl={profileImageUrl} />
+      <h3>{children}</h3>
+      {verified && <img src={VerifiedIcon} alt="Verified Icon" />}
+    </ClubName>
+  );
+};
+
+User.ClubProfileSrc = function UserClubProfileSrc({
+  profileImageUrl,
+  children,
+  ...restProps
+}: Props) {
+  return (
+    <ClubProfileSrc {...restProps}>
+      <img src={profileImageUrl} alt="Profile" />
+    </ClubProfileSrc>
+  );
+};
+
+User.Category = function UserCategory({ children, ...restProps }: Props) {
+  return <Category {...restProps}>{children}</Category>;
+};
+
+User.Followers = function UserFollowers({ children, ...restProps }: Props) {
+  return <Followers {...restProps}>{children}</Followers>;
+};
+
+User.Role = function UserRole({ children, ...restProps }: Props) {
+  return <Role {...restProps}>{children}</Role>;
 };
