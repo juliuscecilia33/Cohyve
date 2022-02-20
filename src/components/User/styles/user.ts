@@ -118,12 +118,14 @@ export const Table = styled.div`
   flex-direction: column;
 `;
 
-export const Items = styled.div`
+export const Items = styled.div<ActiveProps>`
   width: 100%;
   height: 4rem;
   display: flex;
   align-items: center;
   padding: 0 0.7rem;
+  background: ${({ background }) => background};
+  border-radius: 20px;
 `;
 
 export const Label = styled.h3`

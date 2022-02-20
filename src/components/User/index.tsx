@@ -137,8 +137,12 @@ User.Label = function UserLabel({ children, ...restProps }: Props) {
   return <Label {...restProps}>{children}</Label>;
 };
 
-User.Items = function UserItems({ children, ...restProps }: Props) {
-  return <Items {...restProps}>{children}</Items>;
+User.Items = function UserItems({ background, children, ...restProps }: Props) {
+  return (
+    <Items background={background} {...restProps}>
+      {children}
+    </Items>
+  );
 };
 
 User.ClubName = function UserClubName({
