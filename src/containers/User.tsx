@@ -54,13 +54,13 @@ export function UserContainer() {
             description="Hard work beats talent, when talent doesn't work hard"
             profileImageUrl="https://firebasestorage.googleapis.com/v0/b/cohyve.appspot.com/o/Placeholder.png?alt=media&token=83d8109a-c0ac-4cba-bd95-247ad79857da"
           >
-            <ActionButton.Small
+            <ActionButton.Medium
               color="#AFD5AA"
               onClick={() => editProfile()}
-              background="linear-gradient(94.39deg, #4D566A 8.09%, #091F2E 93.12%), #153243;"
+              background="linear-gradient(94.39deg, #4D566A 8.09%, #091F2E 93.12%);"
             >
               Edit Profile
-            </ActionButton.Small>
+            </ActionButton.Medium>
           </User.ProfileData>
         </CreateClub.BannerPlaceholder>
       </Hero>
@@ -136,7 +136,7 @@ export function UserContainer() {
                 <User.Label>Followers</User.Label>
                 <User.Label>Role</User.Label>
               </User.Items>
-              <User.Items>
+              <User.Items background="none">
                 <User.ClubName
                   verified={true}
                   profileImageUrl="https://firebasestorage.googleapis.com/v0/b/cohyve.appspot.com/o/Placeholder.png?alt=media&token=83d8109a-c0ac-4cba-bd95-247ad79857da"
@@ -145,14 +145,72 @@ export function UserContainer() {
                 </User.ClubName>
                 <User.Category>Academics</User.Category>
                 <User.Followers>67</User.Followers>
-                <User.Role></User.Role>
+                <User.Role>
+                  <ActionButton.Small
+                    color="#F0F2EF"
+                    onClick={() => console.log("Role")} // maybe take to club members page
+                    background="linear-gradient(94.39deg, #58A4B0 8.09%, #AFD5AA 93.12%), #AFD5AA;"
+                  >
+                    President
+                  </ActionButton.Small>
+                </User.Role>
+              </User.Items>
+              <User.Items>
+                <User.ClubName
+                  verified={false}
+                  profileImageUrl="https://firebasestorage.googleapis.com/v0/b/cohyve.appspot.com/o/Placeholder.png?alt=media&token=83d8109a-c0ac-4cba-bd95-247ad79857da"
+                >
+                  Physics Club
+                </User.ClubName>
+                <User.Category>Academics</User.Category>
+                <User.Followers>61</User.Followers>
+                <User.Role>
+                  <ActionButton.Small
+                    color="#AFD5AA"
+                    onClick={() => console.log("Role")} // maybe take to club members page
+                    background="linear-gradient(94.39deg, #4D566A 8.09%, #091F2E 93.12%);"
+                  >
+                    Member
+                  </ActionButton.Small>
+                </User.Role>
               </User.Items>
             </User.Table>
           </>
         ) : schoolSelected ? (
-          <User.Items></User.Items>
+          <User.Items>
+            <p>Schools</p>
+          </User.Items>
         ) : (
-          <User.Items></User.Items>
+          <User.Items>
+            <User.Items>
+              <ClubBlockV2Container
+                rankCount={2}
+                ranked={true}
+                clubName="Ping Pong Club Club Club"
+                banner={Banner}
+                verified={true}
+                followers={50}
+                memberCount={12}
+                members={members.slice(0, 4)}
+                partners={members.slice(0, 4)}
+                school="University of Washington"
+                profile={Profile}
+              />
+              <ClubBlockV2Container
+                rankCount={3}
+                ranked={true}
+                clubName="Ping Pong Club Club Club"
+                banner={Banner}
+                verified={true}
+                followers={50}
+                memberCount={12}
+                members={members.slice(0, 4)}
+                partners={members.slice(0, 4)}
+                school="University of Washington"
+                profile={Profile}
+              />
+            </User.Items>
+          </User.Items>
         )}
       </User.ContentSection>
     </User>

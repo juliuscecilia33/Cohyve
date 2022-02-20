@@ -80,7 +80,7 @@ export const Medium = styled.button<ActiveProps>`
 export const Small = styled.button<ActiveProps>`
   padding: 0.2rem 1.5rem;
   background: ${({ background }) => background};
-  border-radius: 100px;
+  border-radius: 40px;
   cursor: pointer;
   font-family: Poppins;
   font-style: normal;
