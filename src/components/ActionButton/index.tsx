@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Container } from "./styles/actionButton";
+import { Container, Small } from "./styles/actionButton";
 
 type Props = {
   children?: React.ReactNode;
@@ -43,3 +43,39 @@ export default function ActionButton({
     </>
   );
 }
+
+ActionButton.Small = function ActionButtonSmall({
+  color,
+  disabled,
+  background,
+  onClick,
+  children,
+  ...restProps
+}: Props) {
+  return (
+    <Small {...restProps}>
+      <>
+        {disabled ? (
+          <Container
+            disabled
+            background={background}
+            color={color}
+            onClick={onClick}
+            {...restProps}
+          >
+            {children}
+          </Container>
+        ) : (
+          <Container
+            background={background}
+            color={color}
+            onClick={onClick}
+            {...restProps}
+          >
+            {children}
+          </Container>
+        )}
+      </>
+    </Small>
+  );
+};

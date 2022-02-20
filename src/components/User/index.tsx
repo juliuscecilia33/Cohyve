@@ -48,6 +48,8 @@ export default function User({ children, ...restProps }: Props) {
 // Use BannerPlaceholder and BannerSrc from Create Club
 
 User.ProfileData = function UserProfileData({
+  name,
+  description,
   profileImageUrl,
   children,
   ...restProps
@@ -56,7 +58,7 @@ User.ProfileData = function UserProfileData({
     <User.ProfileData>
       <span>
         <User.ProfileSrc profileImageUrl={profileImageUrl} />
-        <User.ProfileInfo />
+        <User.ProfileInfo name={name} description={description} />
       </span>
       {children}
     </User.ProfileData>
