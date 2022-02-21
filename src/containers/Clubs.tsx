@@ -8,6 +8,9 @@ import {
 import Banner from "../images/BannerTest.jpeg";
 import Profile from "../images/Profile.jpeg";
 import { Link as ReactRouterLink } from "react-router-dom";
+import * as ROUTES from "../constants/routes";
+
+import { RouteSharp } from "@mui/icons-material";
 
 export function ClubsContainer() {
   const members = [
@@ -263,10 +266,11 @@ export function ClubsContainer() {
           </Search.DropdownItems>
         )}
         <Clubs.CreateButtonContainer>
-          <ReactRouterLink to={null}>
+          <ReactRouterLink to={ROUTES.CREATE}>
             <ActionButton
               color="#FAFCFA"
               background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;"
+              onClick={null}
             >
               Create Club
             </ActionButton>
@@ -309,10 +313,11 @@ export function ClubsContainer() {
                 setState={setStateFilters}
               />
             </Filter.Block>
-            <ReactRouterLink to={null}>
+            <ReactRouterLink to={ROUTES.CREATE}>
               <ActionButton
                 color="#FAFCFA"
                 background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;"
+                onClick={null}
               >
                 Create Club
               </ActionButton>

@@ -32,6 +32,7 @@ export function NavbarContainer({ background }: DataProps) {
         </Navbar.Tabs>
         <ReactRouterLink to={ROUTES.CREATE}>
           <ActionButton
+            onClick={null}
             color="#FAFCFA"
             background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;"
           >
