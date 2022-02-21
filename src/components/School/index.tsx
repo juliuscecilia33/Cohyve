@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Container, Information, Name } from "./styles/school";
+import { Container, Information } from "./styles/school";
 
 type Props = {
   name?: string;
@@ -18,12 +18,14 @@ export default function School({ name, src, children, ...restProps }: Props) {
 }
 
 School.Information = function SchoolInformation({
+  name,
   children,
   ...restProps
 }: Props) {
-  return <Information {...restProps}>{children}</Information>;
-};
-
-School.Name = function SchoolName({ children, ...restProps }: Props) {
-  return <Name {...restProps}>{children}</Name>;
+  return (
+    <Information {...restProps}>
+      <h2>{name}</h2>
+      {children}
+    </Information>
+  );
 };

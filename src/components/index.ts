@@ -9,5 +9,6 @@ export { default as Filter } from "./Filter";
 export { default as ClubBlock } from "./ClubBlock";
 export { default as ClubBlockV2 } from "./ClubBlockV2";
 export { default as Clubs } from "./Clubs";
+export { default as School } from "./School";
 export { default as Customize } from "./Customize";
 export { default as User } from "./User";
