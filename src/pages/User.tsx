@@ -1,11 +1,11 @@
 import React from "react";
-import { NavbarContainer, FooterContainer } from "../containers";
+import { NavbarContainer, FooterContainer, UserContainer } from "../containers";
 
 export default function UserPage() {
   return (
     <>
-      <NavbarContainer background="#FAFCFA" />
-      <div>"User"</div>
+      <NavbarContainer background="#F4FAF4" />
+      <UserContainer />
       <FooterContainer />
     </>
   );

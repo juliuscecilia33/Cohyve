@@ -38,6 +38,7 @@ export const Information = styled.div`
   flex-direction: column;
   bottom: 0;
   left: 0;
+  z-index: 5;
 
   h3 {
     font-family: Outfit;

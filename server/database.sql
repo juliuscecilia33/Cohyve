@@ -14,6 +14,7 @@ CREATE TABLE clubs(
   name VARCHAR(255) NOT NULL,
   description VARCHAR(255),
   school VARCHAR(255) NOT NULL,
+  school_id SERIAL NOT NULL,
   category VARCHAR(255) NOT NULL,
   created_at DATE NOT NULL DEFAULT CURRENT_DATE,
   verified BOOLEAN NOT NULL DEFAULT FALSE,
@@ -30,7 +31,15 @@ CREATE TABLE clubs(
   theme VARCHAR NOT NULL DEFAULT 'Default',
   hero INTEGER NOT NULL DEFAULT 1,
   feed INTEGER NOT NULL DEFAULT 1,
-  PRIMARY KEY (club_id)
+  PRIMARY KEY (club_id),
+);
+
+CREATE TABLE school(
+  school_id SERIAL,
+  name VARCHAR NOT NULL,
+  bannerURL VARCHAR,
+  club_count INTEGER NOT NULL DEFAULT 0,
+  PRIMARY KEY (school_id)
 );
 
 CREATE TABLE members(

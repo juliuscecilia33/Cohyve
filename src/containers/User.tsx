@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { User, Hero, CreateClub, ActionButton } from "../components";
-import { ClubBlockV2Container } from "../containers";
+import { ClubBlockV2Container, SchoolContainer } from "../containers";
 
 import Banner from "../images/BannerTest.jpeg";
 import Profile from "../images/Profile.jpeg";
+import UW from "../components/Images/UW.jpg";
 
 export function UserContainer() {
   const editProfile = () => {
@@ -178,7 +179,11 @@ export function UserContainer() {
           </>
         ) : schoolSelected ? (
           <User.Items>
-            <p>Schools</p>
+            <SchoolContainer
+              clubCount={26}
+              src={UW}
+              name="Univesrity of Washington"
+            />
           </User.Items>
         ) : (
           <User.Items>
