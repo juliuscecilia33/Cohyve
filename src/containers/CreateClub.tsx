@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { CreateClub, ActionButton, Hero } from "../components";
-import SchoolData from "../schools.json";
+import SchoolData from "../colleges.json";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { auth } from "../firebase";
@@ -585,7 +585,10 @@ export function CreateClubContainer() {
                 {filteredData.slice(0, 15).map((value, key) => {
                   return (
                     <CreateClub.SearchItem
-                      onClick={() => setSchoolValue(value.name)}
+                      onClick={() => {
+                        setSchoolValue(value.name);
+                        console.log(value.id);
+                      }}
                       key={key}
                     >
                       {value.name}

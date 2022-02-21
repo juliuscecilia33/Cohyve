@@ -3,11 +3,15 @@ CREATE DATABASE cohyve;
 CREATE TABLE users(
   firebase_user_id VARCHAR NOT NULL,
   school VARCHAR(255),
+  school_id SERIAL,
   profileURL VARCHAR,
   bannerURL VARCHAR,
   description VARCHAR,
   PRIMARY KEY (firebase_user_id)
 );
+
+-- When we make school check, we'll check both the name and 5
+-- Checklist add school column and maybe foreign key to postgresql db
 
 CREATE TABLE clubs(
   club_id SERIAL,
@@ -37,7 +41,7 @@ CREATE TABLE clubs(
 CREATE TABLE school(
   school_id SERIAL,
   name VARCHAR NOT NULL,
-  bannerURL VARCHAR,
+  banner_URL VARCHAR,
   club_count INTEGER NOT NULL DEFAULT 0,
   school_level VARCHAR,
   PRIMARY KEY (school_id)
