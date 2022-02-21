@@ -39,6 +39,7 @@ CREATE TABLE school(
   name VARCHAR NOT NULL,
   bannerURL VARCHAR,
   club_count INTEGER NOT NULL DEFAULT 0,
+  school_level VARCHAR,
   PRIMARY KEY (school_id)
 );
 
