@@ -258,7 +258,7 @@ export function ClubsContainer() {
           <Search.DropdownItems>
             {searchedData.slice(0, 8).map((value, key) => {
               return (
-                <Search.DropdownClubItem onClick={null}>
+                <Search.DropdownClubItem key={key} onClick={null}>
                   {value.name}
                 </Search.DropdownClubItem>
               );

@@ -84,6 +84,7 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
           });
       })
       .catch((error) => {
+        console.log("login page error: ", error);
         // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;

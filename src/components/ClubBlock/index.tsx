@@ -180,11 +180,12 @@ ClubBlock.Members = function ClubBlockMembers({
 }: Props) {
   return (
     <Members {...restProps}>
-      {members.map((member: any) => {
+      {members.map((member: any, key: any) => {
         return (
           <ClubBlock.Member
             profilePic={member.profilePic}
             user={member.user}
+            key={key}
             background={() => getRandomColor()}
           />
         );

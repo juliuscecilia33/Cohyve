@@ -48,7 +48,7 @@ export function UserContainer() {
 
   return (
     <User>
-      <Hero>
+      {/* <Hero>
         <CreateClub.BannerPlaceholder>
           <User.ProfileData
             name="Julius Cecilia"
@@ -64,7 +64,7 @@ export function UserContainer() {
             </ActionButton.Medium>
           </User.ProfileData>
         </CreateClub.BannerPlaceholder>
-      </Hero>
+      </Hero> */}
       <User.Tabs>
         <User.Tab
           selected={clubsSelected}
