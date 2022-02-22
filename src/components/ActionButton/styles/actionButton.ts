@@ -78,7 +78,7 @@ export const Medium = styled.button<ActiveProps>`
 `;
 
 export const Small = styled.button<ActiveProps>`
-  padding: 0.2rem 1.5rem;
+  padding: 0.5rem 1.5rem;
   background: ${({ background }) => background};
   border-radius: 40px;
   cursor: pointer;
@@ -92,7 +92,7 @@ export const Small = styled.button<ActiveProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0.5rem;
+  // margin: 0.5rem;
 
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 

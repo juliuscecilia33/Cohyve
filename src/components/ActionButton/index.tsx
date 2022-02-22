@@ -53,30 +53,28 @@ ActionButton.Medium = function ActionButtonMedium({
   ...restProps
 }: Props) {
   return (
-    <Medium {...restProps}>
-      <>
-        {disabled ? (
-          <Container
-            disabled
-            background={background}
-            color={color}
-            onClick={onClick}
-            {...restProps}
-          >
-            {children}
-          </Container>
-        ) : (
-          <Container
-            background={background}
-            color={color}
-            onClick={onClick}
-            {...restProps}
-          >
-            {children}
-          </Container>
-        )}
-      </>
-    </Medium>
+    <>
+      {disabled ? (
+        <Medium
+          disabled
+          background={background}
+          color={color}
+          onClick={onClick}
+          {...restProps}
+        >
+          {children}
+        </Medium>
+      ) : (
+        <Medium
+          background={background}
+          color={color}
+          onClick={onClick}
+          {...restProps}
+        >
+          {children}
+        </Medium>
+      )}
+    </>
   );
 };
 
@@ -89,29 +87,27 @@ ActionButton.Small = function ActionButtonSmall({
   ...restProps
 }: Props) {
   return (
-    <Small {...restProps}>
-      <>
-        {disabled ? (
-          <Container
-            disabled
-            background={background}
-            color={color}
-            onClick={onClick}
-            {...restProps}
-          >
-            {children}
-          </Container>
-        ) : (
-          <Container
-            background={background}
-            color={color}
-            onClick={onClick}
-            {...restProps}
-          >
-            {children}
-          </Container>
-        )}
-      </>
-    </Small>
+    <>
+      {disabled ? (
+        <Small
+          disabled
+          background={background}
+          color={color}
+          onClick={onClick}
+          {...restProps}
+        >
+          {children}
+        </Small>
+      ) : (
+        <Small
+          background={background}
+          color={color}
+          onClick={onClick}
+          {...restProps}
+        >
+          {children}
+        </Small>
+      )}
+    </>
   );
 };

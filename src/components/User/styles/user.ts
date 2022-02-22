@@ -9,6 +9,8 @@ export const Container = styled.div<ActiveProps>`
   width: 100%;
   display: flex;
   flex-direction: column;
+  padding: 0 15%;
+  padding-bottom: 4rem;
 `;
 
 export const ProfileData = styled.div`
@@ -87,26 +89,28 @@ export const Tabs = styled.div`
 `;
 
 export const Tab = styled.button<ActiveProps>`
-  padding: 1rem 2rem;
+  padding: 0.5rem 1.7rem;
   background: ${({ selected }) => (selected ? "#f4f9e9" : "none")};
   font-family: Outfit;
   font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
-  color: ${({ selected }) => (selected ? "#afd5aa" : "none")};
+  font-weight: ${({ selected }) => (selected ? 700 : 500)};
+  font-size: 18px;
+  color: ${({ selected }) => (selected ? "#afd5aa" : "#D3D3D3")};
   border-radius: 30px;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   margin-right: 1.5rem;
+  cursor: pointer;
 
   &:hover {
     background: #f4f9e9;
+    font-weight: 700;
     color: #afd5aa;
   }
 `;
 
 export const ContentSection = styled.div`
   width: 100%;
-  padding: 1.6rem 0;
+  padding: 3.5rem 0;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -120,12 +124,13 @@ export const Table = styled.div`
 
 export const Items = styled.div<ActiveProps>`
   width: 100%;
-  height: 4rem;
+  height: 3.5rem;
   display: flex;
   align-items: center;
-  padding: 0 0.7rem;
+  padding: 0 2rem;
   background: ${({ background }) => background};
   border-radius: 20px;
+  margin-bottom: 0.7rem;
 `;
 
 export const Label = styled.h3`
@@ -146,7 +151,7 @@ export const ClubName = styled.div`
     font-family: Outfit;
     font-style: normal;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 14px;
     color: #153243;
     margin-right: 0.5rem;
   }
@@ -158,8 +163,8 @@ export const ClubName = styled.div`
 `;
 
 export const ClubProfileSrc = styled.div`
-  width: 33px;
-  height: 33px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
 
   img {
@@ -175,15 +180,17 @@ export const Category = styled.h3`
   width: 25%;
   font-family: Outfit;
   font-style: normal;
+  font-size: 14px;
   font-weight: 600;
   color: #afd5aa;
 `;
 
 export const Followers = styled.h3`
+  width: 25%;
   font-family: Outfit;
   font-style: normal;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 14px;
   color: #153243;
 `;
 
