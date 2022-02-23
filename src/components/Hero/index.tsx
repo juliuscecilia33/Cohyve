@@ -1,6 +1,12 @@
 import React from "react";
 
-import { Container, Heading, CreateClub, Description } from "./styles/hero";
+import {
+  Container,
+  Heading,
+  CreateClub,
+  Description,
+  User,
+} from "./styles/hero";
 
 type Props = {
   children?: React.ReactNode;
@@ -16,6 +22,10 @@ Hero.Heading = function HeroHeading({ children, ...restProps }: Props) {
 
 Hero.CreateClub = function HeroCreateClub({ children, ...restProps }: Props) {
   return <CreateClub {...restProps}>{children}</CreateClub>;
+};
+
+Hero.User = function HeroUser({ children, ...restProps }: Props) {
+  return <User {...restProps}>{children}</User>;
 };
 
 Hero.Description = function HeroDescription({ children, ...restProps }: Props) {

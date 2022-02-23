@@ -42,7 +42,6 @@ export const Container = styled.button<ActiveProps>`
 `;
 
 export const Medium = styled.button<ActiveProps>`
-  padding: 0.4rem 1.8rem;
   background: ${({ background }) => background};
   border-radius: 100px;
   cursor: pointer;
@@ -57,6 +56,7 @@ export const Medium = styled.button<ActiveProps>`
   justify-content: center;
   align-items: center;
   margin: 0.5rem;
+  padding: 0.4rem 1.8rem;
 
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 

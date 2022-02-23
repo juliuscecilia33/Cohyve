@@ -16,7 +16,11 @@ import {
   Role,
   EditProfile,
   ProfileInfo,
+  ProfileContainer,
+  ButtonContainer,
 } from "./styles/user";
+
+import { ActionButton } from "../../components";
 
 import VerifiedIcon from "../Images/VerifiedIcon.png";
 
@@ -45,23 +49,15 @@ export default function User({ children, ...restProps }: Props) {
   return <Container {...restProps}>{children}</Container>;
 }
 
-// Use BannerPlaceholder and BannerSrc from Create Club
-
-User.ProfileData = function UserProfileData({
-  name,
-  description,
-  profileImageUrl,
+User.ProfileContainer = function UserProfileContainer({
+  onClick,
   children,
   ...restProps
 }: Props) {
   return (
-    <User.ProfileData>
-      <span>
-        <User.ProfileSrc profileImageUrl={profileImageUrl} />
-        <User.ProfileInfo name={name} description={description} />
-      </span>
-      {children}
-    </User.ProfileData>
+    <ProfileContainer {...restProps}>
+      <span>{children}</span>
+    </ProfileContainer>
   );
 };
 
@@ -76,6 +72,18 @@ User.ProfileInfo = function UserProfileInfo({
       <h3>{name}</h3>
       <p>{description}</p>
     </ProfileInfo>
+  );
+};
+
+User.ButtonContainer = function UserButtonContainer({
+  onClick,
+  children,
+  ...restProps
+}: Props) {
+  return (
+    <ButtonContainer {...restProps}>
+      <button onClick={onClick}>Edit Profile</button>
+    </ButtonContainer>
   );
 };
 
@@ -100,7 +108,7 @@ User.EditProfile = function UserEditProfile({
 }: ButtonProps) {
   return (
     <EditProfile onClick={onClick} {...restProps}>
-      <i className="fa-solid fa-plus"></i>
+      <i className="fa-solid fa-circle-plus"></i>
     </EditProfile>
   );
 };

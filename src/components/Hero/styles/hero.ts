@@ -37,6 +37,15 @@ export const CreateClub = styled.div`
   background: #f4faf4;
 `;
 
+export const User = styled.div`
+  padding: 3rem 15% 8.5rem 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  background: #f4faf4;
+`;
+
 export const Description = styled.p`
   margin-top: 0.7rem;
   font-family: Poppins;
