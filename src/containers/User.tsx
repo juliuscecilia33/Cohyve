@@ -177,7 +177,7 @@ export function UserContainer() {
             <SchoolContainer
               clubCount={26}
               src={UW}
-              name="Univesrity of Washington"
+              name="University of Washington"
             />
           </User.ContentSection>
         ) : (

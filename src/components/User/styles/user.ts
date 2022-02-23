@@ -32,6 +32,7 @@ export const ButtonContainer = styled.button`
   margin-left: auto;
   margin-top: 1.2rem;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  z-index: 100;
 
   &:hover {
     box-shadow: -1px 6px 60px rgba(27, 27, 30, 0.2);

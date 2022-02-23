@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Container, Information } from "./styles/school";
+import { Container, Information, ButtonContainer } from "./styles/school";
 
 type Props = {
   name?: string;
@@ -28,4 +28,11 @@ School.Information = function SchoolInformation({
       {children}
     </Information>
   );
+};
+
+School.ButtonContainer = function SchoolInformation({
+  children,
+  ...restProps
+}: Props) {
+  return <ButtonContainer {...restProps}>{children}</ButtonContainer>;
 };
