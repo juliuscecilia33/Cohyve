@@ -38,7 +38,7 @@ export const CreateClub = styled.div`
 `;
 
 export const User = styled.div`
-  padding: 3rem 15% 8.5rem 15%;
+  padding: 3rem 15% 9rem 15%;
   display: flex;
   flex-direction: column;
   justify-content: center;

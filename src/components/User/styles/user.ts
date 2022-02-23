@@ -12,35 +12,30 @@ export const Container = styled.div<ActiveProps>`
   padding: 4rem 15%;
 `;
 
-export const ButtonContainer = styled.div`
-  width: 100%;
-  margin-top: 1rem;
+export const ButtonContainer = styled.button`
+  background: linear-gradient(94.39deg, #4d566a 8.09%, #091f2e 93.12%);
+  border-radius: 100px;
+  cursor: pointer;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  color: #afd5aa;
+  // box-shadow: -1px 10px 60px rgba(27, 27, 30, 0.1);
+  // margin-top: 1rem;
   display: flex;
-  justify-content: end;
+  justify-content: center;
+  align-items: center;
 
-  button {
-    background: linear-gradient(94.39deg, #4d566a 8.09%, #091f2e 93.12%);
-    border-radius: 100px;
-    cursor: pointer;
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 15px;
-    color: #afd5aa;
-    // box-shadow: -1px 10px 60px rgba(27, 27, 30, 0.1);
-    // margin-top: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0.5rem;
-    padding: 0.5rem 1.8rem;
+  padding: 0.5rem 1.8rem;
+  cursor: pointer;
+  margin-left: auto;
+  margin-top: 1.2rem;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 
-    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-
-    &:hover {
-      box-shadow: -1px 6px 60px rgba(27, 27, 30, 0.2);
-      transform: translateY(-2.5%);
-    }
+  &:hover {
+    box-shadow: -1px 6px 60px rgba(27, 27, 30, 0.2);
+    transform: translateY(-2.5%);
   }
 `;
 

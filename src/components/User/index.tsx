@@ -81,8 +81,8 @@ User.ButtonContainer = function UserButtonContainer({
   ...restProps
 }: Props) {
   return (
-    <ButtonContainer {...restProps}>
-      <button onClick={onClick}>Edit Profile</button>
+    <ButtonContainer onClick={onClick} {...restProps}>
+      Edit Profile
     </ButtonContainer>
   );
 };

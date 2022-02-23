@@ -58,7 +58,7 @@ export function UserContainer() {
             />
           </User.ProfileContainer>
         </CreateClub.BannerPlaceholder>
-        <User.ButtonContainer />
+        <User.ButtonContainer onClick={() => editProfile()} />
       </Hero.User>
       <User>
         <User.Tabs>
