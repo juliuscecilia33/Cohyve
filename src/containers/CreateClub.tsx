@@ -484,7 +484,7 @@ export function CreateClubContainer() {
                   </ActionButton>
                   <ActionButton
                     color="#FAFCFA"
-                    background="linear-gradient(94.39deg, #F5E7AB 8.09%, #C5B05A 93.12%);"
+                    background="linear-gradient(94.39deg, #ABC9F5 8.09%, #5A5EC5 93.12%);"
                     onClick={() => console.log("Partner")}
                   >
                     Partner

@@ -29,6 +29,7 @@ type Props = {
   profileImageUrl?: string;
   children?: React.ReactNode;
   name?: string;
+  school?: string;
   description?: string;
   src?: any;
   verified?: boolean;
@@ -62,6 +63,7 @@ User.ProfileContainer = function UserProfileContainer({
 };
 
 User.ProfileInfo = function UserProfileInfo({
+  school,
   name,
   description,
   children,
@@ -69,7 +71,13 @@ User.ProfileInfo = function UserProfileInfo({
 }: Props) {
   return (
     <ProfileInfo {...restProps}>
-      <h3>{name}</h3>
+      <div>
+        <h3>{name}</h3>
+        <button>
+          <p>{school}</p>
+        </button>
+      </div>
+
       <p>{description}</p>
     </ProfileInfo>
   );

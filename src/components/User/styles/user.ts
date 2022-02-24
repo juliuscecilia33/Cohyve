@@ -59,13 +59,57 @@ export const ProfileInfo = styled.div`
   flex-direction: column;
   transform: translateY(50%);
 
-  h3 {
-    font-family: Outfit;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 40px;
-    color: #153243;
+  div {
+    display: flex;
+    align-items: center;
     margin-bottom: 0.7rem;
+
+    button {
+      background: linear-gradient(94.39deg, #4d566a 8.09%, #091f2e 93.12%);
+      border-radius: 100px;
+      cursor: pointer;
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 12px;
+      color: #afd5aa;
+      box-shadow: -1px 10px 60px rgba(27, 27, 30, 0.1);
+      // margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 1rem;
+      padding: 0.4rem 0.5rem;
+      cursor: pointer;
+      transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+      z-index: 100;
+
+      width: 200px;
+
+      p {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 13px;
+        color: #afd5aa;
+      }
+
+      &:hover {
+        box-shadow: -1px 6px 60px rgba(27, 27, 30, 0.2);
+        transform: translateY(-2.5%);
+      }
+    }
+
+    h3 {
+      font-family: Outfit;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 40px;
+      color: #153243;
+    }
   }
 
   p {

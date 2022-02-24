@@ -55,6 +55,7 @@ export function UserContainer() {
             <User.ProfileInfo
               name="Julius Cecilia"
               description="Hard work beats talent, when talent doesn't work hard work beats"
+              school="University of Washington"
             />
           </User.ProfileContainer>
         </CreateClub.BannerPlaceholder>
