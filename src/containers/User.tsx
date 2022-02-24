@@ -49,7 +49,7 @@ export function UserContainer() {
   return (
     <>
       <Hero.User>
-        <CreateClub.BannerPlaceholder>
+        <User.BannerSrc src="https://firebasestorage.googleapis.com/v0/b/cohyve.appspot.com/o/BannerPlaceholder.png?alt=media&token=c503d5fc-736a-42da-9504-5dfb95cd83ef">
           <User.ProfileContainer>
             <User.ProfileSrc profileImageUrl="https://firebasestorage.googleapis.com/v0/b/cohyve.appspot.com/o/Placeholder.png?alt=media&token=83d8109a-c0ac-4cba-bd95-247ad79857da" />
             <User.ProfileInfo
@@ -58,7 +58,7 @@ export function UserContainer() {
               school="University of Washington"
             />
           </User.ProfileContainer>
-        </CreateClub.BannerPlaceholder>
+        </User.BannerSrc>
         <User.ButtonContainer onClick={() => editProfile()} />
       </Hero.User>
       <User>

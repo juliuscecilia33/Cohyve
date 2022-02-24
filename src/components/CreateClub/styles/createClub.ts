@@ -42,7 +42,7 @@ export const BannerSrc = styled.div`
   border-radius: 40px;
   position: relative;
   width: 100%;
-  height: 35vh;
+  height: 275px;
 
   img {
     width: 100%;

@@ -18,6 +18,7 @@ import {
   ProfileInfo,
   ProfileContainer,
   ButtonContainer,
+  BannerSrc,
 } from "./styles/user";
 
 import { ActionButton } from "../../components";
@@ -80,6 +81,19 @@ User.ProfileInfo = function UserProfileInfo({
 
       <p>{description}</p>
     </ProfileInfo>
+  );
+};
+
+User.BannerSrc = function UserBannerSrc({
+  src,
+  children,
+  ...restProps
+}: Props) {
+  return (
+    <BannerSrc {...restProps}>
+      <img src={src} alt="Banner" />
+      {children}
+    </BannerSrc>
   );
 };
 

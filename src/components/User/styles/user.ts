@@ -12,6 +12,20 @@ export const Container = styled.div<ActiveProps>`
   padding: 4rem 15%;
 `;
 
+export const BannerSrc = styled.div`
+  border-radius: 40px;
+  position: relative;
+  width: 100%;
+  height: 275px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 40px;
+  }
+`;
+
 export const ButtonContainer = styled.button`
   background: linear-gradient(94.39deg, #4d566a 8.09%, #091f2e 93.12%);
   border-radius: 100px;
