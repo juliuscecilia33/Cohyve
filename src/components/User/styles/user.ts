@@ -171,6 +171,7 @@ export const EditProfile = styled.button`
 
   i {
     color: #fafcfa;
+    font-weight: 600;
     font-size: 21px;
   }
 
@@ -291,6 +292,7 @@ export const ClubProfileSrc = styled.div`
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  margin-right: 0.5rem;
 
   img {
     width: 100%;

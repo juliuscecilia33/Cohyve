@@ -116,7 +116,6 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
         // ...
       })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorMessage);
         setSubmitError(errorMessage);
