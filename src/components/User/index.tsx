@@ -19,6 +19,7 @@ import {
   ProfileContainer,
   ButtonContainer,
   BannerSrc,
+  EditBanner,
 } from "./styles/user";
 
 import { ActionButton } from "../../components";
@@ -85,6 +86,7 @@ User.ProfileInfo = function UserProfileInfo({
 };
 
 User.BannerSrc = function UserBannerSrc({
+  onClick,
   src,
   children,
   ...restProps
@@ -92,6 +94,7 @@ User.BannerSrc = function UserBannerSrc({
   return (
     <BannerSrc {...restProps}>
       <img src={src} alt="Banner" />
+      <User.EditBanner onClick={onClick} />
       {children}
     </BannerSrc>
   );
@@ -130,8 +133,20 @@ User.EditProfile = function UserEditProfile({
 }: ButtonProps) {
   return (
     <EditProfile onClick={onClick} {...restProps}>
-      <i className="fa-solid fa-circle-plus"></i>
+      <i className="fa-solid fa-plus"></i>
     </EditProfile>
+  );
+};
+
+User.EditBanner = function UserEditBanner({
+  onClick,
+  children,
+  ...restProps
+}: ButtonProps) {
+  return (
+    <EditBanner onClick={onClick} {...restProps}>
+      <i className="fa-solid fa-pencil"></i>
+    </EditBanner>
   );
 };
 

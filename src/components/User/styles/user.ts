@@ -166,10 +166,43 @@ export const EditProfile = styled.button`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  box-shadow: -1px 10px 60px rgba(27, 27, 30, 0.1);
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 
   i {
     color: #fafcfa;
-    font-size: 15px;
+    font-size: 21px;
+  }
+
+  &:hover {
+    box-shadow: -1px 6px 60px rgba(27, 27, 30, 0.2);
+    transform: translateY(-2.5%);
+  }
+`;
+
+export const EditBanner = styled.button`
+  position: absolute;
+  top: 8%;
+  right: 2.1%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #f4f9e9;
+  box-shadow: -1px 10px 60px rgba(27, 27, 30, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+  i {
+    color: #284b63;
+    font-size: 19px;
+  }
+
+  &:hover {
+    box-shadow: -1px 6px 60px rgba(27, 27, 30, 0.2);
+    transform: translateY(-2.5%);
   }
 `;
 
