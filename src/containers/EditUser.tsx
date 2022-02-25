@@ -21,6 +21,7 @@ export function EditUserContainer() {
   const [banner, setBanner] = useState(null);
   const [profileProgress, setProfileProgress] = useState(0);
   const [bannerProgress, setBannerProgress] = useState(0);
+  const [submitError, setSubmitError] = useState(null);
 
   let history = useHistory();
 
@@ -74,7 +75,12 @@ export function EditUserContainer() {
       });
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    if (name === "" || school === "") {
+      setSubmitError(true);
+      return;
+    }
+  };
 
   const handleProfileChange = (e: any) => {
     e.preventDefault();
