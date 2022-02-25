@@ -51,6 +51,7 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
           profileURL: "",
           bannerURL: "",
           description: "",
+          // send display name to name column
         };
 
         axios
