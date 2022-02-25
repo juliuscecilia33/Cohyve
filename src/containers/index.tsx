@@ -9,4 +9,5 @@ export { ClubsContainer } from "./Clubs";
 export { FilterListContainer } from "./FilterList";
 export { CustomizeContainer } from "./Customize";
 export { SchoolContainer } from "./School";
+export { EditUserContainer } from "./EditUser";
 export { UserContainer } from "./User";
