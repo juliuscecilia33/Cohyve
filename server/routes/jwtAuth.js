@@ -82,7 +82,7 @@ router.get("/userexists/:uid", async (req, res) => {
   } catch (error) {}
 });
 
-router.put("/edituser", authorize, async (req, res) => {
+router.put("/edituser/:uid", authorize, async (req, res) => {
   try {
     const { firebase_user_id, school, profileURL, bannerURL, description } =
       req.body;

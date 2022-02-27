@@ -37,32 +37,31 @@ export function EditUserContainer() {
       .then(function (idToken) {
         // Send token to your backend via HTTPS
         console.log("idToken: ", idToken);
-        // ...
+
         axios
-          .post("http://localhost:5000/clubs/", appBody, {
-            headers: {
-              firebase_token: idToken,
-            },
-          })
+          .put(
+            "http://localhost:5000/edituser/" + auth.currentUser.uid,
+            appBody,
+            {
+              headers: {
+                firebase_token: idToken,
+              },
+            }
+          )
           .then((response: any) => {
             console.log(response);
-            console.log("Successfully created club");
+            console.log("Successfully edited user information");
 
-            console.log(response.data.club_id);
-            // Direct to clubs page
+            console.log(response.data);
+            // Direct to user page
             history.push({
               pathname:
+                "/user/" +
+                response.data.name +
                 "/" +
-                clubName.replace(/\s+/g, "-").toLowerCase() +
-                "/" +
-                response.data.club_id +
-                "/customize",
-              state: {
-                clubData: response.data,
-                clubId: response.data.club_id,
-              },
+                response.data.firebase_user_id,
             });
-            // Direct to clubs page
+            // set user context
           })
           .catch((error) => {
             setSubmitError(error.message);
