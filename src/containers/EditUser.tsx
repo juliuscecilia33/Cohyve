@@ -7,6 +7,13 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { auth } from "../firebase";
 
+import {
+  storage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "../firebase";
+
 export function EditUserContainer() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -74,13 +81,6 @@ export function EditUserContainer() {
       });
   };
 
-  const handleSubmit = () => {
-    if (name === "" || school === "") {
-      setSubmitError(true);
-      return;
-    }
-  };
-
   const handleProfileChange = (e: any) => {
     e.preventDefault();
 
@@ -128,6 +128,204 @@ export function EditUserContainer() {
       setFilteredData([]);
     } else {
       setFilteredData(newFilter);
+    }
+  };
+
+  const handleSubmit = async () => {
+    if (name === "" || school === "") {
+      setSubmitError(true);
+      return;
+    }
+
+    if (profile && banner) {
+      const storageRef = ref(
+        storage,
+        `users/${name.trim()}-${school.trim()}-${
+          auth.currentUser.uid
+        }/Profile/profile`
+      );
+
+      const uploadProfile = uploadBytesResumable(storageRef, profile);
+
+      uploadProfile.on(
+        "state_changed",
+        (snapshot) => {
+          // progress function ...
+          const progress = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+          console.log(progress);
+          setProfileProgress(progress);
+        },
+        (error) => {
+          // Error function...
+          alert(error.message);
+        },
+        () => {
+          getDownloadURL(uploadProfile.snapshot.ref).then((profileURL) => {
+            console.log("Profile Image URL available at", profileURL);
+
+            const storageRef = ref(
+              storage,
+              `clubs/${clubName.trim()}-${school.trim()}-${established}/clubBanner/banner`
+            );
+
+            const uploadBanner = uploadBytesResumable(storageRef, banner);
+
+            uploadBanner.on(
+              "state_changed",
+              (snapshot) => {
+                // progress function ...
+                const progress = Math.round(
+                  (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                );
+                console.log(progress);
+                setBannerProgress(progress);
+              },
+              (error) => {
+                // Error function...
+                alert(error.message);
+              },
+              () => {
+                getDownloadURL(uploadBanner.snapshot.ref).then((bannerURL) => {
+                  console.log("File available at", bannerURL);
+
+                  const appBody = {
+                    name: clubName,
+                    description: description,
+                    school: school,
+                    category: category,
+                    established_in: established,
+                    state: state,
+                    website: website,
+                    instagram: instagram,
+                    facebook: facebook,
+                    twitter: twitter,
+                    email: email,
+                    profileURL: profileURL,
+                    bannerURL: bannerURL,
+                  };
+
+                  sendToBackend(appBody);
+                });
+              }
+            );
+          });
+        }
+      );
+    } else if (profile) {
+      const storageRef = ref(
+        storage,
+        `clubs/${clubName.trim()}-${school.trim()}-${established}/clubProfile/profile`
+      );
+
+      const uploadProfile = uploadBytesResumable(storageRef, profile);
+
+      uploadProfile.on(
+        "state_changed",
+        (snapshot) => {
+          // progress function ...
+          const progress = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+          console.log(progress);
+          setProfileProgress(progress);
+        },
+        (error) => {
+          // Error function...
+          alert(error.message);
+        },
+        () => {
+          getDownloadURL(uploadProfile.snapshot.ref).then((profileURL) => {
+            console.log("Profile Image URL available at", profileURL);
+
+            const profileUrl = profileURL;
+
+            const appBody = {
+              name: clubName,
+              description: description,
+              school: school,
+              category: category,
+              established_in: established,
+              state: state,
+              website: website,
+              instagram: instagram,
+              facebook: facebook,
+              twitter: twitter,
+              email: email,
+              profileURL: profileURL,
+              bannerURl: "",
+            };
+
+            sendToBackend(appBody);
+          });
+        }
+      );
+    } else if (banner) {
+      const storageRef = ref(
+        storage,
+        `clubs/${clubName.trim()}-${school.trim()}-${established}/clubBanner/banner`
+      );
+
+      const uploadBanner = uploadBytesResumable(storageRef, banner);
+
+      uploadBanner.on(
+        "state_changed",
+        (snapshot) => {
+          // progress function ...
+          const progress = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+          console.log(progress);
+          setBannerProgress(progress);
+        },
+        (error) => {
+          // Error function...
+          alert(error.message);
+        },
+        () => {
+          getDownloadURL(uploadBanner.snapshot.ref).then((bannerURL) => {
+            console.log("File available at", bannerURL);
+            const bannerUrl = bannerURL;
+
+            const appBody = {
+              name: clubName,
+              description: description,
+              school: school,
+              category: category,
+              established_in: established,
+              state: state,
+              website: website,
+              instagram: instagram,
+              facebook: facebook,
+              twitter: twitter,
+              email: email,
+              profileURL: "",
+              bannerURL: bannerURL,
+            };
+
+            sendToBackend(appBody);
+          });
+        }
+      );
+    } else {
+      const appBody = {
+        name: clubName,
+        description: description,
+        school: school,
+        category: category,
+        established_in: established,
+        state: state,
+        website: website,
+        instagram: instagram,
+        facebook: facebook,
+        twitter: twitter,
+        email: email,
+        profileURL: "",
+        bannerURL: "",
+      };
+
+      sendToBackend(appBody);
     }
   };
 
