@@ -60,7 +60,7 @@ function App() {
               path={ROUTES.LOGIN}
               render={(props) =>
                 isAuthenticated ? (
-                  <Redirect to={ROUTES.USER} />
+                  <Redirect to={ROUTES.TESTUSER} />
                 ) : (
                   <LoginPage setIsAuthenticated={setIsAuthenticated} />
                 )
@@ -71,7 +71,7 @@ function App() {
               path={ROUTES.REGISTER}
               render={(props) =>
                 isAuthenticated ? (
-                  <Redirect to={ROUTES.USER} />
+                  <Redirect to={ROUTES.TESTUSER} />
                 ) : (
                   <RegisterPage setIsAuthenticated={setIsAuthenticated} />
                 )
@@ -79,7 +79,7 @@ function App() {
             />
             <Route
               exact
-              path={ROUTES.USER}
+              path={ROUTES.TESTUSER}
               render={(props) =>
                 !isAuthenticated ? <Redirect to={ROUTES.LOGIN} /> : <UserPage />
               }

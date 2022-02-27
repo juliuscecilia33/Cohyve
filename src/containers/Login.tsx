@@ -75,7 +75,7 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
                 });
             } else {
               history.push({
-                pathname: ROUTES.USER,
+                pathname: ROUTES.TESTUSER,
               });
             }
           })
@@ -112,7 +112,7 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
         console.log(user);
 
         history.push({
-          pathname: ROUTES.USER,
+          pathname: ROUTES.TESTUSER,
         });
         // ...
       })

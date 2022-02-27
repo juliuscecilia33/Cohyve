@@ -108,7 +108,7 @@ export function RegisterContainer() {
                 });
             } else {
               history.push({
-                pathname: ROUTES.USER,
+                pathname: ROUTES.TESTUSER,
               });
             }
           })
