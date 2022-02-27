@@ -222,9 +222,7 @@ export function CreateClubContainer() {
     if (profile && banner) {
       const storageRef = ref(
         storage,
-        `clubs/${clubName.trim()}-${school.trim()}-${established}/clubProfile/${
-          profile.name
-        }`
+        `clubs/${clubName.trim()}-${school.trim()}-${established}/clubProfile/profile`
       );
 
       const uploadProfile = uploadBytesResumable(storageRef, profile);
@@ -249,9 +247,7 @@ export function CreateClubContainer() {
 
             const storageRef = ref(
               storage,
-              `clubs/${clubName.trim()}-${school.trim()}-${established}/clubBanner/${
-                banner.name
-              }`
+              `clubs/${clubName.trim()}-${school.trim()}-${established}/clubBanner/banner`
             );
 
             const uploadBanner = uploadBytesResumable(storageRef, banner);
@@ -300,9 +296,7 @@ export function CreateClubContainer() {
     } else if (profile) {
       const storageRef = ref(
         storage,
-        `clubs/${clubName.trim()}-${school.trim()}-${established}/clubProfile/${
-          profile.name
-        }`
+        `clubs/${clubName.trim()}-${school.trim()}-${established}/clubProfile/profile`
       );
 
       const uploadProfile = uploadBytesResumable(storageRef, profile);
@@ -350,9 +344,7 @@ export function CreateClubContainer() {
     } else if (banner) {
       const storageRef = ref(
         storage,
-        `clubs/${clubName.trim()}-${school.trim()}-${established}/clubBanner/${
-          banner.name
-        }`
+        `clubs/${clubName.trim()}-${school.trim()}-${established}/clubBanner/banner`
       );
 
       const uploadBanner = uploadBytesResumable(storageRef, banner);
