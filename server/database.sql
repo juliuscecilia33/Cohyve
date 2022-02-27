@@ -7,6 +7,7 @@ CREATE TABLE users(
   profileURL VARCHAR,
   bannerURL VARCHAR,
   description VARCHAR,
+  name VARCHAR NOT NULL,
   PRIMARY KEY (firebase_user_id)
 );
 

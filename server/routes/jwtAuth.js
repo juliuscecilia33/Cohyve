@@ -9,12 +9,18 @@ const authorize = require("../middleware/authorize");
 
 router.post("/register", async (req, res) => {
   try {
-    const { firebase_user_id, school, profileURL, bannerURL, description } =
-      req.body;
+    const {
+      firebase_user_id,
+      school,
+      profileURL,
+      bannerURL,
+      description,
+      name,
+    } = req.body;
 
     let newUser = await pool.query(
-      "INSERT INTO users (firebase_user_id, school, profileURL, bannerURL, description) VALUES ($1, $2, $3, $4, $5) RETURNING *",
-      [firebase_user_id, school, profileURL, bannerURL, description]
+      "INSERT INTO users (firebase_user_id, school, profileURL, bannerURL, description, name) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
+      [firebase_user_id, school, profileURL, bannerURL, description, name]
     );
 
     return res.json(newUser);
@@ -84,11 +90,11 @@ router.get("/userexists/:uid", async (req, res) => {
 
 router.put("/edituser/:uid", authorize, async (req, res) => {
   try {
-    const { school, profileURL, bannerURL, description } = req.body;
+    const { school, profileURL, bannerURL, description, name } = req.body;
 
     const updateUserInfo = await pool.query(
-      "UPDATE users SET school = $2, profileURL = $3, bannerURL = $4, description = $5 WHERE firebase_user_id = $1",
-      [req.userId, school, profileURL, bannerURL, description]
+      "UPDATE users SET school = $2, profileURL = $3, bannerURL = $4, description = $5, name = $6 WHERE firebase_user_id = $1",
+      [req.userId, school, profileURL, bannerURL, description, name]
     );
 
     res.json(updateUserInfo);

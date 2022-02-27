@@ -80,11 +80,13 @@ export function RegisterContainer() {
         // do get request?
 
         const appBody = {
+          name: user.displayName,
           firebase_user_id: user.uid,
           school: "",
           profileURL: "",
           bannerURL: "",
           description: "",
+          // send display name to name column
         };
 
         axios
@@ -149,11 +151,13 @@ export function RegisterContainer() {
         });
 
         const appBody = {
+          name: name,
           firebase_user_id: user.uid,
           school: "",
           profileURL: "",
           bannerURL: "",
           description: "",
+          // send display name to name column
         };
 
         axios

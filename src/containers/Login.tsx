@@ -46,6 +46,7 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
         console.log("user: ", user);
 
         const appBody = {
+          name: user.displayName,
           firebase_user_id: user.uid,
           school: "",
           profileURL: "",
