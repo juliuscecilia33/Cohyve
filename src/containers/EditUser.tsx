@@ -142,7 +142,7 @@ export function EditUserContainer() {
         storage,
         `users/${name.trim()}-${school.trim()}-${
           auth.currentUser.uid
-        }/Profile/profile`
+        }/userProfile/profile`
       );
 
       const uploadProfile = uploadBytesResumable(storageRef, profile);
@@ -167,7 +167,9 @@ export function EditUserContainer() {
 
             const storageRef = ref(
               storage,
-              `clubs/${clubName.trim()}-${school.trim()}-${established}/clubBanner/banner`
+              `users/${name.trim()}-${school.trim()}-${
+                auth.currentUser.uid
+              }/userBanner/banner`
             );
 
             const uploadBanner = uploadBytesResumable(storageRef, banner);
@@ -191,17 +193,9 @@ export function EditUserContainer() {
                   console.log("File available at", bannerURL);
 
                   const appBody = {
-                    name: clubName,
+                    name: name,
                     description: description,
                     school: school,
-                    category: category,
-                    established_in: established,
-                    state: state,
-                    website: website,
-                    instagram: instagram,
-                    facebook: facebook,
-                    twitter: twitter,
-                    email: email,
                     profileURL: profileURL,
                     bannerURL: bannerURL,
                   };
@@ -216,7 +210,9 @@ export function EditUserContainer() {
     } else if (profile) {
       const storageRef = ref(
         storage,
-        `clubs/${clubName.trim()}-${school.trim()}-${established}/clubProfile/profile`
+        `users/${name.trim()}-${school.trim()}-${
+          auth.currentUser.uid
+        }/userProfile/profile`
       );
 
       const uploadProfile = uploadBytesResumable(storageRef, profile);
@@ -239,20 +235,10 @@ export function EditUserContainer() {
           getDownloadURL(uploadProfile.snapshot.ref).then((profileURL) => {
             console.log("Profile Image URL available at", profileURL);
 
-            const profileUrl = profileURL;
-
             const appBody = {
-              name: clubName,
+              name: name,
               description: description,
               school: school,
-              category: category,
-              established_in: established,
-              state: state,
-              website: website,
-              instagram: instagram,
-              facebook: facebook,
-              twitter: twitter,
-              email: email,
               profileURL: profileURL,
               bannerURl: "",
             };
@@ -264,7 +250,9 @@ export function EditUserContainer() {
     } else if (banner) {
       const storageRef = ref(
         storage,
-        `clubs/${clubName.trim()}-${school.trim()}-${established}/clubBanner/banner`
+        `users/${name.trim()}-${school.trim()}-${
+          auth.currentUser.uid
+        }/userBanner/banner`
       );
 
       const uploadBanner = uploadBytesResumable(storageRef, banner);
@@ -286,20 +274,11 @@ export function EditUserContainer() {
         () => {
           getDownloadURL(uploadBanner.snapshot.ref).then((bannerURL) => {
             console.log("File available at", bannerURL);
-            const bannerUrl = bannerURL;
 
             const appBody = {
-              name: clubName,
+              name: name,
               description: description,
               school: school,
-              category: category,
-              established_in: established,
-              state: state,
-              website: website,
-              instagram: instagram,
-              facebook: facebook,
-              twitter: twitter,
-              email: email,
               profileURL: "",
               bannerURL: bannerURL,
             };
@@ -310,17 +289,9 @@ export function EditUserContainer() {
       );
     } else {
       const appBody = {
-        name: clubName,
+        name: name,
         description: description,
         school: school,
-        category: category,
-        established_in: established,
-        state: state,
-        website: website,
-        instagram: instagram,
-        facebook: facebook,
-        twitter: twitter,
-        email: email,
         profileURL: "",
         bannerURL: "",
       };
