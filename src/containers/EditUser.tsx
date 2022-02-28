@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Hero, User, CreateClub, ActionButton } from "../components";
 import { Link as ReactRouterLink } from "react-router-dom";
 import * as ROUTES from "../constants/routes";
@@ -6,6 +6,8 @@ import SchoolData from "../colleges.json";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { auth } from "../firebase";
+import BannerPlaceholder from "../images/BannerPlaceholder.png";
+import ProfilePlaceholder from "../images/Placeholder.png";
 
 import {
   storage,
@@ -31,6 +33,20 @@ export function EditUserContainer() {
   const [submitError, setSubmitError] = useState(null);
 
   let history = useHistory();
+
+  useEffect(() => {
+    // const unsubscribe = () => {
+    //   if (auth.currentUser.displayName) {
+    //     setName(auth.currentUser.displayName);
+    //   }
+    // };
+
+    return () => {
+      if (auth.currentUser.displayName) {
+        setName(auth.currentUser.displayName);
+      }
+    };
+  }, []);
 
   const setSchoolValue = (school: string) => {
     setFilteredData([]);
@@ -307,9 +323,13 @@ export function EditUserContainer() {
           edit<span>user</span>
         </Hero.Heading>
         <CreateClub.PreviewText />
-        <User.BannerSrc src={previewBanner}>
+        <User.BannerSrc src={previewBanner ? previewBanner : BannerPlaceholder}>
           <User.ProfileContainer>
-            <User.ProfileSrc profileImageUrl={previewProfile} />
+            <User.ProfileSrc
+              profileImageUrl={
+                previewProfile ? previewProfile : ProfilePlaceholder
+              }
+            />
             <User.ProfileInfo
               name={name}
               description={description}
@@ -324,7 +344,7 @@ export function EditUserContainer() {
             name="name"
             title="Name*"
             type="text"
-            placeholder="Club Name"
+            placeholder="Name"
             value={name}
             onChange={(e: any) => setName(e.target.value)}
             required={true}

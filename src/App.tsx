@@ -96,7 +96,6 @@ function App() {
             <Route path={ROUTES.CUSTOMIZE}>
               <CustomizePage />
             </Route>
-            x
           </Switch>
         </Router>
       </UserInformation.Provider>
