@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { CreateClub, ActionButton, Hero } from "../components";
 import SchoolData from "../colleges.json";
+// import SchoolData from "../high_schools.json";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { auth } from "../firebase";
@@ -149,6 +150,7 @@ export function CreateClubContainer() {
     const searchWord = event.target.value;
     setWordEntered(searchWord);
     const newFilter = SchoolData.filter((value: any) => {
+      // console.log(value.name);
       return value.name.toLowerCase().includes(searchWord.toLowerCase());
     });
 
