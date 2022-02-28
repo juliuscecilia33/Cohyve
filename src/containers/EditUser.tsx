@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Hero, User, CreateClub, ActionButton } from "../components";
 import { Link as ReactRouterLink } from "react-router-dom";
 import * as ROUTES from "../constants/routes";
@@ -8,6 +8,7 @@ import { useHistory } from "react-router-dom";
 import { auth } from "../firebase";
 import BannerPlaceholder from "../images/BannerPlaceholder.png";
 import ProfilePlaceholder from "../images/Placeholder.png";
+import { UserInformation } from "../context/UserInformation";
 
 import {
   storage,
@@ -17,6 +18,8 @@ import {
 } from "../firebase";
 
 export function EditUserContainer() {
+  const { setUser, user } = useContext(UserInformation);
+
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [school, setSchool] = useState("");
@@ -32,21 +35,9 @@ export function EditUserContainer() {
   const [bannerProgress, setBannerProgress] = useState(0);
   const [submitError, setSubmitError] = useState(null);
 
+  console.log("user context from edit user: ", user);
+
   let history = useHistory();
-
-  useEffect(() => {
-    // const unsubscribe = () => {
-    //   if (auth.currentUser.displayName) {
-    //     setName(auth.currentUser.displayName);
-    //   }
-    // };
-
-    return () => {
-      if (auth.currentUser.displayName) {
-        setName(auth.currentUser.displayName);
-      }
-    };
-  }, []);
 
   const setSchoolValue = (school: string) => {
     setFilteredData([]);

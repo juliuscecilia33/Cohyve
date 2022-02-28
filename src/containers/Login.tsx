@@ -11,12 +11,15 @@ import {
 import { auth } from "../firebase";
 import GoogleLogo from "../images/GoogleLogo.png";
 import axios from "axios";
+import { UserInformation } from "../context/UserInformation";
 
 interface DataProps {
   setIsAuthenticated: any;
 }
 
 export function LoginContainer({ setIsAuthenticated }: DataProps) {
+  const { setUser, user } = useContext(UserInformation);
+
   const provider = new GoogleAuthProvider();
 
   const [inputs, setInputs] = useState({
@@ -64,7 +67,8 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
               axios
                 .post("http://localhost:5000/auth/register/", appBody)
                 .then((response: any) => {
-                  console.log(response.data);
+                  console.log("response data: ", response.data.rows[0]);
+                  // setUser(response.data.rows[0]);
                   console.log("Successfully created user");
                   history.push({
                     pathname:

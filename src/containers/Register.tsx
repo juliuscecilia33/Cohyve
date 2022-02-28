@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { resourceLimits } from "worker_threads";
 import { ActionButton, Login } from "../components";
 import Promo from "../images/Club Page.png";
@@ -15,10 +15,7 @@ import { updateProfile } from "firebase/auth";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import GoogleLogo from "../images/GoogleLogo.png";
-
-// interface DataProps {
-//   setIsAuthenticated: any;
-// }
+import { UserInformation } from "../context/UserInformation";
 
 export function RegisterContainer() {
   const [inputs, setInputs] = useState({
@@ -27,6 +24,8 @@ export function RegisterContainer() {
     password: "",
     school: "",
   });
+
+  const { setUser, user } = useContext(UserInformation);
 
   const provider = new GoogleAuthProvider();
 
@@ -99,6 +98,7 @@ export function RegisterContainer() {
                 .post("http://localhost:5000/auth/register/", appBody)
                 .then((response: any) => {
                   console.log(response.data);
+                  // setUser(response.data.rows[0]);
                   console.log("Successfully created user");
                   history.push({
                     pathname:
