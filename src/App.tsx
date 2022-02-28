@@ -24,7 +24,8 @@ import { onAuthStateChanged } from "firebase/auth";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [user, setUser] = useState(null);
+  const [firebaseUser, setFirebaseUser] = useState(null);
+  const [userInfo, setUserInfo] = useState(null);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -36,9 +37,10 @@ function App() {
           .get("http://localhost:5000/auth/userinformation/" + user.uid)
           .then((response: any) => {
             const uid = user.uid;
-            setUser(user);
+            setFirebaseUser(user);
+            setUserInfo(response.data[0]);
             setIsAuthenticated(true);
-            console.log(response.data[0]);
+            // console.log(response.data[0]);
           })
           .catch((error) => {
             console.error("There was an error!", error);
@@ -49,7 +51,8 @@ function App() {
       } else {
         // User is signed out
         setIsAuthenticated(false);
-        setUser(null);
+        setFirebaseUser(null);
+        setUserInfo(null);
       }
     });
 
@@ -63,7 +66,7 @@ function App() {
 
   return (
     <>
-      <UserInformation.Provider value={{ user, setUser }}>
+      <UserInformation.Provider value={{ firebaseUser, userInfo }}>
         <Router>
           <Switch>
             <Route
@@ -102,7 +105,7 @@ function App() {
               <ClubsPage />
             </Route>
             <Route exact path={ROUTES.EDITUSER}>
-              <EditUserPage user={user} />
+              <EditUserPage userInfo={userInfo} />
             </Route>
             <Route path={ROUTES.CUSTOMIZE}>
               <CustomizePage />

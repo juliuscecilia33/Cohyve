@@ -7,16 +7,16 @@ import {
 import { auth } from "../firebase";
 
 interface DataProps {
-  user: any;
+  userInfo: any;
 }
 
-export default function EditUserPage({ user }: DataProps) {
+export default function EditUserPage({ userInfo }: DataProps) {
   // console.log(auth.currentUser);
 
   return (
     <>
       <NavbarContainer background="#F4FAF4" />
-      <EditUserContainer />
+      <EditUserContainer userInfo={userInfo} />
       <FooterContainer />
     </>
   );

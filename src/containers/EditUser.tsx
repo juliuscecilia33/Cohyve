@@ -16,7 +16,21 @@ import {
   getDownloadURL,
 } from "../firebase";
 
-export function EditUserContainer() {
+interface DataProps {
+  userInfo: any;
+}
+
+export function EditUserContainer({ userInfo }: DataProps) {
+  const [result, setResult] = useState(null);
+
+  // console.log(userInfo.name);
+
+  useEffect(() => {
+    if (userInfo) {
+      setResult(userInfo.name);
+    }
+  }, [userInfo]);
+
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [school, setSchool] = useState("");
@@ -32,22 +46,6 @@ export function EditUserContainer() {
   const [bannerProgress, setBannerProgress] = useState(0);
   const [submitError, setSubmitError] = useState(null);
   const [books, updateBooks] = useState([]);
-  const [result, setResult] = useState(null);
-
-  // console.log("edit user user: ", user);
-
-  // useEffect(() => {
-  //   const fetchUser = async () => {
-  //     const resulty = await axios(
-  //       "http://localhost:5000/userinformation/" + auth.currentUser.uid
-  //     );
-  //     console.log("result: ", resulty);
-  //     setResult(resulty);
-  //   };
-  //   fetchUser();
-  // }, []);
-
-  console.log("Hello");
 
   let history = useHistory();
 
@@ -324,6 +322,7 @@ export function EditUserContainer() {
       <Hero.CreateClub>
         <Hero.Heading>
           edit<span>user</span>
+          {result ? result : "loading"}
         </Hero.Heading>
         <CreateClub.PreviewText />
         <User.BannerSrc src={previewBanner ? previewBanner : BannerPlaceholder}>
