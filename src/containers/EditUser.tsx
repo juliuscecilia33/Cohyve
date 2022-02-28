@@ -8,7 +8,6 @@ import { useHistory } from "react-router-dom";
 import { auth } from "../firebase";
 import BannerPlaceholder from "../images/BannerPlaceholder.png";
 import ProfilePlaceholder from "../images/Placeholder.png";
-import { UserInformation } from "../context/UserInformation";
 
 import {
   storage,
@@ -18,8 +17,6 @@ import {
 } from "../firebase";
 
 export function EditUserContainer() {
-  const { setUser, user } = useContext(UserInformation);
-
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [school, setSchool] = useState("");
@@ -34,8 +31,23 @@ export function EditUserContainer() {
   const [profileProgress, setProfileProgress] = useState(0);
   const [bannerProgress, setBannerProgress] = useState(0);
   const [submitError, setSubmitError] = useState(null);
+  const [books, updateBooks] = useState([]);
+  const [result, setResult] = useState(null);
 
-  console.log("user context from edit user: ", user);
+  // console.log("edit user user: ", user);
+
+  // useEffect(() => {
+  //   const fetchUser = async () => {
+  //     const resulty = await axios(
+  //       "http://localhost:5000/userinformation/" + auth.currentUser.uid
+  //     );
+  //     console.log("result: ", resulty);
+  //     setResult(resulty);
+  //   };
+  //   fetchUser();
+  // }, []);
+
+  console.log("Hello");
 
   let history = useHistory();
 
@@ -339,7 +351,7 @@ export function EditUserContainer() {
             value={name}
             onChange={(e: any) => setName(e.target.value)}
             required={true}
-            maxLength={30}
+            maxLength={null}
             showMax={true}
           />
           <CreateClub.SearchContainer>

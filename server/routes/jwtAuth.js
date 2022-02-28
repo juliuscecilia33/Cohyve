@@ -65,6 +65,25 @@ router.post("/login", async (req, res) => {
   }
 });
 
+router.get("/userinformation/:uid", async (req, res) => {
+  try {
+    const { uid } = req.params;
+
+    console.log("uid from user exists: ", uid);
+
+    const user = await pool.query(
+      "SELECT * FROM users WHERE firebase_user_id = $1",
+      [uid]
+    );
+
+    console.log(user.rows);
+    res.json(user.rows);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error!");
+  }
+});
+
 router.get("/userexists/:uid", async (req, res) => {
   try {
     const { uid } = req.params;
@@ -85,7 +104,10 @@ router.get("/userexists/:uid", async (req, res) => {
       console.log("true");
       res.json(true);
     }
-  } catch (error) {}
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error!");
+  }
 });
 
 router.put("/edituser/:uid", authorize, async (req, res) => {

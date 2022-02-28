@@ -31,9 +31,20 @@ function App() {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
-        const uid = user.uid;
-        setUser(user);
-        setIsAuthenticated(true);
+
+        axios
+          .get("http://localhost:5000/auth/userinformation/" + user.uid)
+          .then((response: any) => {
+            const uid = user.uid;
+            setUser(user);
+            setIsAuthenticated(true);
+            console.log(response.data[0]);
+          })
+          .catch((error) => {
+            console.error("There was an error!", error);
+          });
+
+        console.log("auth state changed app.tsx");
         // ...
       } else {
         // User is signed out
@@ -91,7 +102,7 @@ function App() {
               <ClubsPage />
             </Route>
             <Route exact path={ROUTES.EDITUSER}>
-              <EditUserPage />
+              <EditUserPage user={user} />
             </Route>
             <Route path={ROUTES.CUSTOMIZE}>
               <CustomizePage />

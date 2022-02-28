@@ -6,8 +6,12 @@ import {
 } from "../containers";
 import { auth } from "../firebase";
 
-export default function EditUserPage() {
-  console.log(auth.currentUser);
+interface DataProps {
+  user: any;
+}
+
+export default function EditUserPage({ user }: DataProps) {
+  // console.log(auth.currentUser);
 
   return (
     <>
