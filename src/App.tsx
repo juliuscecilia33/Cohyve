@@ -14,10 +14,10 @@ import {
   CreateClubPage,
   ClubsPage,
   CustomizePage,
-  RegisterFinishPage,
+  EditUserPage,
 } from "./pages";
 import * as ROUTES from "./constants/routes";
-import { UserContext } from "./context/UserToken";
+import { UserInformation } from "./context/UserInformation";
 // import * as firebase from "firebase/app";
 import { auth } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
@@ -52,7 +52,7 @@ function App() {
 
   return (
     <>
-      <UserContext.Provider value={{ user, setUser }}>
+      <UserInformation.Provider value={{ user, setUser }}>
         <Router>
           <Switch>
             <Route
@@ -90,8 +90,8 @@ function App() {
             <Route exact path={ROUTES.CLUBS}>
               <ClubsPage />
             </Route>
-            <Route exact path={ROUTES.REGISTERFINISH}>
-              <RegisterFinishPage />
+            <Route exact path={ROUTES.EDITUSER}>
+              <EditUserPage />
             </Route>
             <Route path={ROUTES.CUSTOMIZE}>
               <CustomizePage />
@@ -99,7 +99,7 @@ function App() {
             x
           </Switch>
         </Router>
-      </UserContext.Provider>
+      </UserInformation.Provider>
     </>
   );
 }

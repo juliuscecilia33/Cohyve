@@ -4,4 +4,4 @@ export { default as RegisterPage } from "./Register";
 export { default as CreateClubPage } from "./CreateClub";
 export { default as ClubsPage } from "./Clubs";
 export { default as CustomizePage } from "./Customize";
-export { default as RegisterFinishPage } from "./RegisterFinish";
+export { default as EditUserPage } from "./EditUser";

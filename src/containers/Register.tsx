@@ -101,7 +101,14 @@ export function RegisterContainer() {
                   console.log(response.data);
                   console.log("Successfully created user");
                   history.push({
-                    pathname: ROUTES.REGISTERFINISH,
+                    pathname:
+                      "/user/edit/" +
+                      user.displayName.replace(/\s+/g, "-").toLowerCase() +
+                      "/" +
+                      user.uid,
+                    state: {
+                      userData: response.data,
+                    },
                   });
                 })
                 .catch((error) => {
@@ -110,7 +117,11 @@ export function RegisterContainer() {
                 });
             } else {
               history.push({
-                pathname: ROUTES.TESTUSER,
+                pathname:
+                  "/user/edit/" +
+                  user.displayName.replace(/\s+/g, "-").toLowerCase() +
+                  "/" +
+                  user.uid,
               });
             }
           })
@@ -166,7 +177,11 @@ export function RegisterContainer() {
             console.log(response.data);
             console.log("Successfully created user");
             history.push({
-              pathname: ROUTES.REGISTERFINISH,
+              pathname:
+                "/user/edit/" +
+                user.displayName.replace(/\s+/g, "-").toLowerCase() +
+                "/" +
+                user.uid,
               state: {
                 userData: response.data,
               },

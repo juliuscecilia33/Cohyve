@@ -67,7 +67,14 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
                   console.log(response.data);
                   console.log("Successfully created user");
                   history.push({
-                    pathname: ROUTES.REGISTERFINISH,
+                    pathname:
+                      "/user/edit/" +
+                      user.displayName.replace(/\s+/g, "-").toLowerCase() +
+                      "/" +
+                      user.uid,
+                    state: {
+                      userData: response.data,
+                    },
                   });
                 })
                 .catch((error) => {
