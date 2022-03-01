@@ -25,14 +25,18 @@ export function EditUserContainer({ userInfo }: DataProps) {
     if (userInfo) {
       setName(userInfo.name);
       setSchool(userInfo.school);
+      setWordEntered(userInfo.school);
       setDescription(userInfo.description);
+      setSchoolId(userInfo.school_id);
 
       if (userInfo.profileurl) {
         setPreviewProfile(userInfo.profileurl);
+        setUnchangedProfileUrl(userInfo.profileurl);
       }
 
       if (userInfo.bannerurl) {
         setPreviewBanner(userInfo.bannerurl);
+        setUnchangedBannerUrl(userInfo.bannerurl);
       }
     }
   }, [userInfo]);
@@ -53,6 +57,8 @@ export function EditUserContainer({ userInfo }: DataProps) {
   const [bannerProgress, setBannerProgress] = useState(0);
   const [submitError, setSubmitError] = useState(null);
   const [books, updateBooks] = useState([]);
+  const [unchangedProfileUrl, setUnchangedProfileUrl] = useState("");
+  const [unchangedBannerUrl, setUnchangedBannerUrl] = useState("");
 
   let history = useHistory();
 
@@ -265,7 +271,7 @@ export function EditUserContainer({ userInfo }: DataProps) {
               description: description,
               school: school,
               profileURL: profileURL,
-              bannerURl: "",
+              bannerURl: unchangedBannerUrl,
               school_id: schoolId,
             };
 
@@ -305,7 +311,7 @@ export function EditUserContainer({ userInfo }: DataProps) {
               name: name,
               description: description,
               school: school,
-              profileURL: "",
+              profileURL: unchangedProfileUrl,
               bannerURL: bannerURL,
               school_id: schoolId,
             };
@@ -319,8 +325,8 @@ export function EditUserContainer({ userInfo }: DataProps) {
         name: name,
         description: description,
         school: school,
-        profileURL: "",
-        bannerURL: "",
+        profileURL: unchangedProfileUrl,
+        bannerURL: unchangedBannerUrl,
         school_id: schoolId,
       };
 
