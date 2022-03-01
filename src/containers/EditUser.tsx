@@ -86,7 +86,6 @@ export function EditUserContainer({ userInfo }: DataProps) {
             }
           )
           .then((response: any) => {
-            console.log(response);
             console.log("Successfully edited user information");
 
             console.log(response.data);
@@ -94,9 +93,9 @@ export function EditUserContainer({ userInfo }: DataProps) {
             history.push({
               pathname:
                 "/user/" +
-                response.data.name +
+                response.data.rows[0].name.replace(/\s+/g, "-").toLowerCase() +
                 "/" +
-                response.data.firebase_user_id,
+                response.data.rows[0].firebase_user_id,
             });
             // set user context
           })

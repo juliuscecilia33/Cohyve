@@ -116,7 +116,7 @@ router.put("/edituser/:uid", authorize, async (req, res) => {
       req.body;
 
     const updateUserInfo = await pool.query(
-      "UPDATE users SET school = $2, profileURL = $3, bannerURL = $4, description = $5, name = $6, school_id = $7 WHERE firebase_user_id = $1",
+      "UPDATE users SET school = $2, profileURL = $3, bannerURL = $4, description = $5, name = $6, school_id = $7 WHERE firebase_user_id = $1 RETURNING *",
       [req.userId, school, profileURL, bannerURL, description, name, school_id]
     );
 
