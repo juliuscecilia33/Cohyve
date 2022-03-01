@@ -40,6 +40,7 @@ export function EditUserContainer({ userInfo }: DataProps) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [school, setSchool] = useState("");
+  const [schoolId, setSchoolId] = useState(0);
   const [previewProfile, setPreviewProfile] = useState(null);
   const [previewBanner, setPreviewBanner] = useState(null);
   const [filteredData, setFilteredData] = useState([]);
@@ -70,7 +71,7 @@ export function EditUserContainer({ userInfo }: DataProps) {
 
         axios
           .put(
-            "http://localhost:5000/edituser/" + auth.currentUser.uid,
+            "http://localhost:5000/auth/edituser/" + auth.currentUser.uid,
             appBody,
             {
               headers: {
@@ -221,6 +222,7 @@ export function EditUserContainer({ userInfo }: DataProps) {
                     school: school,
                     profileURL: profileURL,
                     bannerURL: bannerURL,
+                    school_id: schoolId,
                   };
 
                   sendToBackend(appBody);
@@ -264,6 +266,7 @@ export function EditUserContainer({ userInfo }: DataProps) {
               school: school,
               profileURL: profileURL,
               bannerURl: "",
+              school_id: schoolId,
             };
 
             sendToBackend(appBody);
@@ -304,6 +307,7 @@ export function EditUserContainer({ userInfo }: DataProps) {
               school: school,
               profileURL: "",
               bannerURL: bannerURL,
+              school_id: schoolId,
             };
 
             sendToBackend(appBody);
@@ -317,6 +321,7 @@ export function EditUserContainer({ userInfo }: DataProps) {
         school: school,
         profileURL: "",
         bannerURL: "",
+        school_id: schoolId,
       };
 
       sendToBackend(appBody);
@@ -378,7 +383,7 @@ export function EditUserContainer({ userInfo }: DataProps) {
                     <CreateClub.SearchItem
                       onClick={() => {
                         setSchoolValue(value.name);
-                        console.log(value.id);
+                        setSchoolId(value.id);
                       }}
                       key={key}
                     >

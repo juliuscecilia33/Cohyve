@@ -145,6 +145,7 @@ export function CreateClubContainer() {
   const [bannerProgress, setBannerProgress] = useState(0);
   const [previewProfile, setPreviewProfile] = useState(null);
   const [previewBanner, setPreviewBanner] = useState(null);
+  const [schoolId, setSchoolId] = useState(0);
 
   const handleFilter = (event: any) => {
     const searchWord = event.target.value;
@@ -286,6 +287,7 @@ export function CreateClubContainer() {
                     email: email,
                     profileURL: profileURL,
                     bannerURL: bannerURL,
+                    school_id: schoolId,
                   };
 
                   sendToBackend(appBody);
@@ -337,6 +339,7 @@ export function CreateClubContainer() {
               email: email,
               profileURL: profileURL,
               bannerURl: "",
+              school_id: schoolId,
             };
 
             sendToBackend(appBody);
@@ -384,6 +387,7 @@ export function CreateClubContainer() {
               email: email,
               profileURL: "",
               bannerURL: bannerURL,
+              school_id: schoolId,
             };
 
             sendToBackend(appBody);
@@ -405,6 +409,7 @@ export function CreateClubContainer() {
         email: email,
         profileURL: "",
         bannerURL: "",
+        school_id: schoolId,
       };
 
       sendToBackend(appBody);
@@ -581,6 +586,7 @@ export function CreateClubContainer() {
                     <CreateClub.SearchItem
                       onClick={() => {
                         setSchoolValue(value.name);
+                        setSchoolId(value.id);
                         console.log(value.id);
                       }}
                       key={key}

@@ -112,11 +112,12 @@ router.get("/userexists/:uid", async (req, res) => {
 
 router.put("/edituser/:uid", authorize, async (req, res) => {
   try {
-    const { school, profileURL, bannerURL, description, name } = req.body;
+    const { school, profileURL, bannerURL, description, name, school_id } =
+      req.body;
 
     const updateUserInfo = await pool.query(
-      "UPDATE users SET school = $2, profileURL = $3, bannerURL = $4, description = $5, name = $6 WHERE firebase_user_id = $1",
-      [req.userId, school, profileURL, bannerURL, description, name]
+      "UPDATE users SET school = $2, profileURL = $3, bannerURL = $4, description = $5, name = $6, school_id = $7 WHERE firebase_user_id = $1",
+      [req.userId, school, profileURL, bannerURL, description, name, school_id]
     );
 
     res.json(updateUserInfo);

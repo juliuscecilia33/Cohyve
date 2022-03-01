@@ -3,7 +3,7 @@ CREATE DATABASE cohyve;
 CREATE TABLE users(
   firebase_user_id VARCHAR NOT NULL,
   school VARCHAR(255),
-  school_id SERIAL,
+  school_id INTEGER,
   profileURL VARCHAR,
   bannerURL VARCHAR,
   description VARCHAR,
@@ -19,7 +19,7 @@ CREATE TABLE clubs(
   name VARCHAR(255) NOT NULL,
   description VARCHAR(255),
   school VARCHAR(255) NOT NULL,
-  school_id SERIAL NOT NULL,
+  school_id INTEGER NOT NULL,
   category VARCHAR(255) NOT NULL,
   created_at DATE NOT NULL DEFAULT CURRENT_DATE,
   verified BOOLEAN NOT NULL DEFAULT FALSE,
@@ -40,7 +40,7 @@ CREATE TABLE clubs(
 );
 
 CREATE TABLE school(
-  school_id SERIAL,
+  school_id INTEGER,
   name VARCHAR NOT NULL,
   banner_URL VARCHAR,
   club_count INTEGER NOT NULL DEFAULT 0,
