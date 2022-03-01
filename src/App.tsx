@@ -74,7 +74,16 @@ function App() {
               path={ROUTES.LOGIN}
               render={(props) =>
                 isAuthenticated ? (
-                  <Redirect to={ROUTES.USER} />
+                  <Redirect
+                    to={
+                      "/user/" +
+                      auth.currentUser.displayName
+                        .replace(/\s+/g, "-")
+                        .toLowerCase() +
+                      "/" +
+                      auth.currentUser.uid
+                    }
+                  />
                 ) : (
                   <LoginPage setIsAuthenticated={setIsAuthenticated} />
                 )
@@ -85,7 +94,16 @@ function App() {
               path={ROUTES.REGISTER}
               render={(props) =>
                 isAuthenticated ? (
-                  <Redirect to={ROUTES.USER} />
+                  <Redirect
+                    to={
+                      "/user/" +
+                      auth.currentUser.displayName
+                        .replace(/\s+/g, "-")
+                        .toLowerCase() +
+                      "/" +
+                      auth.currentUser.uid
+                    }
+                  />
                 ) : (
                   <RegisterPage setIsAuthenticated={setIsAuthenticated} />
                 )
