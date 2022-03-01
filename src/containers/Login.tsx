@@ -87,7 +87,11 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
                 });
             } else {
               history.push({
-                pathname: ROUTES.TESTUSER,
+                pathname:
+                  "/user/" +
+                  user.displayName.replace(/\s+/g, "-").toLowerCase() +
+                  "/" +
+                  user.uid,
               });
             }
           })

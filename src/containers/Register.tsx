@@ -36,23 +36,6 @@ export function RegisterContainer() {
   const [submitError, setSubmitError] = useState(null);
   const [userExistsError, setUserExistsError] = useState(null);
 
-  const actionCodeSettings = {
-    // URL you want to redirect back to. The domain (www.example.com) for this
-    // URL must be in the authorized domains list in the Firebase Console.
-    url: "http://localhost:3000/register/finish", // create a new component
-    // This must be true.
-    handleCodeInApp: true,
-    iOS: {
-      bundleId: "com.example.ios",
-    },
-    android: {
-      packageName: "com.example.android",
-      installApp: true,
-      minimumVersion: "12",
-    },
-    dynamicLinkDomain: "example.page.link",
-  };
-
   // add user profile description input?
 
   const handleGoogleLogin = async (e: any) => {
@@ -118,7 +101,7 @@ export function RegisterContainer() {
             } else {
               history.push({
                 pathname:
-                  "/user/edit/" +
+                  "/user/" +
                   user.displayName.replace(/\s+/g, "-").toLowerCase() +
                   "/" +
                   user.uid,
