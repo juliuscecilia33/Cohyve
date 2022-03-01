@@ -21,13 +21,9 @@ interface DataProps {
 }
 
 export function EditUserContainer({ userInfo }: DataProps) {
-  const [result, setResult] = useState(null);
-
-  // console.log(userInfo.name);
-
   useEffect(() => {
     if (userInfo) {
-      setResult(userInfo.name);
+      setName(userInfo.name);
     }
   }, [userInfo]);
 
@@ -322,7 +318,6 @@ export function EditUserContainer({ userInfo }: DataProps) {
       <Hero.CreateClub>
         <Hero.Heading>
           edit<span>user</span>
-          {result ? result : "loading"}
         </Hero.Heading>
         <CreateClub.PreviewText />
         <User.BannerSrc src={previewBanner ? previewBanner : BannerPlaceholder}>
