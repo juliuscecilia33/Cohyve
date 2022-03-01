@@ -128,7 +128,11 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
         console.log(user);
 
         history.push({
-          pathname: ROUTES.TESTUSER,
+          pathname:
+            "/user/" +
+            user.displayName.replace(/\s+/g, "-").toLowerCase() +
+            "/" +
+            user.uid,
         });
         // ...
       })

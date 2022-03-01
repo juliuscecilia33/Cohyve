@@ -1,7 +1,6 @@
 export const LOGIN = "/login";
 export const REGISTER = "/register";
 export const HOME = "/";
-export const TESTUSER = "/user";
 export const USER = "/user/:username/:useruid";
 export const EDITUSER = "/user/edit/:username/:useruid";
 export const CREATE = "/create";
