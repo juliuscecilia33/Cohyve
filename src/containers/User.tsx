@@ -49,9 +49,15 @@ export function UserContainer() {
   return (
     <>
       <Hero.User>
-        <User.BannerSrc src="https://firebasestorage.googleapis.com/v0/b/cohyve.appspot.com/o/BannerPlaceholder.png?alt=media&token=c503d5fc-736a-42da-9504-5dfb95cd83ef">
+        <User.BannerSrc
+          editBanner={true} // set this to isAuthenticated?
+          src="https://firebasestorage.googleapis.com/v0/b/cohyve.appspot.com/o/BannerPlaceholder.png?alt=media&token=c503d5fc-736a-42da-9504-5dfb95cd83ef"
+        >
           <User.ProfileContainer>
-            <User.ProfileSrc profileImageUrl="https://firebasestorage.googleapis.com/v0/b/cohyve.appspot.com/o/Placeholder.png?alt=media&token=83d8109a-c0ac-4cba-bd95-247ad79857da" />
+            <User.ProfileSrc
+              editProfile={true}
+              profileImageUrl="https://firebasestorage.googleapis.com/v0/b/cohyve.appspot.com/o/Placeholder.png?alt=media&token=83d8109a-c0ac-4cba-bd95-247ad79857da"
+            />
             <User.ProfileInfo
               name="Julius Cecilia"
               description="Hard work beats talent, when talent doesn't work hard work beats"

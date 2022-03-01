@@ -35,6 +35,8 @@ type Props = {
   description?: string;
   src?: any;
   verified?: boolean;
+  editProfile?: boolean;
+  editBanner?: boolean;
   onClick?: any;
 };
 
@@ -86,6 +88,7 @@ User.ProfileInfo = function UserProfileInfo({
 };
 
 User.BannerSrc = function UserBannerSrc({
+  editBanner,
   onClick,
   src,
   children,
@@ -94,7 +97,7 @@ User.BannerSrc = function UserBannerSrc({
   return (
     <BannerSrc {...restProps}>
       <img src={src} alt="Banner" />
-      <User.EditBanner onClick={onClick} />
+      {editBanner && <User.EditBanner onClick={onClick} />}
       {children}
     </BannerSrc>
   );
@@ -113,6 +116,7 @@ User.ButtonContainer = function UserButtonContainer({
 };
 
 User.ProfileSrc = function UserProfileSrc({
+  editProfile,
   onClick,
   profileImageUrl,
   children,
@@ -121,7 +125,7 @@ User.ProfileSrc = function UserProfileSrc({
   return (
     <ProfileSrc {...restProps}>
       <img src={profileImageUrl} alt="Profile" />
-      <User.EditProfile onClick={onClick} />
+      {editProfile && <User.EditProfile onClick={onClick} />}
     </ProfileSrc>
   );
 };

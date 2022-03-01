@@ -24,6 +24,16 @@ export function EditUserContainer({ userInfo }: DataProps) {
   useEffect(() => {
     if (userInfo) {
       setName(userInfo.name);
+      setSchool(userInfo.school);
+      setDescription(userInfo.description);
+
+      if (userInfo.profileurl) {
+        setPreviewProfile(userInfo.profileurl);
+      }
+
+      if (userInfo.bannerurl) {
+        setPreviewBanner(userInfo.bannerurl);
+      }
     }
   }, [userInfo]);
 
@@ -320,12 +330,16 @@ export function EditUserContainer({ userInfo }: DataProps) {
           edit<span>user</span>
         </Hero.Heading>
         <CreateClub.PreviewText />
-        <User.BannerSrc src={previewBanner ? previewBanner : BannerPlaceholder}>
+        <User.BannerSrc
+          editBanner={false}
+          src={previewBanner ? previewBanner : BannerPlaceholder}
+        >
           <User.ProfileContainer>
             <User.ProfileSrc
               profileImageUrl={
                 previewProfile ? previewProfile : ProfilePlaceholder
               }
+              editProfile={false}
             />
             <User.ProfileInfo
               name={name}
@@ -346,7 +360,7 @@ export function EditUserContainer({ userInfo }: DataProps) {
             onChange={(e: any) => setName(e.target.value)}
             required={true}
             maxLength={null}
-            showMax={true}
+            showMax={false}
           />
           <CreateClub.SearchContainer>
             <CreateClub.SearchInput
@@ -384,7 +398,7 @@ export function EditUserContainer({ userInfo }: DataProps) {
             placeholder="Write a short description about your club"
             value={description}
             onChange={(e: any) => setDescription(e.target.value)}
-            maxLength={50}
+            maxLength={65}
           />
         </CreateClub.Inputs>
         <CreateClub.Inputs>
