@@ -280,6 +280,12 @@ export const ClubName = styled.div`
     font-size: 14px;
     color: #153243;
     margin-right: 0.5rem;
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   img {
@@ -293,6 +299,13 @@ export const ClubProfileSrc = styled.div`
   height: 40px;
   border-radius: 50%;
   margin-right: 0.5rem;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: -1px 10px 60px rgba(27, 27, 30, 0.15);
+    transform: translateY(-2.5%);
+  }
 
   img {
     width: 100%;
@@ -310,6 +323,11 @@ export const Category = styled.h3`
   font-size: 14px;
   font-weight: 600;
   color: #afd5aa;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export const Followers = styled.h3`
