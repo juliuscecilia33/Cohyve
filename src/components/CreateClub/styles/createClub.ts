@@ -648,6 +648,7 @@ export const ImageInputs = styled.div<ActiveProps>`
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 
   input {
     width: 0.1px;
@@ -656,6 +657,7 @@ export const ImageInputs = styled.div<ActiveProps>`
     overflow: hidden;
     position: absolute;
     z-index: -1;
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   }
 
   input + label {
@@ -672,10 +674,15 @@ export const ImageInputs = styled.div<ActiveProps>`
     padding: 0.625rem 1.25rem;
     /* 10px 20px */
     color: #fafcfa;
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     background: ${({ uploaded, activeBg, passiveBg }) =>
-      uploaded ? activeBg : passiveBg}
+      uploaded ? activeBg : passiveBg};
     border-radius: 40px;
-    transition: 0.5s all ease;
+
+    &:hover {
+      // box-shadow: -1px 6px 60px rgba(27, 27, 30, 0.2);
+      transform: translateY(-2.5%);
+    }
   }
 
   p {
@@ -688,7 +695,7 @@ export const ImageInputs = styled.div<ActiveProps>`
     white-space: nowrap;
     color: #fafcfa;
     margin: 0;
-    margin-left: .15rem;
+    margin-left: 0.15rem;
     max-width: 60%;
   }
 
@@ -700,13 +707,13 @@ export const ImageInputs = styled.div<ActiveProps>`
   input.has-focus + label {
     outline: 1px dotted #000;
     outline: -webkit-focus-ring-color auto 5px;
-    background: ${({ activeBg }) => activeBg}
+    background: ${({ activeBg }) => activeBg};
   }
 
   input:focus + label,
   input.has-focus + label,
   input + label:hover {
-    background: ${({ activeBg }) => activeBg}
+    background: ${({ activeBg }) => activeBg};
   }
 
   input + label svg {

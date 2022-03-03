@@ -675,8 +675,8 @@ export function CreateClubContainer() {
             <CreateClub.ImageUpload
               title="Club Banner"
               handleChange={handleBannerChange}
-              passiveBg="linear-gradient(94.39deg, rgba(245, 231, 171, 0.5) 8.09%, rgba(197, 176, 90, 0.5) 93.12%);"
-              activeBg="linear-gradient(94.39deg, #F5E7AB 8.09%, #C5B05A 93.12%);"
+              passiveBg="linear-gradient(94.39deg, rgba(171, 201, 245, 0.5) 8.09%, rgba(90, 94, 197, 0.5) 93.12%);"
+              activeBg="linear-gradient(94.39deg, #ABC9F5 8.09%, #5A5EC5 93.12%);"
               uploaded={bannerUploaded}
               file={banner}
               fileName="file-2[]"

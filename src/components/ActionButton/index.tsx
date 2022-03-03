@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Container, Small, Medium } from "./styles/actionButton";
+import { Container, Small, Medium, Circle } from "./styles/actionButton";
 
 type Props = {
   children?: React.ReactNode;
@@ -107,6 +107,40 @@ ActionButton.Small = function ActionButtonSmall({
         >
           {children}
         </Small>
+      )}
+    </>
+  );
+};
+
+ActionButton.Circle = function ActionButtonCircle({
+  color,
+  disabled,
+  background,
+  onClick,
+  children,
+  ...restProps
+}: Props) {
+  return (
+    <>
+      {disabled ? (
+        <Circle
+          disabled
+          background={background}
+          color={color}
+          onClick={onClick}
+          {...restProps}
+        >
+          {children}
+        </Circle>
+      ) : (
+        <Circle
+          background={background}
+          color={color}
+          onClick={onClick}
+          {...restProps}
+        >
+          {children}
+        </Circle>
       )}
     </>
   );
