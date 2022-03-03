@@ -17,6 +17,9 @@ export function NavbarContainer({ background }: DataProps) {
 
   console.log("navbar: ", auth.currentUser);
 
+  // instead of checking auth.curentUser; pass in
+  // isAuthenticated from app.tsx; so it's just one check
+
   return (
     <Navbar background={background}>
       <Navbar.ContainerMed>
