@@ -67,7 +67,11 @@ function App() {
   return (
     <>
       <UserInformation.Provider value={{ firebaseUser, userInfo }}>
-        <Router>
+        <Router
+          getUserConfirmation={() => {
+            /* Empty callback to block the default browser prompt */
+          }}
+        >
           <Switch>
             <Route
               exact

@@ -12,3 +12,4 @@ export { SchoolContainer } from "./School";
 export { EditUserContainer } from "./EditUser";
 export { EditClubContainer } from "./EditClub";
 export { UserContainer } from "./User";
+export { RouterPrompt } from "./RouterPrompt";
