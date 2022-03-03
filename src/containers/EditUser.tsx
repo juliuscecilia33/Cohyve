@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Hero, User, CreateClub, ActionButton } from "../components";
-import { RouterPrompt } from "../containers";
 import { Link as ReactRouterLink } from "react-router-dom";
 import * as ROUTES from "../constants/routes";
 import SchoolData from "../colleges.json";
@@ -19,9 +18,15 @@ import {
 
 interface DataProps {
   userInfo: any;
+  setShowPrompt: any;
+  showPrompt: boolean;
 }
 
-export function EditUserContainer({ userInfo }: DataProps) {
+export function EditUserContainer({
+  userInfo,
+  setShowPrompt,
+  showPrompt,
+}: DataProps) {
   useEffect(() => {
     if (userInfo) {
       setName(userInfo.name);
@@ -60,7 +65,6 @@ export function EditUserContainer({ userInfo }: DataProps) {
   const [books, updateBooks] = useState([]);
   const [unchangedProfileUrl, setUnchangedProfileUrl] = useState("");
   const [unchangedBannerUrl, setUnchangedBannerUrl] = useState("");
-  const [showPrompt, setShowPrompt] = useState(false);
 
   let history = useHistory();
 
@@ -348,14 +352,6 @@ export function EditUserContainer({ userInfo }: DataProps) {
 
   return (
     <>
-      <RouterPrompt
-        when={showPrompt}
-        title="Leave this page"
-        cancelText="Cancel"
-        okText="Confirm"
-        onOK={() => true}
-        onCancel={() => false}
-      />
       <Hero.CreateClub>
         <Hero.Heading>
           edit<span>user</span>

@@ -66,17 +66,28 @@ export function RouterPrompt({
 
   return (
     showPrompt && (
-      <Modal
-        title={title}
-        visible={showPrompt}
-        onOk={handleOK}
-        okText={okText}
-        onCancel={handleCancel}
-        cancelText={cancelText}
-        closable={true}
+      <div
+        style={{
+          position: "fixed",
+          zIndex: 1,
+          width: "100%",
+          height: "100%",
+          backgroundColor: "rgba(0, 0, 0, 0.25)",
+        }}
       >
-        There are unsaved changes. Are you sure want to leave this page ?
-      </Modal>
+        hello
+      </div>
+      //   <Modal
+      //     title={title}
+      //     visible={showPrompt}
+      //     onOk={handleOK}
+      //     okText={okText}
+      //     onCancel={handleCancel}
+      //     cancelText={cancelText}
+      //     closable={true}
+      //   >
+      //     There are unsaved changes. Are you sure want to leave this page ?
+      //   </Modal>
     )
   );
 }
