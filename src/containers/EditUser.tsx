@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Hero, User, CreateClub, ActionButton } from "../components";
+import { RouterPrompt } from "../containers";
 import { Link as ReactRouterLink } from "react-router-dom";
 import * as ROUTES from "../constants/routes";
 import SchoolData from "../colleges.json";
@@ -41,12 +42,6 @@ export function EditUserContainer({ userInfo }: DataProps) {
     }
   }, [userInfo]);
 
-  window.addEventListener("beforeunload", function (event) {
-    event.preventDefault();
-    /* ... */
-    alert("Hello! I am an alert box!!");
-  });
-
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [school, setSchool] = useState("");
@@ -65,6 +60,7 @@ export function EditUserContainer({ userInfo }: DataProps) {
   const [books, updateBooks] = useState([]);
   const [unchangedProfileUrl, setUnchangedProfileUrl] = useState("");
   const [unchangedBannerUrl, setUnchangedBannerUrl] = useState("");
+  const [showPrompt, setShowPrompt] = useState(false);
 
   let history = useHistory();
 
@@ -75,6 +71,8 @@ export function EditUserContainer({ userInfo }: DataProps) {
   };
 
   const sendToBackend = (appBody: any) => {
+    setShowPrompt(false);
+
     auth.currentUser
       .getIdToken(/* forceRefresh */ true)
       .then(function (idToken) {
@@ -119,6 +117,8 @@ export function EditUserContainer({ userInfo }: DataProps) {
   const handleProfileChange = (e: any) => {
     e.preventDefault();
 
+    setShowPrompt(true);
+
     console.log("Profile");
     console.log(e.target.files[0]);
     let profileFile = e.target.files[0];
@@ -137,6 +137,8 @@ export function EditUserContainer({ userInfo }: DataProps) {
   const handleBannerChange = (e: any) => {
     e.preventDefault();
 
+    setShowPrompt(true);
+
     console.log("Banner");
     console.log(e.target.files[0]);
     let bannerFile = e.target.files[0];
@@ -153,8 +155,11 @@ export function EditUserContainer({ userInfo }: DataProps) {
   };
 
   const handleFilter = (event: any) => {
+    setShowPrompt(true);
+
     const searchWord = event.target.value;
     setWordEntered(searchWord);
+
     const newFilter = SchoolData.filter((value: any) => {
       return value.name.toLowerCase().includes(searchWord.toLowerCase());
     });
@@ -339,8 +344,18 @@ export function EditUserContainer({ userInfo }: DataProps) {
     }
   };
 
+  console.log("show prompt: ", showPrompt);
+
   return (
     <>
+      <RouterPrompt
+        when={showPrompt}
+        title="Leave this page"
+        cancelText="Cancel"
+        okText="Confirm"
+        onOK={() => true}
+        onCancel={() => false}
+      />
       <Hero.CreateClub>
         <Hero.Heading>
           edit<span>user</span>
@@ -373,7 +388,10 @@ export function EditUserContainer({ userInfo }: DataProps) {
             type="text"
             placeholder="Name"
             value={name}
-            onChange={(e: any) => setName(e.target.value)}
+            onChange={(e: any) => {
+              setShowPrompt(true);
+              setName(e.target.value);
+            }}
             required={true}
             maxLength={null}
             showMax={false}
@@ -413,7 +431,10 @@ export function EditUserContainer({ userInfo }: DataProps) {
             type="text"
             placeholder="Write a short description about your club"
             value={description}
-            onChange={(e: any) => setDescription(e.target.value)}
+            onChange={(e: any) => {
+              setShowPrompt(true);
+              setDescription(e.target.value);
+            }}
             maxLength={65}
           />
         </CreateClub.Inputs>

@@ -62,17 +62,21 @@ export function RouterPrompt({
     setShowPrompt(false);
   }, [currentPath, history, onCancel]);
 
-  return showPrompt ? (
-    <Modal
-      title={title}
-      visible={showPrompt}
-      onOk={handleOK}
-      okText={okText}
-      onCancel={handleCancel}
-      cancelText={cancelText}
-      closable={true}
-    >
-      There are unsaved changes. Are you sure want to leave this page ?
-    </Modal>
-  ) : null;
+  console.log("router promoted shown: ", showPrompt);
+
+  return (
+    showPrompt && (
+      <Modal
+        title={title}
+        visible={showPrompt}
+        onOk={handleOK}
+        okText={okText}
+        onCancel={handleCancel}
+        cancelText={cancelText}
+        closable={true}
+      >
+        There are unsaved changes. Are you sure want to leave this page ?
+      </Modal>
+    )
+  );
 }
