@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Container } from "./styles/prompt";
+import { Container, Top, Bottom } from "./styles/prompt";
 
 type Props = {
   background?: string;
@@ -12,9 +12,10 @@ export default function Prompt({ children, ...restProps }: Props) {
   return <Container {...restProps}>{children}</Container>;
 }
 
-Prompt.ContainerMed = function NavbarContainerMed({
-  children,
-  ...restProps
-}: Props) {
-  return <ContainerMed {...restProps}>{children}</ContainerMed>;
+Prompt.Top = function PromptContainerMed({ children, ...restProps }: Props) {
+  return <Top {...restProps}>{children}</Top>;
+};
+
+Prompt.Bottom = function PromptContainerMed({ children, ...restProps }: Props) {
+  return <Bottom {...restProps}>{children}</Bottom>;
 };
