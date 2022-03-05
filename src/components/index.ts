@@ -12,3 +12,4 @@ export { default as Clubs } from "./Clubs";
 export { default as School } from "./School";
 export { default as Customize } from "./Customize";
 export { default as User } from "./User";
+export { default as Prompt } from "./Prompt";

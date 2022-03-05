@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Container, Small, Medium, Circle } from "./styles/actionButton";
+import { Container, Small, Medium, Circle, Text } from "./styles/actionButton";
 
 type Props = {
   children?: React.ReactNode;
@@ -8,6 +8,7 @@ type Props = {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   disabled?: boolean;
   color?: string;
+  hoverColor?: string;
 };
 
 export default function ActionButton({
@@ -141,6 +142,40 @@ ActionButton.Circle = function ActionButtonCircle({
         >
           {children}
         </Circle>
+      )}
+    </>
+  );
+};
+
+ActionButton.Text = function ActionButtonText({
+  hoverColor,
+  color,
+  disabled,
+  onClick,
+  children,
+  ...restProps
+}: Props) {
+  return (
+    <>
+      {disabled ? (
+        <Text
+          disabled
+          color={color}
+          hoverColor={hoverColor}
+          onClick={onClick}
+          {...restProps}
+        >
+          {children}
+        </Text>
+      ) : (
+        <Text
+          color={color}
+          hoverColor={hoverColor}
+          onClick={onClick}
+          {...restProps}
+        >
+          {children}
+        </Text>
       )}
     </>
   );
