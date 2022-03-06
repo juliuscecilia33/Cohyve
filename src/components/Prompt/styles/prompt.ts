@@ -14,8 +14,8 @@ export const Container = styled.div`
 `;
 
 export const Window = styled.div`
-  width: 1000px;
-  height: 250px;
+  width: 800px;
+  height: 200px;
   display: flex;
   flex-direction: column;
   border-radius: 40px;
@@ -38,8 +38,8 @@ export const Top = styled.div`
     font-family: Outfit;
     font-style: normal;
     font-weight: 600;
-    font-size: 28px;
-    line-height: 50px;
+    font-size: 23px;
+    line-height: 25px;
     text-align: center;
     color: #284b63;
 
