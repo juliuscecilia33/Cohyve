@@ -461,7 +461,15 @@ export function EditUserContainer({
         <CreateClub.ButtonContainer>
           <ActionButton.Circle
             color="#FAFCFA"
-            onClick={() => console.log("cancelled")}
+            onClick={() =>
+              history.push({
+                pathname:
+                  "/user/" +
+                  userInfo.name.replace(/\s+/g, "-").toLowerCase() +
+                  "/" +
+                  userInfo.firebase_user_id,
+              })
+            }
             background="linear-gradient(94.39deg, #CCCCCC 8.09%, #9B9B9B 93.12%);"
             disabled={false}
           >
