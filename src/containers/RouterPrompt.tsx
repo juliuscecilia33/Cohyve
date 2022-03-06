@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router";
-
-import { Modal } from "antd";
+import { Prompt, ActionButton } from "../components";
 
 interface DataProps {
   when?: any;
@@ -66,17 +65,34 @@ export function RouterPrompt({
 
   return (
     showPrompt && (
-      <div
-        style={{
-          position: "fixed",
-          zIndex: 1,
-          width: "100%",
-          height: "100%",
-          backgroundColor: "rgba(0, 0, 0, 0.25)",
-        }}
-      >
-        hello
-      </div>
+      <Prompt>
+        <Prompt.Window>
+          <Prompt.Top>
+            <h2>
+              There are <span>unsaved</span> changes. Do you still wish to leave
+              this page?
+            </h2>
+          </Prompt.Top>
+          <Prompt.Bottom>
+            <ActionButton
+              color="#FAFCFA"
+              onClick={handleOK}
+              background="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%), #284b63;"
+              disabled={false}
+            >
+              Yes
+            </ActionButton>
+            <ActionButton.Text
+              color="#284B63"
+              hoverColor="#AFD5AA"
+              onClick={handleCancel}
+              disabled={false}
+            >
+              No
+            </ActionButton.Text>
+          </Prompt.Bottom>
+        </Prompt.Window>
+      </Prompt>
       //   <Modal
       //     title={title}
       //     visible={showPrompt}
