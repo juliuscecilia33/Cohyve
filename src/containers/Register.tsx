@@ -68,9 +68,13 @@ export function RegisterContainer() {
           profileURL: "",
           bannerURL: "",
           description: "",
+          username:
+            user.displayName.replace(/\s+/g, "").toLowerCase() + user.uid,
           // send display name to name column
         };
 
+        // since we're already making this check in app.tsx, we can get
+        // rid of this axios call and pass in the props response from app?
         axios
           .get("http://localhost:5000/auth/userexists/" + user.uid)
           .then((response: any) => {
@@ -151,6 +155,7 @@ export function RegisterContainer() {
           profileURL: "",
           bannerURL: "",
           description: "",
+          username: name.replace(/\s+/g, "").toLowerCase() + user.uid,
           // send display name to name column
         };
 

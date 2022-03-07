@@ -1,13 +1,14 @@
 CREATE DATABASE cohyve;
 
 CREATE TABLE users(
-  firebase_user_id VARCHAR NOT NULL,
+  firebase_user_id VARCHAR UNIQUE NOT NULL,
   school VARCHAR(255),
   school_id INTEGER,
   profileURL VARCHAR,
   bannerURL VARCHAR,
   description VARCHAR,
   name VARCHAR NOT NULL,
+  username VARCHAR UNIQUE NOT NULL,
   PRIMARY KEY (firebase_user_id)
 );
 

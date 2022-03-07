@@ -26,6 +26,7 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [firebaseUser, setFirebaseUser] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
+  const [accountComplete, setAccountComplete] = useState(false);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -38,8 +39,26 @@ function App() {
           .then((response: any) => {
             const uid = user.uid;
             setFirebaseUser(user);
-            setUserInfo(response.data[0]);
             setIsAuthenticated(true);
+
+            axios
+              .get("http://localhost:5000/auth/userexists/" + user.uid)
+              .then((response: any) => {
+                console.log("response of user exists: ", response);
+
+                if (response.data === false) {
+                  setAccountComplete(false);
+                } else {
+                  setAccountComplete(true);
+                }
+
+                console.log("Account is Complete: ", accountComplete);
+              })
+              .catch((error) => {
+                console.error("There was an error!", error);
+              });
+
+            setUserInfo(response.data[0]);
             // console.log(response.data[0]);
           })
           .catch((error) => {
