@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { User, Hero, CreateClub, ActionButton } from "../components";
 import { ClubBlockV2Container, SchoolContainer } from "../containers";
 import { useParams } from "react-router-dom";
@@ -6,6 +6,8 @@ import { useParams } from "react-router-dom";
 import Banner from "../images/BannerTest.jpeg";
 import Profile from "../images/Profile.jpeg";
 import UW from "../components/Images/UW.jpg";
+import axios from "axios";
+import { profile } from "console";
 
 interface ParamTypes {
   username: string;
@@ -13,7 +15,37 @@ interface ParamTypes {
 }
 
 export function UserContainer() {
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [school, setSchool] = useState("");
+  const [profileUrl, setProfileUrl] = useState(
+    "https://firebasestorage.googleapis.com/v0/b/cohyve.appspot.com/o/Placeholder.png?alt=media&token=83d8109a-c0ac-4cba-bd95-247ad79857da"
+  );
+  const [bannerUrl, setBannerUrl] = useState(
+    "https://firebasestorage.googleapis.com/v0/b/cohyve.appspot.com/o/BannerPlaceholder.png?alt=media&token=c503d5fc-736a-42da-9504-5dfb95cd83ef"
+  );
+
   let { username, useruid }: ParamTypes = useParams();
+
+  useEffect(() => {
+    if (useruid) {
+      axios
+        .get("http://localhost:5000/auth/userinformation/" + useruid)
+        .then((response: any) => {
+          console.log("User useEffect: ", response.data[0]);
+          let responseData = response.data[0];
+
+          setName(responseData.name);
+          setDescription(responseData.description);
+          setSchool(responseData.school);
+          setProfileUrl(responseData.profileurl);
+          setBannerUrl(responseData.bannerurl);
+        })
+        .catch((error) => {
+          console.error("There was an error!", error);
+        });
+    }
+  }, [useruid]);
 
   console.log("username: ", username);
   console.log("useruid: ", useruid);
@@ -61,18 +93,15 @@ export function UserContainer() {
     <>
       <Hero.User>
         <User.BannerSrc
-          editBanner={true} // set this to isAuthenticated?
-          src="https://firebasestorage.googleapis.com/v0/b/cohyve.appspot.com/o/BannerPlaceholder.png?alt=media&token=c503d5fc-736a-42da-9504-5dfb95cd83ef"
+          editBanner={true} // you can set it to if useruid is equal to current authenticated user id?
+          src={bannerUrl}
         >
           <User.ProfileContainer>
-            <User.ProfileSrc
-              editProfile={true}
-              profileImageUrl="https://firebasestorage.googleapis.com/v0/b/cohyve.appspot.com/o/Placeholder.png?alt=media&token=83d8109a-c0ac-4cba-bd95-247ad79857da"
-            />
+            <User.ProfileSrc editProfile={true} profileImageUrl={profileUrl} />
             <User.ProfileInfo
-              name="Julius Cecilia"
-              description="Hard work beats talent, when talent doesn't work hard work beats"
-              school="University of Washington"
+              name={name}
+              description={description}
+              school={school}
             />
           </User.ProfileContainer>
         </User.BannerSrc>

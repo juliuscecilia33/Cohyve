@@ -113,13 +113,9 @@ function App() {
                 )
               }
             />
-            <Route
-              exact
-              path={ROUTES.USER}
-              render={(props) =>
-                !isAuthenticated ? <Redirect to={ROUTES.LOGIN} /> : <UserPage />
-              }
-            />
+            <Route exact path={ROUTES.USER}>
+              <UserPage />
+            </Route>
             <Route exact path={ROUTES.CREATE}>
               <CreateClubPage />
             </Route>
@@ -129,6 +125,17 @@ function App() {
             <Route exact path={ROUTES.EDITUSER}>
               <EditUserPage userInfo={userInfo} />
             </Route>
+            <Route
+              exact
+              path={ROUTES.EDITUSER}
+              render={(props) =>
+                !isAuthenticated ? (
+                  <Redirect to={ROUTES.LOGIN} />
+                ) : (
+                  <EditUserPage userInfo={userInfo} />
+                )
+              }
+            />
             <Route path={ROUTES.CUSTOMIZE}>
               <CustomizePage />
             </Route>
