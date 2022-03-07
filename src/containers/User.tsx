@@ -1,12 +1,23 @@
 import React, { useState } from "react";
 import { User, Hero, CreateClub, ActionButton } from "../components";
 import { ClubBlockV2Container, SchoolContainer } from "../containers";
+import { useParams } from "react-router-dom";
 
 import Banner from "../images/BannerTest.jpeg";
 import Profile from "../images/Profile.jpeg";
 import UW from "../components/Images/UW.jpg";
 
+interface ParamTypes {
+  username: string;
+  useruid: string;
+}
+
 export function UserContainer() {
+  let { username, useruid }: ParamTypes = useParams();
+
+  console.log("username: ", username);
+  console.log("useruid: ", useruid);
+
   const editProfile = () => {
     console.log("editing profile");
   };
