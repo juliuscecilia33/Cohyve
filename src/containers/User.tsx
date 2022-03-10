@@ -28,6 +28,7 @@ export function UserContainer({ userInfo }: DataProps) {
   const [bannerUrl, setBannerUrl] = useState(
     "https://firebasestorage.googleapis.com/v0/b/cohyve.appspot.com/o/BannerPlaceholder.png?alt=media&token=c503d5fc-736a-42da-9504-5dfb95cd83ef"
   );
+  const [usernameDB, setUsernameDB] = useState("");
 
   let { username }: ParamTypes = useParams();
 
@@ -47,8 +48,15 @@ export function UserContainer({ userInfo }: DataProps) {
           setName(responseData.name);
           setDescription(responseData.description);
           setSchool(responseData.school);
-          setProfileUrl(responseData.profileurl);
-          setBannerUrl(responseData.bannerurl);
+          setUsernameDB(responseData.username);
+
+          if (responseData.profileurl) {
+            setProfileUrl(responseData.profileurl);
+          }
+
+          if (responseData.bannerurl) {
+            setBannerUrl(responseData.bannerurl);
+          }
         })
         .catch((error) => {
           console.error("There was an error!", error);
