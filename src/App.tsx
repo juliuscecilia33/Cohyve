@@ -37,6 +37,8 @@ function App() {
         axios
           .get("http://localhost:5000/auth/userinformation/" + user.uid)
           .then((response: any) => {
+            console.log("axios request called");
+
             console.log("response of user exists: ", response);
 
             if (response.data.length === 0) {
@@ -44,14 +46,13 @@ function App() {
 
               setAccountComplete(false);
             } else {
+              setUserInfo(response.data[0]);
               setAccountComplete(true);
               const uid = user.uid;
               setFirebaseUser(user);
               setIsAuthenticated(true);
 
               console.log(response.data);
-
-              setUserInfo(response.data[0]);
             }
           })
           .catch((error) => {
@@ -113,7 +114,11 @@ function App() {
               exact
               path={ROUTES.USER}
               render={(props) =>
-                !isAuthenticated ? <Redirect to={ROUTES.LOGIN} /> : <UserPage />
+                !isAuthenticated ? (
+                  <Redirect to={ROUTES.LOGIN} />
+                ) : (
+                  <UserPage userInfo={userInfo} />
+                )
               }
             />
             <Route exact path={ROUTES.CREATE}>

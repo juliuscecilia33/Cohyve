@@ -78,6 +78,8 @@ export function RegisterContainer() {
         axios
           .get("http://localhost:5000/auth/userinformation/" + user.uid)
           .then((response: any) => {
+            console.log("axios request called");
+
             console.log("response of user exists: ", response);
 
             if (response.data.length === 0) {
@@ -85,6 +87,8 @@ export function RegisterContainer() {
               axios
                 .post("http://localhost:5000/auth/register/", appBody)
                 .then((response: any) => {
+                  console.log("axios request called");
+
                   console.log(response.data);
                   // setUser(response.data.rows[0]);
                   console.log("Successfully created user");
@@ -156,6 +160,8 @@ export function RegisterContainer() {
         axios
           .post("http://localhost:5000/auth/register/", appBody)
           .then((response: any) => {
+            console.log("axios request called");
+
             console.log(response.data);
             console.log("Successfully created user");
             history.push({

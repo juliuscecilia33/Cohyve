@@ -75,6 +75,8 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
         axios
           .get("http://localhost:5000/auth/userinformation/" + user.uid)
           .then((response: any) => {
+            console.log("axios request called");
+
             console.log("response of user exists: ", response);
 
             if (response.data.length === 0) {
@@ -82,6 +84,8 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
               axios
                 .post("http://localhost:5000/auth/register/", appBody)
                 .then((response: any) => {
+                  console.log("axios request called");
+
                   console.log(response.data);
                   // setUser(response.data.rows[0]);
                   console.log("Successfully created user");

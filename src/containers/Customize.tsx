@@ -66,6 +66,8 @@ export function CustomizeContainer() {
             }
           )
           .then((response: any) => {
+            console.log("axios request called");
+
             console.log(
               "Successfully edited club information with customization"
             );

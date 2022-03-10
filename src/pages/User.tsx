@@ -1,11 +1,15 @@
 import React from "react";
 import { NavbarContainer, FooterContainer, UserContainer } from "../containers";
 
-export default function UserPage() {
+interface DataProps {
+  userInfo: any;
+}
+
+export default function UserPage({ userInfo }: DataProps) {
   return (
     <>
       <NavbarContainer background="#F4FAF4" />
-      <UserContainer />
+      <UserContainer userInfo={userInfo} />
       <FooterContainer />
     </>
   );

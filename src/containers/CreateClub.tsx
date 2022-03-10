@@ -182,6 +182,8 @@ export function CreateClubContainer() {
             },
           })
           .then((response: any) => {
+            console.log("axios request called");
+
             console.log(response);
             console.log("Successfully created club");
 

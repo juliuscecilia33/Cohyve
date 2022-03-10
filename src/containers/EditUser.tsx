@@ -96,6 +96,8 @@ export function EditUserContainer({
             }
           )
           .then((response: any) => {
+            console.log("axios request called");
+
             console.log("Successfully edited user information");
 
             console.log(response.data);

@@ -14,7 +14,11 @@ interface ParamTypes {
   useruid: string;
 }
 
-export function UserContainer() {
+interface DataProps {
+  userInfo: any;
+}
+
+export function UserContainer({ userInfo }: DataProps) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [school, setSchool] = useState("");
@@ -25,13 +29,18 @@ export function UserContainer() {
     "https://firebasestorage.googleapis.com/v0/b/cohyve.appspot.com/o/BannerPlaceholder.png?alt=media&token=c503d5fc-736a-42da-9504-5dfb95cd83ef"
   );
 
-  let { username, useruid }: ParamTypes = useParams();
+  let { username }: ParamTypes = useParams();
 
   useEffect(() => {
-    if (useruid) {
+    if (userInfo.firebase_user_id) {
       axios
-        .get("http://localhost:5000/auth/userinformation/" + useruid)
+        .get(
+          "http://localhost:5000/auth/userinformation/" +
+            userInfo.firebase_user_id
+        )
         .then((response: any) => {
+          console.log("axios request called");
+
           console.log("User useEffect: ", response.data[0]);
           let responseData = response.data[0];
 
@@ -45,10 +54,10 @@ export function UserContainer() {
           console.error("There was an error!", error);
         });
     }
-  }, [useruid]);
+  }, [userInfo]);
 
   console.log("username: ", username);
-  console.log("useruid: ", useruid);
+  console.log("useruid: ", userInfo.firebase_user_id);
 
   const editProfile = () => {
     console.log("editing profile");
