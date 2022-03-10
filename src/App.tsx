@@ -39,7 +39,7 @@ function App() {
           .then((response: any) => {
             console.log("response of user exists: ", response);
 
-            if (response.data.rows.length === 0) {
+            if (response.data.length === 0) {
               console.log("User doesn't exist");
 
               setAccountComplete(false);
@@ -49,10 +49,10 @@ function App() {
               setFirebaseUser(user);
               setIsAuthenticated(true);
 
+              console.log(response.data);
+
               setUserInfo(response.data[0]);
             }
-
-            console.log("Account is Complete: ", accountComplete);
           })
           .catch((error) => {
             console.error("There was an error!", error);
@@ -75,6 +75,8 @@ function App() {
   }, []);
 
   console.log("isAuthenticated: ", isAuthenticated);
+  console.log("Account is Complete: ", accountComplete);
+  console.log("user info: ", userInfo);
 
   return (
     <>
@@ -90,16 +92,7 @@ function App() {
               path={ROUTES.LOGIN}
               render={(props) =>
                 isAuthenticated ? (
-                  <Redirect
-                    to={
-                      "/user/" +
-                      auth.currentUser.displayName
-                        .replace(/\s+/g, "-")
-                        .toLowerCase() +
-                      "/" +
-                      auth.currentUser.uid
-                    }
-                  />
+                  <Redirect to={"/" + userInfo.username} />
                 ) : (
                   <LoginPage setIsAuthenticated={setIsAuthenticated} />
                 )
@@ -110,32 +103,24 @@ function App() {
               path={ROUTES.REGISTER}
               render={(props) =>
                 isAuthenticated ? (
-                  <Redirect
-                    to={
-                      "/user/" +
-                      auth.currentUser.displayName
-                        .replace(/\s+/g, "-")
-                        .toLowerCase() +
-                      "/" +
-                      auth.currentUser.uid
-                    }
-                  />
+                  <Redirect to={"/" + userInfo.username} />
                 ) : (
                   <RegisterPage setIsAuthenticated={setIsAuthenticated} />
                 )
               }
             />
-            <Route exact path={ROUTES.USER}>
-              <UserPage />
-            </Route>
+            <Route
+              exact
+              path={ROUTES.USER}
+              render={(props) =>
+                !isAuthenticated ? <Redirect to={ROUTES.LOGIN} /> : <UserPage />
+              }
+            />
             <Route exact path={ROUTES.CREATE}>
               <CreateClubPage />
             </Route>
             <Route exact path={ROUTES.CLUBS}>
               <ClubsPage />
-            </Route>
-            <Route exact path={ROUTES.EDITUSER}>
-              <EditUserPage userInfo={userInfo} />
             </Route>
             <Route
               exact

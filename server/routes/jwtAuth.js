@@ -16,11 +16,20 @@ router.post("/register", async (req, res) => {
       bannerURL,
       description,
       name,
+      username,
     } = req.body;
 
     let newUser = await pool.query(
-      "INSERT INTO users (firebase_user_id, school, profileURL, bannerURL, description, name) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
-      [firebase_user_id, school, profileURL, bannerURL, description, name]
+      "INSERT INTO users (firebase_user_id, school, profileURL, bannerURL, description, name, username) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *",
+      [
+        firebase_user_id,
+        school,
+        profileURL,
+        bannerURL,
+        description,
+        name,
+        username,
+      ]
     );
 
     return res.json(newUser);
@@ -112,12 +121,28 @@ router.get("/userexists/:uid", async (req, res) => {
 
 router.put("/edituser/:uid", authorize, async (req, res) => {
   try {
-    const { school, profileURL, bannerURL, description, name, school_id } =
-      req.body;
+    const {
+      school,
+      profileURL,
+      bannerURL,
+      description,
+      name,
+      school_id,
+      username,
+    } = req.body;
 
     const updateUserInfo = await pool.query(
-      "UPDATE users SET school = $2, profileURL = $3, bannerURL = $4, description = $5, name = $6, school_id = $7 WHERE firebase_user_id = $1 RETURNING *",
-      [req.userId, school, profileURL, bannerURL, description, name, school_id]
+      "UPDATE users SET school = $2, profileURL = $3, bannerURL = $4, description = $5, name = $6, school_id = $7, username = $8 WHERE firebase_user_id = $1 RETURNING *",
+      [
+        req.userId,
+        school,
+        profileURL,
+        bannerURL,
+        description,
+        name,
+        school_id,
+        username,
+      ]
     );
 
     res.json(updateUserInfo);

@@ -80,7 +80,7 @@ export function RegisterContainer() {
           .then((response: any) => {
             console.log("response of user exists: ", response);
 
-            if (response.data.rows.length === 0) {
+            if (response.data.length === 0) {
               console.log("User doesn't exist");
               axios
                 .post("http://localhost:5000/auth/register/", appBody)

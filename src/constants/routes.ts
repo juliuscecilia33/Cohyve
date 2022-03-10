@@ -7,3 +7,4 @@ export const CREATE = "/create";
 export const CLUBS = "/clubs";
 export const SEARCH = "/search";
 export const CUSTOMIZE = "/:clubName/:clubid/customize";
+export const CLUB = "/clubs/:clubName";

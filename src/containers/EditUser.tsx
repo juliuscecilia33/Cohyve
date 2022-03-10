@@ -428,13 +428,13 @@ export function EditUserContainer({
             title="Username*"
             type="text"
             placeholder="Enter a username"
-            value={name}
+            value={username}
             onChange={(e: any) => {
               setShowPrompt(true);
               setUsername(e.target.value);
             }}
             required={true}
-            maxLength={36}
+            maxLength={50}
             showMax={true}
           />
         </CreateClub.Inputs>
