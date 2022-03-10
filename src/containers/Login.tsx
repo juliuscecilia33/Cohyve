@@ -48,6 +48,16 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
         const user = result.user;
         console.log("user: ", user);
 
+        // const appBody = {
+        //   firebase_user_id: user.uid,
+        //   school: "",
+        //   profileURL: "",
+        //   bannerURL: "",
+        //   description: "",
+        // };
+
+        // do get request?
+
         const appBody = {
           name: user.displayName,
           firebase_user_id: user.uid,
@@ -55,30 +65,31 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
           profileURL: "",
           bannerURL: "",
           description: "",
+          username:
+            user.displayName.replace(/\s+/g, "").toLowerCase() + user.uid,
           // send display name to name column
         };
 
+        // since we're already making this check in app.tsx, we can get
+        // rid of this axios call and pass in the props response from app?
         axios
-          .get("http://localhost:5000/auth/userexists/" + user.uid)
+          .get("http://localhost:5000/auth/userinformation/" + user.uid)
           .then((response: any) => {
             console.log("response of user exists: ", response);
 
-            if (response.data === false) {
+            if (response.data.rows.length === 0) {
+              console.log("User doesn't exist");
               axios
                 .post("http://localhost:5000/auth/register/", appBody)
                 .then((response: any) => {
-                  console.log("response data: ", response.data.rows[0]);
+                  console.log(response.data);
                   // setUser(response.data.rows[0]);
                   console.log("Successfully created user");
                   history.push({
                     pathname:
-                      "/user/edit/" +
-                      user.displayName.replace(/\s+/g, "-").toLowerCase() +
                       "/" +
-                      user.uid,
-                    state: {
-                      userData: response.data,
-                    },
+                      user.displayName.replace(/\s+/g, "-").toLowerCase() +
+                      "/edit",
                   });
                 })
                 .catch((error) => {
@@ -86,12 +97,9 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
                   console.error("There was an error!", error);
                 });
             } else {
+              console.log("user exists");
               history.push({
-                pathname:
-                  "/user/" +
-                  user.displayName.replace(/\s+/g, "-").toLowerCase() +
-                  "/" +
-                  user.uid,
+                pathname: "/" + response.data.rows[0].username,
               });
             }
           })
@@ -101,14 +109,10 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
           });
       })
       .catch((error) => {
-        console.log("login page error: ", error);
         // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log("error message: ", errorMessage);
-
-        // do something with error that says email already exists if you logged in with google, but are now trying to log in with that same email through regular email/password way
-
+        console.log(error);
         // The email of the user's account used.
         const email = error.email;
         console.log("error email: ", email);

@@ -76,11 +76,12 @@ export function RegisterContainer() {
         // since we're already making this check in app.tsx, we can get
         // rid of this axios call and pass in the props response from app?
         axios
-          .get("http://localhost:5000/auth/userexists/" + user.uid)
+          .get("http://localhost:5000/auth/userinformation/" + user.uid)
           .then((response: any) => {
             console.log("response of user exists: ", response);
 
-            if (response.data === false) {
+            if (response.data.rows.length === 0) {
+              console.log("User doesn't exist");
               axios
                 .post("http://localhost:5000/auth/register/", appBody)
                 .then((response: any) => {
@@ -89,13 +90,9 @@ export function RegisterContainer() {
                   console.log("Successfully created user");
                   history.push({
                     pathname:
-                      "/user/edit/" +
-                      user.displayName.replace(/\s+/g, "-").toLowerCase() +
                       "/" +
-                      user.uid,
-                    state: {
-                      userData: response.data,
-                    },
+                      user.displayName.replace(/\s+/g, "-").toLowerCase() +
+                      "/edit",
                   });
                 })
                 .catch((error) => {
@@ -103,12 +100,9 @@ export function RegisterContainer() {
                   console.error("There was an error!", error);
                 });
             } else {
+              console.log("user exists");
               history.push({
-                pathname:
-                  "/user/" +
-                  user.displayName.replace(/\s+/g, "-").toLowerCase() +
-                  "/" +
-                  user.uid,
+                pathname: "/" + response.data.rows[0].username,
               });
             }
           })
@@ -145,7 +139,7 @@ export function RegisterContainer() {
         console.log(user);
 
         updateProfile(auth.currentUser, {
-          displayName: name,
+          displayName: name.replace(/\s+/g, "").toLowerCase() + user.uid,
         });
 
         const appBody = {
@@ -165,14 +159,8 @@ export function RegisterContainer() {
             console.log(response.data);
             console.log("Successfully created user");
             history.push({
-              pathname:
-                "/user/edit/" +
-                user.displayName.replace(/\s+/g, "-").toLowerCase() +
-                "/" +
-                user.uid,
-              state: {
-                userData: response.data,
-              },
+              // maybe change this to response.data.username
+              pathname: response.data.username.toLowerCase() + "/edit",
             });
           })
           .catch((error) => {
@@ -184,7 +172,7 @@ export function RegisterContainer() {
         const errorMessage = error.message;
 
         if (errorMessage === "Firebase: Error (auth/email-already-in-use).") {
-          console.log("correct");
+          console.log("got error message saying email aleady in use");
         }
         console.log("error message: ", errorMessage);
       });

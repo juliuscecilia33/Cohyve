@@ -34,6 +34,7 @@ export function EditUserContainer({
       setWordEntered(userInfo.school);
       setDescription(userInfo.description);
       setSchoolId(userInfo.school_id);
+      setUsername(userInfo.username);
 
       if (userInfo.profileurl) {
         setPreviewProfile(userInfo.profileurl);
@@ -65,6 +66,7 @@ export function EditUserContainer({
   const [books, updateBooks] = useState([]);
   const [unchangedProfileUrl, setUnchangedProfileUrl] = useState("");
   const [unchangedBannerUrl, setUnchangedBannerUrl] = useState("");
+  const [username, setUsername] = useState("");
 
   let history = useHistory();
 
@@ -99,11 +101,7 @@ export function EditUserContainer({
             console.log(response.data);
             // Direct to user page
             history.push({
-              pathname:
-                "/user/" +
-                response.data.rows[0].name.replace(/\s+/g, "-").toLowerCase() +
-                "/" +
-                response.data.rows[0].firebase_user_id,
+              pathname: "/" + response.data.rows[0].username,
             });
             // set user context
           })
@@ -243,6 +241,7 @@ export function EditUserContainer({
                     profileURL: profileURL,
                     bannerURL: bannerURL,
                     school_id: schoolId,
+                    username: username,
                   };
 
                   sendToBackend(appBody);
@@ -287,6 +286,7 @@ export function EditUserContainer({
               profileURL: profileURL,
               bannerURl: unchangedBannerUrl,
               school_id: schoolId,
+              username: username,
             };
 
             sendToBackend(appBody);
@@ -328,6 +328,7 @@ export function EditUserContainer({
               profileURL: unchangedProfileUrl,
               bannerURL: bannerURL,
               school_id: schoolId,
+              username: username,
             };
 
             sendToBackend(appBody);
@@ -342,6 +343,7 @@ export function EditUserContainer({
         profileURL: unchangedProfileUrl,
         bannerURL: unchangedBannerUrl,
         school_id: schoolId,
+        username: username,
       };
 
       sendToBackend(appBody);
@@ -419,6 +421,22 @@ export function EditUserContainer({
               </CreateClub.SearchItems>
             )}
           </CreateClub.SearchContainer>
+        </CreateClub.Inputs>
+        <CreateClub.Inputs>
+          <CreateClub.HalfInput
+            name="username"
+            title="Username*"
+            type="text"
+            placeholder="Enter a username"
+            value={name}
+            onChange={(e: any) => {
+              setShowPrompt(true);
+              setUsername(e.target.value);
+            }}
+            required={true}
+            maxLength={36}
+            showMax={true}
+          />
         </CreateClub.Inputs>
         <CreateClub.Inputs>
           <CreateClub.LargeInput

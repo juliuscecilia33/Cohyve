@@ -37,29 +37,22 @@ function App() {
         axios
           .get("http://localhost:5000/auth/userinformation/" + user.uid)
           .then((response: any) => {
-            const uid = user.uid;
-            setFirebaseUser(user);
-            setIsAuthenticated(true);
+            console.log("response of user exists: ", response);
 
-            axios
-              .get("http://localhost:5000/auth/userexists/" + user.uid)
-              .then((response: any) => {
-                console.log("response of user exists: ", response);
+            if (response.data.rows.length === 0) {
+              console.log("User doesn't exist");
 
-                if (response.data === false) {
-                  setAccountComplete(false);
-                } else {
-                  setAccountComplete(true);
-                }
+              setAccountComplete(false);
+            } else {
+              setAccountComplete(true);
+              const uid = user.uid;
+              setFirebaseUser(user);
+              setIsAuthenticated(true);
 
-                console.log("Account is Complete: ", accountComplete);
-              })
-              .catch((error) => {
-                console.error("There was an error!", error);
-              });
+              setUserInfo(response.data[0]);
+            }
 
-            setUserInfo(response.data[0]);
-            // console.log(response.data[0]);
+            console.log("Account is Complete: ", accountComplete);
           })
           .catch((error) => {
             console.error("There was an error!", error);

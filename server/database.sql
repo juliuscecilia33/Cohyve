@@ -12,7 +12,7 @@ CREATE TABLE users(
   PRIMARY KEY (firebase_user_id)
 );
 
--- When we make school check, we'll check both the name and 5
+-- When we make school check, we'll check both the name and id?
 -- Checklist add school column and maybe foreign key to postgresql db
 
 CREATE TABLE clubs(
