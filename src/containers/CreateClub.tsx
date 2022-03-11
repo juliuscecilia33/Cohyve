@@ -703,7 +703,7 @@ export function CreateClubContainer() {
             title="Twitter"
             type="text"
             placeholder="https://twitter.com"
-            pattern="https://.*"
+            pattern="https?://.*"
             value={twitter}
             onChange={(e: any) => setTwitter(e.target.value)}
             required={false}

@@ -99,6 +99,7 @@ function App() {
                 )
               }
             />
+
             <Route
               exact
               path={ROUTES.REGISTER}
@@ -110,6 +111,15 @@ function App() {
                 )
               }
             />
+
+            <Route exact path={ROUTES.CREATE}>
+              <CreateClubPage />
+            </Route>
+
+            <Route exact path={ROUTES.CLUBS}>
+              <ClubsPage />
+            </Route>
+
             <Route
               exact
               path={ROUTES.USER}
@@ -121,12 +131,7 @@ function App() {
                 )
               }
             />
-            <Route exact path={ROUTES.CREATE}>
-              <CreateClubPage />
-            </Route>
-            <Route exact path={ROUTES.CLUBS}>
-              <ClubsPage />
-            </Route>
+
             <Route
               exact
               path={ROUTES.EDITUSER}
@@ -138,7 +143,8 @@ function App() {
                 )
               }
             />
-            <Route path={ROUTES.CUSTOMIZE}>
+
+            <Route exact path={ROUTES.CUSTOMIZE}>
               <CustomizePage />
             </Route>
           </Switch>
