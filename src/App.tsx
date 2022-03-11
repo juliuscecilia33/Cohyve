@@ -112,9 +112,17 @@ function App() {
               }
             />
 
-            <Route exact path={ROUTES.CREATE}>
-              <CreateClubPage />
-            </Route>
+            <Route
+              exact
+              path={ROUTES.CREATE}
+              render={(props) =>
+                !isAuthenticated ? (
+                  <Redirect to={ROUTES.LOGIN} />
+                ) : (
+                  <CreateClubPage />
+                )
+              }
+            />
 
             <Route exact path={ROUTES.CLUBS}>
               <ClubsPage />
