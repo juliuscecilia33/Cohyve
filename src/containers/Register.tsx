@@ -69,7 +69,8 @@ export function RegisterContainer() {
           bannerURL: "",
           description: "",
           username:
-            user.displayName.replace(/\s+/g, "").toLowerCase() + user.uid,
+            user.displayName.replace(/\s+/g, "").toLowerCase().slice(0, 6) +
+            user.uid,
           // send display name to name column
         };
 
@@ -95,7 +96,11 @@ export function RegisterContainer() {
                   history.push({
                     pathname:
                       "/" +
-                      user.displayName.replace(/\s+/g, "-").toLowerCase() +
+                      user.displayName
+                        .replace(/\s+/g, "")
+                        .toLowerCase()
+                        .slice(0, 6) +
+                      user.uid +
                       "/edit",
                   });
                 })
@@ -153,7 +158,8 @@ export function RegisterContainer() {
           profileURL: "",
           bannerURL: "",
           description: "",
-          username: name.replace(/\s+/g, "").toLowerCase() + user.uid,
+          username:
+            name.replace(/\s+/g, "").toLowerCase().slice(0, 6) + user.uid,
           // send display name to name column
         };
 

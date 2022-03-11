@@ -48,16 +48,6 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
         const user = result.user;
         console.log("user: ", user);
 
-        // const appBody = {
-        //   firebase_user_id: user.uid,
-        //   school: "",
-        //   profileURL: "",
-        //   bannerURL: "",
-        //   description: "",
-        // };
-
-        // do get request?
-
         const appBody = {
           name: user.displayName,
           firebase_user_id: user.uid,
@@ -66,7 +56,8 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
           bannerURL: "",
           description: "",
           username:
-            user.displayName.replace(/\s+/g, "").toLowerCase() + user.uid,
+            user.displayName.replace(/\s+/g, "").toLowerCase().slice(0, 6) +
+            user.uid,
           // send display name to name column
         };
 
@@ -92,7 +83,11 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
                   history.push({
                     pathname:
                       "/" +
-                      user.displayName.replace(/\s+/g, "-").toLowerCase() +
+                      user.displayName
+                        .replace(/\s+/g, "")
+                        .toLowerCase()
+                        .slice(0, 6) +
+                      user.uid +
                       "/edit",
                   });
                 })
@@ -135,13 +130,19 @@ export function LoginContainer({ setIsAuthenticated }: DataProps) {
         const user = userCredential.user;
         console.log(user);
 
-        history.push({
-          pathname:
-            "/user/" +
-            user.displayName.replace(/\s+/g, "-").toLowerCase() +
-            "/" +
-            user.uid,
-        });
+        axios
+          .get("http://localhost:5000/auth/userinformation/" + user.uid)
+          .then((response: any) => {
+            console.log("axios request called");
+            history.push({
+              pathname: "/" + response.data.rows[0].username,
+            });
+          })
+          .catch((error) => {
+            setUserExistsError(error.message);
+            console.error("There was an error!", error);
+          });
+
         // ...
       })
       .catch((error) => {
