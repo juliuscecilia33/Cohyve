@@ -126,6 +126,17 @@ export const ProfileInfo = styled.div`
     }
   }
 
+  h2 {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    width: 85%;
+    // line-height: 23px;
+    color: #c4c4c4;
+    margin-bottom: 0.3rem;
+  }
+
   p {
     font-family: Poppins;
     font-style: normal;
@@ -133,7 +144,7 @@ export const ProfileInfo = styled.div`
     font-size: 16px;
     width: 85%;
     line-height: 23px;
-    color: #c4c4c4;
+    color: #aeaeae;
   }
 `;
 

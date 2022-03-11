@@ -38,6 +38,7 @@ type Props = {
   editProfile?: boolean;
   editBanner?: boolean;
   onClick?: any;
+  username?: string;
 };
 
 type ButtonProps = {
@@ -67,6 +68,7 @@ User.ProfileContainer = function UserProfileContainer({
 };
 
 User.ProfileInfo = function UserProfileInfo({
+  username,
   school,
   name,
   description,
@@ -81,7 +83,7 @@ User.ProfileInfo = function UserProfileInfo({
           <p>{school}</p>
         </button>
       </div>
-
+      <h2>{username}</h2>
       <p>{description}</p>
     </ProfileInfo>
   );

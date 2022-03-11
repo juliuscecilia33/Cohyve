@@ -117,6 +117,7 @@ export function UserContainer({ userInfo }: DataProps) {
             <User.ProfileSrc editProfile={true} profileImageUrl={profileUrl} />
             <User.ProfileInfo
               name={name}
+              username={usernameDB}
               description={description}
               school={school}
             />
