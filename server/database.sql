@@ -54,6 +54,7 @@ CREATE TABLE members(
   firebase_user_id VARCHAR NOT NULL,
   role VARCHAR(255),
   pending BOOLEAN NOT NULL,
+  priority INTEGER DEFAULT 4, 
   FOREIGN KEY (club_id) REFERENCES clubs(club_id),
   FOREIGN KEY (firebase_user_id) REFERENCES users(firebase_user_id),
   PRIMARY KEY (club_id, firebase_user_id)
