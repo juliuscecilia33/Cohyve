@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Container, BannerPlaceholder, BannerSrc } from "./styles/clubHeroOne";
+import { Container, BannerSrc, InfoContainer } from "./styles/clubHeroOne";
 
 type Props = {
   children?: React.ReactNode;
@@ -18,22 +18,6 @@ export default function ClubHeroOne({ children, ...restProps }: Props) {
   return <Container {...restProps}>{children}</Container>;
 }
 
-ClubHeroOne.BannerPlaceholder = function ClubHeroOneBannerPlaceholder({
-  imageUrl,
-  children,
-  ...restProps
-}: ImageProps) {
-  if (imageUrl) {
-    return (
-      <ClubHeroOne.BannerSrc imageSource={imageUrl}>
-        {children}
-      </ClubHeroOne.BannerSrc>
-    );
-  } else {
-    return <BannerPlaceholder {...restProps}>{children}</BannerPlaceholder>;
-  }
-};
-
 ClubHeroOne.BannerSrc = function ClubHeroOneBannerSrc({
   imageSource,
   children,
@@ -45,4 +29,11 @@ ClubHeroOne.BannerSrc = function ClubHeroOneBannerSrc({
       {children}
     </BannerSrc>
   );
+};
+
+ClubHeroOne.InfoContainer = function ClubHeroOneInfoContainer({
+  children,
+  ...restProps
+}: Props) {
+  return <InfoContainer {...restProps}>{children}</InfoContainer>;
 };
