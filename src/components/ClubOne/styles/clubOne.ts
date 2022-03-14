@@ -106,3 +106,10 @@ export const ViewAll = styled.h3`
   font-size: 14px;
   color: #b4b8ab;
 `;
+
+export const Posts = styled.div`
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;

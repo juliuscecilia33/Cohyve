@@ -4,6 +4,7 @@ import {
   Container,
   MembersAndPartners,
   Members,
+  Posts,
   Partners,
   Title,
   Item,
@@ -56,6 +57,10 @@ ClubOne.Item = function ClubOneItem({
 
 ClubOne.Partners = function ClubOnePartners({ children, ...restProps }: Props) {
   return <Partners {...restProps}>{children}</Partners>;
+};
+
+ClubOne.Posts = function ClubOnePosts({ children, ...restProps }: Props) {
+  return <Posts {...restProps}>{children}</Posts>;
 };
 
 ClubOne.Title = function ClubOneTitle({ children, ...restProps }: Props) {

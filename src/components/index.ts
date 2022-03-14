@@ -14,3 +14,4 @@ export { default as Customize } from "./Customize";
 export { default as User } from "./User";
 export { default as Prompt } from "./Prompt";
 export { default as ClubHeroOne } from "./ClubHeroOne";
+export { default as ClubOne } from "./ClubOne";
