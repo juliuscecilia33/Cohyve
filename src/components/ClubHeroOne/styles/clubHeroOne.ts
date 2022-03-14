@@ -1,14 +1,5 @@
 import styled from "styled-components/macro";
 
-interface ActiveProps {
-  imageUrl?: string;
-  profileImageUrl?: string;
-  showItems?: boolean;
-  passiveBg?: string;
-  activeBg?: string;
-  uploaded?: boolean;
-}
-
 export const Container = styled.div`
   width: 100%;
   display: flex;

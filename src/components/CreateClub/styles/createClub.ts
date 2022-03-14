@@ -127,7 +127,6 @@ export const Name = styled.div`
 
   h1 {
     font-family: Outfit;
-
     font-style: normal;
     font-weight: bold;
     font-size: 30px;
