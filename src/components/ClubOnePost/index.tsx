@@ -41,7 +41,7 @@ export default function ClubOnePost({
   );
 }
 
-ClubOnePost.PhotosPostContainer = function ClubOnePhotosPostContainer({
+ClubOnePost.PhotosPostContainer = function ClubOnePostPhotosPostContainer({
   linkTo,
   postImages,
   postType,
@@ -62,7 +62,7 @@ ClubOnePost.PhotosPostContainer = function ClubOnePhotosPostContainer({
   );
 };
 
-ClubOnePost.PhotosContainer = function ClubOnePhotosContainer({
+ClubOnePost.PhotosContainer = function ClubOnePostPhotosContainer({
   linkTo,
   postImages,
   children,
@@ -76,7 +76,7 @@ ClubOnePost.PhotosContainer = function ClubOnePhotosContainer({
   );
 };
 
-ClubOnePost.MoreImagesIcon = function ClubOneMoreImagesIcon({
+ClubOnePost.MoreImagesIcon = function ClubOnePostMoreImagesIcon({
   linkTo,
   children,
   ...restProps
@@ -90,7 +90,7 @@ ClubOnePost.MoreImagesIcon = function ClubOneMoreImagesIcon({
   );
 };
 
-ClubOnePost.NoPhotosPostContainer = function ClubOneNoPhotosPostContainer({
+ClubOnePost.NoPhotosPostContainer = function ClubOnePostNoPhotosPostContainer({
   postType,
   children,
   ...restProps
@@ -102,7 +102,7 @@ ClubOnePost.NoPhotosPostContainer = function ClubOneNoPhotosPostContainer({
   );
 };
 
-ClubOnePost.PostContainer = function ClubOnePostContainer({
+ClubOnePost.PostContainer = function ClubOnePostPostContainer({
   width,
   postType,
   children,
@@ -124,5 +124,17 @@ ClubOnePost.PostContainer = function ClubOnePostContainer({
         <SponsorPostContainer />
       ) : null}
     </PostContainer>
+  );
+};
+
+ClubOnePost.TopPostLayer = function ClubOnePostTopPostLayerContainer({
+  postType,
+  children,
+  ...restProps
+}: Props) {
+  return (
+    <TopPostLayer postType={postType} {...restProps}>
+      {children}
+    </TopPostLayer>
   );
 };
