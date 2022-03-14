@@ -1,19 +1,26 @@
 import React from "react";
 
+import { Link as ReactRouterLink } from "react-router-dom";
+
 import {
   Container,
   PhotosPostContainer,
   NoPhotosPostContainer,
   PostContainer,
+  PhotosContainer,
+  MoreImagesIcon,
 } from "./styles/clubOnePost";
 
 type Props = {
   children?: React.ReactNode;
   postImages?: any;
   postType?: string;
+  linkTo?: string;
+  width?: string;
 };
 
 export default function ClubOnePost({
+  linkTo,
   postType,
   postImages,
   children,
@@ -22,15 +29,21 @@ export default function ClubOnePost({
   return (
     <Container {...restProps}>
       {postImages ? (
-        <PhotosPostContainer postType={postType} />
+        <PhotosPostContainer
+          linkTo={linkTo}
+          postImages={postImages}
+          postType={postType}
+        />
       ) : (
-        <NoPhotosPostContainer postType={postType} />
+        <NoPhotosPostContainer linkTo={linkTo} postType={postType} />
       )}
     </Container>
   );
 }
 
 ClubOnePost.PhotosPostContainer = function ClubOnePhotosPostContainer({
+  linkTo,
+  postImages,
   postType,
   children,
   ...restProps
@@ -38,18 +51,43 @@ ClubOnePost.PhotosPostContainer = function ClubOnePhotosPostContainer({
   return (
     <PhotosPostContainer {...restProps}>
       <>
-        <PhotosContainer />
-        <PostContainer />
+        <ReactRouterLink to={linkTo}>
+          <PhotosContainer linkTo={linkTo} postImages={postImages} />
+        </ReactRouterLink>
+        <ReactRouterLink to={linkTo}>
+          <PostContainer width="80%" />
+        </ReactRouterLink>
       </>
     </PhotosPostContainer>
   );
 };
 
 ClubOnePost.PhotosContainer = function ClubOnePhotosContainer({
+  linkTo,
+  postImages,
   children,
   ...restProps
 }: Props) {
-  return <PhotosContainer {...restProps}>{children}</PhotosContainer>;
+  return (
+    <PhotosContainer {...restProps}>
+      <img src={postImages[0]} alt="Profile" />
+      {postImages.length > 1 && <ClubOnePost.MoreImagesIcon linkTo={linkTo} />}
+    </PhotosContainer>
+  );
+};
+
+ClubOnePost.MoreImagesIcon = function ClubOneMoreImagesIcon({
+  linkTo,
+  children,
+  ...restProps
+}: Props) {
+  return (
+    <ReactRouterLink to={linkTo}>
+      <MoreImagesIcon {...restProps}>
+        <i className="fa-solid fa-images"></i>
+      </MoreImagesIcon>
+    </ReactRouterLink>
+  );
 };
 
 ClubOnePost.NoPhotosPostContainer = function ClubOneNoPhotosPostContainer({
@@ -65,12 +103,13 @@ ClubOnePost.NoPhotosPostContainer = function ClubOneNoPhotosPostContainer({
 };
 
 ClubOnePost.PostContainer = function ClubOnePostContainer({
+  width,
   postType,
   children,
   ...restProps
 }: Props) {
   return (
-    <PostContainer {...restProps}>
+    <PostContainer width={width} {...restProps}>
       {postType === "partnerevent" ? (
         <PartnerEventPostContainer />
       ) : postType === "event" ? (
