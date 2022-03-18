@@ -11,6 +11,12 @@ import {
   PhotosContainer,
   MoreImagesIcon,
   TopPostLayer,
+  PartnerEventPostContainer,
+  EventPostContainer,
+  SponsorPostContainer,
+  AnnouncementPostContainer,
+  AboutPostContainer,
+  ShowcasePostContainer,
 } from "./styles/clubOnePost";
 
 type Props = {
@@ -149,20 +155,64 @@ ClubOnePost.PostContainer = function ClubOnePostPostContainer({
         postType={postType}
       />
       {postType === "Partner Event" ? (
-        <PartnerEventPostContainer />
+        <ClubOnePost.PartnerEventPostContainer />
       ) : postType === "Event" ? (
-        <EventPostContainer />
+        <ClubOnePost.EventPostContainer />
       ) : postType === "Announcement" ? (
-        <AnnouncementPostContainer />
+        <ClubOnePost.AnnouncementPostContainer />
       ) : postType === "Showcase" ? (
-        <ShowcasePostContainer />
+        <ClubOnePost.ShowcasePostContainer />
       ) : postType === "About" ? (
-        <AboutPostContainer />
+        <ClubOnePost.AboutPostContainer />
       ) : postType === "Sponsor" ? (
-        <SponsorPostContainer />
+        <ClubOnePost.SponsorPostContainer />
       ) : null}
     </PostContainer>
   );
+};
+
+ClubOnePost.PartnerEventPostContainer =
+  function ClubOnePostPartnerEventPostContainer({
+    children,
+    ...restProps
+  }: Props) {
+    return <PartnerEventPostContainer>{children}</PartnerEventPostContainer>;
+  };
+
+ClubOnePost.EventPostContainer = function ClubOnePostEventPostContainer({
+  children,
+  ...restProps
+}: Props) {
+  return <EventPostContainer>{children}</EventPostContainer>;
+};
+
+ClubOnePost.AnnouncementPostContainer =
+  function ClubOnePostAnnouncementPostContainer({
+    children,
+    ...restProps
+  }: Props) {
+    return <AnnouncementPostContainer>{children}</AnnouncementPostContainer>;
+  };
+
+ClubOnePost.ShowcasePostContainer = function ClubOnePostShowcasePostContainer({
+  children,
+  ...restProps
+}: Props) {
+  return <ShowcasePostContainer>{children}</ShowcasePostContainer>;
+};
+
+ClubOnePost.AboutPostContainer = function ClubOnePostAboutPostContainer({
+  children,
+  ...restProps
+}: Props) {
+  return <AboutPostContainer>{children}</AboutPostContainer>;
+};
+
+ClubOnePost.SponsorPostContainer = function ClubOnePostSponsorPostContainer({
+  children,
+  ...restProps
+}: Props) {
+  return <SponsorPostContainer>{children}</SponsorPostContainer>;
 };
 
 ClubOnePost.TopPostLayer = function ClubOnePostTopPostLayerContainer({
