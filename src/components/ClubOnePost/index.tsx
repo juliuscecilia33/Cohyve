@@ -42,7 +42,8 @@ export default function ClubOnePost({
 }: Props) {
   return (
     <Container {...restProps}>
-      {postImages ? (
+      {children}
+      {/* {postImages ? (
         <PhotosPostContainer
           linkTo={linkTo}
           postImages={postImages}
@@ -59,7 +60,7 @@ export default function ClubOnePost({
           clubProfile={clubProfile}
           userProfile={userProfile}
         />
-      )}
+      )} */}
     </Container>
   );
 }
@@ -77,7 +78,7 @@ ClubOnePost.PhotosPostContainer = function ClubOnePostPhotosPostContainer({
   return (
     <PhotosPostContainer {...restProps}>
       <>
-        <ReactRouterLink to={linkTo}>
+        {/* <ReactRouterLink to={linkTo}>
           <PhotosContainer linkTo={linkTo} postImages={postImages} />
         </ReactRouterLink>
         <ReactRouterLink to={linkTo}>
@@ -89,7 +90,8 @@ ClubOnePost.PhotosPostContainer = function ClubOnePostPhotosPostContainer({
             postType={postType}
             linkTo={linkTo}
           />
-        </ReactRouterLink>
+        </ReactRouterLink> */}
+        {children}
       </>
     </PhotosPostContainer>
   );
@@ -173,10 +175,17 @@ ClubOnePost.PostContainer = function ClubOnePostPostContainer({
 
 ClubOnePost.PartnerEventPostContainer =
   function ClubOnePostPartnerEventPostContainer({
+    text,
     children,
     ...restProps
   }: Props) {
-    return <PartnerEventPostContainer>{children}</PartnerEventPostContainer>;
+    return (
+      <PartnerEventPostContainer>
+        <div className="text">
+          <p>{text}</p>
+        </div>
+      </PartnerEventPostContainer>
+    );
   };
 
 ClubOnePost.EventPostContainer = function ClubOnePostEventPostContainer({
