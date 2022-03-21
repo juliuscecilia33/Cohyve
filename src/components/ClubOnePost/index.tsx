@@ -249,6 +249,9 @@ ClubOnePost.ShowcasePostContainer = function ClubOnePostShowcasePostContainer({
 ClubOnePost.AboutPostContainer = function ClubOnePostAboutPostContainer({
   twitterLink,
   emailLink,
+  instagramLink,
+  facebookLink,
+  otherLink,
   whatwedo,
   purpose,
   contact,
@@ -275,7 +278,28 @@ ClubOnePost.AboutPostContainer = function ClubOnePostAboutPostContainer({
         {twitterLink && (
           <ReactRouterLink to={twitterLink}>
             <button>
-              <i className="fa-solid fa-envelope-open-text"></i>
+              <i className="fa-brands fa-twitter"></i>
+            </button>
+          </ReactRouterLink>
+        )}
+        {instagramLink && (
+          <ReactRouterLink to={instagramLink}>
+            <button>
+              <i className="fa-brands fa-twitter"></i>
+            </button>
+          </ReactRouterLink>
+        )}
+        {facebookLink && (
+          <ReactRouterLink to={facebookLink}>
+            <button>
+              <i className="fa-brands fa-facebook"></i>
+            </button>
+          </ReactRouterLink>
+        )}
+        {otherLink && (
+          <ReactRouterLink to={otherLink}>
+            <button>
+              <i className="fa-solid fa-globe"></i>
             </button>
           </ReactRouterLink>
         )}
