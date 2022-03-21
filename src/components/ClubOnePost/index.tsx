@@ -2,6 +2,7 @@ import React from "react";
 
 import { Link as ReactRouterLink } from "react-router-dom";
 import { ActionButton } from "../../components";
+import { getRandomColor } from "../../getRandomColor";
 
 import {
   Container,
@@ -12,11 +13,11 @@ import {
   MoreImagesIcon,
   TopPostLayer,
   PartnerEventPostContainer,
-  EventPostContainer,
   SponsorPostContainer,
   AnnouncementPostContainer,
   AboutPostContainer,
   ShowcasePostContainer,
+  Partner,
 } from "./styles/clubOnePost";
 
 type Props = {
@@ -28,18 +29,28 @@ type Props = {
   onCommunity?: boolean;
   clubProfile?: any;
   userProfile?: any;
+  text?: string;
+  date?: string;
+  location?: string;
+  locationDetails?: string;
+  time?: string;
+  partners?: any;
+  position?: string;
+  posted?: string;
+  username?: string;
+  profilePic?: string;
+  user?: string;
+  background?: string;
+  whatwedo?: string;
+  purpose?: string;
+  contact?: string;
 };
 
-export default function ClubOnePost({
-  userProfile,
-  onCommunity,
-  linkTo,
-  postType,
-  postImages,
-  clubProfile,
-  children,
-  ...restProps
-}: Props) {
+function copyEmail(emailLink: string) {
+  console.log(emailLink);
+}
+
+export default function ClubOnePost({ children, ...restProps }: Props) {
   return (
     <Container {...restProps}>
       {children}
@@ -66,12 +77,6 @@ export default function ClubOnePost({
 }
 
 ClubOnePost.PhotosPostContainer = function ClubOnePostPhotosPostContainer({
-  userProfile,
-  clubProfile,
-  onCommunity,
-  linkTo,
-  postImages,
-  postType,
   children,
   ...restProps
 }: Props) {
@@ -126,18 +131,20 @@ ClubOnePost.MoreImagesIcon = function ClubOnePostMoreImagesIcon({
 };
 
 ClubOnePost.NoPhotosPostContainer = function ClubOnePostNoPhotosPostContainer({
-  postType,
   children,
   ...restProps
 }: Props) {
   return (
     <NoPhotosPostContainer {...restProps}>
-      <PostContainer width="100%" />
+      {children}
+      {/* <PostContainer width="100%" /> */}
     </NoPhotosPostContainer>
   );
 };
 
 ClubOnePost.PostContainer = function ClubOnePostPostContainer({
+  partners,
+  text,
   linkTo,
   userProfile,
   clubProfile,
@@ -155,76 +162,140 @@ ClubOnePost.PostContainer = function ClubOnePostPostContainer({
         clubProfile={clubProfile}
         onCommunity={onCommunity}
         postType={postType}
+        partners={partners}
       />
-      {postType === "Partner Event" ? (
-        <ClubOnePost.PartnerEventPostContainer />
+      {/* {postType === "Partner Event" ? (
+        <ClubOnePost.PartnerEventPostContainer linkTo={linkTo} text={text} date={date} location={location} />
       ) : postType === "Event" ? (
-        <ClubOnePost.EventPostContainer />
+        <ClubOnePost.PartnerEventPostContainer linkTo={linkTo} text={text} date={date} location={location} />
       ) : postType === "Announcement" ? (
-        <ClubOnePost.AnnouncementPostContainer />
+        <ClubOnePost.AnnouncementPostContainer linkTo={linkTo} text={text} />
       ) : postType === "Showcase" ? (
-        <ClubOnePost.ShowcasePostContainer />
+        <ClubOnePost.ShowcasePostContainer linkTo={linkTo} text={text} />
       ) : postType === "About" ? (
-        <ClubOnePost.AboutPostContainer />
+        <ClubOnePost.AboutPostContainer linkTo={linkTo} whatwedo={whatwedo} purpose={purpose} contact={contact} />
       ) : postType === "Sponsor" ? (
-        <ClubOnePost.SponsorPostContainer />
-      ) : null}
+        <ClubOnePost.SponsorPostContainer linkTo={linkTo} links={links} goal={goal} text={text} />
+      ) : null} */}
+      {children}
+      <div className="see_more">
+        <ReactRouterLink to={linkTo}>
+          <p>See More</p>
+        </ReactRouterLink>
+      </div>
     </PostContainer>
   );
 };
 
 ClubOnePost.PartnerEventPostContainer =
   function ClubOnePostPartnerEventPostContainer({
+    linkTo,
+    time,
+    date,
+    location,
+    locationDetails,
     text,
     children,
     ...restProps
   }: Props) {
     return (
-      <PartnerEventPostContainer>
+      <PartnerEventPostContainer {...restProps}>
         <div className="text">
           <p>{text}</p>
+        </div>
+        <div className="date_and_location">
+          <div className="date">
+            <i className="fa-solid fa-calendar-day"></i>
+            <div className="date_details">
+              <p>Meetup Time</p>
+              <h2>{date}</h2>
+              <h3>{time}</h3>
+            </div>
+          </div>
+          <div className="location">
+            <i className="fa-solid fa-compass"></i>
+            <div className="location_details">
+              <p>Meetup Location</p>
+              <h2>{location}</h2>
+              <h3>{locationDetails}</h3>
+            </div>
+          </div>
         </div>
       </PartnerEventPostContainer>
     );
   };
 
-ClubOnePost.EventPostContainer = function ClubOnePostEventPostContainer({
-  children,
-  ...restProps
-}: Props) {
-  return <EventPostContainer>{children}</EventPostContainer>;
-};
-
 ClubOnePost.AnnouncementPostContainer =
   function ClubOnePostAnnouncementPostContainer({
+    text,
     children,
     ...restProps
   }: Props) {
-    return <AnnouncementPostContainer>{children}</AnnouncementPostContainer>;
+    return (
+      <AnnouncementPostContainer {...restProps}>
+        {text}
+      </AnnouncementPostContainer>
+    );
   };
 
 ClubOnePost.ShowcasePostContainer = function ClubOnePostShowcasePostContainer({
+  text,
   children,
   ...restProps
 }: Props) {
-  return <ShowcasePostContainer>{children}</ShowcasePostContainer>;
+  return <ShowcasePostContainer {...restProps}>{text}</ShowcasePostContainer>;
 };
 
 ClubOnePost.AboutPostContainer = function ClubOnePostAboutPostContainer({
+  twitterLink,
+  emailLink,
+  whatwedo,
+  purpose,
+  contact,
   children,
   ...restProps
 }: Props) {
-  return <AboutPostContainer>{children}</AboutPostContainer>;
+  return (
+    <AboutPostContainer {...restProps}>
+      <div className="what_we_do">
+        <h2>What we do</h2>
+        <p>{whatwedo}</p>
+      </div>
+      <div className="purpose">
+        <h2>Purpose</h2>
+        <p>{purpose}</p>
+      </div>
+      <div className="contact">
+        <h2>Contact</h2>
+        {emailLink && (
+          <button onClick={() => copyEmail(emailLink)}>
+            <i className="fa-solid fa-envelope-open-text"></i>
+          </button>
+        )}
+        {twitterLink && (
+          <ReactRouterLink to={twitterLink}>
+            <button>
+              <i className="fa-solid fa-envelope-open-text"></i>
+            </button>
+          </ReactRouterLink>
+        )}
+      </div>
+    </AboutPostContainer>
+  );
 };
 
 ClubOnePost.SponsorPostContainer = function ClubOnePostSponsorPostContainer({
   children,
   ...restProps
 }: Props) {
-  return <SponsorPostContainer>{children}</SponsorPostContainer>;
+  return <SponsorPostContainer {...restProps}>{children}</SponsorPostContainer>;
 };
 
 ClubOnePost.TopPostLayer = function ClubOnePostTopPostLayerContainer({
+  position,
+  posted,
+  username,
+  partners,
   linkTo,
   userProfile,
   clubProfile,
@@ -235,7 +306,7 @@ ClubOnePost.TopPostLayer = function ClubOnePostTopPostLayerContainer({
 }: Props) {
   return (
     <TopPostLayer postType={postType} {...restProps}>
-      <div className="clubAndUser">
+      <div className="club_and_user">
         {onCommunity && (
           <>
             <img src={clubProfile} alt="Club Profile" />
@@ -244,32 +315,67 @@ ClubOnePost.TopPostLayer = function ClubOnePostTopPostLayerContainer({
         )}
         <div className="user">
           <img src={userProfile} alt="User Profile" />
-          <div className="userData"></div>
+          <div className="user_data">
+            <h3>{username}</h3>
+            <div className="user_data_details">
+              <p>
+                {position} • {posted}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-      <ReactRouterLink to={linkTo}>
-        <ActionButton
-          color="#FAFCFA"
-          onClick={() => null}
-          background={
-            postType === "Partner Event"
-              ? "linear-gradient(87.85deg, #F64F59 1.81%, #C471ED 51%, #12C2E9 98.19%);"
-              : postType === "Event"
-              ? "linear-gradient(87.85deg, #12C2E9 1.81%, #C471ED 51%, #F64F59 98.19%);"
-              : postType === "Announcement"
-              ? "linear-gradient(87.85deg, #FEAC5E 1.81%, #C779D0 51%, #4BC0C8 98.19%);"
-              : postType === "Showcase"
-              ? "linear-gradient(87.85deg, #A770EF 1.81%, #CF8BF3 51%, #FDB99B 98.19%);"
-              : postType === "About"
-              ? "linear-gradient(94.39deg, #58A4B0 8.09%, #AFD5AA 93.12%);"
-              : postType === "Sponsor"
-              ? "linear-gradient(87.85deg, #7F7FD5 1.81%, #86A8E7 50.62%, #9BE0DC 98.19%);"
-              : null
-          }
-        >
-          {postType}
-        </ActionButton>
-      </ReactRouterLink>
+      <div className="partners_and_button">
+        {/* Partners store jsonB as partners in postgresl */}
+        {partners &&
+          partners.map((partner: any, key: any) => {
+            return (
+              <ClubOnePost.Partner
+                key={key}
+                profilePic={partner.profilePic}
+                user={partner.user.name}
+                background={getRandomColor()}
+              />
+            );
+          })}
+        <ReactRouterLink to={linkTo}>
+          <ActionButton
+            color="#FAFCFA"
+            onClick={() => null}
+            background={
+              postType === "Partner Event"
+                ? "linear-gradient(87.85deg, #F64F59 1.81%, #C471ED 51%, #12C2E9 98.19%);"
+                : postType === "Event"
+                ? "linear-gradient(87.85deg, #12C2E9 1.81%, #C471ED 51%, #F64F59 98.19%);"
+                : postType === "Announcement"
+                ? "linear-gradient(87.85deg, #FEAC5E 1.81%, #C779D0 51%, #4BC0C8 98.19%);"
+                : postType === "Showcase"
+                ? "linear-gradient(87.85deg, #A770EF 1.81%, #CF8BF3 51%, #FDB99B 98.19%);"
+                : postType === "About"
+                ? "linear-gradient(94.39deg, #58A4B0 8.09%, #AFD5AA 93.12%);"
+                : postType === "Sponsor"
+                ? "linear-gradient(87.85deg, #7F7FD5 1.81%, #86A8E7 50.62%, #9BE0DC 98.19%);"
+                : null
+            }
+          >
+            {postType}
+          </ActionButton>
+        </ReactRouterLink>
+      </div>
     </TopPostLayer>
+  );
+};
+
+ClubOnePost.Partner = function ClubOnePostPartner({
+  background,
+  profilePic,
+  user,
+  children,
+  ...restProps
+}: Props) {
+  return (
+    <Partner background={background} {...restProps}>
+      {profilePic !== "" && <img src={profilePic} alt={user} />}
+    </Partner>
   );
 };
