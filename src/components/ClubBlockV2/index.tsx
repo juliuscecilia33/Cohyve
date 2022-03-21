@@ -63,7 +63,7 @@ function getRandomColor() {
 }
 
 export default function ClubBlockV2({ children, ...restProps }: Props) {
-  return <Container {...restProps}>{children}</Container>;
+  return <Container {...restProps}>{children}</C ontainer>;
 }
 
 ClubBlockV2.TopBar = function ClubBlockV2TopBar({

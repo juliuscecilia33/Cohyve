@@ -44,6 +44,13 @@ type Props = {
   whatwedo?: string;
   purpose?: string;
   contact?: string;
+  twitterLink?: string;
+  emailLink?: string;
+  instagramLink?: string;
+  facebookLink?: string;
+  otherLink?: string;
+  links?: any;
+  goal?: number;
 };
 
 function copyEmail(emailLink: string) {
@@ -309,10 +316,32 @@ ClubOnePost.AboutPostContainer = function ClubOnePostAboutPostContainer({
 };
 
 ClubOnePost.SponsorPostContainer = function ClubOnePostSponsorPostContainer({
+  linkTo,
+  links,
+  goal,
+  text,
   children,
   ...restProps
 }: Props) {
-  return <SponsorPostContainer {...restProps}>{children}</SponsorPostContainer>;
+  return (
+    <SponsorPostContainer {...restProps}>
+      <div className="sponsor_actions">
+        <p>Goal: ${goal}</p>
+        <div className="links_buttons">
+          {links &&
+            links.map((link: any, key: any) => {
+              return (
+                <ReactRouterLink to={link.url}>
+                  <button>{link.title}</button>
+                </ReactRouterLink>
+              );
+            })}
+        </div>
+      </div>
+      <div className="border"></div>
+      <div className="sponsor_details">{text}</div>
+    </SponsorPostContainer>
+  );
 };
 
 ClubOnePost.TopPostLayer = function ClubOnePostTopPostLayerContainer({
@@ -354,12 +383,14 @@ ClubOnePost.TopPostLayer = function ClubOnePostTopPostLayerContainer({
         {partners &&
           partners.map((partner: any, key: any) => {
             return (
-              <ClubOnePost.Partner
-                key={key}
-                profilePic={partner.profilePic}
-                user={partner.user.name}
-                background={getRandomColor()}
-              />
+              <ReactRouterLink to={partner}>
+                <ClubOnePost.Partner
+                  key={key}
+                  profilePic={partner.profilePic}
+                  user={partner.user.name}
+                  background={getRandomColor()}
+                />
+              </ReactRouterLink>
             );
           })}
         <ReactRouterLink to={linkTo}>
