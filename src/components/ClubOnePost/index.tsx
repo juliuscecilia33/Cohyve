@@ -378,10 +378,10 @@ ClubOnePost.TopPostLayer = function ClubOnePostTopPostLayerContainer({
     <TopPostLayer {...restProps}>
       <div className="club_and_user">
         {onCommunity && (
-          <>
+          <div className="club">
             <img src={clubProfile} alt="Club Profile" />
             <div className="border"></div>
-          </>
+          </div>
         )}
         <div className="user">
           <img src={userProfile} alt="User Profile" />
@@ -397,19 +397,23 @@ ClubOnePost.TopPostLayer = function ClubOnePostTopPostLayerContainer({
       </div>
       <div className="partners_and_button">
         {/* Partners store jsonB as partners in postgresl */}
-        {partners &&
-          partners.map((partner: any, key: any) => {
-            return (
-              <ReactRouterLink to={partner}>
-                <ClubOnePost.Partner
-                  key={key}
-                  profilePic={partner.profilePic}
-                  user={partner.user.name}
-                  background={getRandomColor()}
-                />
-              </ReactRouterLink>
-            );
-          })}
+
+        {partners && (
+          <div className="partners">
+            {partners.map((partner: any, key: any) => {
+              return (
+                <ReactRouterLink to={partner}>
+                  <ClubOnePost.Partner
+                    key={key}
+                    profilePic={partner.profilePic}
+                    user={partner.user.name}
+                    background={getRandomColor()}
+                  />
+                </ReactRouterLink>
+              );
+            })}
+          </div>
+        )}
         <ReactRouterLink to={linkTo}>
           <ActionButton
             color="#FAFCFA"

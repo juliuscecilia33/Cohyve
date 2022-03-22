@@ -4,6 +4,7 @@ interface ActiveProps {
   width?: any;
   isAnnouncement?: boolean;
   buttonBackground?: any;
+  background?: string;
 }
 
 export const Container = styled.div`
@@ -284,4 +285,96 @@ export const TopPostLayer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  .club_and_user {
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    .club {
+      display: flex;
+      align-items: center;
+
+      img {
+        margin-right: 1rem;
+        width: 58px;
+        height: 58px;
+        object-fit: cover;
+        border-radius: 50%px;
+      }
+
+      .border {
+        width: 1px;
+        height: 100%;
+        background: #c4c4c4;
+        margin-right: 1rem;
+      }
+    }
+
+    .user {
+      display: flex;
+      align-items: center;
+
+      img {
+        margin-right: 0.3rem;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .user_data {
+        display: flex;
+        flex-direction: column;
+
+        h3 {
+          font-family: "Outfit";
+          font-style: normal;
+          font-weight: 700;
+          font-size: 18px;
+          margin-bottom: 0.3rem;
+          color: #284b63;
+        }
+
+        p {
+          font-family: "Poppins";
+          font-style: normal;
+          font-weight: 500;
+          font-size: 10px;
+          color: #c4c4c4;
+        }
+      }
+    }
+  }
+
+  .partners_and_button {
+    display: flex;
+    align-items: center;
+
+    .partners {
+      display: flex;
+      align-items: center;
+    }
+  }
 `;
+
+export const Partner = styled.div<ActiveProps>`
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: ${({ background }) => background};
+  margin-left: -0.3rem;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0;
+  }
+`;
+
+export const SponsorPostContainer = styled.div``;
