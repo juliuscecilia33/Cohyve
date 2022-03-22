@@ -6,8 +6,6 @@ import { getRandomColor } from "../../getRandomColor";
 
 import {
   Container,
-  PhotosPostContainer,
-  NoPhotosPostContainer,
   PostContainer,
   PhotosContainer,
   MoreImagesIcon,
@@ -51,6 +49,7 @@ type Props = {
   otherLink?: string;
   links?: any;
   goal?: number;
+  isAnnouncement?: boolean;
 };
 
 function copyEmail(emailLink: string) {
@@ -62,34 +61,6 @@ export default function ClubOnePost({ children, ...restProps }: Props) {
     <Container {...restProps}>
       {children}
       {/* {postImages ? (
-        <PhotosPostContainer
-          linkTo={linkTo}
-          postImages={postImages}
-          postType={postType}
-          onCommunity={onCommunity}
-          clubProfile={clubProfile}
-          userProfile={userProfile}
-        />
-      ) : (
-        <NoPhotosPostContainer
-          linkTo={linkTo}
-          postType={postType}
-          onCommunity={onCommunity}
-          clubProfile={clubProfile}
-          userProfile={userProfile}
-        />
-      )} */}
-    </Container>
-  );
-}
-
-ClubOnePost.PhotosPostContainer = function ClubOnePostPhotosPostContainer({
-  children,
-  ...restProps
-}: Props) {
-  return (
-    <PhotosPostContainer {...restProps}>
-      <>
         {/* <ReactRouterLink to={linkTo}>
           <PhotosContainer linkTo={linkTo} postImages={postImages} />
         </ReactRouterLink>
@@ -102,12 +73,19 @@ ClubOnePost.PhotosPostContainer = function ClubOnePostPhotosPostContainer({
             postType={postType}
             linkTo={linkTo}
           />
-        </ReactRouterLink> */}
-        {children}
-      </>
-    </PhotosPostContainer>
+        </ReactRouterLink>
+      ) : (
+        {/* <PostContainer 
+          userProfile={userProfile}
+            clubProfile={clubProfile}
+            onCommunity={onCommunity}
+            width="100%"
+            postType={postType}
+            linkTo={linkTo} /> 
+      )} */}
+    </Container>
   );
-};
+}
 
 ClubOnePost.PhotosContainer = function ClubOnePostPhotosContainer({
   linkTo,
@@ -137,19 +115,8 @@ ClubOnePost.MoreImagesIcon = function ClubOnePostMoreImagesIcon({
   );
 };
 
-ClubOnePost.NoPhotosPostContainer = function ClubOnePostNoPhotosPostContainer({
-  children,
-  ...restProps
-}: Props) {
-  return (
-    <NoPhotosPostContainer {...restProps}>
-      {children}
-      {/* <PostContainer width="100%" /> */}
-    </NoPhotosPostContainer>
-  );
-};
-
 ClubOnePost.PostContainer = function ClubOnePostPostContainer({
+  isAnnouncement,
   partners,
   text,
   linkTo,
@@ -162,7 +129,11 @@ ClubOnePost.PostContainer = function ClubOnePostPostContainer({
   ...restProps
 }: Props) {
   return (
-    <PostContainer width={width} {...restProps}>
+    <PostContainer
+      isAnnouncement={postType === "Announcement"}
+      width={width}
+      {...restProps}
+    >
       <ClubOnePost.TopPostLayer
         linkTo={linkTo}
         userProfile={userProfile}
@@ -211,17 +182,17 @@ ClubOnePost.PartnerEventPostContainer =
           <p>{text}</p>
         </div>
         <div className="date_and_location">
-          <div className="date">
+          <div className="date_and_location_container">
             <i className="fa-solid fa-calendar-day"></i>
-            <div className="date_details">
+            <div className="date_and_location_details">
               <p>Meetup Time</p>
               <h2>{date}</h2>
               <h3>{time}</h3>
             </div>
           </div>
-          <div className="location">
+          <div className="date_and_location_container">
             <i className="fa-solid fa-compass"></i>
-            <div className="location_details">
+            <div className="date_and_location_details">
               <p>Meetup Location</p>
               <h2>{location}</h2>
               <h3>{locationDetails}</h3>
@@ -240,7 +211,7 @@ ClubOnePost.AnnouncementPostContainer =
   }: Props) {
     return (
       <AnnouncementPostContainer {...restProps}>
-        {text}
+        <p>{text}</p>
       </AnnouncementPostContainer>
     );
   };
@@ -250,7 +221,11 @@ ClubOnePost.ShowcasePostContainer = function ClubOnePostShowcasePostContainer({
   children,
   ...restProps
 }: Props) {
-  return <ShowcasePostContainer {...restProps}>{text}</ShowcasePostContainer>;
+  return (
+    <ShowcasePostContainer {...restProps}>
+      <p>{text}</p>
+    </ShowcasePostContainer>
+  );
 };
 
 ClubOnePost.AboutPostContainer = function ClubOnePostAboutPostContainer({
