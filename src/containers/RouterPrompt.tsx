@@ -93,17 +93,6 @@ export function RouterPrompt({
           </Prompt.Bottom>
         </Prompt.Window>
       </Prompt>
-      //   <Modal
-      //     title={title}
-      //     visible={showPrompt}
-      //     onOk={handleOK}
-      //     okText={okText}
-      //     onCancel={handleCancel}
-      //     cancelText={cancelText}
-      //     closable={true}
-      //   >
-      //     There are unsaved changes. Are you sure want to leave this page ?
-      //   </Modal>
     )
   );
 }

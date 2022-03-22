@@ -9,6 +9,7 @@ import {
   Title,
   Item,
   ViewAll,
+  Content,
 } from "./styles/clubOne";
 
 type Props = {
@@ -22,6 +23,10 @@ type Props = {
 export default function ClubOne({ children, ...restProps }: Props) {
   return <Container {...restProps}>{children}</Container>;
 }
+
+ClubOne.Content = function ClubOneContent({ children, ...restProps }: Props) {
+  return <Content {...restProps}>{children}</Content>;
+};
 
 ClubOne.MembersAndPartners = function ClubOneMembersAndPartners({
   children,

@@ -6,6 +6,13 @@ interface ActiveProps {
 
 export const Container = styled.div`
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const Content = styled.div`
+  width: 100%;
   padding: 1rem 15%;
   display: flex;
   justify-content: space-between;
