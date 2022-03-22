@@ -377,4 +377,56 @@ export const Partner = styled.div<ActiveProps>`
   }
 `;
 
-export const SponsorPostContainer = styled.div``;
+export const SponsorPostContainer = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  .sponsor_actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+      font-family: "Outfit";
+      font-style: normal;
+      font-weight: 600;
+      font-size: 11px;
+      margin-bottom: 0.5rem;
+      color: #afafaf;
+    }
+
+    .links_buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      button {
+        margin-bottom: 0.8rem;
+        height: 32px;
+        padding: 0.8rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(
+          87.85deg,
+          #7f7fd5 1.81%,
+          #86a8e7 50.62%,
+          #9be0dc 98.19%
+        );
+        box-shadow: -1px 10px 60px rgba(27, 27, 30, 0.1);
+        border-radius: 40px;
+        font-family: "Outfit";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        color: #fafcfa;
+        transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+        &:hover {
+          transform: translateY(-2.5%);
+        }
+      }
+    }
+  }
+`;
