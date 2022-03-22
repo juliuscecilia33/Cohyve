@@ -16,6 +16,7 @@ import {
   AboutPostContainer,
   ShowcasePostContainer,
   Partner,
+  ButtonContainer,
 } from "./styles/clubOnePost";
 
 type Props = {
@@ -50,6 +51,13 @@ type Props = {
   links?: any;
   goal?: number;
   isAnnouncement?: boolean;
+  buttonBackground?: string;
+};
+
+type ButtonProps = {
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  buttonBackground?: string;
+  children?: React.ReactNode;
 };
 
 function copyEmail(emailLink: string) {
@@ -242,51 +250,85 @@ ClubOnePost.AboutPostContainer = function ClubOnePostAboutPostContainer({
 }: Props) {
   return (
     <AboutPostContainer {...restProps}>
-      <div className="what_we_do">
+      <div className="heading_and_text">
         <h2>What we do</h2>
         <p>{whatwedo}</p>
       </div>
-      <div className="purpose">
+      <div className="heading_and_text">
         <h2>Purpose</h2>
         <p>{purpose}</p>
       </div>
       <div className="contact">
         <h2>Contact</h2>
-        {emailLink && (
-          <button onClick={() => copyEmail(emailLink)}>
-            <i className="fa-solid fa-envelope-open-text"></i>
-          </button>
-        )}
-        {twitterLink && (
-          <ReactRouterLink to={twitterLink}>
-            <button>
-              <i className="fa-brands fa-twitter"></i>
-            </button>
-          </ReactRouterLink>
-        )}
-        {instagramLink && (
-          <ReactRouterLink to={instagramLink}>
-            <button>
-              <i className="fa-brands fa-twitter"></i>
-            </button>
-          </ReactRouterLink>
-        )}
-        {facebookLink && (
-          <ReactRouterLink to={facebookLink}>
-            <button>
-              <i className="fa-brands fa-facebook"></i>
-            </button>
-          </ReactRouterLink>
-        )}
-        {otherLink && (
-          <ReactRouterLink to={otherLink}>
-            <button>
-              <i className="fa-solid fa-globe"></i>
-            </button>
-          </ReactRouterLink>
-        )}
+        <div className="buttons">
+          {emailLink && (
+            <ClubOnePost.ButtonContainer
+              onClick={() => copyEmail(emailLink)}
+              buttonBackground="linear-gradient(94.39deg, #58A4B0 8.09%, #AFD5AA 93.12%);"
+            >
+              <i className="fa-solid fa-envelope-open-text"></i>
+            </ClubOnePost.ButtonContainer>
+          )}
+          {twitterLink && (
+            <ReactRouterLink to={twitterLink}>
+              <ClubOnePost.ButtonContainer
+                onClick={() => null}
+                buttonBackground="linear-gradient(87.85deg, #7F7FD5 1.81%, #86A8E7 50.62%, #9BE0DC 98.19%);"
+              >
+                <i className="fa-brands fa-twitter"></i>
+              </ClubOnePost.ButtonContainer>
+            </ReactRouterLink>
+          )}
+          {instagramLink && (
+            <ReactRouterLink to={instagramLink}>
+              <ClubOnePost.ButtonContainer
+                onClick={() => null}
+                buttonBackground="linear-gradient(87.85deg, #FEAC5E 1.81%, #C779D0 51%, #4BC0C8 98.19%);"
+              >
+                <i className="fa-brands fa-twitter"></i>
+              </ClubOnePost.ButtonContainer>
+            </ReactRouterLink>
+          )}
+          {facebookLink && (
+            <ReactRouterLink to={facebookLink}>
+              <ClubOnePost.ButtonContainer
+                onClick={() => null}
+                buttonBackground="linear-gradient(87.85deg, #A770EF 1.81%, #CF8BF3 51%, #FDB99B 98.19%);"
+              >
+                <i className="fa-brands fa-facebook"></i>
+              </ClubOnePost.ButtonContainer>
+            </ReactRouterLink>
+          )}
+          {otherLink && (
+            <ReactRouterLink to={otherLink}>
+              <ClubOnePost.ButtonContainer
+                onClick={() => null}
+                buttonBackground="linear-gradient(87.85deg, #12C2E9 1.81%, #C471ED 51%, #F64F59 98.19%);"
+              >
+                <i className="fa-solid fa-globe"></i>
+              </ClubOnePost.ButtonContainer>
+            </ReactRouterLink>
+          )}
+        </div>
       </div>
     </AboutPostContainer>
+  );
+};
+
+ClubOnePost.ButtonContainer = function ClubOnePostButtonContainer({
+  onClick,
+  buttonBackground,
+  children,
+  ...restProps
+}: ButtonProps) {
+  return (
+    <ButtonContainer
+      onClick={onClick}
+      buttonBackground={buttonBackground}
+      {...restProps}
+    >
+      {children}
+    </ButtonContainer>
   );
 };
 
@@ -333,7 +375,7 @@ ClubOnePost.TopPostLayer = function ClubOnePostTopPostLayerContainer({
   ...restProps
 }: Props) {
   return (
-    <TopPostLayer postType={postType} {...restProps}>
+    <TopPostLayer {...restProps}>
       <div className="club_and_user">
         {onCommunity && (
           <>

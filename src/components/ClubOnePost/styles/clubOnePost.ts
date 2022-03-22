@@ -3,6 +3,7 @@ import styled from "styled-components/macro";
 interface ActiveProps {
   width?: any;
   isAnnouncement?: boolean;
+  buttonBackground?: any;
 }
 
 export const Container = styled.div`
@@ -182,4 +183,105 @@ export const AnnouncementPostContainer = styled.div`
     font-size: 18px;
     color: #284b63;
   }
+`;
+
+export const ShowcasePostContainer = styled.div`
+  width: 100%;
+  margin: 0.7rem 0;
+
+  p {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    color: #284b63;
+  }
+`;
+
+export const AboutPostContainer = styled.div`
+  width: 100%;
+  margin: 0.7rem 0;
+  display: flex;
+  flex-direction: column;
+
+  .heading_and_text {
+    margin: 0.7rem 0;
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+      font-family: "Outfit";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 18px;
+      color: #284b63;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 20px;
+      color: #9d9d9d;
+      padding-left: 1rem;
+      height: 80px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+
+  .contact {
+    margin: 0.7rem 0;
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+      font-family: "Outfit";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 18px;
+      color: #284b63;
+      margin-bottom: 0.5rem;
+    }
+
+    .buttons {
+      display: flex;
+      align-items: center;
+    }
+  }
+`;
+
+export const ButtonContainer = styled.button<ActiveProps>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: ${({ buttonBackground }) => buttonBackground};
+  box-shadow: -1px 10px 60px rgba(27, 27, 30, 0.1);
+  cursor: pointer;
+  outline: none;
+  border: none;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+  &:hover {
+    box-shadow: -1px 6px 60px rgba(27, 27, 30, 0.2);
+    transform: translateY(-2.5%);
+  }
+
+  i {
+    color: #f0f2ef;
+    font-size: 18px;
+  }
+`;
+
+export const TopPostLayer = styled.div`
+  width: 100%;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
