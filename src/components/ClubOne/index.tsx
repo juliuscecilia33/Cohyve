@@ -1,4 +1,5 @@
 import React from "react";
+import { getRandomColor } from "../../getRandomColor";
 
 import {
   Container,
@@ -48,7 +49,11 @@ ClubOne.Item = function ClubOneItem({
   ...restProps
 }: Props) {
   return (
-    <Item borderRadius={borderRadius} {...restProps}>
+    <Item
+      profileBackground={getRandomColor()}
+      borderRadius={borderRadius}
+      {...restProps}
+    >
       <div className="ProfileImage">
         <img src={profileUrl} alt="Item Profile Url" />
       </div>

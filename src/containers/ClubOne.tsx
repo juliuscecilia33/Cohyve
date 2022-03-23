@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   ClubOne,
   ClubOnePost,
@@ -8,22 +8,32 @@ import {
 } from "../components";
 
 export function ClubOneContainer() {
+  const [profileImageUrl, setProfileImageUrl] = useState("");
+  const [clubName, setClubName] = useState("");
+  const [established, setEstablished] = useState(null);
+  const [description, setDescription] = useState("");
+  const [school, setSchool] = useState("");
+  const [location, setLocation] = useState("");
+  const [category, setCategory] = useState("");
+  const [followers, setFollowers] = useState(0);
+  const [members, setMembers] = useState(0);
+
   return (
-    <>
+    <ClubOne>
       <ClubHeroOne>
         <ClubHeroOne.BannerSrc>
           <ClubHeroOne.InfoContainer>
             <CreateClub.Info>
               <CreateClub.BasicInfo>
                 <CreateClub.ProfilePlaceholder
-                  profileImageUrl={previewProfile}
+                  profileImageUrl={profileImageUrl}
                 />
                 <CreateClub.InfoText>
                   <CreateClub.Name name={clubName} year={established} />
                   <CreateClub.Description>{description}</CreateClub.Description>
                   <CreateClub.SchoolLocationCategory
                     school={school}
-                    location={state}
+                    location={location}
                     category={category}
                   />
                 </CreateClub.InfoText>
@@ -70,6 +80,12 @@ export function ClubOneContainer() {
           </ClubHeroOne.InfoContainer>
         </ClubHeroOne.BannerSrc>
       </ClubHeroOne>
-    </>
+      <ClubOne.Content>
+        <ClubOne.Posts></ClubOne.Posts>
+        <ClubOne.MembersAndPartners>
+          <ClubOne.Members></ClubOne.Members>
+        </ClubOne.MembersAndPartners>
+      </ClubOne.Content>
+    </ClubOne>
   );
 }

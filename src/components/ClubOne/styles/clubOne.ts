@@ -2,6 +2,7 @@ import styled from "styled-components/macro";
 
 interface ActiveProps {
   borderRadius?: any;
+  profileBackground?: string;
 }
 
 export const Container = styled.div`
@@ -49,17 +50,17 @@ export const Item = styled.div<ActiveProps>`
   height: 65px;
 
   .ProfileImage {
-    width: 20%;
-    height: 100%;
-    display: flex;
-    align-items: center;
+    width: 58px;
+    height: 58px;
+    border-radius: ${({ borderRadius }) => borderRadius};
+    margin-right: 0.5rem;
+    background: ${({ profileBackground }) => profileBackground};
 
     img {
-      width: 58px;
-      height: 58px;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       border-radius: ${({ borderRadius }) => borderRadius};
-      margin-right: 0.5rem;
     }
   }
 
