@@ -6,6 +6,7 @@ import {
   CreateClub,
   ActionButton,
 } from "../components";
+import { Link as ReactRouterLink } from "react-router-dom";
 
 export function ClubOneContainer() {
   const [profileImageUrl, setProfileImageUrl] = useState("");
@@ -17,6 +18,7 @@ export function ClubOneContainer() {
   const [category, setCategory] = useState("");
   const [followers, setFollowers] = useState(0);
   const [members, setMembers] = useState(0);
+  const [postImages, setPostImages] = useState(null);
 
   return (
     <ClubOne>
@@ -81,7 +83,39 @@ export function ClubOneContainer() {
         </ClubHeroOne.BannerSrc>
       </ClubHeroOne>
       <ClubOne.Content>
-        <ClubOne.Posts></ClubOne.Posts>
+        <ClubOne.Posts>
+          <ClubOnePost>
+            {postImages ? (
+              <>
+                <ReactRouterLink to={linkTo}>
+                  <ClubOnePost.PhotosContainer
+                    linkTo={linkTo}
+                    postImages={postImages}
+                  />
+                </ReactRouterLink>
+                <ReactRouterLink to={linkTo}>
+                  <ClubOnePost.PostContainer
+                    userProfile={userProfile}
+                    clubProfile={clubProfile}
+                    onCommunity={onCommunity}
+                    width="80%"
+                    postType={postType}
+                    linkTo={linkTo}
+                  />
+                </ReactRouterLink>
+              </>
+            ) : (
+              <ClubOnePost.PostContainer
+                userProfile={userProfile}
+                clubProfile={clubProfile}
+                onCommunity={onCommunity}
+                width="100%"
+                postType={postType}
+                linkTo={linkTo}
+              />
+            )}
+          </ClubOnePost>
+        </ClubOne.Posts>
         <ClubOne.MembersAndPartners>
           <ClubOne.Members>
             <ClubOne.Title>Members</ClubOne.Title>

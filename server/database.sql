@@ -85,6 +85,8 @@ CREATE TABLE posts(
   description VARCHAR(255),
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
   firebase_id VARCHAR(255),
+  on_community BOOLEAN NOT NULL DEFAULT FALSE,
+  post_images text[],
   PRIMARY KEY (post_id),
   FOREIGN KEY (club_id) REFERENCES clubs(club_id)
 );

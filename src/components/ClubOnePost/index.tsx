@@ -65,34 +65,7 @@ function copyEmail(emailLink: string) {
 }
 
 export default function ClubOnePost({ children, ...restProps }: Props) {
-  return (
-    <Container {...restProps}>
-      {children}
-      {/* {postImages ? (
-        {/* <ReactRouterLink to={linkTo}>
-          <PhotosContainer linkTo={linkTo} postImages={postImages} />
-        </ReactRouterLink>
-        <ReactRouterLink to={linkTo}>
-          <PostContainer
-            userProfile={userProfile}
-            clubProfile={clubProfile}
-            onCommunity={onCommunity}
-            width="80%"
-            postType={postType}
-            linkTo={linkTo}
-          />
-        </ReactRouterLink>
-      ) : (
-        {/* <PostContainer 
-          userProfile={userProfile}
-            clubProfile={clubProfile}
-            onCommunity={onCommunity}
-            width="100%"
-            postType={postType}
-            linkTo={linkTo} /> 
-      )} */}
-    </Container>
-  );
+  return <Container {...restProps}>{children}</Container>;
 }
 
 ClubOnePost.PhotosContainer = function ClubOnePostPhotosContainer({
