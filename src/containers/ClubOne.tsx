@@ -84,6 +84,7 @@ export function ClubOneContainer() {
       </ClubHeroOne>
       <ClubOne.Content>
         <ClubOne.Posts>
+          {/* Add postType "Post", default */}
           <ClubOnePost>
             {postImages ? (
               <>
