@@ -16,7 +16,7 @@ import {
 type Props = {
   children?: React.ReactNode;
   profileUrl?: any;
-  position?: string;
+  detail?: string;
   name?: string;
   borderRadius?: any;
 };
@@ -42,7 +42,7 @@ ClubOne.Members = function ClubOneMembers({ children, ...restProps }: Props) {
 
 ClubOne.Item = function ClubOneItem({
   borderRadius,
-  position,
+  detail,
   name,
   profileUrl,
   children,
@@ -55,11 +55,11 @@ ClubOne.Item = function ClubOneItem({
       {...restProps}
     >
       <div className="ProfileImage">
-        <img src={profileUrl} alt="Item Profile Url" />
+        {profileUrl && <img src={profileUrl} alt="Item Profile Url" />}
       </div>
       <div className="Text">
         <h3>{name}</h3>
-        <p>{position}</p>
+        <p>{detail}</p>
       </div>
     </Item>
   );

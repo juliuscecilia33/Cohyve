@@ -55,6 +55,9 @@ export const Item = styled.div<ActiveProps>`
     border-radius: ${({ borderRadius }) => borderRadius};
     margin-right: 0.5rem;
     background: ${({ profileBackground }) => profileBackground};
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     img {
       width: 100%;
@@ -73,7 +76,7 @@ export const Item = styled.div<ActiveProps>`
 
     h3 {
       width: 95%;
-      font-family: "Outfit";
+      font-family: Outfit;
       font-style: normal;
       font-weight: 700;
       font-size: 18px;
@@ -86,7 +89,7 @@ export const Item = styled.div<ActiveProps>`
 
     p {
       width: 95%;
-      font-family: "Poppins";
+      font-family: Poppins;
       font-style: normal;
       font-weight: 500;
       font-size: 14px;
@@ -99,7 +102,7 @@ export const Item = styled.div<ActiveProps>`
 `;
 
 export const Title = styled.h2`
-  font-family: "Outfit";
+  font-family: Outfit;
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
@@ -108,7 +111,7 @@ export const Title = styled.h2`
 `;
 
 export const ViewAll = styled.h3`
-  font-family: "Poppins";
+  font-family: Poppins;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;

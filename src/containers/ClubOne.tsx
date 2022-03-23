@@ -83,7 +83,70 @@ export function ClubOneContainer() {
       <ClubOne.Content>
         <ClubOne.Posts></ClubOne.Posts>
         <ClubOne.MembersAndPartners>
-          <ClubOne.Members></ClubOne.Members>
+          <ClubOne.Members>
+            <ClubOne.Title>Members</ClubOne.Title>
+            <ClubOne.Item
+              borderRadius="50%"
+              detail="President/Founder"
+              name="John Doe"
+              profileUrl={null}
+            />
+            <ClubOne.Item
+              borderRadius="50%"
+              detail="President/Founder"
+              name="John Doe"
+              profileUrl={null}
+            />
+            <ClubOne.Item
+              borderRadius="50%"
+              detail="President/Founder"
+              name="John Doe"
+              profileUrl={null}
+            />
+            <ClubOne.Item
+              borderRadius="50%"
+              detail="President/Founder"
+              name="John Doe"
+              profileUrl={null}
+            />
+            <ClubOne.Item
+              borderRadius="50%"
+              detail="President/Founder"
+              name="John Doe"
+              profileUrl={null}
+            />
+            {/* Check if members are over 6 members to determine whether View All Button is visible */}
+            <ClubOne.ViewAll>View All</ClubOne.ViewAll>
+          </ClubOne.Members>
+          <ClubOne.Partners>
+            <ClubOne.Title>Partners</ClubOne.Title>
+            <ClubOne.Item
+              borderRadius="15px"
+              detail="University of Washington"
+              name="Physics Club"
+              profileUrl={null}
+            />
+            <ClubOne.Item
+              borderRadius="15px"
+              detail="University of Washington"
+              name="Physics Club"
+              profileUrl={null}
+            />
+            <ClubOne.Item
+              borderRadius="15px"
+              detail="University of Washington"
+              name="Physics Club"
+              profileUrl={null}
+            />
+            <ClubOne.Item
+              borderRadius="15px"
+              detail="University of Washington"
+              name="Physics Club"
+              profileUrl={null}
+            />
+            {/* Check if members are over 6 members to determine whether View All Button is visible */}
+            <ClubOne.ViewAll>View All</ClubOne.ViewAll>
+          </ClubOne.Partners>
         </ClubOne.MembersAndPartners>
       </ClubOne.Content>
     </ClubOne>
