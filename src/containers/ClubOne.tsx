@@ -121,36 +121,36 @@ export function ClubOneContainer() {
                       {post.post_type === "Partner Event" ? (
                         <ClubOnePost.PartnerEventPostContainer
                           linkTo={linkTo}
-                          text={text}
-                          date={date}
-                          location={location}
+                          text={post.post_text}
+                          date={post.post_date}
+                          location={post.post_location}
                         />
                       ) : post.post_type === "Event" ? (
                         <ClubOnePost.PartnerEventPostContainer
                           linkTo={linkTo}
-                          text={text}
-                          date={date}
-                          location={location}
+                          text={post.post_text}
+                          date={post.post_date}
+                          location={post.post_location}
                         />
                       ) : post.post_type === "Announcement" ? (
                         <ClubOnePost.AnnouncementPostContainer
                           linkTo={linkTo}
-                          text={text}
+                          text={post.post_text}
                         />
                       ) : post.post_type === "Showcase" ? (
                         <ClubOnePost.ShowcasePostContainer
                           linkTo={linkTo}
-                          text={text}
+                          text={post.post_text}
                         />
                       ) : post.post_type === "About" ? (
                         <ClubOnePost.AboutPostContainer
                           linkTo={linkTo}
-                          whatwedo={whatwedo}
-                          purpose={purpose}
-                          contact={contact}
+                          whatwedo={post.post_whatwedo}
+                          purpose={post.post_purpose}
+                          contact={post.post_contact}
                         />
                       ) : post.post_type === "Support" ? (
-                        <ClubOnePost.SponsorPostContainer
+                        <ClubOnePost.SupportPostContainer
                           linkTo={linkTo}
                           links={post.post_support_links}
                           goal={post.post_support_goal}
