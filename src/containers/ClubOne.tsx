@@ -9,7 +9,8 @@ import {
 import { Link as ReactRouterLink } from "react-router-dom";
 
 export function ClubOneContainer() {
-  const [profileImageUrl, setProfileImageUrl] = useState("");
+  const [clubProfileImageUrl, setClubProfileImageUrl] = useState("");
+  const [clubBannerImageUrl, setClubBannerImageUrl] = useState("");
   const [clubName, setClubName] = useState("");
   const [established, setEstablished] = useState(null);
   const [description, setDescription] = useState("");
@@ -18,7 +19,7 @@ export function ClubOneContainer() {
   const [category, setCategory] = useState("");
   const [followers, setFollowers] = useState(0);
   const [members, setMembers] = useState(0);
-  const [postImages, setPostImages] = useState(null);
+  const [clubPosts, setClubPosts] = useState(null);
 
   return (
     <ClubOne>
@@ -85,77 +86,82 @@ export function ClubOneContainer() {
       <ClubOne.Content>
         <ClubOne.Posts>
           {/* Add postType "Post", default */}
-          <ClubOnePost>
-            {postImages ? (
-              <>
-                <ReactRouterLink to={linkTo}>
-                  <ClubOnePost.PhotosContainer
-                    linkTo={linkTo}
-                    postImages={postImages}
-                  />
-                </ReactRouterLink>
-                <ReactRouterLink to={linkTo}>
-                  <ClubOnePost.PostContainer
-                    userProfile={userProfile}
-                    clubProfile={clubProfile}
-                    onCommunity={onCommunity}
-                    width="80%"
-                    postType={postType}
-                    linkTo={linkTo}
-                  />
-                </ReactRouterLink>
-              </>
-            ) : (
-              <ClubOnePost.PostContainer
-                userProfile={userProfile}
-                clubProfile={clubProfile}
-                onCommunity={onCommunity}
-                width="100%"
-                postType={postType}
-                linkTo={linkTo}
-              >
-                {postType === "Partner Event" ? (
-                  <ClubOnePost.PartnerEventPostContainer
-                    linkTo={linkTo}
-                    text={text}
-                    date={date}
-                    location={location}
-                  />
-                ) : postType === "Event" ? (
-                  <ClubOnePost.PartnerEventPostContainer
-                    linkTo={linkTo}
-                    text={text}
-                    date={date}
-                    location={location}
-                  />
-                ) : postType === "Announcement" ? (
-                  <ClubOnePost.AnnouncementPostContainer
-                    linkTo={linkTo}
-                    text={text}
-                  />
-                ) : postType === "Showcase" ? (
-                  <ClubOnePost.ShowcasePostContainer
-                    linkTo={linkTo}
-                    text={text}
-                  />
-                ) : postType === "About" ? (
-                  <ClubOnePost.AboutPostContainer
-                    linkTo={linkTo}
-                    whatwedo={whatwedo}
-                    purpose={purpose}
-                    contact={contact}
-                  />
-                ) : postType === "Support" ? (
-                  <ClubOnePost.SponsorPostContainer
-                    linkTo={linkTo}
-                    links={links}
-                    goal={goal}
-                    text={text}
-                  />
-                ) : null}
-              </ClubOnePost.PostContainer>
-            )}
-          </ClubOnePost>
+          {clubPosts &&
+            clubPosts.map((post: any, key: any) => {
+              return (
+                <ClubOnePost key={key}>
+                  {post.post_images ? (
+                    <>
+                      <ReactRouterLink to={linkTo}>
+                        <ClubOnePost.PhotosContainer
+                          linkTo={linkTo}
+                          postImages={post.post_images}
+                        />
+                      </ReactRouterLink>
+                      <ReactRouterLink to={linkTo}>
+                        <ClubOnePost.PostContainer
+                          userProfile={post.profileurl}
+                          clubProfile={clubProfile}
+                          onCommunity={onCommunity}
+                          width="80%"
+                          postType={postType}
+                          linkTo={linkTo}
+                        />
+                      </ReactRouterLink>
+                    </>
+                  ) : (
+                    <ClubOnePost.PostContainer
+                      userProfile={post.user_profile}
+                      clubProfile={clubProfileImageUrl}
+                      onCommunity={post.on_community}
+                      width="100%"
+                      postType={post.post_type}
+                      linkTo={linkTo}
+                    >
+                      {post.post_type === "Partner Event" ? (
+                        <ClubOnePost.PartnerEventPostContainer
+                          linkTo={linkTo}
+                          text={text}
+                          date={date}
+                          location={location}
+                        />
+                      ) : post.post_type === "Event" ? (
+                        <ClubOnePost.PartnerEventPostContainer
+                          linkTo={linkTo}
+                          text={text}
+                          date={date}
+                          location={location}
+                        />
+                      ) : post.post_type === "Announcement" ? (
+                        <ClubOnePost.AnnouncementPostContainer
+                          linkTo={linkTo}
+                          text={text}
+                        />
+                      ) : post.post_type === "Showcase" ? (
+                        <ClubOnePost.ShowcasePostContainer
+                          linkTo={linkTo}
+                          text={text}
+                        />
+                      ) : post.post_type === "About" ? (
+                        <ClubOnePost.AboutPostContainer
+                          linkTo={linkTo}
+                          whatwedo={whatwedo}
+                          purpose={purpose}
+                          contact={contact}
+                        />
+                      ) : post.post_type === "Support" ? (
+                        <ClubOnePost.SponsorPostContainer
+                          linkTo={linkTo}
+                          links={post.post_support_links}
+                          goal={post.post_support_goal}
+                          text={post.post_text}
+                        />
+                      ) : null}
+                    </ClubOnePost.PostContainer>
+                  )}
+                </ClubOnePost>
+              );
+            })}
         </ClubOne.Posts>
         <ClubOne.MembersAndPartners>
           <ClubOne.Members>

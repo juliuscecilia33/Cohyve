@@ -94,8 +94,8 @@ CREATE TABLE posts(
   post_whatwedo VARCHAR,
   post_purpose VARCHAR,
   post_contact text[],
-  post_sponsor_links text[],
-  post_sponsor_goal integer,
+  post_support_links text[],
+  post_support_goal integer,
   PRIMARY KEY (post_id),
   FOREIGN KEY (club_id) REFERENCES clubs(club_id),
   FOREIGN KEY (firebase_user_id) REFERENCES users(firebase_user_id)
