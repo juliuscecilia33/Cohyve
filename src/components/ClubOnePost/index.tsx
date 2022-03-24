@@ -404,6 +404,8 @@ ClubOnePost.TopPostLayer = function ClubOnePostTopPostLayerContainer({
                 ? "linear-gradient(94.39deg, #58A4B0 8.09%, #AFD5AA 93.12%);"
                 : postType === "Support"
                 ? "linear-gradient(87.85deg, #7F7FD5 1.81%, #86A8E7 50.62%, #9BE0DC 98.19%);"
+                : postType === "Post"
+                ? "linear-gradient(94.39deg, #4D566A 8.09%, #091F2E 93.12%);"
                 : null
             }
           >

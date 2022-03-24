@@ -29,7 +29,7 @@ export function ClubOneContainer() {
             <CreateClub.Info>
               <CreateClub.BasicInfo>
                 <CreateClub.ProfilePlaceholder
-                  profileImageUrl={profileImageUrl}
+                  profileImageUrl={clubProfileImageUrl}
                 />
                 <CreateClub.InfoText>
                   <CreateClub.Name name={clubName} year={established} />
@@ -154,6 +154,11 @@ export function ClubOneContainer() {
                           linkTo={linkTo}
                           links={post.post_support_links}
                           goal={post.post_support_goal}
+                          text={post.post_text}
+                        />
+                      ) : post.post_type === "Post" ? (
+                        <ClubOnePost.ShowcasePostContainer
+                          linkTo={linkTo}
                           text={post.post_text}
                         />
                       ) : null}
