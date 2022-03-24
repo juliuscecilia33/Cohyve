@@ -11,7 +11,7 @@ import {
   MoreImagesIcon,
   TopPostLayer,
   PartnerEventPostContainer,
-  SponsorPostContainer,
+  SupportPostContainer,
   AnnouncementPostContainer,
   AboutPostContainer,
   ShowcasePostContainer,
@@ -305,7 +305,7 @@ ClubOnePost.ButtonContainer = function ClubOnePostButtonContainer({
   );
 };
 
-ClubOnePost.SponsorPostContainer = function ClubOnePostSponsorPostContainer({
+ClubOnePost.SupportPostContainer = function ClubOnePostSupportPostContainer({
   linkTo,
   links,
   goal,
@@ -314,7 +314,7 @@ ClubOnePost.SponsorPostContainer = function ClubOnePostSponsorPostContainer({
   ...restProps
 }: Props) {
   return (
-    <SponsorPostContainer {...restProps}>
+    <SupportPostContainer {...restProps}>
       <div className="sponsor_actions">
         <p>Goal: ${goal}</p>
         <div className="links_buttons">
@@ -330,7 +330,7 @@ ClubOnePost.SponsorPostContainer = function ClubOnePostSponsorPostContainer({
       </div>
       <div className="border"></div>
       <div className="sponsor_details">{text}</div>
-    </SponsorPostContainer>
+    </SupportPostContainer>
   );
 };
 
@@ -402,7 +402,7 @@ ClubOnePost.TopPostLayer = function ClubOnePostTopPostLayerContainer({
                 ? "linear-gradient(87.85deg, #A770EF 1.81%, #CF8BF3 51%, #FDB99B 98.19%);"
                 : postType === "About"
                 ? "linear-gradient(94.39deg, #58A4B0 8.09%, #AFD5AA 93.12%);"
-                : postType === "Sponsor"
+                : postType === "Support"
                 ? "linear-gradient(87.85deg, #7F7FD5 1.81%, #86A8E7 50.62%, #9BE0DC 98.19%);"
                 : null
             }

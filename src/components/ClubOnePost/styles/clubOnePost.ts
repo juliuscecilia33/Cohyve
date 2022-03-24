@@ -377,7 +377,7 @@ export const Partner = styled.div<ActiveProps>`
   }
 `;
 
-export const SponsorPostContainer = styled.div`
+export const SupportPostContainer = styled.div`
   display: flex;
   align-items: center;
   width: 100%;

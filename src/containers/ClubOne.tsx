@@ -113,7 +113,47 @@ export function ClubOneContainer() {
                 width="100%"
                 postType={postType}
                 linkTo={linkTo}
-              />
+              >
+                {postType === "Partner Event" ? (
+                  <ClubOnePost.PartnerEventPostContainer
+                    linkTo={linkTo}
+                    text={text}
+                    date={date}
+                    location={location}
+                  />
+                ) : postType === "Event" ? (
+                  <ClubOnePost.PartnerEventPostContainer
+                    linkTo={linkTo}
+                    text={text}
+                    date={date}
+                    location={location}
+                  />
+                ) : postType === "Announcement" ? (
+                  <ClubOnePost.AnnouncementPostContainer
+                    linkTo={linkTo}
+                    text={text}
+                  />
+                ) : postType === "Showcase" ? (
+                  <ClubOnePost.ShowcasePostContainer
+                    linkTo={linkTo}
+                    text={text}
+                  />
+                ) : postType === "About" ? (
+                  <ClubOnePost.AboutPostContainer
+                    linkTo={linkTo}
+                    whatwedo={whatwedo}
+                    purpose={purpose}
+                    contact={contact}
+                  />
+                ) : postType === "Support" ? (
+                  <ClubOnePost.SponsorPostContainer
+                    linkTo={linkTo}
+                    links={links}
+                    goal={goal}
+                    text={text}
+                  />
+                ) : null}
+              </ClubOnePost.PostContainer>
             )}
           </ClubOnePost>
         </ClubOne.Posts>
