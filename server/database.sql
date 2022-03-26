@@ -101,6 +101,13 @@ CREATE TABLE posts(
   FOREIGN KEY (firebase_user_id) REFERENCES users(firebase_user_id)
 );
 
+CREATE TABLE posts_partners(
+  post_id SERIAL,
+  club_partner SERIAL,
+  FOREIGN KEY (club_partner) REFERENCES clubs(club_id),
+  FOREIGN KEY (post_id) REFERENCES posts(post_id)
+);
+
 -- insert fake user data
 insert into
   users (user_name, user_email, user_password, school)

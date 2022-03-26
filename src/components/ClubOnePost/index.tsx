@@ -106,7 +106,10 @@ ClubOnePost.PostContainer = function ClubOnePostPostContainer({
   onCommunity,
   width,
   postType,
+  position,
   children,
+  posted,
+  username,
   ...restProps
 }: Props) {
   return (
@@ -122,20 +125,10 @@ ClubOnePost.PostContainer = function ClubOnePostPostContainer({
         onCommunity={onCommunity}
         postType={postType}
         partners={partners}
+        position={position}
+        posted={posted}
+        username={username}
       />
-      {/* {postType === "Partner Event" ? (
-        <ClubOnePost.PartnerEventPostContainer linkTo={linkTo} text={text} date={date} location={location} />
-      ) : postType === "Event" ? (
-        <ClubOnePost.PartnerEventPostContainer linkTo={linkTo} text={text} date={date} location={location} />
-      ) : postType === "Announcement" ? (
-        <ClubOnePost.AnnouncementPostContainer linkTo={linkTo} text={text} />
-      ) : postType === "Showcase" ? (
-        <ClubOnePost.ShowcasePostContainer linkTo={linkTo} text={text} />
-      ) : postType === "About" ? (
-        <ClubOnePost.AboutPostContainer linkTo={linkTo} whatwedo={whatwedo} purpose={purpose} contact={contact} />
-      ) : postType === "Sponsor" ? (
-        <ClubOnePost.SponsorPostContainer linkTo={linkTo} links={links} goal={goal} text={text} />
-      ) : null} */}
       {children}
       <div className="see_more">
         <ReactRouterLink to={linkTo}>
