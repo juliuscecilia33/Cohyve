@@ -15,6 +15,7 @@ import {
   ClubsPage,
   CustomizePage,
   EditUserPage,
+  ClubOnePage,
 } from "./pages";
 import * as ROUTES from "./constants/routes";
 import { UserInformation } from "./context/UserInformation";
@@ -126,6 +127,10 @@ function App() {
 
             <Route exact path={ROUTES.CLUBS}>
               <ClubsPage />
+            </Route>
+
+            <Route exact path={ROUTES.CLUBONE}>
+              <ClubOnePage /> 
             </Route>
 
             <Route

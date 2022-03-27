@@ -92,65 +92,65 @@ export function ClubOneContainer() {
                 <ClubOnePost key={key}>
                   {post.post_images ? (
                     <>
-                      <ReactRouterLink to={linkTo}>
+                      <ReactRouterLink to={""}>
                         <ClubOnePost.PhotosContainer
-                          linkTo={linkTo}
+                          linkTo={""}
                           postImages={post.post_images}
                         />
                       </ReactRouterLink>
-                      <ReactRouterLink to={linkTo}>
+                      <ReactRouterLink to={""}>
                         <ClubOnePost.PostContainer
                           userProfile={post.user_profile}
                           clubProfile={clubProfileImageUrl}
                           onCommunity={post.on_community}
                           width="100%"
                           postType={post.post_type}
-                          linkTo={linkTo}
-                          partners={partners}
-                          position={postUserPosition}
-                          posted={}
+                          linkTo={""}
+                          partners={post.post_partners}
+                          position={post.user_position}
+                          posted={post.created_at}
                         >
                           {post.post_type === "Partner Event" ? (
                             <ClubOnePost.PartnerEventPostContainer
-                              linkTo={linkTo}
+                              linkTo={""}
                               text={post.post_text}
                               date={post.post_date}
                               location={post.post_location}
                             />
                           ) : post.post_type === "Event" ? (
                             <ClubOnePost.PartnerEventPostContainer
-                              linkTo={linkTo}
+                              linkTo={""}
                               text={post.post_text}
                               date={post.post_date}
                               location={post.post_location}
                             />
                           ) : post.post_type === "Announcement" ? (
                             <ClubOnePost.AnnouncementPostContainer
-                              linkTo={linkTo}
+                              linkTo={""}
                               text={post.post_text}
                             />
                           ) : post.post_type === "Showcase" ? (
                             <ClubOnePost.ShowcasePostContainer
-                              linkTo={linkTo}
+                              linkTo={""}
                               text={post.post_text}
                             />
                           ) : post.post_type === "About" ? (
                             <ClubOnePost.AboutPostContainer
-                              linkTo={linkTo}
+                              linkTo={""}
                               whatwedo={post.post_whatwedo}
                               purpose={post.post_purpose}
                               contact={post.post_contact}
                             />
                           ) : post.post_type === "Support" ? (
                             <ClubOnePost.SupportPostContainer
-                              linkTo={linkTo}
+                              linkTo={""}
                               links={post.post_support_links}
                               goal={post.post_support_goal}
                               text={post.post_text}
                             />
                           ) : post.post_type === "Post" ? (
                             <ClubOnePost.ShowcasePostContainer
-                              linkTo={linkTo}
+                              linkTo={""}
                               text={post.post_text}
                             />
                           ) : null}
@@ -164,49 +164,49 @@ export function ClubOneContainer() {
                       onCommunity={post.on_community}
                       width="100%"
                       postType={post.post_type}
-                      linkTo={linkTo}
+                      linkTo={""}
                     >
                       {post.post_type === "Partner Event" ? (
                         <ClubOnePost.PartnerEventPostContainer
-                          linkTo={linkTo}
+                          linkTo={""}
                           text={post.post_text}
                           date={post.post_date}
                           location={post.post_location}
                         />
                       ) : post.post_type === "Event" ? (
                         <ClubOnePost.PartnerEventPostContainer
-                          linkTo={linkTo}
+                          linkTo={""}
                           text={post.post_text}
                           date={post.post_date}
                           location={post.post_location}
                         />
                       ) : post.post_type === "Announcement" ? (
                         <ClubOnePost.AnnouncementPostContainer
-                          linkTo={linkTo}
+                          linkTo={""}
                           text={post.post_text}
                         />
                       ) : post.post_type === "Showcase" ? (
                         <ClubOnePost.ShowcasePostContainer
-                          linkTo={linkTo}
+                          linkTo={""}
                           text={post.post_text}
                         />
                       ) : post.post_type === "About" ? (
                         <ClubOnePost.AboutPostContainer
-                          linkTo={linkTo}
+                          linkTo={""}
                           whatwedo={post.post_whatwedo}
                           purpose={post.post_purpose}
                           contact={post.post_contact}
                         />
                       ) : post.post_type === "Support" ? (
                         <ClubOnePost.SupportPostContainer
-                          linkTo={linkTo}
+                          linkTo={""}
                           links={post.post_support_links}
                           goal={post.post_support_goal}
                           text={post.post_text}
                         />
                       ) : post.post_type === "Post" ? (
                         <ClubOnePost.ShowcasePostContainer
-                          linkTo={linkTo}
+                          linkTo={""}
                           text={post.post_text}
                         />
                       ) : null}

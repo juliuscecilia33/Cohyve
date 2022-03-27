@@ -8,3 +8,4 @@ export const CLUBS = "/clubs";
 export const SEARCH = "/search";
 export const CUSTOMIZE = "/:clubName/:clubid/customize";
 export const CLUB = "/clubs/:clubName";
+export const CLUBONE = "/clubonetest";
