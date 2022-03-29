@@ -52,7 +52,7 @@ CREATE TABLE school(
 CREATE TABLE members(
   club_id SERIAL NOT NULL,
   firebase_user_id VARCHAR NOT NULL,
-  role VARCHAR(255), 
+  role VARCHAR(255) NOT NULL DEFAULT 'Member', 
   -- add default 'Member' for role
   pending BOOLEAN NOT NULL,
   priority INTEGER DEFAULT 4, 
