@@ -25,7 +25,7 @@ router.post("/", authorize, async (req, res) => {
       school_id,
     } = req.body;
     const newClub = await pool.query(
-      "INSERT INTO clubs (name, description, school, category, established_in, state, website, instagram, facebook, twitter, email, profileURL, bannerURL, school_id) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING *",
+      "INSERT INTO clubs (club_name, club_description, club_school, club_category, club_established_in, club_state, club_website, club_instagram, club_facebook, club_twitter, club_email, club_profileURL, club_bannerURL, club_school_id) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING *",
       [
         name,
         description,
@@ -86,7 +86,7 @@ router.put("/:id", authorize, checkRole, async (req, res) => {
     } = req.body;
 
     const updateClubInfo = await pool.query(
-      "UPDATE clubs SET name = $1, description = $2, school = $3, category = $4, established_in = $5, state = $6, website = $7, instagram = $8, facebook = $9, twitter = $10, email = $11, profileURL = $12, bannerURL = $13, hero = $14, feed = $15, theme = $16, school_id = $17 WHERE club_id = $18",
+      "UPDATE clubs SET club_name = $1, club_description = $2, club_school = $3, club_category = $4, club_established_in = $5, club_state = $6, club_website = $7, club_instagram = $8, club_facebook = $9, club_twitter = $10, club_email = $11, club_profileURL = $12, club_bannerURL = $13, club_hero = $14, club_feed = $15, club_theme = $16, club_school_id = $17 WHERE club_id = $18",
       [
         name,
         description,
