@@ -198,6 +198,19 @@ router.get("/", async (req, res) => {
   }
 });
 
+// Get posts along with club and user data
+router.get("/getpoststest", async (req, res) => {
+  try {
+    const clubs = await pool.query(
+      "SELECT * FROM posts FULL JOIN clubs ON clubs.club_id = posts.club_id"
+    );
+    res.json(clubs.rows);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
+
 // If User doesn't follow that club, then user can follow a club
 router.post("/:id/follow", authorize, async (req, res) => {
   try {
