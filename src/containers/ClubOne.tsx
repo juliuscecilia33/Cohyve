@@ -52,6 +52,7 @@ export function ClubOneContainer() {
       bannerurl: "",
       username: "juliusceciliaFwJoujO3BISHxwiBlKhx0bH8DVh2",
       name: "Julius Cecilia",
+      club_partner: null,
     },
     {
       post_id: 2,
@@ -83,6 +84,7 @@ export function ClubOneContainer() {
       bannerurl: "",
       username: "juliusceciliaFwJoujO3BISHxwiBlKhx0bH8DVh2",
       name: "Julius Cecilia",
+      club_partner: null,
     },
     {
       post_id: 3,
@@ -114,6 +116,7 @@ export function ClubOneContainer() {
       bannerurl: "",
       username: "juliusceciliaFwJoujO3BISHxwiBlKhx0bH8DVh2",
       name: "Julius Cecilia",
+      club_partner: null,
     },
     {
       post_id: 4,
@@ -145,6 +148,7 @@ export function ClubOneContainer() {
       bannerurl: "",
       username: "juliusceciliaFwJoujO3BISHxwiBlKhx0bH8DVh2",
       name: "Julius Cecilia",
+      club_partner: null,
     },
     {
       post_id: 5,
@@ -176,6 +180,7 @@ export function ClubOneContainer() {
       bannerurl: "",
       username: "juliusceciliaFwJoujO3BISHxwiBlKhx0bH8DVh2",
       name: "Julius Cecilia",
+      club_partner: 37,
     },
   ];
 
