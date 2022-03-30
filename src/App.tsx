@@ -130,7 +130,7 @@ function App() {
             </Route>
 
             <Route exact path={ROUTES.CLUBONE}>
-              <ClubOnePage /> 
+              <ClubOnePage />
             </Route>
 
             <Route

@@ -52,7 +52,7 @@ export function ClubOneContainer() {
       bannerurl: "",
       username: "juliusceciliaFwJoujO3BISHxwiBlKhx0bH8DVh2",
       name: "Julius Cecilia",
-      club_partner: null,
+      club_partner: "",
     },
     {
       post_id: 2,
@@ -84,7 +84,7 @@ export function ClubOneContainer() {
       bannerurl: "",
       username: "juliusceciliaFwJoujO3BISHxwiBlKhx0bH8DVh2",
       name: "Julius Cecilia",
-      club_partner: null,
+      club_partner: "",
     },
     {
       post_id: 3,
@@ -116,7 +116,7 @@ export function ClubOneContainer() {
       bannerurl: "",
       username: "juliusceciliaFwJoujO3BISHxwiBlKhx0bH8DVh2",
       name: "Julius Cecilia",
-      club_partner: null,
+      club_partner: "",
     },
     {
       post_id: 4,
@@ -148,7 +148,7 @@ export function ClubOneContainer() {
       bannerurl: "",
       username: "juliusceciliaFwJoujO3BISHxwiBlKhx0bH8DVh2",
       name: "Julius Cecilia",
-      club_partner: null,
+      club_partner: "",
     },
     {
       post_id: 5,
@@ -187,20 +187,26 @@ export function ClubOneContainer() {
   return (
     <ClubOne>
       <ClubHeroOne>
-        <ClubHeroOne.BannerSrc>
+        <ClubHeroOne.BannerSrc
+          imageSource={
+            "https://firebasestorage.googleapis.com/v0/b/cohyve.appspot.com/o/clubs%2FNBA%20Topshot%20Club-University%20of%20Washington-2022%2FclubBanner%2Fbanner?alt=media&token=8a32f8ee-2716-44d4-a28d-dfef04cf2c9b"
+          }
+        >
           <ClubHeroOne.InfoContainer>
             <CreateClub.Info>
               <CreateClub.BasicInfo>
                 <CreateClub.ProfilePlaceholder
-                  profileImageUrl={clubProfileImageUrl}
+                  profileImageUrl={
+                    "https://firebasestorage.googleapis.com/v0/b/cohyve.appspot.com/o/clubs%2FNBA%20Topshot%20Club-University%20of%20Washington-2022%2FclubProfile%2Fprofile?alt=media&token=27eccd3b-8bef-4f0f-85e2-eed9fa850be4"
+                  }
                 />
                 <CreateClub.InfoText>
-                  <CreateClub.Name name={clubName} year={established} />
+                  <CreateClub.Name name={"Test Club"} year={2021} />
                   <CreateClub.Description>{description}</CreateClub.Description>
                   <CreateClub.SchoolLocationCategory
-                    school={school}
-                    location={location}
-                    category={category}
+                    school={"University of Washington"}
+                    location={"Seattle, Washington"}
+                    category={"Sports"}
                   />
                 </CreateClub.InfoText>
               </CreateClub.BasicInfo>
@@ -390,25 +396,25 @@ export function ClubOneContainer() {
             />
             <ClubOne.Item
               borderRadius="50%"
-              detail="President/Founder"
+              detail="Vice President"
               name="John Doe"
               profileUrl={null}
             />
             <ClubOne.Item
               borderRadius="50%"
-              detail="President/Founder"
+              detail="Treasurer"
               name="John Doe"
               profileUrl={null}
             />
             <ClubOne.Item
               borderRadius="50%"
-              detail="President/Founder"
+              detail="Lead Developer"
               name="John Doe"
               profileUrl={null}
             />
             <ClubOne.Item
               borderRadius="50%"
-              detail="President/Founder"
+              detail="Member"
               name="John Doe"
               profileUrl={null}
             />
