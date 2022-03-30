@@ -14,11 +14,11 @@ export function ClubOneContainer() {
   const [clubName, setClubName] = useState<string>("");
   const [established, setEstablished] = useState(null);
   const [description, setDescription] = useState<string>("");
-  const [school, setSchool] = useState("");
-  const [location, setLocation] = useState("");
-  const [category, setCategory] = useState("");
-  const [followers, setFollowers] = useState(0);
-  const [members, setMembers] = useState(0);
+  const [school, setSchool] = useState<string>("");
+  const [location, setLocation] = useState<string>("");
+  const [category, setCategory] = useState<string>("");
+  const [followers, setFollowers] = useState<number>(0);
+  const [members, setMembers] = useState<number>(0);
   const [clubPosts, setClubPosts] = useState(null);
 
   const samplePostData = [
@@ -30,7 +30,10 @@ export function ClubOneContainer() {
       created_at: "2022-03-29T02:51:40.697Z",
       firebase_user_id: "FwJoujO3BISHxwiBlKhx0bH8DVh2",
       on_community: false,
-      post_images: ["thisisurl1", "thisisurl2"],
+      post_images: [
+        "https://sodomojo.com/wp-content/uploads/getty-images/2017/07/1211682906.jpeg",
+        "thisisurl2",
+      ],
       post_type: "Partner Event",
       post_location: "Paccar Hall Room 442",
       post_date: "03-01-2022",
@@ -58,7 +61,10 @@ export function ClubOneContainer() {
       created_at: "2022-03-29T03:37:02.354Z",
       firebase_user_id: "FwJoujO3BISHxwiBlKhx0bH8DVh2",
       on_community: false,
-      post_images: ["urlone", "urltwo"],
+      post_images: [
+        "https://cloudfront-us-east-1.images.arcpublishing.com/advancelocal/M5QVGDYD2VC5VEWYBVCHJTIZDE.jpg",
+        "urltwo",
+      ],
       post_type: "About",
       post_location: "",
       post_date: "",
@@ -86,7 +92,10 @@ export function ClubOneContainer() {
       created_at: "2022-03-29T03:54:38.304Z",
       firebase_user_id: "FwJoujO3BISHxwiBlKhx0bH8DVh2",
       on_community: true,
-      post_images: ["urluno", "urldos"],
+      post_images: [
+        "https://cloudfront-us-east-1.images.arcpublishing.com/advancelocal/M5QVGDYD2VC5VEWYBVCHJTIZDE.jpg",
+        "urldos",
+      ],
       post_type: "Support",
       post_location: "",
       post_date: "",
@@ -114,7 +123,10 @@ export function ClubOneContainer() {
       created_at: "2022-03-29T03:56:13.272Z",
       firebase_user_id: "FwJoujO3BISHxwiBlKhx0bH8DVh2",
       on_community: false,
-      post_images: ["urlone", "urltwo"],
+      post_images: [
+        "https://cloudfront-us-east-1.images.arcpublishing.com/advancelocal/M5QVGDYD2VC5VEWYBVCHJTIZDE.jpg",
+        "urltwo",
+      ],
       post_type: "Showcase",
       post_location: "",
       post_date: "",
@@ -142,7 +154,10 @@ export function ClubOneContainer() {
       created_at: "2022-03-29T03:56:45.355Z",
       firebase_user_id: "FwJoujO3BISHxwiBlKhx0bH8DVh2",
       on_community: false,
-      post_images: ["urlone", "urltwo"],
+      post_images: [
+        "https://sodomojo.com/wp-content/uploads/getty-images/2017/07/1211682906.jpeg",
+        "urltwo",
+      ],
       post_type: "Announcement",
       post_location: "",
       post_date: "",
@@ -229,10 +244,10 @@ export function ClubOneContainer() {
       <ClubOne.Content>
         <ClubOne.Posts>
           {/* Add postType "Post", default */}
-          {clubPosts &&
-            clubPosts.map((post: any, key: any) => {
+          {samplePostData &&
+            samplePostData.map((post: any, key: any) => {
               return (
-                <ClubOnePost key={key}>
+                <ClubOnePost key={post.post_id}>
                   {post.post_images ? (
                     <>
                       <ReactRouterLink to={""}>
@@ -243,8 +258,8 @@ export function ClubOneContainer() {
                       </ReactRouterLink>
                       <ReactRouterLink to={""}>
                         <ClubOnePost.PostContainer
-                          userProfile={post.user_profile}
-                          clubProfile={clubProfileImageUrl}
+                          userProfile={post.profileurl}
+                          clubProfile={post.club_profileurl}
                           onCommunity={post.on_community}
                           width="100%"
                           postType={post.post_type}

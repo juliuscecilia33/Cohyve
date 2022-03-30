@@ -1,0 +1,34 @@
+SELECT 
+    posts.post_id, 
+    posts.club_id, 
+    posts.title, 
+    posts.description, 
+    posts.created_at, 
+    posts.firebase_user_id, 
+    posts.on_community, 
+    posts.post_images, 
+    posts.post_type, 
+    posts.post_location, 
+    posts.post_date, 
+    posts.post_text, 
+    posts.post_whatwedo, 
+    posts.post_purpose, 
+    posts.post_contact, 
+    posts.post_support_links, 
+    posts.post_support_goal, 
+    clubs.club_name, 
+    clubs.club_profileURL, 
+    users.profileURL, 
+    users.username, 
+    users.name, 
+    posts_partners.club_partner 
+FROM 
+    posts 
+FULL JOIN 
+    clubs ON clubs.club_id = posts.club_id 
+FULL JOIN 
+    users ON posts.firebase_user_id = users.firebase_user_id 
+FULL JOIN 
+    posts_partners ON posts.post_id = post_partners.post_id 
+WHERE 
+    posts.club_id = 36
