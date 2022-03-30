@@ -198,11 +198,11 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Get posts along with club and user data
+// Get posts along with specific club and user data
 router.get("/getpostswithclubanduser", async (req, res) => {
   try {
     const clubs = await pool.query(
-      "SELECT posts.post_id, posts.club_id, posts.title, posts.description, posts.created_at, posts.firebase_user_id, posts.on_community, posts.post_images, posts.post_type, posts.post_location, posts.post_date, posts.post_text, posts.post_whatwedo, posts.post_purpose, posts.post_contact, posts.post_support_links, posts.post_support_goal, clubs.club_name, clubs.club_profileURL, clubs.club_bannerURL,  users.profileURL, users.bannerURL, users.username, users.name FROM posts FULL JOIN clubs ON clubs.club_id = posts.club_id FULL JOIN users ON posts.firebase_user_id = users.firebase_user_id"
+      "SELECT posts.post_id, posts.club_id, posts.title, posts.description, posts.created_at, posts.firebase_user_id, posts.on_community, posts.post_images, posts.post_type, posts.post_location, posts.post_date, posts.post_text, posts.post_whatwedo, posts.post_purpose, posts.post_contact, posts.post_support_links, posts.post_support_goal, clubs.club_name, clubs.club_profileURL,  users.profileURL, users.username, users.name FROM posts FULL JOIN clubs ON clubs.club_id = posts.club_id FULL JOIN users ON posts.firebase_user_id = users.firebase_user_id WHERE posts.club_id = 36"
     );
     res.json(clubs.rows);
   } catch (err) {
