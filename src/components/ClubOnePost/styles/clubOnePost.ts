@@ -21,7 +21,7 @@ export const Container = styled.div`
 
 export const PhotosContainer = styled.div`
   width: 100%;
-  height: 405px;
+  height: 425px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -96,8 +96,8 @@ export const PostContainer = styled.div<ActiveProps>`
   border: ${({ isAnnouncement }) =>
     isAnnouncement ? `3px solid #AFD5AA;` : `none`};
   border-radius: 20px;
-  padding: 1rem;
-  // transform: translateY(-2.5%); have condition for this in props
+  padding: 1rem 2rem;
+  transform: ${({ width }) => (width === "85%" ? "translateY(-32.5%)" : null)};
 
   .see_more {
     width: 100%;
@@ -129,7 +129,7 @@ export const PartnerEventPostContainer = styled.div`
 
   .text {
     width: 100%;
-    margin: 0.7rem 0;
+    margin-bottom: 1rem;
 
     p {
       font-family: "Poppins";
@@ -153,7 +153,7 @@ export const PartnerEventPostContainer = styled.div`
       align-items: center;
 
       i {
-        font-size: 70px;
+        font-size: 60px;
         color: #deecde;
         margin-right: 0.7rem;
       }

@@ -272,7 +272,7 @@ export function ClubOneContainer() {
                           userProfile={post.profileurl}
                           clubProfile={post.club_profileurl}
                           onCommunity={post.on_community}
-                          width="70%"
+                          width="85%"
                           postType={post.post_type}
                           linkTo={""}
                           partners={post.post_partners}
