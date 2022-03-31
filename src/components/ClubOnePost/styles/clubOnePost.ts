@@ -8,10 +8,15 @@ interface ActiveProps {
 }
 
 export const Container = styled.div`
-  width: 95%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  margin-bottom: 5rem;
+  align-items: flex-start;
+
+  a {
+    width: 90%;
+  }
 `;
 
 export const PhotosContainer = styled.div`
@@ -24,6 +29,10 @@ export const PhotosContainer = styled.div`
   border-radius: 20px;
   box-shadow: -1px 10px 60px rgba(27, 27, 30, 0.1);
 
+  a {
+    width: 0%;
+  }
+
   &::after {
     content: "";
     position: absolute;
@@ -32,8 +41,8 @@ export const PhotosContainer = styled.div`
     width: 100%;
     height: 100%;
     background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.5) 0%,
+      0deg,
+      rgba(0, 0, 0, 0.4) 0%,
       rgba(0, 0, 0, 0) 100%
     );
     border-radius: 20px;
@@ -55,12 +64,21 @@ export const MoreImagesIcon = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 4%;
+  right: 2%;
   background: linear-gradient(94.39deg, #4d566a 8.09%, #091f2e 93.12%);
+  z-index: 100;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  opacity: 0.7;
+
+  &:hover {
+    box-shadow: -1px 6px 60px rgba(27, 27, 30, 0.2);
+    transform: translateY(-2.5%);
+    opacity: 1;
+  }
 
   i {
-    font-size: 22px;
+    font-size: 16px;
     color: #f9faf9;
   }
 `;
@@ -79,6 +97,7 @@ export const PostContainer = styled.div<ActiveProps>`
     isAnnouncement ? `3px solid #AFD5AA;` : `none`};
   border-radius: 20px;
   padding: 1rem;
+  // transform: translateY(-2.5%); have condition for this in props
 
   .see_more {
     width: 100%;

@@ -12,7 +12,7 @@ export const Container = styled.div`
 export const BannerSrc = styled.div`
   position: relative;
   width: 100%;
-  height: 275px;
+  height: 330px;
 
   img {
     width: 100%;
@@ -24,7 +24,7 @@ export const BannerSrc = styled.div`
 export const InfoContainer = styled.div`
   width: 100%;
   position: absolute;
-  bottom: -55%;
+  bottom: -36%;
   margin-left: auto;
   margin-right: auto;
   padding: 0 15%;

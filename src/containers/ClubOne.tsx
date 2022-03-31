@@ -272,7 +272,7 @@ export function ClubOneContainer() {
                           userProfile={post.profileurl}
                           clubProfile={post.club_profileurl}
                           onCommunity={post.on_community}
-                          width="100%"
+                          width="70%"
                           postType={post.post_type}
                           linkTo={""}
                           partners={post.post_partners}
@@ -282,26 +282,26 @@ export function ClubOneContainer() {
                           {post.post_type === "Partner Event" ? (
                             <ClubOnePost.PartnerEventPostContainer
                               linkTo={""}
-                              text={post.post_text}
+                              text={post.title}
                               date={post.post_date}
                               location={post.post_location}
                             />
                           ) : post.post_type === "Event" ? (
                             <ClubOnePost.PartnerEventPostContainer
                               linkTo={""}
-                              text={post.post_text}
+                              text={post.title}
                               date={post.post_date}
                               location={post.post_location}
                             />
                           ) : post.post_type === "Announcement" ? (
                             <ClubOnePost.AnnouncementPostContainer
                               linkTo={""}
-                              text={post.post_text}
+                              text={post.title}
                             />
                           ) : post.post_type === "Showcase" ? (
                             <ClubOnePost.ShowcasePostContainer
                               linkTo={""}
-                              text={post.post_text}
+                              text={post.title}
                             />
                           ) : post.post_type === "About" ? (
                             <ClubOnePost.AboutPostContainer
@@ -315,12 +315,12 @@ export function ClubOneContainer() {
                               linkTo={""}
                               links={post.post_support_links}
                               goal={post.post_support_goal}
-                              text={post.post_text}
+                              text={post.title}
                             />
                           ) : post.post_type === "Post" ? (
                             <ClubOnePost.ShowcasePostContainer
                               linkTo={""}
-                              text={post.post_text}
+                              text={post.title}
                             />
                           ) : null}
                         </ClubOnePost.PostContainer>
@@ -331,7 +331,7 @@ export function ClubOneContainer() {
                       userProfile={post.user_profile}
                       clubProfile={clubProfileImageUrl}
                       onCommunity={post.on_community}
-                      width="100%"
+                      width="750px"
                       postType={post.post_type}
                       linkTo={""}
                     >
