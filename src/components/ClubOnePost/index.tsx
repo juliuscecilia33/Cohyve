@@ -380,31 +380,30 @@ ClubOnePost.TopPostLayer = function ClubOnePostTopPostLayerContainer({
             })}
           </div>
         )}
-        <ReactRouterLink to={linkTo}>
-          <ActionButton
-            color="#FAFCFA"
-            onClick={() => null}
-            background={
-              postType === "Partner Event"
-                ? "linear-gradient(87.85deg, #F64F59 1.81%, #C471ED 51%, #12C2E9 98.19%);"
-                : postType === "Event"
-                ? "linear-gradient(87.85deg, #12C2E9 1.81%, #C471ED 51%, #F64F59 98.19%);"
-                : postType === "Announcement"
-                ? "linear-gradient(87.85deg, #FEAC5E 1.81%, #C779D0 51%, #4BC0C8 98.19%);"
-                : postType === "Showcase"
-                ? "linear-gradient(87.85deg, #A770EF 1.81%, #CF8BF3 51%, #FDB99B 98.19%);"
-                : postType === "About"
-                ? "linear-gradient(94.39deg, #58A4B0 8.09%, #AFD5AA 93.12%);"
-                : postType === "Support"
-                ? "linear-gradient(87.85deg, #7F7FD5 1.81%, #86A8E7 50.62%, #9BE0DC 98.19%);"
-                : postType === "Post"
-                ? "linear-gradient(94.39deg, #4D566A 8.09%, #091F2E 93.12%);"
-                : null
-            }
-          >
-            {postType}
-          </ActionButton>
-        </ReactRouterLink>
+
+        <ActionButton
+          color="#FAFCFA"
+          onClick={() => null}
+          background={
+            postType === "Partner Event"
+              ? "linear-gradient(87.85deg, #F64F59 1.81%, #C471ED 51%, #12C2E9 98.19%);"
+              : postType === "Event"
+              ? "linear-gradient(87.85deg, #12C2E9 1.81%, #C471ED 51%, #F64F59 98.19%);"
+              : postType === "Announcement"
+              ? "linear-gradient(87.85deg, #FEAC5E 1.81%, #C779D0 51%, #4BC0C8 98.19%);"
+              : postType === "Showcase"
+              ? "linear-gradient(87.85deg, #A770EF 1.81%, #CF8BF3 51%, #FDB99B 98.19%);"
+              : postType === "About"
+              ? "linear-gradient(94.39deg, #58A4B0 8.09%, #AFD5AA 93.12%);"
+              : postType === "Support"
+              ? "linear-gradient(87.85deg, #7F7FD5 1.81%, #86A8E7 50.62%, #9BE0DC 98.19%);"
+              : postType === "Post"
+              ? "linear-gradient(94.39deg, #4D566A 8.09%, #091F2E 93.12%);"
+              : null
+          }
+        >
+          <ReactRouterLink to={linkTo}>{postType}</ReactRouterLink>
+        </ActionButton>
       </div>
     </TopPostLayer>
   );

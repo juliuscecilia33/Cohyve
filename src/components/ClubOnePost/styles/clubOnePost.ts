@@ -307,6 +307,7 @@ export const TopPostLayer = styled.div`
 
   .club_and_user {
     height: 100%;
+    width: 50%;
     display: flex;
     align-items: center;
 
@@ -369,6 +370,12 @@ export const TopPostLayer = styled.div`
   .partners_and_button {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
+    width: 50%;
+
+    a {
+      width: 100%;
+    }
 
     .partners {
       display: flex;
