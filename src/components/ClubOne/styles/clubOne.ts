@@ -20,7 +20,7 @@ export const Content = styled.div`
 `;
 
 export const MembersAndPartners = styled.div`
-  width: 20%;
+  width: 25%;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -29,7 +29,7 @@ export const MembersAndPartners = styled.div`
 export const Members = styled.div`
   display: flex;
   flex-direction: column;
-  width: 95%;
+  width: 100%;
   padding: 0.8rem 0.4rem;
   background: #f4faf4;
   margin-bottom: 2rem;
@@ -38,7 +38,7 @@ export const Members = styled.div`
 export const Partners = styled.div`
   display: flex;
   flex-direction: column;
-  width: 95%;
+  width: 100%;
   padding: 0.8rem 0.4rem;
   background: #f4faf9;
 `;
@@ -119,7 +119,7 @@ export const ViewAll = styled.h3`
 `;
 
 export const Posts = styled.div`
-  width: 80%;
+  width: 75%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
