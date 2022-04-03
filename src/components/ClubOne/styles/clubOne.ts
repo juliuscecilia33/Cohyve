@@ -30,17 +30,19 @@ export const Members = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 0.8rem 0.4rem;
+  padding: 1rem 0.5rem;
   background: #f4faf4;
   margin-bottom: 2rem;
+  border-radius: 25px;
 `;
 
 export const Partners = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 0.8rem 0.4rem;
+  padding: 1rem 0.5rem;
   background: #f4faf9;
+  border-radius: 25px;
 `;
 
 export const Item = styled.div<ActiveProps>`

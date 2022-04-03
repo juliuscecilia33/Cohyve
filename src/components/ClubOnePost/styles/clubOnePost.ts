@@ -11,7 +11,7 @@ export const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
   align-items: flex-start;
 
   a {
@@ -88,16 +88,23 @@ export const PostContainer = styled.div<ActiveProps>`
   flex-direction: column;
   width: ${({ width }) => width};
   background: #fafcfa;
-  box-shadow: -1px 10px 60px rgba(27, 27, 30, 0.1);
   box-shadow: ${({ isAnnouncement }) =>
     isAnnouncement
-      ? `-1px 10px 60px rgba(27, 27, 30, 0.1)`
-      : `-1px 10px 60px rgba(175, 213, 170, 0.35)`};
+      ? `-1px 10px 60px rgba(175, 213, 170, 0.55)`
+      : `-1px 10px 60px rgba(27, 27, 30, 0.1)`};
+
   border: ${({ isAnnouncement }) =>
     isAnnouncement ? `3px solid #AFD5AA;` : `none`};
   border-radius: 20px;
   padding: 1rem 2rem;
   transform: ${({ width }) => (width === "85%" ? "translateY(-32.5%)" : null)};
+
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+  &:hover {
+    transform: ${({ width }) =>
+      width === "85%" ? "translateY(-34.5%)" : "translateY(-2.5%)"};
+  }
 
   .see_more {
     width: 100%;
