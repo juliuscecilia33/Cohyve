@@ -23,21 +23,21 @@ export function ClubOneContainer() {
 
   const samplePostData = [
     {
-      post_id: 1,
+      post_id: 5,
       club_id: 36,
-      title: "Test Partner Event Post",
-      description: "This is a partner event",
-      created_at: "2022-03-29T02:51:40.697Z",
+      title: "Test Announcement Post",
+      description: "This is an announcement post",
+      created_at: "2022-03-29T03:56:45.355Z",
       firebase_user_id: "FwJoujO3BISHxwiBlKhx0bH8DVh2",
       on_community: false,
       post_images: [
-        "https://sodomojo.com/wp-content/uploads/getty-images/2017/07/1211682906.jpeg",
-        "thisisurl2",
+        "https://cloudfront-us-east-1.images.arcpublishing.com/advancelocal/M5QVGDYD2VC5VEWYBVCHJTIZDE.jpg",
+        "urltwo",
       ],
-      post_type: "Partner Event",
-      post_location: "Paccar Hall Room 442",
-      post_date: "03-01-2022",
-      post_text: "Please join us",
+      post_type: "Announcement",
+      post_location: "",
+      post_date: "",
+      post_text: "",
       post_whatwedo: "",
       post_purpose: "",
       post_contact: "",
@@ -46,13 +46,12 @@ export function ClubOneContainer() {
       club_name: "NBA Topshot Club",
       club_profileurl:
         "https://firebasestorage.googleapis.com/v0/b/cohyve.appspot.com/o/BannerPlaceholder.png?alt=media&token=c503d5fc-736a-42da-9504-5dfb95cd83ef",
-      club_bannerurl: "",
       profileurl:
         "https://firebasestorage.googleapis.com/v0/b/cohyve.appspot.com/o/Placeholder.png?alt=media&token=83d8109a-c0ac-4cba-bd95-247ad79857da",
-      bannerurl: "",
       username: "juliusceciliaFwJoujO3BISHxwiBlKhx0bH8DVh2",
       name: "Julius Cecilia",
-      club_partner: "",
+      club_partner: 37,
+      role: "Owner",
     },
     {
       post_id: 2,
@@ -78,45 +77,12 @@ export function ClubOneContainer() {
       club_name: "NBA Topshot Club",
       club_profileurl:
         "https://firebasestorage.googleapis.com/v0/b/cohyve.appspot.com/o/BannerPlaceholder.png?alt=media&token=c503d5fc-736a-42da-9504-5dfb95cd83ef",
-      club_bannerurl: "",
       profileurl:
         "https://firebasestorage.googleapis.com/v0/b/cohyve.appspot.com/o/Placeholder.png?alt=media&token=83d8109a-c0ac-4cba-bd95-247ad79857da",
-      bannerurl: "",
       username: "juliusceciliaFwJoujO3BISHxwiBlKhx0bH8DVh2",
       name: "Julius Cecilia",
       club_partner: "",
-    },
-    {
-      post_id: 3,
-      club_id: 36,
-      title: "Test Support Post",
-      description: "This is a support post",
-      created_at: "2022-03-29T03:54:38.304Z",
-      firebase_user_id: "FwJoujO3BISHxwiBlKhx0bH8DVh2",
-      on_community: true,
-      post_images: [
-        "https://cloudfront-us-east-1.images.arcpublishing.com/advancelocal/M5QVGDYD2VC5VEWYBVCHJTIZDE.jpg",
-        "urldos",
-      ],
-      post_type: "Support",
-      post_location: "",
-      post_date: "",
-      post_text: "",
-      post_whatwedo: "",
-      post_purpose: "",
-      post_contact: "",
-      post_support_links: ["supporturlone", "supporturltwo"],
-      post_support_goal: 5000,
-      club_name: "NBA Topshot Club",
-      club_profileurl:
-        "https://firebasestorage.googleapis.com/v0/b/cohyve.appspot.com/o/BannerPlaceholder.png?alt=media&token=c503d5fc-736a-42da-9504-5dfb95cd83ef",
-      club_bannerurl: "",
-      profileurl:
-        "https://firebasestorage.googleapis.com/v0/b/cohyve.appspot.com/o/Placeholder.png?alt=media&token=83d8109a-c0ac-4cba-bd95-247ad79857da",
-      bannerurl: "",
-      username: "juliusceciliaFwJoujO3BISHxwiBlKhx0bH8DVh2",
-      name: "Julius Cecilia",
-      club_partner: "",
+      role: "Owner",
     },
     {
       post_id: 4,
@@ -142,30 +108,29 @@ export function ClubOneContainer() {
       club_name: "NBA Topshot Club",
       club_profileurl:
         "https://firebasestorage.googleapis.com/v0/b/cohyve.appspot.com/o/BannerPlaceholder.png?alt=media&token=c503d5fc-736a-42da-9504-5dfb95cd83ef",
-      club_bannerurl: "",
       profileurl:
         "https://firebasestorage.googleapis.com/v0/b/cohyve.appspot.com/o/Placeholder.png?alt=media&token=83d8109a-c0ac-4cba-bd95-247ad79857da",
-      bannerurl: "",
       username: "juliusceciliaFwJoujO3BISHxwiBlKhx0bH8DVh2",
       name: "Julius Cecilia",
       club_partner: "",
+      role: "Owner",
     },
     {
-      post_id: 5,
+      post_id: 1,
       club_id: 36,
-      title: "Test Announcement Post",
-      description: "This is an announcement post",
-      created_at: "2022-03-29T03:56:45.355Z",
+      title: "Test Partner Event Post",
+      description: "This is a partner event",
+      created_at: "2022-03-29T02:51:40.697Z",
       firebase_user_id: "FwJoujO3BISHxwiBlKhx0bH8DVh2",
       on_community: false,
       post_images: [
-        "https://sodomojo.com/wp-content/uploads/getty-images/2017/07/1211682906.jpeg",
-        "urltwo",
+        "https://cloudfront-us-east-1.images.arcpublishing.com/advancelocal/M5QVGDYD2VC5VEWYBVCHJTIZDE.jpg",
+        "thisisurl2",
       ],
-      post_type: "Announcement",
-      post_location: "",
-      post_date: "",
-      post_text: "",
+      post_type: "Partner Event",
+      post_location: "Paccar Hall Room 442",
+      post_date: "03-01-2022",
+      post_text: "Please join us",
       post_whatwedo: "",
       post_purpose: "",
       post_contact: "",
@@ -174,13 +139,43 @@ export function ClubOneContainer() {
       club_name: "NBA Topshot Club",
       club_profileurl:
         "https://firebasestorage.googleapis.com/v0/b/cohyve.appspot.com/o/BannerPlaceholder.png?alt=media&token=c503d5fc-736a-42da-9504-5dfb95cd83ef",
-      club_bannerurl: "",
       profileurl:
         "https://firebasestorage.googleapis.com/v0/b/cohyve.appspot.com/o/Placeholder.png?alt=media&token=83d8109a-c0ac-4cba-bd95-247ad79857da",
-      bannerurl: "",
       username: "juliusceciliaFwJoujO3BISHxwiBlKhx0bH8DVh2",
       name: "Julius Cecilia",
-      club_partner: 37,
+      club_partner: "",
+      role: "Owner",
+    },
+    {
+      post_id: 3,
+      club_id: 36,
+      title: "Test Support Post",
+      description: "This is a support post",
+      created_at: "2022-03-29T03:54:38.304Z",
+      firebase_user_id: "FwJoujO3BISHxwiBlKhx0bH8DVh2",
+      on_community: true,
+      post_images: [
+        "https://cloudfront-us-east-1.images.arcpublishing.com/advancelocal/M5QVGDYD2VC5VEWYBVCHJTIZDE.jpg",
+        "urldos",
+      ],
+      post_type: "Support",
+      post_location: "",
+      post_date: "",
+      post_text: "",
+      post_whatwedo: "",
+      post_purpose: "",
+      post_contact: "",
+      post_support_links: ["supporturlone", "supporturltwo"],
+      post_support_goal: 5000,
+      club_name: "NBA Topshot Club",
+      club_profileurl:
+        "https://firebasestorage.googleapis.com/v0/b/cohyve.appspot.com/o/BannerPlaceholder.png?alt=media&token=c503d5fc-736a-42da-9504-5dfb95cd83ef",
+      profileurl:
+        "https://firebasestorage.googleapis.com/v0/b/cohyve.appspot.com/o/Placeholder.png?alt=media&token=83d8109a-c0ac-4cba-bd95-247ad79857da",
+      username: "juliusceciliaFwJoujO3BISHxwiBlKhx0bH8DVh2",
+      name: "Julius Cecilia",
+      club_partner: "",
+      role: "Owner",
     },
   ];
 
@@ -276,8 +271,9 @@ export function ClubOneContainer() {
                           postType={post.post_type}
                           linkTo={""}
                           partners={post.post_partners}
-                          position={post.user_position}
+                          position={post.role}
                           posted={post.created_at}
+                          username={post.name}
                         >
                           {post.post_type === "Partner Event" ? (
                             <ClubOnePost.PartnerEventPostContainer
