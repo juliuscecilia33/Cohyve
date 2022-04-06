@@ -324,10 +324,10 @@ export const TopPostLayer = styled.div`
 
       img {
         margin-right: 1rem;
-        width: 58px;
-        height: 58px;
+        width: 50px;
+        height: 50px;
         object-fit: cover;
-        border-radius: 50%px;
+        border-radius: 50%;
       }
 
       .border {
@@ -343,9 +343,9 @@ export const TopPostLayer = styled.div`
       align-items: center;
 
       img {
-        margin-right: 0.3rem;
-        width: 36px;
-        height: 36px;
+        margin-right: 0.6rem;
+        width: 44px;
+        height: 44px;
         border-radius: 50%;
         object-fit: cover;
       }
