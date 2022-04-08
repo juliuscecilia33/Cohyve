@@ -91,6 +91,8 @@ CREATE TABLE posts(
   post_type VARCHAR NOT NULL DEFAULT 'Post',
   post_location VARCHAR,
   post_date VARCHAR,
+  post_location_details VARCHAR,
+  post_date_details VARCHAR,
   post_text VARCHAR,
   post_whatwedo VARCHAR,
   post_purpose VARCHAR,
