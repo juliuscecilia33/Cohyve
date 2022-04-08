@@ -7,7 +7,6 @@ import Banner from "../images/BannerTest.jpeg";
 import Profile from "../images/Profile.jpeg";
 import UW from "../components/Images/UW.jpg";
 import axios from "axios";
-import { profile } from "console";
 
 interface ParamTypes {
   username: string;

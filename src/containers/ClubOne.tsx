@@ -131,7 +131,7 @@ export function ClubOneContainer() {
         "thisisurl2",
       ],
       post_type: "Partner Event",
-      post_location: "Paccar Hall Room 442",
+      post_location: "Paccar Hall Room 442asdf",
       post_date: "03-01-2022",
       post_text: "Please join us",
       post_whatwedo: "",
@@ -337,26 +337,26 @@ export function ClubOneContainer() {
                       {post.post_type === "Partner Event" ? (
                         <ClubOnePost.PartnerEventPostContainer
                           linkTo={""}
-                          text={post.post_text}
+                          text={post.title}
                           date={post.post_date}
                           location={post.post_location}
                         />
                       ) : post.post_type === "Event" ? (
                         <ClubOnePost.PartnerEventPostContainer
                           linkTo={""}
-                          text={post.post_text}
+                          text={post.title}
                           date={post.post_date}
                           location={post.post_location}
                         />
                       ) : post.post_type === "Announcement" ? (
                         <ClubOnePost.AnnouncementPostContainer
                           linkTo={""}
-                          text={post.post_text}
+                          text={post.title}
                         />
                       ) : post.post_type === "Showcase" ? (
                         <ClubOnePost.ShowcasePostContainer
                           linkTo={""}
-                          text={post.post_text}
+                          text={post.title}
                         />
                       ) : post.post_type === "About" ? (
                         <ClubOnePost.AboutPostContainer
@@ -370,12 +370,12 @@ export function ClubOneContainer() {
                           linkTo={""}
                           links={post.post_support_links}
                           goal={post.post_support_goal}
-                          text={post.post_text}
+                          text={post.title}
                         />
                       ) : post.post_type === "Post" ? (
                         <ClubOnePost.ShowcasePostContainer
                           linkTo={""}
-                          text={post.post_text}
+                          text={post.title}
                         />
                       ) : null}
                     </ClubOnePost.PostContainer>

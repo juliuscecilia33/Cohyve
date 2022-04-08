@@ -314,8 +314,10 @@ ClubOnePost.SupportPostContainer = function ClubOnePostSupportPostContainer({
           {links &&
             links.map((link: any, key: any) => {
               return (
-                <ReactRouterLink to={link.url}>
-                  <button>{link.title}</button>
+                <ReactRouterLink to={link}>
+                  <button>
+                    <p>{link}</p>
+                  </button>
                 </ReactRouterLink>
               );
             })}

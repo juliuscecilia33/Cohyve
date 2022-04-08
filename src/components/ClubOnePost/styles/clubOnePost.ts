@@ -97,7 +97,7 @@ export const PostContainer = styled.div<ActiveProps>`
     isAnnouncement ? `3px solid #AFD5AA;` : `none`};
   border-radius: 20px;
   padding: 1rem 2rem;
-  transform: ${({ width }) => (width === "85%" ? "translateY(-32.5%)" : null)};
+  transform: ${({ width }) => (width === "85%" ? "translateY(-35.5%)" : null)};
 
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 
@@ -133,6 +133,7 @@ export const PartnerEventPostContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0.7rem 0;
+  padding: 1rem 0;
 
   .text {
     width: 100%;
@@ -160,7 +161,7 @@ export const PartnerEventPostContainer = styled.div`
       align-items: center;
 
       i {
-        font-size: 60px;
+        font-size: 55px;
         color: #deecde;
         margin-right: 0.7rem;
       }
@@ -168,6 +169,7 @@ export const PartnerEventPostContainer = styled.div`
       .date_and_location_details {
         display: flex;
         flex-direction: column;
+        width: 70%;
 
         p {
           font-family: "Outfit";
@@ -185,6 +187,9 @@ export const PartnerEventPostContainer = styled.div`
           font-size: 18px;
           color: #153243;
           margin-bottom: 0.4rem;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
         }
 
         h3 {
@@ -193,6 +198,9 @@ export const PartnerEventPostContainer = styled.div`
           font-weight: 700;
           font-size: 13px;
           color: #afd5aa;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
         }
       }
     }
@@ -202,6 +210,7 @@ export const PartnerEventPostContainer = styled.div`
 export const AnnouncementPostContainer = styled.div`
   width: 100%;
   margin: 0.7rem 0;
+  padding: 1rem 0;
 
   p {
     font-family: "Poppins";
@@ -215,6 +224,7 @@ export const AnnouncementPostContainer = styled.div`
 export const ShowcasePostContainer = styled.div`
   width: 100%;
   margin: 0.7rem 0;
+  padding: 1rem 0;
 
   p {
     font-family: "Poppins";
@@ -230,6 +240,7 @@ export const AboutPostContainer = styled.div`
   margin: 0.7rem 0;
   display: flex;
   flex-direction: column;
+  padding: 1rem 0;
 
   .heading_and_text {
     margin: 0.7rem 0;
@@ -412,6 +423,7 @@ export const Partner = styled.div<ActiveProps>`
 `;
 
 export const SupportPostContainer = styled.div`
+  padding: 1rem 0;
   display: flex;
   align-items: center;
   width: 100%;
@@ -420,13 +432,14 @@ export const SupportPostContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 25%;
 
     p {
       font-family: "Outfit";
       font-style: normal;
       font-weight: 600;
       font-size: 11px;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.9rem;
       color: #afafaf;
     }
 
@@ -437,6 +450,7 @@ export const SupportPostContainer = styled.div`
 
       button {
         margin-bottom: 0.8rem;
+        width: 115px;
         height: 32px;
         padding: 0.8rem;
         display: flex;
@@ -450,17 +464,48 @@ export const SupportPostContainer = styled.div`
         );
         box-shadow: -1px 10px 60px rgba(27, 27, 30, 0.1);
         border-radius: 40px;
-        font-family: "Outfit";
-        font-style: normal;
-        font-weight: 700;
-        font-size: 14px;
-        color: #fafcfa;
         transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        cursor: pointer;
+
+        p {
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+          font-family: "Outfit";
+          font-style: normal;
+          font-weight: 700;
+          font-size: 14px;
+          color: #fafcfa;
+          margin: 0;
+          padding: 0;
+        }
 
         &:hover {
           transform: translateY(-2.5%);
         }
       }
     }
+  }
+
+  .border {
+    width: 0.8px;
+    height: 100px;
+    background: #c4c4c4;
+    margin: 0 1.5rem;
+  }
+
+  .sponsor_details {
+    width: 75%;
+    display: flex;
+    align-items: center;
+    text-align: left;
+
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+
+    color: #284b63;
   }
 `;
