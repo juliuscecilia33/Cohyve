@@ -131,8 +131,10 @@ export function ClubOneContainer() {
         "thisisurl2",
       ],
       post_type: "Partner Event",
-      post_location: "Paccar Hall Room 442asdf",
+      post_location: "Paccar Hall",
+      post_location_details: "Room 442",
       post_date: "03-01-2022",
+      post_date_details: "03:00pm",
       post_text: "Please join us",
       post_whatwedo: "",
       post_purpose: "",
@@ -283,14 +285,14 @@ export function ClubOneContainer() {
                               linkTo={""}
                               text={post.title}
                               date={post.post_date}
+                              time={post.post_date_details}
                               location={post.post_location}
+                              locationDetails={post.post_location_details}
                             />
                           ) : post.post_type === "Event" ? (
                             <ClubOnePost.PartnerEventPostContainer
                               linkTo={""}
                               text={post.title}
-                              date={post.post_date}
-                              location={post.post_location}
                             />
                           ) : post.post_type === "Announcement" ? (
                             <ClubOnePost.AnnouncementPostContainer
