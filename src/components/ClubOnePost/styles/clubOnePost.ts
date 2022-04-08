@@ -311,6 +311,7 @@ export const TopPostLayer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 0.3rem;
 
   .club_and_user {
     height: 100%;
@@ -331,8 +332,8 @@ export const TopPostLayer = styled.div`
       }
 
       .border {
-        width: 1px;
-        height: 100%;
+        width: 0.8px;
+        height: 50px;
         background: #c4c4c4;
         margin-right: 1rem;
       }

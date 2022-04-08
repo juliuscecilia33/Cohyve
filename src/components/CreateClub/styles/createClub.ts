@@ -169,6 +169,7 @@ export const SchoolLocationCategory = styled.div`
     font-weight: bold;
     font-size: 13px;
     color: #f0f2ef;
+    line-height: 22px;
   }
 `;
 

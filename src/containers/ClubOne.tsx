@@ -7,6 +7,7 @@ import {
   ActionButton,
 } from "../components";
 import { Link as ReactRouterLink } from "react-router-dom";
+import { getTimeSince } from "../getTimeSince";
 
 export function ClubOneContainer() {
   const [clubProfileImageUrl, setClubProfileImageUrl] = useState<string>("");
@@ -20,6 +21,8 @@ export function ClubOneContainer() {
   const [followers, setFollowers] = useState<number>(0);
   const [members, setMembers] = useState<number>(0);
   const [clubPosts, setClubPosts] = useState(null);
+
+  console.log(getTimeSince("2022-03-29T03:54:38.304Z"));
 
   const samplePostData = [
     {
@@ -272,7 +275,7 @@ export function ClubOneContainer() {
                           linkTo={""}
                           partners={post.post_partners}
                           position={post.role}
-                          posted={post.created_at}
+                          posted={getTimeSince(post.created_at)}
                           username={post.name}
                         >
                           {post.post_type === "Partner Event" ? (
