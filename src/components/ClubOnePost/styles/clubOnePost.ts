@@ -103,7 +103,7 @@ export const PostContainer = styled.div<ActiveProps>`
 
   &:hover {
     transform: ${({ width }) =>
-      width === "85%" ? "translateY(-34.5%)" : "translateY(-2.5%)"};
+      width === "85%" ? "translateY(-37.5%)" : "translateY(-2.5%)"};
   }
 
   .see_more {

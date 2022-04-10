@@ -55,7 +55,7 @@ export const Item = styled.div<ActiveProps>`
     width: 48px;
     height: 48px;
     border-radius: ${({ borderRadius }) => borderRadius};
-    margin-right: 0.5rem;
+    margin-right: 0.7rem;
     background: ${({ profileBackground }) => profileBackground};
     display: flex;
     justify-content: center;
@@ -75,6 +75,7 @@ export const Item = styled.div<ActiveProps>`
     flex-direction: column;
     height: 100%;
     justify-content: center;
+    width: 65%;
 
     h3 {
       font-family: Outfit;
@@ -113,7 +114,7 @@ export const Title = styled.h2`
   font-weight: 700;
   font-size: 24px;
   color: #284b63;
-  margin-bottom: 0.9rem;
+  margin-bottom: 1.2rem;
 `;
 
 export const ViewAll = styled.h3`
