@@ -383,7 +383,7 @@ ClubOnePost.TopPostLayer = function ClubOnePostTopPostLayerContainer({
           </div>
         )}
 
-        <ActionButton
+        <ActionButton.Medium
           color="#FAFCFA"
           onClick={() => null}
           background={
@@ -405,7 +405,7 @@ ClubOnePost.TopPostLayer = function ClubOnePostTopPostLayerContainer({
           }
         >
           <ReactRouterLink to={linkTo}>{postType}</ReactRouterLink>
-        </ActionButton>
+        </ActionButton.Medium>
       </div>
     </TopPostLayer>
   );

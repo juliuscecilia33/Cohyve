@@ -10,6 +10,7 @@ CREATE TABLE users(
   name VARCHAR NOT NULL,
   username VARCHAR UNIQUE NOT NULL,
   PRIMARY KEY (firebase_user_id)
+  -- add foreign key school_id to schools
 );
 
 -- When we make school check, we'll check both the name and id?
@@ -68,6 +69,7 @@ CREATE TABLE followers(
   FOREIGN KEY (firebase_user_id) REFERENCES users(firebase_user_id),
   FOREIGN KEY (club_id) REFERENCES clubs(club_id),
   PRIMARY KEY(club_id, firebase_user_id)
+  -- shouldn't primary key be follower_id?
 );
 
 CREATE TABLE partners(

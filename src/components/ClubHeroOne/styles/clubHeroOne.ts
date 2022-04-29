@@ -27,7 +27,7 @@ export const InfoContainer = styled.div`
   bottom: -36%;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 20%;
+  padding: 0 17%;
   left: 0;
   right: 0;
   display: flex;
