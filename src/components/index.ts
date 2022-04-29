@@ -16,3 +16,4 @@ export { default as Prompt } from "./Prompt";
 export { default as ClubHeroOne } from "./ClubHeroOne";
 export { default as ClubOne } from "./ClubOne";
 export { default as ClubOnePost } from "./ClubOnePost";
+export { default as DBSidebar } from "./DBSidebar";
