@@ -155,7 +155,7 @@ export const Description = styled.h3`
   font-size: 14px;
   line-height: 20px;
   color: #79a1bc;
-  margin-bottom: 1rem;
+  margin: 0.4rem 0 0.5rem 0;
   overflow: none;
 `;
 
@@ -183,11 +183,11 @@ export const ButtonsAndLinks = styled.div`
 
 export const Buttons = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: right;
   align-items: center;
   width: 65%;
   margin-left: auto;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.7rem;
 `;
 
 export const Links = styled.div`
@@ -218,9 +218,9 @@ export const Icon = styled.div`
 `;
 
 export const Stats = styled.div`
-  width: 75%;
+  width: 55%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   position: absolute;
   bottom: -10%;
@@ -235,12 +235,13 @@ export const FollowersAndMembers = styled.div`
   background: #eef0eb;
   box-shadow: -1px 10px 60px rgba(27, 27, 30, 0.1);
   border-radius: 40px;
-  width: 58%;
+  width: 55%;
   height: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 2rem;
+  margin-right: 2rem;
 `;
 
 export const FollowersAndMembersText = styled.h3`

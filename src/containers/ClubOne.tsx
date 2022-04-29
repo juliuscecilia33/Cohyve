@@ -202,7 +202,9 @@ export function ClubOneContainer() {
                 />
                 <CreateClub.InfoText>
                   <CreateClub.Name name={"Test Club"} year={2021} />
-                  <CreateClub.Description>{description}</CreateClub.Description>
+                  <CreateClub.Description>
+                    Test Description; we are the test of all tests
+                  </CreateClub.Description>
                   <CreateClub.SchoolLocationCategory
                     school={"University of Washington"}
                     location={"Seattle, Washington"}

@@ -268,7 +268,7 @@ CreateClub.Partners = function CreateClubPartners({
 }: Props) {
   return (
     <Partners {...restProps}>
-      <h3>Partners</h3>
+      <h3>Partners: </h3>
     </Partners>
   );
 };
