@@ -4,8 +4,8 @@ import {
   Container,
   ButtonContainer,
   Heading,
-  PinnedPostsContainer,
   FiltersContainer,
+  PostsContainer,
 } from "./styles/dbPosts";
 
 type Props = {
@@ -27,16 +27,16 @@ DBPosts.Heading = function DBPostsHeading({ children, ...restProps }: Props) {
   return <Heading {...restProps}>{children}</Heading>;
 };
 
-DBPosts.PinnedPostsContainer = function DBPostsPinnedPostsContainer({
-  children,
-  ...restProps
-}: Props) {
-  return <PinnedPostsContainer {...restProps}>{children}</PinnedPostsContainer>;
-};
-
 DBPosts.FiltersContainer = function DBPostsFiltersContainer({
   children,
   ...restProps
 }: Props) {
   return <FiltersContainer {...restProps}>{children}</FiltersContainer>;
+};
+
+DBPosts.PostsContainer = function DBPostsPostsContainer({
+  children,
+  ...restProps
+}: Props) {
+  return <PostsContainer {...restProps}>{children}</PostsContainer>;
 };

@@ -30,6 +30,12 @@ export const Container = styled.button<ActiveProps>`
     transform: translateY(-2.5%);
   }
 
+  i {
+    font-size: 14px;
+    margin-right: 0.3rem;
+    color: ${({ color }) => color};
+  }
+
   img {
     height: 25px;
     width: auto;
@@ -66,6 +72,12 @@ export const Medium = styled.button<ActiveProps>`
     transform: translateY(-2.5%);
   }
 
+  i {
+    font-size: 14px;
+    margin-right: 0.3rem;
+    color: ${({ color }) => color};
+  }
+
   img {
     height: 25px;
     width: auto;
@@ -100,6 +112,12 @@ export const Small = styled.button<ActiveProps>`
   &:hover {
     box-shadow: -1px 6px 60px rgba(27, 27, 30, 0.2);
     transform: translateY(-2.5%);
+  }
+
+  i {
+    font-size: 14px;
+    margin-right: 0.3rem;
+    color: ${({ color }) => color};
   }
 
   img {
