@@ -35,6 +35,7 @@ export const Tab = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   margin-bottom: 1.3rem;
 
   p,
