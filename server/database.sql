@@ -41,20 +41,19 @@ CREATE TABLE clubs(
   PRIMARY KEY (club_id),
 );
 
-CREATE TABLE school(
-  school_id INTEGER,
-  name VARCHAR NOT NULL,
-  banner_URL VARCHAR,
-  club_count INTEGER NOT NULL DEFAULT 0,
-  school_level VARCHAR,
-  PRIMARY KEY (school_id)
-);
+-- CREATE TABLE school(
+--   school_id INTEGER,
+--   name VARCHAR NOT NULL,
+--   banner_URL VARCHAR,
+--   club_count INTEGER NOT NULL DEFAULT 0,
+--   school_level VARCHAR,
+--   PRIMARY KEY (school_id)
+-- );
 
 CREATE TABLE members(
   club_id SERIAL NOT NULL,
   firebase_user_id VARCHAR NOT NULL,
   role VARCHAR(255) NOT NULL DEFAULT 'Member', 
-  -- add default 'Member' for role
   pending BOOLEAN NOT NULL,
   priority INTEGER DEFAULT 4, 
   FOREIGN KEY (club_id) REFERENCES clubs(club_id),
@@ -125,6 +124,11 @@ CREATE TABLE posts_partners(
   FOREIGN KEY (club_partner) REFERENCES clubs(club_id),
   FOREIGN KEY (post_id) REFERENCES posts(post_id)
 );
+
+
+
+-- INSERTING DATA
+
 
 -- insert fake user data
 insert into

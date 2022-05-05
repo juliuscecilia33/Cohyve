@@ -456,7 +456,7 @@ export function CreateClubContainer() {
         <Hero.Heading>
           create<span>club</span>
         </Hero.Heading>
-        <CreateClub.PreviewText />
+        {/* <CreateClub.PreviewText />
         <CreateClub.BannerPlaceholder imageUrl={previewBanner}>
           <CreateClub.InfoContainer>
             <CreateClub.Info>
@@ -514,7 +514,7 @@ export function CreateClubContainer() {
               </CreateClub.Stats>
             </CreateClub.Info>
           </CreateClub.InfoContainer>
-        </CreateClub.BannerPlaceholder>
+        </CreateClub.BannerPlaceholder> */}
       </Hero.CreateClub>
       <CreateClub.Section>
         <CreateClub.Inputs>
@@ -563,7 +563,7 @@ export function CreateClubContainer() {
         <CreateClub.Inputs>
           <CreateClub.LargeInput
             name="description"
-            title="Description"
+            title="Description (Optional)"
             type="text"
             placeholder="Write a short description about your club"
             value={description}
@@ -665,7 +665,7 @@ export function CreateClubContainer() {
           </CreateClub.DropdownContainer>
           <CreateClub.SmInputs>
             <CreateClub.ImageUpload
-              title="Club Profile"
+              title="Club Profile (Optional)"
               handleChange={handleProfileChange}
               passiveBg="linear-gradient(94.39deg, rgba(88, 164, 176, 0.5) 8.09%, rgba(175, 213, 170, 0.5) 93.12%);"
               activeBg="linear-gradient(94.39deg, #58a4b0 8.09%, #afd5aa 93.12%);"
@@ -675,7 +675,7 @@ export function CreateClubContainer() {
               fileId="file-1"
             />
             <CreateClub.ImageUpload
-              title="Club Banner"
+              title="Club Banner (Optional)"
               handleChange={handleBannerChange}
               passiveBg="linear-gradient(94.39deg, rgba(171, 201, 245, 0.5) 8.09%, rgba(90, 94, 197, 0.5) 93.12%);"
               activeBg="linear-gradient(94.39deg, #ABC9F5 8.09%, #5A5EC5 93.12%);"
@@ -689,7 +689,7 @@ export function CreateClubContainer() {
         <CreateClub.Inputs>
           <CreateClub.HalfInput
             name="website"
-            title="Website"
+            title="Website (Optional)"
             type="url"
             placeholder="https://example.com"
             pattern="https://.*"
@@ -700,7 +700,7 @@ export function CreateClubContainer() {
           />
           <CreateClub.HalfInput
             name="twitter"
-            title="Twitter"
+            title="Twitter (Optional)"
             type="text"
             placeholder="https://twitter.com"
             pattern="https?://.*"
@@ -713,7 +713,7 @@ export function CreateClubContainer() {
         <CreateClub.Inputs>
           <CreateClub.HalfInput
             name="instagram"
-            title="Instagram"
+            title="Instagram (Optional)"
             type="text"
             placeholder="https://instagram.com"
             pattern="https://.*"
@@ -724,7 +724,7 @@ export function CreateClubContainer() {
           />
           <CreateClub.HalfInput
             name="facebook"
-            title="Facebook"
+            title="Facebook (Optional)"
             type="text"
             placeholder="https://facebook.com"
             pattern="https://.*"
@@ -737,7 +737,7 @@ export function CreateClubContainer() {
         <CreateClub.Inputs>
           <CreateClub.HalfInput
             name="email"
-            title="Email"
+            title="Email (Optional)"
             type="email"
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
             placeholder="Email"

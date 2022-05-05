@@ -29,7 +29,7 @@ export const Heading = styled.h1`
 `;
 
 export const CreateClub = styled.div`
-  padding: 3rem 15% 15rem 15%;
+  padding: 3rem 15% 1rem 15%;
   display: flex;
   flex-direction: column;
   justify-content: center;

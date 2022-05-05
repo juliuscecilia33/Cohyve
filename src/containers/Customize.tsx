@@ -109,7 +109,7 @@ export function CustomizeContainer() {
             select<span>hero</span>
           </Customize.Heading>
           <Customize.Options>
-            <Customize.HeroOption
+            {/* <Customize.HeroOption
               src={HeroSelectionOne}
               alt={1}
               onClick={(e: any) => {
@@ -119,7 +119,7 @@ export function CustomizeContainer() {
                 setHeroThreeSelected(false);
               }}
               selected={heroOneSelected}
-            />
+            /> */}
             <Customize.HeroOption
               src={HeroSelectionTwo}
               alt={2}
@@ -149,7 +149,7 @@ export function CustomizeContainer() {
             select<span>feed</span>
           </Customize.Heading>
           <Customize.Options>
-            <Customize.FeedOption
+            {/* <Customize.FeedOption
               src={FeedSelectionOne}
               alt={1}
               onClick={(e: any) => {
@@ -158,7 +158,7 @@ export function CustomizeContainer() {
                 setFeedTwoSelected(false);
               }}
               selected={feedOneSelected}
-            />
+            /> */}
             <Customize.FeedOption
               src={FeedSelectionTwo}
               alt={2}
