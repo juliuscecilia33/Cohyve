@@ -108,6 +108,17 @@ CREATE TABLE posts(
   FOREIGN KEY (firebase_user_id) REFERENCES users(firebase_user_id)
 );
 
+CREATE TABLE posts_comments(
+  comment_id SERIAL,
+  post_id SERIAL, 
+  firebase_user_id VARCHAR(255),
+  comment_text VARCHAR(255),
+  comment_created_date DATE NOT NULL DEFAULT CURRENT_DATE,
+  PRIMARY KEY (comment_id),
+  FOREIGN KEY (firebase_user_id) REFERENCES users(firebase_user_id),
+  FOREIGN KEY (post_id) REFERENCES posts(post_id)
+);
+
 CREATE TABLE posts_partners(
   post_id SERIAL,
   club_partner SERIAL,
