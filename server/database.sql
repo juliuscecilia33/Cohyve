@@ -101,6 +101,7 @@ CREATE TABLE posts(
   post_contact text[],
   post_support_links text[],
   post_support_goal integer,
+  post_likes integer NOT NULL DEFAULT 0,
   is_pinned BOOLEAN NOT NULL DEFAULT FALSE,
   PRIMARY KEY (post_id),
   FOREIGN KEY (club_id) REFERENCES clubs(club_id),
