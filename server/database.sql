@@ -101,6 +101,7 @@ CREATE TABLE posts(
   post_contact text[],
   post_support_links text[],
   post_support_goal integer,
+  is_pinned BOOLEAN NOT NULL DEFAULT FALSE,
   PRIMARY KEY (post_id),
   FOREIGN KEY (club_id) REFERENCES clubs(club_id),
   FOREIGN KEY (firebase_user_id) REFERENCES users(firebase_user_id)
