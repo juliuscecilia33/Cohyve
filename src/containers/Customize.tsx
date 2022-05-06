@@ -12,13 +12,13 @@ import { auth } from "../firebase";
 
 export function CustomizeContainer() {
   const [heroSelected, setHeroSelected] = useState(1);
-  const [heroOneSelected, setHeroOneSelected] = useState(true);
-  const [heroTwoSelected, setHeroTwoSelected] = useState(false);
+  const [heroOneSelected, setHeroOneSelected] = useState(false);
+  const [heroTwoSelected, setHeroTwoSelected] = useState(true);
   const [heroThreeSelected, setHeroThreeSelected] = useState(false);
 
   const [feedSelected, setFeedSelected] = useState(1);
-  const [feedOneSelected, setFeedOneSelected] = useState(true);
-  const [feedTwoSelected, setFeedTwoSelected] = useState(false);
+  const [feedOneSelected, setFeedOneSelected] = useState(false);
+  const [feedTwoSelected, setFeedTwoSelected] = useState(true);
 
   const [themeSelected, setThemeSelected] = useState("Default");
   const [themeOneSelected, setThemeOneSelected] = useState(true);
@@ -41,12 +41,13 @@ export function CustomizeContainer() {
   const handleSubmit = async () => {
     const customizeBody = {
       ...clubInfo.clubData,
-      hero: heroSelected,
-      feed: feedSelected,
-      theme: themeSelected,
+      club_hero: heroSelected,
+      club_feed: feedSelected,
+      club_theme: themeSelected,
     };
 
-    console.log(customizeBody);
+    console.log("customizeBody: ", customizeBody);
+    console.log("clubInfo: ", clubInfo);
     console.log("clubID: ", clubInfo.clubId);
 
     auth.currentUser
