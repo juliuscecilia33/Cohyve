@@ -1,11 +1,6 @@
 import React from "react";
 
-import {
-  Container,
-  Banner,
-  ProfileAndButtons,
-  Links,
-} from "./styles/clubTwoHero";
+import { Container, ProfileAndButtons, Links } from "./styles/clubTwoHero";
 import { ActionButton } from "../../components";
 
 type Props = {
@@ -16,21 +11,17 @@ type Props = {
   profileSrc?: string;
 };
 
-export default function ClubTwoHero({ children, ...restProps }: Props) {
-  return <Container {...restProps}>{children}</Container>;
-}
-
-ClubTwoHero.Banner = function ClubTwoHeroBanner({
+export default function ClubTwoHero({
   bannerSrc,
   children,
   ...restProps
 }: Props) {
   return (
-    <Banner {...restProps}>
+    <Container {...restProps}>
       <img src={bannerSrc} alt="Banner" />
-    </Banner>
+    </Container>
   );
-};
+}
 
 ClubTwoHero.ProfileAndButtons = function ClubTwoHeroProfileAndButtons({
   followClick,
