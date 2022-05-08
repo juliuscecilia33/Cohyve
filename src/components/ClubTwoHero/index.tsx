@@ -1,6 +1,21 @@
 import React from "react";
 
-import { Container, ProfileAndButtons, Links } from "./styles/clubTwoHero";
+import {
+  Container,
+  ProfileAndButtons,
+  Links,
+  Banner,
+  Information,
+  ClubName,
+  ClubDescription,
+  FollowersAndMembers,
+  ClubDetails,
+  ClubDetailsRow,
+  ClubDetailsDescription,
+  ClubDetailsSchool,
+  ClubDetailsPartners,
+  ClubDetailsMembers,
+} from "./styles/clubTwoHero";
 import { ActionButton } from "../../components";
 
 type Props = {
@@ -9,19 +24,27 @@ type Props = {
   followClick?: any;
   partnerClick?: any;
   profileSrc?: string;
+  followers?: number;
+  members?: number;
+  school?: string;
+  state?: string;
 };
 
-export default function ClubTwoHero({
+export default function ClubTwoHero({ children, ...restProps }: Props) {
+  return <Container {...restProps}>{children}</Container>;
+}
+
+ClubTwoHero.Banner = function ClubTwoHeroBanner({
   bannerSrc,
   children,
   ...restProps
 }: Props) {
   return (
-    <Container {...restProps}>
+    <Banner {...restProps}>
       <img src={bannerSrc} alt="Banner" />
-    </Container>
+    </Banner>
   );
-}
+};
 
 ClubTwoHero.ProfileAndButtons = function ClubTwoHeroProfileAndButtons({
   followClick,
@@ -95,5 +118,126 @@ ClubTwoHero.Links = function ClubTwoHeroLinks({
         <i className="fas fa-envelope-open-text"></i>
       </a>
     </Links>
+  );
+};
+
+ClubTwoHero.Information = function ClubTwoHeroInformation({
+  children,
+  ...restProps
+}: Props) {
+  return <Information {...restProps}>{children}</Information>;
+};
+
+ClubTwoHero.ClubName = function ClubTwoHeroClubName({
+  children,
+  ...restProps
+}: Props) {
+  return <ClubName {...restProps}>{children}</ClubName>;
+};
+
+ClubTwoHero.ClubDescription = function ClubTwoHeroClubDescription({
+  children,
+  ...restProps
+}: Props) {
+  return <ClubDescription {...restProps}>{children}</ClubDescription>;
+};
+
+ClubTwoHero.FollowersAndMembers = function ClubTwoHeroFollowersAndMembers({
+  followers,
+  members,
+  children,
+  ...restProps
+}: Props) {
+  return (
+    <FollowersAndMembers {...restProps}>
+      <p>
+        Followers: <span>{followers}</span>
+      </p>
+      <p>
+        Members: <span>{members}</span>
+      </p>
+    </FollowersAndMembers>
+  );
+};
+
+ClubTwoHero.ClubDetails = function ClubTwoHeroClubDetails({
+  children,
+  ...restProps
+}: Props) {
+  return <ClubDetails {...restProps}>{children}</ClubDetails>;
+};
+
+ClubTwoHero.ClubDetailsRow = function ClubTwoHeroClubDetailsRow({
+  children,
+  ...restProps
+}: Props) {
+  return <ClubDetailsRow {...restProps}>{children}</ClubDetailsRow>;
+};
+
+ClubTwoHero.ClubDetailsDescription =
+  function ClubTwoHeroClubDetailsDescription({
+    children,
+    ...restProps
+  }: Props) {
+    return (
+      <ClubDetailsDescription {...restProps}>
+        <i className="fa-solid fa-quote-left"></i>
+        <div className="description_text">
+          <p>Description</p>
+          <h2>{children}</h2>
+        </div>
+      </ClubDetailsDescription>
+    );
+  };
+
+ClubTwoHero.ClubDetailsSchool = function ClubTwoHeroClubDetailsDescription({
+  school,
+  state,
+  children,
+  ...restProps
+}: Props) {
+  return (
+    <ClubDetailsSchool {...restProps}>
+      <i className="fa-regular fa-compass"></i>
+      <div className="school_text">
+        <p>School</p>
+        <h2>{school}</h2>
+        <h3>{state}</h3>
+      </div>
+    </ClubDetailsSchool>
+  );
+};
+
+ClubTwoHero.ClubDetailsPartners = function ClubTwoHeroClubDetailsDescription({
+  school,
+  state,
+  children,
+  ...restProps
+}: Props) {
+  return (
+    <ClubDetailsPartners {...restProps}>
+      <i className="fa-solid fa-handshake"></i>
+      <div className="partners_container">
+        <p>Partners</p>
+        {children}
+      </div>
+    </ClubDetailsPartners>
+  );
+};
+
+ClubTwoHero.ClubDetailsMembers = function ClubTwoHeroClubDetailsDescription({
+  school,
+  state,
+  children,
+  ...restProps
+}: Props) {
+  return (
+    <ClubDetailsMembers {...restProps}>
+      <i className="fa-solid fa-people-group"></i>
+      <div className="partners_container">
+        <p>Members</p>
+        {children}
+      </div>
+    </ClubDetailsMembers>
   );
 };
