@@ -12,6 +12,7 @@ import {
   ClubDetails,
   ClubDetailsRow,
   ClubDetailsDescription,
+  ClubDetailsItem,
   ClubDetailsSchool,
   ClubDetailsPartners,
   ClubDetailsMembers,
@@ -28,6 +29,8 @@ type Props = {
   members?: number;
   school?: string;
   state?: string;
+  icon?: string;
+  label?: string;
 };
 
 export default function ClubTwoHero({ children, ...restProps }: Props) {
@@ -174,70 +177,19 @@ ClubTwoHero.ClubDetailsRow = function ClubTwoHeroClubDetailsRow({
   return <ClubDetailsRow {...restProps}>{children}</ClubDetailsRow>;
 };
 
-ClubTwoHero.ClubDetailsDescription =
-  function ClubTwoHeroClubDetailsDescription({
-    children,
-    ...restProps
-  }: Props) {
-    return (
-      <ClubDetailsDescription {...restProps}>
-        <i className="fa-solid fa-quote-left"></i>
-        <div className="description_text">
-          <p>Description</p>
-          <h2>{children}</h2>
-        </div>
-      </ClubDetailsDescription>
-    );
-  };
-
-ClubTwoHero.ClubDetailsSchool = function ClubTwoHeroClubDetailsDescription({
-  school,
-  state,
+ClubTwoHero.ClubDetailsItem = function ClubTwoHeroClubDetailsItem({
+  label,
+  icon,
   children,
   ...restProps
 }: Props) {
   return (
-    <ClubDetailsSchool {...restProps}>
-      <i className="fa-regular fa-compass"></i>
-      <div className="school_text">
-        <p>School</p>
-        <h2>{school}</h2>
-        <h3>{state}</h3>
-      </div>
-    </ClubDetailsSchool>
-  );
-};
-
-ClubTwoHero.ClubDetailsPartners = function ClubTwoHeroClubDetailsDescription({
-  school,
-  state,
-  children,
-  ...restProps
-}: Props) {
-  return (
-    <ClubDetailsPartners {...restProps}>
-      <i className="fa-solid fa-handshake"></i>
-      <div className="partners_container">
-        <p>Partners</p>
+    <ClubDetailsItem {...restProps}>
+      <i className={icon}></i>
+      <div className="item_details">
+        <p>{label}</p>
         {children}
       </div>
-    </ClubDetailsPartners>
-  );
-};
-
-ClubTwoHero.ClubDetailsMembers = function ClubTwoHeroClubDetailsDescription({
-  school,
-  state,
-  children,
-  ...restProps
-}: Props) {
-  return (
-    <ClubDetailsMembers {...restProps}>
-      <i className="fa-solid fa-people-group"></i>
-      <div className="partners_container">
-        <p>Members</p>
-        {children}
-      </div>
-    </ClubDetailsMembers>
+    </ClubDetailsItem>
   );
 };
