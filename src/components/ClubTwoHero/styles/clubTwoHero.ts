@@ -172,5 +172,3 @@ export const ClubDetailsItem = styled.div`
     }
   }
 `;
-
-export const ClubDetailsDescription = styled.div``;

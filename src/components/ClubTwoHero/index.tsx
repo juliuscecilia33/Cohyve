@@ -11,11 +11,7 @@ import {
   FollowersAndMembers,
   ClubDetails,
   ClubDetailsRow,
-  ClubDetailsDescription,
   ClubDetailsItem,
-  ClubDetailsSchool,
-  ClubDetailsPartners,
-  ClubDetailsMembers,
 } from "./styles/clubTwoHero";
 import { ActionButton } from "../../components";
 

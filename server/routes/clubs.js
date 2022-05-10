@@ -198,7 +198,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Get posts along with specific club and user data
+// Get posts along with specific club and user data; need to replace with specific post/club id and replace WHERE condition in the end
 router.get("/getpostswithclubanduser", async (req, res) => {
   try {
     const clubs = await pool.query(
