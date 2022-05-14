@@ -8,6 +8,7 @@ import {
   ButtonContainer,
   Pinned,
   Heading,
+  PostsRow,
 } from "./styles/clubTwo";
 
 type Props = {
@@ -43,4 +44,8 @@ ClubTwo.ButtonContainer = function ClubTwoButtonContainer({
   ...restProps
 }: Props) {
   return <ButtonContainer {...restProps}>{children}</ButtonContainer>;
+};
+
+ClubTwo.PostsRow = function ClubTwoPostsRow({ children, ...restProps }: Props) {
+  return <PostsRow {...restProps}>{children}</PostsRow>;
 };
