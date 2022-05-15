@@ -20,3 +20,5 @@ export { default as DBSidebar } from "./DBSidebar";
 export { default as DBContentContainer } from "./DBContentContainer";
 export { default as ClubTwoHero } from "./ClubTwoHero";
 export { default as ClubTwo } from "./ClubTwo";
+export { default as ClubTwoPost } from "./ClubTwoPost";
+export { default as ClubTwoPinnedPost } from "./ClubTwoPinnedPost";
