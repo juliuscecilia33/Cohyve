@@ -156,22 +156,20 @@ ClubTwoPost.PartnerEventPostContainer =
   }: Props) {
     return (
       <PartnerEventPostContainer {...restProps}>
-        <div className="date_and_location">
-          <div className="date_and_location_container">
-            <i className="fa-solid fa-calendar-day"></i>
-            <div className="date_and_location_details">
-              <p>Meetup Time</p>
-              <h2>{date}</h2>
-              <h3>{time}</h3>
-            </div>
+        <div className="date_and_location_container">
+          <i className="fa-solid fa-calendar-day"></i>
+          <div className="date_and_location_details">
+            <p>Meetup Time</p>
+            <h2>{date}</h2>
+            <h3>{time}</h3>
           </div>
-          <div className="date_and_location_container">
-            <i className="fa-solid fa-compass"></i>
-            <div className="date_and_location_details">
-              <p>Meetup Location</p>
-              <h2>{location}</h2>
-              <h3>{locationDetails}</h3>
-            </div>
+        </div>
+        <div className="date_and_location_container">
+          <i className="fa-solid fa-compass"></i>
+          <div className="date_and_location_details">
+            <p>Meetup Location</p>
+            <h2>{location}</h2>
+            <h3>{locationDetails}</h3>
           </div>
         </div>
       </PartnerEventPostContainer>

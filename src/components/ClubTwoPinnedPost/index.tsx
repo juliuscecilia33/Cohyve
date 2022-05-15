@@ -73,16 +73,18 @@ ClubTwoPinnedPost.Image = function ClubTwoPinnedPostImage({
 }: Props) {
   return (
     <Image src={postImages[0]} alt="Profile" {...restProps}>
-      {postImages.length > 1 && (
-        <ClubTwoPinnedPost.MoreImagesIcon linkTo={linkTo} />
-      )}
-      {postType === "Partner Event" && (
-        <ClubTwoPinnedPost.PartnersProfile
-          clubProfile={clubProfile}
-          partnerProfile={partnerProfile}
-          linkTo={linkTo}
-        />
-      )}
+      <div className="image_icons">
+        {postImages.length > 1 && (
+          <ClubTwoPinnedPost.MoreImagesIcon linkTo={linkTo} />
+        )}
+        {postType === "Partner Event" && (
+          <ClubTwoPinnedPost.PartnersProfile
+            clubProfile={clubProfile}
+            partnerProfile={partnerProfile}
+            linkTo={linkTo}
+          />
+        )}
+      </div>
     </Image>
   );
 };
