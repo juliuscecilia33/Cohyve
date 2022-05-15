@@ -52,3 +52,9 @@ export const ButtonContainer = styled.div`
   justify-content: flex-end;
   align-items: center;
 `;
+
+export const PostsRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
